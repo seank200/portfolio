@@ -1,4 +1,5 @@
 import Hero from '@/components/Home/Hero';
+import Portfolio from '@/components/Home/Portfolio';
 import WorkExperience from '@/components/Home/WorkExperience';
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
       <Hero />
       <WorkExperience />
+      <Portfolio />
     </main>
   );
 }

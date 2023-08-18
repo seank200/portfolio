@@ -8,7 +8,7 @@ export default function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`w-full h-screen ${className || ''}`}>
+    <section id={id} className={`w-full min-h-screen ${className || ''}`}>
       {children}
     </section>
   );

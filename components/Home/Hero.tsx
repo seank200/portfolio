@@ -34,7 +34,7 @@ export default function Hero() {
         </div>
       </Container>
       <ScrollGuide
-        scrollTo="#home__section_portfolio"
+        scrollTo="#home__section_work_experience"
         text="Learn more about me"
       />
     </Section>

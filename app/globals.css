@@ -20,12 +20,19 @@
 }
 
 .bg-gradient {
-  background: linear-gradient(to right bottom, #6a1bf3, #1164e8);
+  background: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
 }
 
 .text-gradient {
-  color: #6a1bf3;
-  background: linear-gradient(to right bottom, #6a1bf3, #1164e8);
+  background-color: var(--color-primary);
+  background: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-secondary {
+  background-color: var(--color-secondary);
+  background: linear-gradient(to right bottom, var(--color-secondary), var(--color-primary));
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
