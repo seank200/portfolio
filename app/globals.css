@@ -3,25 +3,324 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --color-primary: #6a1bf3;
+  --color-primary-variant: #4609ae;
+  --color-primary-on: #f9fafb;
+  --color-secondary: #1164e8;
+  --color-secondary-variant: #0949ae;
+  --color-secondary-on: #f9fafb;
+  --color-background: #f4f4f6;
+  --color-background-on: #0f172a;
+  --color-surface: #ffffff;
+  --color-surface-on: #020617;
+  --color-error: #dc2626;
+  --color-error-on: #f8fafc;
+  --color-success: #22c55e;
+  --color-success-on: #f8fafc;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.bg-gradient {
+  background: linear-gradient(to right bottom, #6a1bf3, #1164e8);
+}
+
+.text-gradient {
+  color: #6a1bf3;
+  background: linear-gradient(to right bottom, #6a1bf3, #1164e8);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes beckon {
+  0%,
+  16%,
+  32% {
+    top: 0;
+  }
+  8%,
+  24% {
+    top: 4px;
+  }
+  100% {
+    top: 0;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 100;
+  font-style: normal;
+  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Thin.woff') format('woff'),
+    url('/fonts/HKGrotesk-Thin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 100;
+  font-style: italic;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-ThinItalic.woff') format('woff'),
+    url('/fonts/HKGrotesk-ThinItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 200;
+  font-style: normal;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-ExtraLight.woff') format('woff'),
+    url('/fonts/HKGrotesk-ExtraLight.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 200;
+  font-style: italic;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-ExtraLightItalic.woff') format('woff'),
+    url('/fonts/HKGrotesk-ExtraLightItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 300;
+  font-style: normal;
+  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Light.woff') format('woff'),
+    url('/fonts/HKGrotesk-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 300;
+  font-style: italic;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-LightItalic.woff') format('woff'),
+    url('/fonts/HKGrotesk-LightItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 400;
+  font-style: normal;
+  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Regular.woff') format('woff'),
+    url('/fonts/HKGrotesk-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 400;
+  font-style: italic;
+  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Italic.woff') format('woff'),
+    url('/fonts/HKGrotesk-Italic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 500;
+  font-style: normal;
+  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Medium.woff') format('woff'),
+    url('/fonts/HKGrotesk-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 500;
+  font-style: italic;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-MediumItalic.woff') format('woff'),
+    url('/fonts/HKGrotesk-MediumItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 600;
+  font-style: normal;
+  src: local('HK Grotesk'), url('/fonts/HKGrotesk-SemiBold.woff') format('woff'),
+    url('/fonts/HKGrotesk-SemiBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 600;
+  font-style: italic;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-SemiBoldItalic.woff') format('woff'),
+    url('/fonts/HKGrotesk-SemiBoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 700;
+  font-style: normal;
+  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Bold.woff') format('woff'),
+    url('/fonts/HKGrotesk-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 700;
+  font-style: italic;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-BoldItalic.woff') format('woff'),
+    url('/fonts/HKGrotesk-BoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 800;
+  font-style: normal;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-ExtraBold.woff') format('woff'),
+    url('/fonts/HKGrotesk-ExtraBold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 800;
+  font-style: italic;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-ExtraBoldItalic.woff') format('woff'),
+    url('/fonts/HKGrotesk-ExtraBoldItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 900;
+  font-style: normal;
+  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Black.woff') format('woff'),
+    url('/fonts/HKGrotesk-Black.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: HKGrotesk;
+  font-weight: 900;
+  font-style: italic;
+  src: local('HK Grotesk'),
+    url('/fonts/HKGrotesk-BlackItalic.woff') format('woff'),
+    url('/fonts/HKGrotesk-BlackItalic.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 100;
+  font-style: normal;
+  src: local('Rota'), url('/fonts/Rota-Thin.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 100;
+  font-style: italic;
+  src: local('Rota'), url('/fonts/Rota-ThinItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 200;
+  font-style: normal;
+  src: local('Rota'), url('/fonts/Rota-ExtraLight.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 200;
+  font-style: italic;
+  src: local('Rota'), url('/fonts/Rota-ExtraLightItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 300;
+  font-style: normal;
+  src: local('Rota'), url('/fonts/Rota-Light.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 300;
+  font-style: italic;
+  src: local('Rota'), url('/fonts/Rota-LightItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 400;
+  font-style: normal;
+  src: local('Rota'), url('/fonts/Rota-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 400;
+  font-style: italic;
+  src: local('Rota'), url('/fonts/Rota-Italic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 500;
+  font-style: normal;
+  src: local('Rota'), url('/fonts/Rota-Medium.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 500;
+  font-style: italic;
+  src: local('Rota'), url('/fonts/Rota-MediumItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 600;
+  font-style: normal;
+  src: local('Rota'), url('/fonts/Rota-SemiBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 600;
+  font-style: italic;
+  src: local('Rota'), url('/fonts/Rota-SemiBoldItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 700;
+  font-style: normal;
+  src: local('Rota'), url('/fonts/Rota-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 700;
+  font-style: italic;
+  src: local('Rota'), url('/fonts/Rota-BoldItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 800;
+  font-style: normal;
+  src: local('Rota'), url('/fonts/Rota-ExtraBold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 800;
+  font-style: italic;
+  src: local('Rota'), url('/fonts/Rota-ExtraBoldItalic.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 900;
+  font-style: normal;
+  src: local('Rota'), url('/fonts/Rota-Black.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 900;
+  font-style: italic;
+  src: local('Rota'), url('/fonts/Rota-BlackItalic.otf') format('opentype');
 }

@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: [
@@ -8,13 +8,52 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      fontFamily: {
+        sans: [
+          'HKGrotesk',
+          'Helvetica',
+          'Arial',
+          'ui-sans-serif',
+          'sans-serif',
+        ],
+        display: ['Rota', 'Helvetica', 'Arial', 'ui-sans-serif', 'sans-serif'],
+      },
+      colors: {
+        primary: {
+          DEFAULT: 'var(--color-primary)',
+          variant: 'var(--color-primary-variant)',
+          on: 'var(--color-primary-on)',
+        },
+        secondary: {
+          DEFAULT: 'var(--color-secondary)',
+          variant: 'var(--color-secondary-variant)',
+          on: 'var(--color-secondary-on)',
+        },
+        background: {
+          DEFAULT: 'var(--color-background)',
+          on: 'var(--color-background-on)',
+        },
+        surface: {
+          DEFAULT: 'var(--color-surface)',
+          on: 'var(--color-surface-on)',
+        },
+        error: {
+          DEFAULT: 'var(--color-error)',
+          on: 'var(--color-error-on)',
+        },
+        success: {
+          DEFAULT: 'var(--color-success)',
+          on: 'var(--color-success-on)',
+        },
+      },
+      animation: {
+        beckon: 'beckon 5s linear infinite',
+      },
+      transitionProperty: {
+        position: 'top, bottom, left, right',
       },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
