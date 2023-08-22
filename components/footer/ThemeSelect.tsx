@@ -3,7 +3,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faDesktop } from '@fortawesome/free-solid-svg-icons';
 import { faSun } from '@fortawesome/free-regular-svg-icons';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import useLocalStorage from '@/hooks/useLocalStorage';
 
 export default function ThemeSelect() {

@@ -39,13 +39,16 @@ export default function LangSelect({ lang }: { lang: string }) {
   return (
     <Link
       href={href}
-      className="group rounded px-2 hover:bg-background-variant"
+      className="group rounded sm:px-2 hover:bg-background-variant text-xl sm:text-base"
       title={tooltip[otherLang]}
     >
       <span className="group-hover:hidden">
         {langEmoji[lang as keyof typeof langEmoji]}
       </span>
       <span className="hidden group-hover:inline">{langEmoji[otherLang]}</span>
+      <span className="ml-2 sm:hidden">
+        {tooltip[lang as keyof typeof tooltip]}
+      </span>
     </Link>
   );
 }

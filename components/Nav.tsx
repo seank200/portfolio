@@ -4,26 +4,61 @@ import Link from 'next/link';
 import Container from '@/components/Container';
 import useScroll from '@/hooks/useScroll';
 import LangSelect from './LangSelect';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark, faBars } from '@fortawesome/free-solid-svg-icons';
+import { useEffect, useState } from 'react';
 
 export default function Nav({ lang }: { lang: string }) {
+  const [isOpen, setIsOpen] = useState<boolean>(false); // mobile only
   const [scrollY, isScrollingDown] = useScroll();
+  const shadow = scrollY > 50 ? 'drop-shadow' : '';
+  const top =
+    !isOpen && scrollY > 50 && isScrollingDown ? '-top-full' : 'top-0';
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (isOpen && window.innerWidth > 640) setIsOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <nav
-      className={` ${
-        scrollY > 50 ? 'drop-shadow' : ''
-      } transition-position duration-500 ease-in-out fixed z-10 ${
-        scrollY > 50 && isScrollingDown ? '-top-full' : 'top-0'
-      } left-0 right-0 py-6 bg-background text-background-on`}
+      className={`${shadow} fixed z-10 ${top} left-0 right-0 ${
+        isOpen ? 'bottom-0' : ''
+      } py-8 sm:py-6 bg-background transition-position`}
     >
-      <Container className="flex justify-between">
-        <Link
-          href="/"
-          className="block relative top-[2px] text-xl font-display font-extrabold uppercase text-gradient-hover"
+      <Container className="flex flex-col sm:flex-row sm:justify-between">
+        <div className="flex justify-between items-center">
+          <Link
+            href="/"
+            className="relative top-1 leading-none text-xl font-display font-extrabold uppercase text-gradient-hover"
+          >
+            Youngwoo
+          </Link>
+          {isOpen ? (
+            <FontAwesomeIcon
+              icon={faXmark}
+              className="text-xl sm:hidden"
+              onClick={() => setIsOpen(false)}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={faBars}
+              className="sm:hidden"
+              onClick={() => setIsOpen(true)}
+            />
+          )}
+        </div>
+        <ul
+          className={`${
+            isOpen ? '' : 'hidden'
+          } mt-12 sm:mt-0 sm:flex sm:space-x-8`}
         >
-          Youngwoo
-        </Link>
-        <ul className="flex space-x-8">
           <NavItem href="/">Home</NavItem>
           <NavItem href="/">Experience</NavItem>
           <NavItem href="/">Portfolio</NavItem>
@@ -33,9 +68,44 @@ export default function Nav({ lang }: { lang: string }) {
       </Container>
     </nav>
   );
+
+  // return (
+  //   <nav
+  //     className={`${shadow} ${position} transition-position duration-500 ease-in-out fixed z-10 left-0 right-0 py-8 sm:py-6 bg-background text-background-on`}
+  //   >
+  //     <ul
+  //       className={`absolute sm:static top-0 left-0 right-0 h-screen sm:h-auto bg-background ${
+  //         isOpen ? 'top-0' : '-top-full'
+  //       }`}
+  //     >
+  //       <Container>
+  //         <div className="mb-6 sm:mb-0 sm:hidden flex flex-row justify-between">
+  //           <Link
+  //             href="/"
+  //             className="relative top-[2px] text-xl font-display font-extrabold uppercase text-gradient-hover"
+  //           >
+  //             Youngwoo
+  //           </Link>
+  //           <FontAwesomeIcon
+  //             icon={faXmark}
+  //             className="text-background-on text-xl"
+  //             onClick={() => setIsOpen(false)}
+  //           />
+  //         </div>
+  //         <div className="flex flex-col sm:flex-row sm:space-x-8">
+  //           <NavItem href="/">Home</NavItem>
+  //           <NavItem href="/">Experience</NavItem>
+  //           <NavItem href="/">Portfolio</NavItem>
+  //           <NavItem href="/">Contact Me</NavItem>
+  //           <LangSelect lang={lang} />
+  //         </div>
+  //       </Container>
+  //     </ul>
+  //   </nav>
+  // );
 }
 
-export function NavItem({
+function NavItem({
   href,
   children,
 }: {
@@ -43,10 +113,8 @@ export function NavItem({
   children?: React.ReactNode;
 }) {
   return (
-    <li>
-      <Link className="hover:text-primary" href={href}>
-        {children}
-      </Link>
+    <li className="mb-8 sm:mb-0 font-light sm:font-normal text-xl sm:text-base hover:text-primary">
+      <Link href={href}>{children}</Link>
     </li>
   );
 }
