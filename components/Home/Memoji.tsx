@@ -27,6 +27,7 @@ export default function Memoji() {
         id="home__memoji_video"
         className="relative top-5 left-1"
         ref={videoElemRef}
+        onClick={playVideo}
       >
         <source src="images/Memoji.mov" type="video/mp4" />
         <source src="images/Memoji.webm" type="video/webm" />

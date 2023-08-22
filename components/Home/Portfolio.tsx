@@ -2,53 +2,26 @@ import Container from '@components/Container';
 import Section from '@components/Section';
 import SectionHeading from './SectionHeading';
 import StickyContainer from './StickyContainer';
+import type { PortfolioContents } from '@contents/Portfolio';
 
-const contents = {
-  sigmate: {
-    easy: {
-      h: 'Information in One Place',
-      front: 'From real-time marketplace data to user-committed wiki content.',
-      back: '',
-    },
-    reliable: {
-      h: 'Cross-Checked and Scam-Free Content',
-      front:
-        'Both users and moderators can "verify", or "flag" any piece of information shared within the platform. The results, along with any changelogs to the content, are instantly shared to all users, allowing for easy distinction between true and sound facts, from fradulent/misleading fake news.',
-      back: '',
-    },
-    valuation: {
-      h: 'Integrated Asset Valuation',
-      front:
-        'Assets valuated based on both on/off-chain data, including utilities, funding, social hype, and more.',
-      back: '',
-    },
-  },
-};
-
-export default function Portfolio() {
+export default function Portfolio({
+  contents,
+}: {
+  contents: PortfolioContents;
+}) {
   return (
     <Section id="home__section_portfolio">
       <Container className="pt-24 flex flex-col text-background-on">
-        <SectionHeading color="secondary">Portfolio</SectionHeading>
-        <p className="mb-6 font-light leading-relaxed">
-          My past works range from small, full-stack personal projects to
-          contributions to larger open-source projects. I enjoy, and am good at
-          learning new concepts and trying them out in my projects. All projects
-          below were planned and implemented by myself in whole or in part.
+        <SectionHeading color="secondary">
+          {contents.general.title}
+        </SectionHeading>
+        <p className="mb-8 font-light leading-relaxed">
+          {contents.general.desc}
         </p>
       </Container>
-      <SigmatePortfolio
-        title="Sigmate"
-        subtitle="A wiki platform for the NFT community"
-      />
-      <PoolinkPortfolio
-        title="Poolink"
-        subtitle="Save, share and explore links"
-      />
-      <YREMSPortfolio
-        title="YREMS"
-        subtitle="Event participant management system"
-      />
+      <SigmatePortfolio contents={contents} />
+      <PoolinkPortfolio contents={contents} />
+      <YREMSPortfolio contents={contents} />
     </Section>
   );
 }
@@ -61,25 +34,21 @@ function PortfolioHero({
   className?: string;
 }) {
   return (
-    <div className={`w-full h-screen pb-10 bg-gray-200 ${className || ''}`}>
+    <div className={`w-full h-screen pb-10 bg-surface ${className || ''}`}>
       {children}
     </div>
   );
 }
 
-function SigmatePortfolio({
-  title,
-  subtitle,
-}: {
-  title: string;
-  subtitle: string;
-}) {
+function SigmatePortfolio({ contents }: { contents: PortfolioContents }) {
   return (
     <>
       <PortfolioHero className="flex flex-col justify-center items-center">
         <StickyContainer className="flex flex-col justify-start items-center">
-          <h3 className="text-6xl font-semibold leading-relaxed">{title}</h3>
-          <p className="font-light text-2xl">{subtitle}</p>
+          <h3 className="text-6xl font-semibold leading-relaxed">
+            {contents.sigmate.title}
+          </h3>
+          <p className="font-light text-2xl">{contents.sigmate.subtitle}</p>
         </StickyContainer>
       </PortfolioHero>
       <Container className="py-8">
@@ -102,19 +71,15 @@ function SigmatePortfolio({
   );
 }
 
-function PoolinkPortfolio({
-  title,
-  subtitle,
-}: {
-  title: string;
-  subtitle: string;
-}) {
+function PoolinkPortfolio({ contents }: { contents: PortfolioContents }) {
   return (
     <>
       <PortfolioHero className="flex justify-center items-center">
         <StickyContainer className="flex flex-col items-center">
-          <h3 className="text-6xl font-semibold leading-relaxed">{title}</h3>
-          <p className="font-light text-2xl">{subtitle}</p>
+          <h3 className="text-6xl font-semibold leading-relaxed">
+            {contents.poolink.title}
+          </h3>
+          <p className="font-light text-2xl">{contents.poolink.subtitle}</p>
         </StickyContainer>
       </PortfolioHero>
       <div className="w-full h-screen"></div>
@@ -122,19 +87,15 @@ function PoolinkPortfolio({
   );
 }
 
-function YREMSPortfolio({
-  title,
-  subtitle,
-}: {
-  title: string;
-  subtitle: string;
-}) {
+function YREMSPortfolio({ contents }: { contents: PortfolioContents }) {
   return (
     <>
       <PortfolioHero className="flex justify-center items-center">
         <StickyContainer className="flex flex-col items-center">
-          <h3 className="text-6xl font-semibold leading-relaxed">{title}</h3>
-          <p className="font-light text-2xl">{subtitle}</p>
+          <h3 className="text-6xl font-semibold leading-relaxed">
+            {contents.yrems.title}
+          </h3>
+          <p className="font-light text-2xl">{contents.yrems.subtitle}</p>
         </StickyContainer>
       </PortfolioHero>
       <div className="w-full h-screen"></div>

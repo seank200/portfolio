@@ -9,28 +9,31 @@ import {
 import Section from '@/components/Section';
 import Container from '@/components/Container';
 import {
-  PortfolioItem,
+  ExperienceItem,
   TimePrecision,
-  experienceItems as items,
-} from '@contents/Home';
+} from '@/components/contents/WorkExperience';
 import SectionHeading from './SectionHeading';
 
-export default function WorkExperience() {
+export default function WorkExperience({
+  contents,
+}: {
+  contents: ExperienceItem[];
+}) {
   return (
     <Section id="home__section_work_experience">
-      <Container className="pt-24 flex flex-col text-background-on">
+      <Container className="pt-24 flex flex-col">
         <SectionHeading>Work Experience</SectionHeading>
-        <p className="mb-6 text-lg font-light leading-relaxed">
+        <p className="mb-8 text-lg font-light leading-relaxed">
           I am a fast learner and a natural team player, with experiences to
           blend in seamlessly with any team or project.
         </p>
-        {items.map((item) => {
+        {contents.map((item) => {
           // Format time period
           const [fStartedAt, fEndedAt] = formatDates(item);
 
           return (
             <div
-              className="w-full mb-4 rounded px-7 py-6 bg-surface shadow"
+              className="w-full mb-4 rounded px-7 py-6 bg-surface text-surface-on shadow"
               key={`${item.title} ${item.affiliation || ''}`}
             >
               <div className="flex justify-between items-center">
@@ -45,29 +48,31 @@ export default function WorkExperience() {
                   ))}
                   {item.title}
                 </h3>
-                {item.logo &&
-                  (item.logo.url || item.affiliation?.url ? (
-                    <a
-                      href={item.logo.url || item.affiliation?.url}
-                      target="_blank"
-                      rel="noopenner noreferrer"
-                      className="opacity-80 hover:opacity-100"
-                    >
+                {item.logo && (
+                  <div className="rounded px-2 py-1 bg-white flex items-center">
+                    {item.logo.url || item.affiliation?.url ? (
+                      <a
+                        href={item.logo.url || item.affiliation?.url}
+                        target="_blank"
+                        rel="noopenner noreferrer"
+                      >
+                        <Image
+                          src={item.logo.src}
+                          width={item.logo.width}
+                          height={item.logo.height}
+                          alt="Facade.Inc"
+                        />
+                      </a>
+                    ) : (
                       <Image
                         src={item.logo.src}
                         width={item.logo.width}
                         height={item.logo.height}
                         alt="Facade.Inc"
                       />
-                    </a>
-                  ) : (
-                    <Image
-                      src={item.logo.src}
-                      width={item.logo.width}
-                      height={item.logo.height}
-                      alt="Facade.Inc"
-                    />
-                  ))}
+                    )}
+                  </div>
+                )}
               </div>
               {item.affiliation && (
                 <IconLabel
@@ -97,7 +102,7 @@ export default function WorkExperience() {
                 />
               )}
               {item.contents && (
-                <ul className="mt-6 list-disc list-inside leading-relaxed text-slate-600 font-light">
+                <ul className="mt-6 list-disc list-inside leading-relaxed text-background-on-variant font-light">
                   {item.contents.map((content, idx) => (
                     <li
                       key={
@@ -118,7 +123,7 @@ export default function WorkExperience() {
 }
 
 function formatDates(
-  item: PortfolioItem
+  item: ExperienceItem
 ): [string, string | undefined, string | undefined] {
   const startedAt = item.startedAt.toJSDate();
   const endedAt = item.endedAt?.toJSDate();
@@ -155,7 +160,7 @@ function IconLabel({
   url?: string;
 }) {
   const containerClassName =
-    'flex items-center font-light text-lg text-slate-600 leading-relaxed';
+    'flex items-center font-light text-lg text-background-on-variant leading-relaxed';
   const iconClassName = 'mr-3 relative w-3';
   if (url) {
     return (

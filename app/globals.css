@@ -3,36 +3,124 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #6a1bf3;
-  --color-primary-variant: #4609ae;
-  --color-primary-on: #f9fafb;
-  --color-secondary: #1164e8;
-  --color-secondary-variant: #0949ae;
-  --color-secondary-on: #f9fafb;
-  --color-background: #f4f4f6;
-  --color-background-on: #0f172a;
-  --color-surface: #ffffff;
-  --color-surface-on: #020617;
-  --color-error: #dc2626;
-  --color-error-on: #f8fafc;
-  --color-success: #22c55e;
-  --color-success-on: #f8fafc;
+  --color-primary-light: #6a1bf3;
+  --color-primary-variant-light: #4609ae;
+  --color-primary-on-light: #f9fafb;
+  --color-secondary-light: #1164e8;
+  --color-secondary-variant-light: #64748b;
+  --color-secondary-on-light: #f9fafb;
+  --color-background-light: #f4f4f6;
+  --color-background-variant-light: #e2e8f0;
+  --color-background-on-light: #0f172a;
+  --color-surface-light: #ffffff;
+  --color-surface-variant-light: #ffffff;
+  --color-surface-on-light: #020617;
+  --color-error-light: #dc2626;
+  --color-error-on-light: #f8fafc;
+  --color-success-light: #22c55e;
+  --color-success-on-light: #f8fafc;
+
+  --color-primary-dark: #8347eb;
+  --color-primary-variant-dark: #7a34f4;
+  --color-primary-on-dark: #f9fafb;
+  --color-secondary-dark: #1164e8;
+  --color-secondary-variant-dark: #64748b;
+  --color-secondary-on-dark: #f9fafb;
+  --color-background-dark: #0f172a;
+  --color-background-variant-dark: #243347;
+  --color-background-on-dark: #f4f4f6;
+  --color-surface-dark: #252d41;
+  --color-surface-variant-dark: #243347;
+  --color-surface-on-dark: #f4f4f6;
+  --color-error-dark: #dc2626;
+  --color-error-on-dark: #f8fafc;
+  --color-success-dark: #22c55e;
+  --color-success-on-dark: #f8fafc;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-primary: var(--color-primary-light);
+    --color-primary-variant: var(--color-primary-variant-light);
+    --color-primary-on: var(--color-primary-on-light);
+    --color-secondary: var(--color-secondary-light);
+    --color-secondary-variant: var(--color-secondary-variant-light);
+    --color-secondary-on: var(--color-secondary-on-light);
+    --color-background: var(--color-background-light);
+    --color-background-variant: var(--color-background-variant-light);
+    --color-background-on: var(--color-background-on-light);
+    --color-surface: var(--color-surface-light);
+    --color-surface-variant: var(--color-surface-variant-light);
+    --color-surface-on: var(--color-surface-on-light);
+    --color-error: var(--color-error-light);
+    --color-error-on: var(--color-error-on-light);
+    --color-success: var(--color-success-light);
+    --color-success-on: var(--color-success-on-light);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: var(--color-primary-dark);
+    --color-primary-variant: var(--color-primary-variant-dark);
+    --color-primary-on: var(--color-primary-on-dark);
+    --color-secondary: var(--color-secondary-dark);
+    --color-secondary-variant: var(--color-secondary-variant-dark);
+    --color-secondary-on: var(--color-secondary-on-dark);
+    --color-background: var(--color-background-dark);
+    --color-background-variant: var(--color-background-variant-dark);
+    --color-background-on: var(--color-background-on-dark);
+    --color-surface: var(--color-surface-dark);
+    --color-surface-variant: var(--color-surface-variant-dark);
+    --color-surface-on: var(--color-surface-on-dark);
+    --color-error: var(--color-error-dark);
+    --color-error-on: var(--color-error-on-dark);
+    --color-success: var(--color-success-dark);
+    --color-success-on: var(--color-success-on-dark);
+  }
 }
 
 .bg-gradient {
-  background: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
+  background: linear-gradient(
+    to right bottom,
+    var(--color-primary),
+    var(--color-secondary)
+  );
 }
 
 .text-gradient {
   background-color: var(--color-primary);
-  background: linear-gradient(to right bottom, var(--color-primary), var(--color-secondary));
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary),
+    var(--color-secondary)
+  );
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
+.text-gradient-hover {
+  transition: all 0.15s linear;
+  background-color: var(--color-primary);
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  background-clip: text;
+}
+
+.text-gradient-hover:hover {
+  color: transparent;
+}
+
 .text-gradient-secondary {
   background-color: var(--color-secondary);
-  background: linear-gradient(to right bottom, var(--color-secondary), var(--color-primary));
+  background: linear-gradient(
+    to right bottom,
+    var(--color-secondary),
+    var(--color-primary)
+  );
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }

@@ -7,14 +7,14 @@ import Memoji from '@components/Home/Memoji';
 export default function Hero() {
   return (
     <Section id="home__section_hero" className="relative">
-      <Container className="flex justify-between items-center h-screen text-background-on">
+      <Container className="flex justify-between items-center h-screen">
         <div className="flex flex-col">
           <h1 className="mb-6 text-5xl font-semibold leading-snug">
             Passion-Driven
             <br />
             <span className="text-gradient">Backend Web Developer</span>
           </h1>
-          <p className="group mb-24 text-2xl font-light leading-relaxed">
+          <p className="group mb-28 text-2xl font-light leading-relaxed">
             Hi, I&apos;m Youngwoo Kim&nbsp;
             <span className="relative transition-transform group-hover:rotate-12">
               👋

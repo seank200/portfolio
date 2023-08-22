@@ -3,19 +3,21 @@ import FacadeLogo from '@/public/images/LOGO_Facade.png';
 import ANLLogo from '@/public/images/LOGO_ANL_RGB-01.jpg';
 import YonseiLogo from '@/public/images/LOGO_Yonsei.jpg';
 import YonseiRCLogo from '@/public/images/LOGO_Yonsei_RC.png';
+import YonseiRCLogoDark from '@/public/images/LOGO_Yonsei_RC_Dark.png';
 import CFCLogo from '@/public/images/LOGO_CFC.png';
 import HCSSLogo from '@/public/images/LOGO_HCSS.png';
 import { StaticImageData } from 'next/image';
 
 export type TimePrecision = 'year' | 'month' | 'date';
 
-export type PortfolioItem = {
+export type ExperienceItem = {
   title: string;
   tags?: { text: string; color: string; bgColor: string }[];
   affiliation?: { text: string; url?: string };
   /** Statically imported image. Inserted in Image(next/image)'s src prop. */
   logo?: {
     src: StaticImageData | string;
+    darkSrc?: StaticImageData | string;
     width?: number;
     height?: number;
     url?: string;
@@ -30,14 +32,14 @@ export type PortfolioItem = {
   contents?: React.ReactNode[];
 };
 
-export const experienceItems: PortfolioItem[] = [
+export const experienceContents: ExperienceItem[] = [
   {
     title: 'Research Assistant',
     tags: [
       {
         text: 'Work Experience',
-        color: 'text-slate-600',
-        bgColor: 'bg-slate-200',
+        color: 'text-background-on',
+        bgColor: 'bg-background-variant',
       },
       {
         text: 'Current',
@@ -73,8 +75,8 @@ export const experienceItems: PortfolioItem[] = [
     tags: [
       {
         text: 'Work Experience',
-        color: 'text-slate-600',
-        bgColor: 'bg-slate-200',
+        color: 'text-background-on',
+        bgColor: 'bg-background-variant',
       },
     ],
     affiliation: {
@@ -92,8 +94,8 @@ export const experienceItems: PortfolioItem[] = [
     tags: [
       {
         text: 'Work Experience',
-        color: 'text-slate-600',
-        bgColor: 'bg-slate-200',
+        color: 'text-background-on',
+        bgColor: 'bg-background-variant',
       },
     ],
     affiliation: {
@@ -125,8 +127,8 @@ export const experienceItems: PortfolioItem[] = [
     tags: [
       {
         text: 'Work Experience',
-        color: 'text-slate-600',
-        bgColor: 'bg-slate-200',
+        color: 'text-background-on',
+        bgColor: 'bg-background-variant',
       },
     ],
     affiliation: { text: 'Facade Inc.' },
@@ -166,15 +168,15 @@ export const experienceItems: PortfolioItem[] = [
     tags: [
       {
         text: 'Work Experience',
-        color: 'text-slate-600',
-        bgColor: 'bg-slate-200',
+        color: 'text-background-on',
+        bgColor: 'bg-background-variant',
       },
     ],
     affiliation: {
       text: 'Residential College, Yonsei University',
       url: 'https://yicrc.yonsei.ac.kr',
     },
-    logo: { src: YonseiRCLogo, width: 110 },
+    logo: { src: YonseiRCLogo, darkSrc: YonseiRCLogoDark, width: 110 },
     startedAt: DateTime.fromObject({ year: 2018, month: 3 }),
     endedAt: DateTime.fromObject({ year: 2018, month: 12 }),
     contents: [

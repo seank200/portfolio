@@ -10,23 +10,23 @@ const EMAIL = 'yw.sean.kim@gmail.com';
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-slate-200">
-      <Container className="py-8 flex justify-between">
+    <footer className="w-full bg-background-variant text-background-on">
+      <Container className="py-8">
         <div>
           <h2>
             <Link
               href="/"
-              className="top-[2px] text-xl text-slate-800 font-display font-extrabold"
+              className="top-[2px] text-xl font-display font-extrabold"
             >
               Youngwoo Kim
             </Link>
           </h2>
-          <p className="text-slate-600 font-light mb-6">
+          <p className="font-light mb-6">
             I&apos;m a web developer, a photographer and a cyclist based on
             Seoul. If you liked my content, click on the links below to reach
             me.
           </p>
-          <div className="flex space-x-6 lg:space-x-8 items-start text-slate-800">
+          <div className="flex space-x-6 lg:space-x-8 items-start">
             <a
               href="https://github.com/seanK200"
               target="_blank"

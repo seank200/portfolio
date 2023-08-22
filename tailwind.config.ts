@@ -31,6 +31,7 @@ const config: Config = {
         },
         background: {
           DEFAULT: 'var(--color-background)',
+          variant: 'var(--color-background-variant)',
           on: 'var(--color-background-on)',
         },
         surface: {

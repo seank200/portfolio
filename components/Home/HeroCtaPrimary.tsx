@@ -10,7 +10,7 @@ export default function HeroCtaPrimary() {
   return (
     <button
       onClick={handleClick}
-      className="px-6 py-2 rounded-md bg-background-on font-medium text-white transition-colors hover:bg-primary"
+      className="px-6 py-2 rounded-md bg-background-on font-medium text-background transition-colors hover:bg-primary hover:text-primary-on"
     >
       View Portfolio
     </button>

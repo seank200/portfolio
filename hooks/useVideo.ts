@@ -27,10 +27,6 @@ export default function useVideo(
     };
   }, [ref]);
 
-  useEffect(() => {
-    console.log(`isPlaying: ${isPlaying}`);
-  }, [isPlaying]);
-
   const playVideo = () => {
     if (ref.current && !isPlaying) ref.current.play();
   };
