@@ -157,6 +157,9 @@ export const experienceItems: PortfolioItem[] = [
     logo: { src: CFCLogo, height: 28 },
     startedAt: DateTime.fromObject({ year: 2019, month: 2 }),
     endedAt: DateTime.fromObject({ year: 2020, month: 12 }),
+    contents: [
+      'Simultaneous/sequential Korean-English & English-Korean interpretation of general-level(O-8) meetings and combined joint exercises',
+    ],
   },
   {
     title: 'Vice Chief Residential Assistant',

@@ -13,7 +13,7 @@ import {
   TimePrecision,
   experienceItems as items,
 } from '@contents/Home';
-import SectionHeading from './SectionHeader';
+import SectionHeading from './SectionHeading';
 
 export default function WorkExperience() {
   return (
@@ -21,7 +21,8 @@ export default function WorkExperience() {
       <Container className="pt-24 flex flex-col text-background-on">
         <SectionHeading>Work Experience</SectionHeading>
         <p className="mb-6 text-lg font-light leading-relaxed">
-          My work experience
+          I am a fast learner and a natural team player, with experiences to
+          blend in seamlessly with any team or project.
         </p>
         {items.map((item) => {
           // Format time period

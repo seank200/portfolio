@@ -13,9 +13,7 @@ export default function ScrollGuide({
 }) {
   const handleClick = () => {
     if (!scrollTo) return;
-    document
-      .querySelector(scrollTo)
-      ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.querySelector(scrollTo)?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (

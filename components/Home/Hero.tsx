@@ -2,6 +2,7 @@ import Section from '@/components/Section';
 import Container from '@/components/Container';
 import ScrollGuide from '@/components/ScrollGuide';
 import HeroCtaPrimary from '@/components/Home/HeroCtaPrimary';
+import Memoji from '@components/Home/Memoji';
 
 export default function Hero() {
   return (
@@ -28,10 +29,7 @@ export default function Hero() {
             </button>
           </div>
         </div>
-
-        <div className="shrink-0 ml-12 w-[22rem] h-[22rem] rounded-full border border-primary flex justify-center items-center text-primary transition-transform hover:scale-[1.02]">
-          Memoji
-        </div>
+        <Memoji />
       </Container>
       <ScrollGuide
         scrollTo="#home__section_work_experience"
