@@ -11,17 +11,17 @@ const EMAIL = 'yw.sean.kim@gmail.com';
 export default function Footer() {
   return (
     <footer className="w-full bg-background-variant text-background-on">
-      <Container className="py-8">
+      <Container className="py-8 flex flex-col">
         <div>
           <h2>
             <Link
               href="/"
-              className="top-[2px] text-xl font-display font-extrabold"
+              className="top-[2px] text-2xl font-display font-extrabold leading-relaxed"
             >
               Youngwoo Kim
             </Link>
           </h2>
-          <p className="font-light mb-6">
+          <p className="font-light mb-8">
             I&apos;m a web developer, a photographer and a cyclist based on
             Seoul. If you liked my content, click on the links below to reach
             me.
@@ -68,7 +68,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="flex justify-end items-end space-x-4">
+        <div className="mt-12 sm:mt-0 flex justify-start sm:justify-end items-end space-x-4">
           <ThemeSelect />
         </div>
       </Container>
