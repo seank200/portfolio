@@ -36,20 +36,24 @@ export default function WorkExperience({
               className="w-full mb-4 rounded px-7 py-6 bg-surface text-surface-on shadow"
               key={`${item.title} ${item.affiliation || ''}`}
             >
-              <div className="flex justify-between items-center">
-                <h3 className="mb-2 flex flex-row-reverse justify-end items-center text-2xl font-semibold">
-                  {item.tags?.map((tag, idx) => (
-                    <span
-                      className={`text-xs font-medium ${tag.color} ${tag.bgColor} ml-3 px-2 py-1 rounded`}
-                      key={idx}
-                    >
-                      {tag.text}
-                    </span>
-                  ))}
-                  {item.title}
-                </h3>
+              <div className="mb-8 sm:mb-0 flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center">
+                <div className="flex flex-col sm:flex-row">
+                  <h3 className="mb-2 flex flex-col sm:flex-row justify-end items-start sm:items-center text-2xl font-semibold">
+                    {item.title}
+                  </h3>
+                  <div className="space-x-2">
+                    {item.tags?.map((tag, idx) => (
+                      <span
+                        className={`text-xs font-medium ${tag.color} ${tag.bgColor} px-2 py-1 rounded`}
+                        key={idx}
+                      >
+                        {tag.text}
+                      </span>
+                    ))}
+                  </div>
+                </div>
                 {item.logo && (
-                  <div className="rounded px-2 py-1 bg-white flex items-center">
+                  <div className="rounded mb-2 sm:mb-0 sm:px-2 py-1 bg-white flex items-center">
                     {item.logo.url || item.affiliation?.url ? (
                       <a
                         href={item.logo.url || item.affiliation?.url}
@@ -160,8 +164,8 @@ function IconLabel({
   url?: string;
 }) {
   const containerClassName =
-    'flex items-center font-light text-lg text-background-on-variant leading-relaxed';
-  const iconClassName = 'mr-3 relative w-3';
+    'flex items-start font-light text-lg text-background-on-variant leading-relaxed';
+  const iconClassName = 'mr-3 relative top-1 w-3';
   if (url) {
     return (
       <a
