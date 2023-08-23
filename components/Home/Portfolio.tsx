@@ -48,7 +48,9 @@ function SigmatePortfolio({ contents }: { contents: PortfolioContents }) {
           <h3 className="text-6xl font-semibold leading-relaxed">
             {contents.sigmate.title}
           </h3>
-          <p className="font-light text-2xl">{contents.sigmate.subtitle}</p>
+          <p className="font-light text-2xl text-center">
+            {contents.sigmate.subtitle}
+          </p>
         </StickyContainer>
       </PortfolioHero>
       <Container className="py-8">
@@ -79,7 +81,9 @@ function PoolinkPortfolio({ contents }: { contents: PortfolioContents }) {
           <h3 className="text-6xl font-semibold leading-relaxed">
             {contents.poolink.title}
           </h3>
-          <p className="font-light text-2xl">{contents.poolink.subtitle}</p>
+          <p className="font-light text-2xl text-center">
+            {contents.poolink.subtitle}
+          </p>
         </StickyContainer>
       </PortfolioHero>
       <div className="w-full h-screen"></div>
@@ -95,7 +99,9 @@ function YREMSPortfolio({ contents }: { contents: PortfolioContents }) {
           <h3 className="text-6xl font-semibold leading-relaxed">
             {contents.yrems.title}
           </h3>
-          <p className="font-light text-2xl">{contents.yrems.subtitle}</p>
+          <p className="font-light text-2xl text-center">
+            {contents.yrems.subtitle}
+          </p>
         </StickyContainer>
       </PortfolioHero>
       <div className="w-full h-screen"></div>
