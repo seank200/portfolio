@@ -33,11 +33,11 @@ export default function WorkExperience({
 
           return (
             <div
-              className="w-full mb-4 rounded px-7 py-6 bg-surface text-surface-on shadow"
+              className="relative w-full mb-4 rounded px-7 py-6 bg-surface text-surface-on shadow"
               key={`${item.title} ${item.affiliation || ''}`}
             >
-              <div className="mb-8 sm:mb-0 flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center">
-                <div className="flex flex-col sm:flex-row">
+              <div className="mb-8 sm:mb-0 pt-14 sm:pt-0 flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center">
+                <div className="flex flex-col sm:flex-row sm:space-x-4">
                   <h3 className="mb-2 flex flex-col sm:flex-row justify-end items-start sm:items-center text-2xl font-semibold">
                     {item.title}
                   </h3>
@@ -53,7 +53,7 @@ export default function WorkExperience({
                   </div>
                 </div>
                 {item.logo && (
-                  <div className="rounded mb-2 sm:mb-0 sm:px-2 py-1 bg-white flex items-center">
+                  <div className="absolute top-0 left-0 right-0 sm:static rounded-t sm:rounded px-7 sm:px-2 py-5 sm:py-1 bg-white flex items-center">
                     {item.logo.url || item.affiliation?.url ? (
                       <a
                         href={item.logo.url || item.affiliation?.url}
