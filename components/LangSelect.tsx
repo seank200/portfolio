@@ -29,7 +29,6 @@ export default function LangSelect({ lang }: { lang: string }) {
   } else {
     pathparts.push(otherLang);
   }
-  console.log(pathparts);
 
   const searchParamsStr = searchParams.toString();
 

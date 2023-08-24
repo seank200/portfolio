@@ -15,12 +15,8 @@ export default function useScroll(): [number, boolean] {
         const newScrollY = window.scrollY || document.documentElement.scrollTop;
         if (newScrollY > prevScrollY + SCROLL_DOWN_THRSH) {
           setScrollingDown(true);
-          // console.log(
-          //   `Scroll Direction: DOWN (${prevScrollY} -> ${newScrollY})`
-          // );
         } else if (newScrollY < prevScrollY - SCROLL_UP_THRSH) {
           setScrollingDown(false);
-          // console.log(`Scroll Direction: UP (${prevScrollY} -> ${newScrollY})`);
         }
         return newScrollY;
       });
