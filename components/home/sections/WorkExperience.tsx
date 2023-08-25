@@ -14,8 +14,8 @@ import {
   ExperienceItem,
   TimePrecision,
 } from '@/components/contents/WorkExperience';
-import SectionHeading from './SectionHeading';
-import ScrollGuide from '../ScrollGuide';
+import SectionHeading from '@components/home/SectionHeading';
+import ScrollGuide from '@components/ScrollGuide';
 
 export default function WorkExperience({
   contents,

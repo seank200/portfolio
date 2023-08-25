@@ -1,7 +1,7 @@
 import Container from '@components/Container';
 import Section from '@components/Section';
-import SectionHeading from './SectionHeading';
-import StickyContainer from './StickyContainer';
+import SectionHeading from '@components/home/SectionHeading';
+import StickyContainer from '@components/home/StickyContainer';
 import type { PortfolioContents } from '@contents/Portfolio';
 
 export default function Portfolio({
