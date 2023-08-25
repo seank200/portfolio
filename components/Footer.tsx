@@ -68,7 +68,7 @@ export default function Footer() {
             </a>
           </div>
         </div>
-        <div className="mt-12 sm:mt-0 flex justify-start sm:justify-end items-end space-x-4">
+        <div className="mt-12 md:mt-0 flex justify-start md:justify-end items-end space-x-4">
           <ThemeSelect />
         </div>
       </Container>

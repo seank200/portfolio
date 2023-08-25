@@ -49,9 +49,9 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
     <nav
       className={`${shadow} fixed z-10 ${top} left-0 right-0 ${
         isOpen ? 'bottom-0' : ''
-      } py-8 sm:py-6 bg-background transition-position`}
+      } py-8 md:py-6 bg-background transition-position`}
     >
-      <Container className="flex flex-col sm:flex-row sm:justify-between">
+      <Container className="flex flex-col md:flex-row md:justify-between">
         <div className="flex justify-between items-center">
           <Link
             href="/"
@@ -62,13 +62,13 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           {isOpen ? (
             <FontAwesomeIcon
               icon={faXmark}
-              className="text-xl sm:hidden"
+              className="text-xl md:hidden"
               onClick={() => setIsOpen(false)}
             />
           ) : (
             <FontAwesomeIcon
               icon={faBars}
-              className="sm:hidden"
+              className="md:hidden"
               onClick={() => setIsOpen(true)}
             />
           )}
@@ -76,7 +76,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
         <ul
           className={`${
             isOpen ? '' : 'hidden'
-          } mt-12 sm:mt-0 sm:flex sm:space-x-8`}
+          } mt-12 md:mt-0 md:flex md:space-x-8`}
         >
           <NavItem href="/">{HOME}</NavItem>
           <NavItem href="/">{EXPERIENCE}</NavItem>
@@ -99,7 +99,7 @@ function NavItem({
   children?: React.ReactNode;
 }) {
   return (
-    <li className="mb-8 sm:mb-0 font-light sm:font-normal text-xl sm:text-base hover:text-primary">
+    <li className="mb-8 md:mb-0 font-light md:font-normal text-xl md:text-base hover:text-primary">
       <Link href={href}>{children}</Link>
     </li>
   );

@@ -53,17 +53,17 @@ export default function LangSelect({ lang }: { lang: SupportedLang }) {
   return (
     <Link
       href={href}
-      className="group relative rounded hover:bg-background-variant px-2 flex text-xl sm:text-base"
+      className="group relative rounded hover:bg-background-variant px-2 flex text-xl md:text-base"
       title={SWITCH_LANG as string}
     >
       {LANG_EMOJI}
-      <div className="ml-2 sm:ml-0 sm:mt-2 sm:hidden sm:group-hover:block sm:absolute sm:top-full sm:left-1/2 sm:-translate-x-1/2 rounded sm:px-2 sm:py-1 w-max sm:bg-background-on sm:text-background sm:text-center">
-        <span className="sm:hidden">{LANG_LABEL}</span>
-        <br className="sm:hidden" />
-        <span className="mt-2 text-base sm:text-sm group-hover:text-underline">
+      <div className="ml-2 md:ml-0 md:mt-2 md:hidden md:group-hover:block md:absolute md:top-full md:left-1/2 md:-translate-x-1/2 rounded md:px-2 md:py-1 w-max md:bg-background-on md:text-background md:text-center">
+        <span className="md:hidden">{LANG_LABEL}</span>
+        <br className="md:hidden" />
+        <span className="mt-2 text-base md:text-sm group-hover:text-underline">
           {SWITCH_LANG}
-          <br className="hidden sm:inline sm:text-xs" />
-          <span className="hidden sm:inline">{LANG_EMOJI_OTHER}</span>
+          <br className="hidden md:inline md:text-xs" />
+          <span className="hidden md:inline">{LANG_EMOJI_OTHER}</span>
           <span>&nbsp;{LANG_LABEL_OTHER}</span>
         </span>
       </div>

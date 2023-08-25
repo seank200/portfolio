@@ -35,24 +35,24 @@ export default function Hero({ lang }: { lang: SupportedLang }) {
   } = dict[lang];
   return (
     <Section id="home__section_hero" className="relative">
-      <Container className="flex justify-between items-center h-screen">
+      <Container className="relative flex justify-between items-center h-screen">
         <div className="flex flex-col">
-          <h1 className="mb-6 text-4xl sm:text-5xl font-semibold leading-snug sm:leading-snug">
+          <h1 className="mb-6 text-4xl md:text-5xl font-semibold leading-snug md:leading-snug">
             {TITLE_1}
             <br />
             <span className="text-gradient">{TITLE_2}</span>
           </h1>
-          <p className="group mb-20 sm:mb-28 text-xl sm:text-2xl font-light leading-relaxed sm:leading-relaxed">
+          <p className="group mb-20 md:mb-28 text-xl md:text-2xl font-light leading-relaxed md:leading-relaxed">
             {SUBTITLE_1}&nbsp;
             <span className="relative transition-transform group-hover:rotate-12">
               👋
             </span>
-            <br className="hidden sm:inline" />
+            <br className="hidden md:inline" />
             {SUBTITLE_2}
           </p>
-          <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
+          <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
             <HeroCtaPrimary>{VIEW_PORTFOLIO}</HeroCtaPrimary>
-            <button className="px-6 py-3 sm:py-2 rounded-md border-2 border-background-on font-medium text-background-on transition-colors hover:border-primary hover:text-primary">
+            <button className="px-6 py-3 md:py-2 rounded-md border-2 border-background-on font-medium text-background-on transition-colors hover:border-primary hover:text-primary">
               {CONTACT_ME}
             </button>
           </div>

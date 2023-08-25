@@ -10,7 +10,7 @@ export default function Memoji() {
   const [isPlaying, playVideo] = useVideo(videoElemRef, true);
 
   return (
-    <div className="group absolute -z-10 sm:z-0 opacity-50 sm:opacity-100 sm:relative top-1/2 sm:top-auto left-1/2 sm:left-auto -translate-x-1/2 sm:translate-x-0 -translate-y-1/2 sm:translate-y-0 shrink-0 sm:ml-12 w-64 h-64 sm:w-[22rem] sm:h-[22rem] rounded-full bg-gradient sm:flex justify-center items-center text-primary transition-transform hover:scale-[1.02]">
+    <div className="group absolute -z-10 lg:z-0 opacity-50 md:opacity-30 lg:opacity-100 lg:relative top-1/2 lg:top-auto left-1/2 lg:left-auto -translate-x-1/2 lg:translate-x-0 -translate-y-1/2 lg:translate-y-0 shrink-0 lg:ml-12 w-64 h-64 md:w-[22rem] md:h-[22rem] rounded-full bg-gradient lg:flex justify-center items-center text-primary transition-transform hover:scale-[1.02]">
       <button
         onClick={playVideo}
         className={`pt-4 absolute top-full opacity-0 group-hover:opacity-100 transition-opacity ${
