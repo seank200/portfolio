@@ -34,6 +34,10 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
 
   const { HOME, EXPERIENCE, PORTFOLIO } = dict[lang];
 
+  const handleNavLinkClick = () => {
+    setIsOpen(false);
+  };
+
   useEffect(() => {
     const handleResize = throttle(() => {
       if (isOpen && window.innerWidth > 640) setIsOpen(false);
@@ -78,10 +82,16 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
             isOpen ? '' : 'hidden'
           } mt-12 md:mt-0 md:flex md:space-x-8`}
         >
-          <NavItem href={`#home`}>{HOME}</NavItem>
-          <NavItem href={`#work-experience`}>{EXPERIENCE}</NavItem>
-          <NavItem href={`#portfolio`}>{PORTFOLIO}</NavItem>
-          <li>
+          <NavItem onClick={handleNavLinkClick} href={`#home`}>
+            {HOME}
+          </NavItem>
+          <NavItem onClick={handleNavLinkClick} href={`#work-experience`}>
+            {EXPERIENCE}
+          </NavItem>
+          <NavItem onClick={handleNavLinkClick} href={`#portfolio`}>
+            {PORTFOLIO}
+          </NavItem>
+          <li onClick={handleNavLinkClick}>
             <LangSelect lang={lang} />
           </li>
         </ul>
@@ -91,14 +101,19 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
 }
 
 function NavItem({
+  onClick: handleClick,
   href,
   children,
 }: {
+  onClick?: React.MouseEventHandler;
   href: string;
   children?: React.ReactNode;
 }) {
   return (
-    <li className="mb-8 md:mb-0 font-light md:font-normal text-xl md:text-base hover:text-primary">
+    <li
+      onClick={handleClick}
+      className="mb-8 md:mb-0 font-light md:font-normal text-xl md:text-base hover:text-primary"
+    >
       <a href={href}>{children}</a>
     </li>
   );

@@ -1,4 +1,3 @@
-import { waitForDebugger } from 'inspector';
 import { useState, useEffect, MutableRefObject } from 'react';
 
 export default function useVideo(
@@ -11,19 +10,22 @@ export default function useVideo(
     const video = ref.current;
     if (!video) return;
 
-    const handlePlaying = () => {
+    const handleStart = () => {
       setIsPlaying(true);
     };
-    const handlePause = () => {
+    const handleEnd = () => {
       setIsPlaying(false);
     };
-    video.addEventListener('playing', handlePlaying);
-    video.addEventListener('pause', handlePause);
+
+    video.addEventListener('play', handleStart);
+    video.addEventListener('playing', handleStart);
+    video.addEventListener('pause', handleEnd);
+    video.addEventListener('ended', handleEnd);
 
     return () => {
       if (!video) return;
-      video.removeEventListener('playing', handlePlaying);
-      video.removeEventListener('pause', handlePause);
+      video.removeEventListener('playing', handleStart);
+      video.removeEventListener('pause', handleEnd);
     };
   }, [ref]);
 

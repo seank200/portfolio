@@ -50,7 +50,7 @@ function SigmatePortfolio({ lang }: { lang: SupportedLang }) {
   return (
     <>
       <PortfolioHero className="flex flex-col justify-center items-center">
-        <StickyContainer className="flex flex-col justify-start items-center">
+        <StickyContainer className="px-8 flex flex-col justify-start items-center">
           <h3 className="text-6xl font-semibold leading-relaxed">{SIGMATE}</h3>
           <p className="font-light text-2xl text-center">{SIGMATE_DESC}</p>
         </StickyContainer>
@@ -76,7 +76,7 @@ function PoolinkPortfolio({ lang }: { lang: SupportedLang }) {
   return (
     <>
       <PortfolioHero className="flex justify-center items-center">
-        <StickyContainer className="flex flex-col items-center">
+        <StickyContainer className="px-8 flex flex-col items-center">
           <h3 className="text-6xl font-semibold leading-relaxed">{POOLINK}</h3>
           <p className="font-light text-2xl text-center">{POOLINK_DESC}</p>
         </StickyContainer>
@@ -91,7 +91,7 @@ function YREMSPortfolio({ lang }: { lang: SupportedLang }) {
   return (
     <>
       <PortfolioHero className="flex justify-center items-center">
-        <StickyContainer className="flex flex-col items-center">
+        <StickyContainer className="px-8 flex flex-col items-center">
           <h3 className="text-6xl font-semibold leading-relaxed">{YREMS}</h3>
           <p className="font-light text-2xl text-center">{YREMS_DESC}</p>
         </StickyContainer>

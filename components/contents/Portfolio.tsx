@@ -27,8 +27,13 @@ const portfolioDict = createIntlDict(
   {
     PORTFOLIO: '포트폴리오',
     SIGMATE_DESC: 'NFT 위키 및 커뮤니티 플랫폼',
-    POOLINK_DESC: '링크 저장, 공유, 탐색 어플리케이션',
-    YREMS_DESC: '학생 비교과프로그램 참석자 관리 시스템',
+    POOLINK_DESC: (
+      <>
+        링크 저장, 공유, 탐색 <br className="sm:hidden" />
+        어플리케이션
+      </>
+    ),
+    YREMS_DESC: '교내 비교과프로그램 참석자 관리 시스템',
   }
 );
 

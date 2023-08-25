@@ -10,6 +10,7 @@ import FooterCta from './footer/FooterCta';
 
 const dict = createIntlDict(
   {
+    NAME: 'Youngwoo Kim',
     INTRO:
       "I'm a backend web developer based on Seoul. You can usually find me in a cafe along with my laptop and a nice hot cup of tea, occasionally with my camera or my bike. If you can't, you can also find me through the links below. If you liked my content, or have any feedbacks, let me know!",
     GOTO_PORTFOLIO: 'You can also check out my portfolio here.',
@@ -19,7 +20,7 @@ const dict = createIntlDict(
   },
   {
     INTRO:
-      '저는 백엔드 웹 개발자입니다. 서울에 있는 카페에서 노트북과 따뜻한 차, 그리고 가끔씩은 카메라나 자전거와 함께 발견되곤 합니다. 저를 발견하지 못하셨다면, 아래 링크들을 통해서도 저를 찾을 수 있습니다.',
+      '서울 사는 백엔드 웹 개발자입니다. 카페에서 노트북과 따뜻한 차, 그리고 가끔씩은 카메라나 자전거와 함께 발견되곤 합니다. 저를 발견하지 못하셨다면, 아래 링크들을 통해서도 저를 찾을 수 있습니다.',
     GOTO_PORTFOLIO: '혹시 제 포트폴리오가 궁금해지셨다면, 여기를 클릭해주세요.',
     GITHUB: '깃허브',
     LINKEDIN: '링크드인',
@@ -28,7 +29,7 @@ const dict = createIntlDict(
 );
 
 export default function Footer({ lang }: { lang: SupportedLang }) {
-  const { INTRO, GITHUB, LINKEDIN, EMAIL, GOTO_PORTFOLIO } = dict[lang];
+  const { NAME, INTRO, GITHUB, LINKEDIN, EMAIL, GOTO_PORTFOLIO } = dict[lang];
   return (
     <footer className="w-full bg-background-variant text-background-on">
       <Container className="py-8 flex flex-col">
@@ -38,7 +39,7 @@ export default function Footer({ lang }: { lang: SupportedLang }) {
               href={`/${lang}`}
               className="top-[2px] text-2xl font-display font-extrabold leading-relaxed"
             >
-              Youngwoo Kim
+              {NAME}
             </Link>
           </h2>
           <p className="mb-8 text-sm">

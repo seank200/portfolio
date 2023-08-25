@@ -26,9 +26,7 @@ export default function Memoji() {
           playsInline
           muted
           id="home__memoji_video"
-          className={`relative top-[17%] ${
-            isPlaying ? 'left-1' : 'left-2'
-          } transition-position duration-1000`}
+          className={`relative top-[17%] left-2 transition-position duration-1000`}
           ref={videoElemRef}
           onClick={playVideo}
         >

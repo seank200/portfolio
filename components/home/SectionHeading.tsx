@@ -7,7 +7,7 @@ export default function SectionHeading({
 }) {
   return (
     <h2
-      className={`text-5xl font-semibold mb-4 ${
+      className={`text-4xl md:text-5xl font-semibold mb-4 ${
         color === 'secondary' ? 'text-gradient-secondary' : 'text-gradient'
       }`}
     >

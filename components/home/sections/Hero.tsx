@@ -20,7 +20,7 @@ const dict = createIntlDict(
     TITLE_2: '백엔드 웹 개발자',
     SUBTITLE_1: '김영우입니다. 안녕하세요',
     SUBTITLE_2: '개발과 함께했던 제 시간들을 소개합니다.',
-    VIEW_PORTFOLIO: '포트폴리오 보기',
+    VIEW_PORTFOLIO: '포트폴리오 살펴보기',
     CONTACT_ME: '연락하기',
     LEARN_MORE: '업무 경험',
   }
@@ -50,7 +50,7 @@ export default function Hero({ lang }: { lang: SupportedLang }) {
             <span className="relative transition-transform group-hover:rotate-12">
               👋
             </span>
-            <br className="hidden md:inline" />
+            <br />
             {SUBTITLE_2}
           </p>
           <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">

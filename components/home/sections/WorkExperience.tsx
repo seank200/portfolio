@@ -34,9 +34,11 @@ export default function WorkExperience({ lang }: { lang: SupportedLang }) {
   const { WORK_EXPERIENCE, SUBHEADING } = dict[lang];
   return (
     <Section id="work-experience" className="relative">
-      <Container className="pt-24 pb-24 flex flex-col">
+      <Container className="pt-24 flex flex-col">
         <SectionHeading>{WORK_EXPERIENCE}</SectionHeading>
         <p className="mb-8 text-lg font-light leading-relaxed">{SUBHEADING}</p>
+      </Container>
+      <Container className="pb-24 flex flex-col" mobilePaddingX="px-0">
         {experienceDicts.map((exp) => {
           const { affiliation, logo, startedAt } = exp;
           const { TITLE, AFFILIATION, LOCATION } = exp.dict[lang];
@@ -49,7 +51,7 @@ export default function WorkExperience({ lang }: { lang: SupportedLang }) {
 
           return (
             <div
-              className="relative w-full mb-4 rounded px-7 py-6 bg-surface text-surface-on shadow"
+              className="relative w-full mb-8 md:mb-4 md:rounded px-8 py-6 bg-surface text-surface-on shadow"
               key={`${TITLE} ${AFFILIATION || ''}`}
             >
               <div className="mb-8 md:mb-0 pt-14 md:pt-0 flex flex-col-reverse md:flex-row justify-between items-start md:items-center">
@@ -69,7 +71,7 @@ export default function WorkExperience({ lang }: { lang: SupportedLang }) {
                   </div>
                 </div>
                 {logo && (
-                  <div className="absolute top-0 left-0 right-0 md:static rounded-t md:rounded px-7 md:px-2 py-5 md:py-1 bg-white flex items-center">
+                  <div className="absolute top-0 left-0 right-0 md:static md:rounded-t md:rounded px-8 md:px-2 py-5 md:py-1 bg-white flex items-center">
                     {logo.url || affiliation?.url ? (
                       <a
                         href={logo.url || affiliation?.url}
