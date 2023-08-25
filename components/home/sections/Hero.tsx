@@ -1,8 +1,8 @@
 import Section from '@/components/Section';
 import Container from '@/components/Container';
 import ScrollGuide from '@/components/ScrollGuide';
-import HeroCtaPrimary from '@/components/homee/HeroCtaPrimary';
-import Memoji from '@components/homee/Memoji';
+import HeroCtaPrimary from '@/components/home/HeroCtaPrimary';
+import Memoji from '@components/home/Memoji';
 import { SupportedLang, createIntlDict } from '@/i18n/utils';
 
 const dict = createIntlDict(
