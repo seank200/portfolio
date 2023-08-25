@@ -3,7 +3,6 @@ import Hero from '@/components/home/sections/Hero';
 import Portfolio from '@/components/home/sections/Portfolio';
 import WorkExperience from '@/components/home/sections/WorkExperience';
 import Nav from '@/components/Nav';
-import { portfolioContents } from '@/components/contents/Portfolio';
 import { experienceContents } from '@/components/contents/WorkExperience';
 import type { SupportedLang } from '@i18n/utils';
 
@@ -22,7 +21,7 @@ export default function Home({ params }: { params: { lang: SupportedLang } }) {
       <main>
         <Hero lang={params.lang} />
         <WorkExperience contents={experienceContents} />
-        <Portfolio contents={portfolioContents} />
+        <Portfolio lang={params.lang} />
       </main>
       <Footer lang={params.lang} />
     </>
