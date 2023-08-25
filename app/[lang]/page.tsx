@@ -24,7 +24,7 @@ export default function Home({ params }: { params: { lang: SupportedLang } }) {
         <WorkExperience contents={experienceContents} />
         <Portfolio contents={portfolioContents} />
       </main>
-      <Footer />
+      <Footer lang={params.lang} />
     </>
   );
 }

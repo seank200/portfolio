@@ -5,9 +5,26 @@ import { faMoon, faDesktop } from '@fortawesome/free-solid-svg-icons';
 import { faSun } from '@fortawesome/free-regular-svg-icons';
 import { useEffect } from 'react';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import { SupportedLang, createIntlDict } from '@/i18n/utils';
 
-export default function ThemeSelect() {
+const dict = createIntlDict(
+  {
+    THEME: 'Theme',
+    LIGHT: 'Light',
+    DARK: 'Dark',
+    AUTO: 'Auto',
+  },
+  {
+    THEME: '테마',
+    LIGHT: '라이트',
+    DARK: '다크',
+    AUTO: '자동',
+  }
+);
+
+export default function ThemeSelect({ lang }: { lang: SupportedLang }) {
   const [theme, setTheme] = useLocalStorage<string | null>('theme', null);
+  const { THEME, LIGHT, DARK, AUTO } = dict[lang];
 
   const handleThemeClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     const button = e.currentTarget;
@@ -59,7 +76,7 @@ export default function ThemeSelect() {
         className={`rounded-full w-7 h-7 flex justify-center items-center ${
           theme === 'light' ? selectedClassName : ''
         }`}
-        title="Theme: Light"
+        title={`${THEME}: ${LIGHT}`}
         data-theme="light"
         onClick={handleThemeClick}
       >
@@ -69,7 +86,7 @@ export default function ThemeSelect() {
         className={`rounded-full w-7 h-7 flex justify-center items-center ${
           theme === 'dark' ? selectedClassName : ''
         }`}
-        title="Theme: Dark"
+        title={`${THEME}: ${DARK}`}
         data-theme="dark"
         onClick={handleThemeClick}
       >
@@ -79,7 +96,7 @@ export default function ThemeSelect() {
         className={`rounded-full w-7 h-7 flex justify-center items-center ${
           theme === null ? selectedClassName : ''
         }`}
-        title="Theme: Auto"
+        title={`${THEME}: ${AUTO}`}
         onClick={handleThemeClick}
       >
         <FontAwesomeIcon icon={faDesktop} />
