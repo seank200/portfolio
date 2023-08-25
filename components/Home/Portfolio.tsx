@@ -10,7 +10,7 @@ export default function Portfolio({
   contents: PortfolioContents;
 }) {
   return (
-    <Section id="home__section_portfolio">
+    <Section id="portfolio">
       <Container className="pt-24 flex flex-col text-background-on">
         <SectionHeading color="secondary">
           {contents.general.title}

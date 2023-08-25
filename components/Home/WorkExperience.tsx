@@ -23,7 +23,7 @@ export default function WorkExperience({
   contents: ExperienceItem[];
 }) {
   return (
-    <Section id="home__section_work_experience" className="relative">
+    <Section id="work-experience" className="relative">
       <Container className="pt-24 pb-24 flex flex-col">
         <SectionHeading>Work Experience</SectionHeading>
         <p className="mb-8 text-lg font-light leading-relaxed">
@@ -125,7 +125,7 @@ export default function WorkExperience({
           );
         })}
       </Container>
-      <ScrollGuide scrollTo="#home__section_portfolio">포트폴리오</ScrollGuide>
+      <ScrollGuide scrollTo="#portfolio">포트폴리오</ScrollGuide>
     </Section>
   );
 }

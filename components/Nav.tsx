@@ -32,7 +32,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
   const top =
     !isOpen && scrollY > 50 && isScrollingDown ? '-top-full' : 'top-0';
 
-  const { HOME, EXPERIENCE, PORTFOLIO, CONTACT_ME } = dict[lang];
+  const { HOME, EXPERIENCE, PORTFOLIO } = dict[lang];
 
   useEffect(() => {
     const handleResize = throttle(() => {
@@ -78,10 +78,9 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
             isOpen ? '' : 'hidden'
           } mt-12 md:mt-0 md:flex md:space-x-8`}
         >
-          <NavItem href="/">{HOME}</NavItem>
-          <NavItem href="/">{EXPERIENCE}</NavItem>
-          <NavItem href="/">{PORTFOLIO}</NavItem>
-          <NavItem href="/">{CONTACT_ME}</NavItem>
+          <NavItem href={`#home`}>{HOME}</NavItem>
+          <NavItem href={`#work-experience`}>{EXPERIENCE}</NavItem>
+          <NavItem href={`#portfolio`}>{PORTFOLIO}</NavItem>
           <li>
             <LangSelect lang={lang} />
           </li>
@@ -100,7 +99,7 @@ function NavItem({
 }) {
   return (
     <li className="mb-8 md:mb-0 font-light md:font-normal text-xl md:text-base hover:text-primary">
-      <Link href={href}>{children}</Link>
+      <a href={href}>{children}</a>
     </li>
   );
 }

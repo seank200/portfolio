@@ -54,7 +54,7 @@ export default function LangSelect({ lang }: { lang: SupportedLang }) {
     <Link
       href={href}
       className="group relative rounded hover:bg-background-variant px-2 flex text-xl md:text-base"
-      title={SWITCH_LANG as string}
+      title={`${SWITCH_LANG}: ${LANG_LABEL_OTHER}`}
     >
       {LANG_EMOJI}
       <div className="ml-2 md:ml-0 md:mt-2 md:hidden md:group-hover:block md:absolute md:top-full md:left-1/2 md:-translate-x-1/2 rounded md:px-2 md:py-1 w-max md:bg-background-on md:text-background md:text-center">

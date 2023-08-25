@@ -18,7 +18,7 @@ const dict = createIntlDict(
   {
     TITLE_1: '열정 가득한',
     TITLE_2: '백엔드 웹 개발자',
-    SUBTITLE_1: '안녕하세요, 저는 김영우라고 합니다',
+    SUBTITLE_1: '김영우입니다. 안녕하세요',
     SUBTITLE_2: '개발과 함께했던 제 시간들을 소개합니다.',
     VIEW_PORTFOLIO: '포트폴리오 보기',
     CONTACT_ME: '연락하기',
@@ -37,7 +37,7 @@ export default function Hero({ lang }: { lang: SupportedLang }) {
     LEARN_MORE,
   } = dict[lang];
   return (
-    <Section id="home__section_hero" className="relative">
+    <Section id="home" className="relative">
       <Container className="relative flex justify-between items-center h-screen">
         <div className="flex flex-col">
           <h1 className="mb-6 text-4xl md:text-5xl font-semibold leading-snug md:leading-snug">
@@ -62,9 +62,7 @@ export default function Hero({ lang }: { lang: SupportedLang }) {
         </div>
         <Memoji />
       </Container>
-      <ScrollGuide scrollTo="#home__section_work_experience">
-        {LEARN_MORE}
-      </ScrollGuide>
+      <ScrollGuide scrollTo="#work-experience">{LEARN_MORE}</ScrollGuide>
     </Section>
   );
 }
