@@ -5,9 +5,9 @@ import WorkExperience from '@/components/Home/WorkExperience';
 import Nav from '@/components/Nav';
 import { portfolioContents } from '@/components/contents/Portfolio';
 import { experienceContents } from '@/components/contents/WorkExperience';
-import type { SupportedLanguage, IntlContents } from '@/components/contents';
+import type { SupportedLang } from '@i18n/utils';
 
-const SUPPORTED_LANGS: SupportedLanguage[] = ['kr', 'en'];
+const SUPPORTED_LANGS: SupportedLang[] = ['kr', 'en'];
 
 export function generateStaticParams() {
   return SUPPORTED_LANGS.map((lang) => {
@@ -15,16 +15,12 @@ export function generateStaticParams() {
   });
 }
 
-export default function Home({
-  params,
-}: {
-  params: { lang: SupportedLanguage };
-}) {
+export default function Home({ params }: { params: { lang: SupportedLang } }) {
   return (
     <>
       <Nav lang={params.lang} />
       <main>
-        <Hero />
+        <Hero lang={params.lang} />
         <WorkExperience contents={experienceContents} />
         <Portfolio contents={portfolioContents} />
       </main>

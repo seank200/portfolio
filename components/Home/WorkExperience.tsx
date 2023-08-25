@@ -1,3 +1,5 @@
+/* eslint-disable no-fallthrough */
+
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

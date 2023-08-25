@@ -8,14 +8,31 @@ import Container from '@/components/Container';
 import useScroll from '@/hooks/useScroll';
 import LangSelect from './LangSelect';
 import throttle from 'lodash/throttle';
-import type { SupportedLanguage } from './contents';
+import { SupportedLang, createIntlDict } from '@/i18n/utils';
 
-export default function Nav({ lang }: { lang: SupportedLanguage }) {
+const dict = createIntlDict(
+  {
+    HOME: 'Home',
+    EXPERIENCE: 'Experience',
+    PORTFOLIO: 'Portfolio',
+    CONTACT_ME: 'Contact Me',
+  },
+  {
+    HOME: '홈',
+    EXPERIENCE: '업무경험',
+    PORTFOLIO: '포트폴리오',
+    CONTACT_ME: '연락하기',
+  }
+);
+
+export default function Nav({ lang }: { lang: SupportedLang }) {
   const [isOpen, setIsOpen] = useState<boolean>(false); // mobile only
   const [scrollY, isScrollingDown] = useScroll();
   const shadow = scrollY > 50 ? 'drop-shadow' : '';
   const top =
     !isOpen && scrollY > 50 && isScrollingDown ? '-top-full' : 'top-0';
+
+  const { HOME, EXPERIENCE, PORTFOLIO, CONTACT_ME } = dict[lang];
 
   useEffect(() => {
     const handleResize = throttle(() => {
@@ -61,10 +78,10 @@ export default function Nav({ lang }: { lang: SupportedLanguage }) {
             isOpen ? '' : 'hidden'
           } mt-12 sm:mt-0 sm:flex sm:space-x-8`}
         >
-          <NavItem href="/">Home</NavItem>
-          <NavItem href="/">Experience</NavItem>
-          <NavItem href="/">Portfolio</NavItem>
-          <NavItem href="/">Contact Me</NavItem>
+          <NavItem href="/">{HOME}</NavItem>
+          <NavItem href="/">{EXPERIENCE}</NavItem>
+          <NavItem href="/">{PORTFOLIO}</NavItem>
+          <NavItem href="/">{CONTACT_ME}</NavItem>
           <li>
             <LangSelect lang={lang} />
           </li>

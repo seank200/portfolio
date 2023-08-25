@@ -1,8 +1,10 @@
 'use client';
 
-import useShortcut from '@/hooks/useShortcut';
-
-export default function HeroCtaPrimary() {
+export default function HeroCtaPrimary({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const handleClick = () => {
     window.scrollTo({ top: window.innerHeight, behavior: 'smooth' });
   };
@@ -12,7 +14,7 @@ export default function HeroCtaPrimary() {
       onClick={handleClick}
       className="px-6 py-3 sm:py-2 rounded-md bg-background-on font-medium text-background transition-colors hover:bg-primary hover:text-primary-on"
     >
-      View Portfolio
+      {children}
     </button>
   );
 }

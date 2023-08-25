@@ -32,6 +32,9 @@
       ],
       "@contents/*": [
         "./components/contents/*"
+      ],
+      "@i18n/*": [
+        "./i18n/*"
       ]
     }
   },

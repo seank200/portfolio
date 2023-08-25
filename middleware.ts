@@ -1,13 +1,10 @@
 import type { NextRequest } from 'next/server';
-import type { SupportedLanguage } from './components/contents';
 import { NextResponse } from 'next/server';
+import { SUPPORTED_LANGS, DEFAULT_LANG, SupportedLang } from './i18n/utils';
 
 export const config = {
   matcher: ['/((?!_next|images|fonts|favicon).*)'],
 };
-
-const SUPPORTED_LANGS: SupportedLanguage[] = ['kr', 'en'];
-const DEFAULT_LANG = SUPPORTED_LANGS[1];
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
@@ -15,7 +12,7 @@ export function middleware(request: NextRequest) {
   const queryString = new URL(request.url).search;
   if (pathParts.length > 1) {
     const lang = pathParts[1];
-    if (SUPPORTED_LANGS.includes(lang as SupportedLanguage)) {
+    if (SUPPORTED_LANGS.includes(lang as SupportedLang)) {
       // Valid language provided
       if (lang === 'en') {
         const path = '/' + pathParts.slice(2).join('/');
