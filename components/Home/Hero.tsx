@@ -13,6 +13,7 @@ const dict = createIntlDict(
     SUBTITLE_2: 'I am a developer based on Seoul, South Korea.',
     VIEW_PORTFOLIO: 'View Portfolio',
     CONTACT_ME: 'Contact Me',
+    LEARN_MORE: 'Learn more about me',
   },
   {
     TITLE_1: '열정 가득한',
@@ -21,6 +22,7 @@ const dict = createIntlDict(
     SUBTITLE_2: '개발과 함께했던 제 시간들을 소개합니다.',
     VIEW_PORTFOLIO: '포트폴리오 보기',
     CONTACT_ME: '연락하기',
+    LEARN_MORE: '업무 경험',
   }
 );
 
@@ -32,6 +34,7 @@ export default function Hero({ lang }: { lang: SupportedLang }) {
     SUBTITLE_2,
     VIEW_PORTFOLIO,
     CONTACT_ME,
+    LEARN_MORE,
   } = dict[lang];
   return (
     <Section id="home__section_hero" className="relative">
@@ -59,10 +62,9 @@ export default function Hero({ lang }: { lang: SupportedLang }) {
         </div>
         <Memoji />
       </Container>
-      <ScrollGuide
-        scrollTo="#home__section_work_experience"
-        text="Learn more about me"
-      />
+      <ScrollGuide scrollTo="#home__section_work_experience">
+        {LEARN_MORE}
+      </ScrollGuide>
     </Section>
   );
 }

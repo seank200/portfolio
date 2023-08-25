@@ -6,10 +6,10 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 export default function ScrollGuide({
   /** CSS selector for the element to scroll to */
   scrollTo,
-  text,
+  children,
 }: {
   scrollTo?: string;
-  text?: string;
+  children?: React.ReactNode;
 }) {
   const handleClick = () => {
     if (!scrollTo) return;
@@ -23,7 +23,7 @@ export default function ScrollGuide({
         scrollTo ? 'cursor-pointer' : ''
       }`}
     >
-      {text || ''}
+      {children}
       <FontAwesomeIcon
         icon={faChevronDown}
         className="relative animate-beckon group-hover:animate-none"
