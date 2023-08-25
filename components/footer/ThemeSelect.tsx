@@ -35,14 +35,6 @@ export default function ThemeSelect({ lang }: { lang: SupportedLang }) {
     'transition-all bg-secondary-variant group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary text-background-variant';
   useEffect(() => {
     const root = document.documentElement;
-    if (!theme) {
-      root.setAttribute('style', '');
-      return;
-    }
-    const prefersDark = window.matchMedia(
-      '(prefers-color-scheme: dark)'
-    ).matches;
-    const deviceTheme = prefersDark ? 'dark' : 'light';
     const properties = [
       '--color-primary',
       '--color-primary-variant',
@@ -61,6 +53,14 @@ export default function ThemeSelect({ lang }: { lang: SupportedLang }) {
       '--color-success',
       '--color-success-on',
     ];
+    if (!theme) {
+      properties.forEach((property) => root.style.removeProperty(property));
+      return;
+    }
+    const prefersDark = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    ).matches;
+    const deviceTheme = prefersDark ? 'dark' : 'light';
     const themeProperties = properties.map(
       (p) => `${p}-${theme || deviceTheme}`
     );
