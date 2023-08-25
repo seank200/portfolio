@@ -1,7 +1,7 @@
 import Footer from '@/components/Footer';
-import Hero from '@/components/Home/Hero';
-import Portfolio from '@/components/Home/Portfolio';
-import WorkExperience from '@/components/Home/WorkExperience';
+import Hero from '@/components/homee/Hero';
+import Portfolio from '@/components/homee/Portfolio';
+import WorkExperience from '@/components/homee/WorkExperience';
 import Nav from '@/components/Nav';
 import { portfolioContents } from '@/components/contents/Portfolio';
 import { experienceContents } from '@/components/contents/WorkExperience';
