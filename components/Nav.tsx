@@ -19,7 +19,7 @@ const dict = createIntlDict(
   },
   {
     HOME: '홈',
-    EXPERIENCE: '업무경험',
+    EXPERIENCE: '업무 경험',
     PORTFOLIO: '포트폴리오',
     CONTACT_ME: '연락하기',
   }

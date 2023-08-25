@@ -3,7 +3,6 @@ import Hero from '@/components/home/sections/Hero';
 import Portfolio from '@/components/home/sections/Portfolio';
 import WorkExperience from '@/components/home/sections/WorkExperience';
 import Nav from '@/components/Nav';
-import { experienceContents } from '@/components/contents/WorkExperience';
 import type { SupportedLang } from '@i18n/utils';
 
 const SUPPORTED_LANGS: SupportedLang[] = ['kr', 'en'];
@@ -20,7 +19,7 @@ export default function Home({ params }: { params: { lang: SupportedLang } }) {
       <Nav lang={params.lang} />
       <main>
         <Hero lang={params.lang} />
-        <WorkExperience contents={experienceContents} />
+        <WorkExperience lang={params.lang} />
         <Portfolio lang={params.lang} />
       </main>
       <Footer lang={params.lang} />
