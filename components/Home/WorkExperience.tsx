@@ -15,6 +15,7 @@ import {
   TimePrecision,
 } from '@/components/contents/WorkExperience';
 import SectionHeading from './SectionHeading';
+import ScrollGuide from '../ScrollGuide';
 
 export default function WorkExperience({
   contents,
@@ -22,8 +23,8 @@ export default function WorkExperience({
   contents: ExperienceItem[];
 }) {
   return (
-    <Section id="home__section_work_experience">
-      <Container className="pt-24 flex flex-col">
+    <Section id="home__section_work_experience" className="relative">
+      <Container className="pt-24 pb-24 flex flex-col">
         <SectionHeading>Work Experience</SectionHeading>
         <p className="mb-8 text-lg font-light leading-relaxed">
           I am a fast learner and a natural team player, with experiences to
@@ -124,6 +125,7 @@ export default function WorkExperience({
           );
         })}
       </Container>
+      <ScrollGuide scrollTo="#home__section_portfolio">포트폴리오</ScrollGuide>
     </Section>
   );
 }
