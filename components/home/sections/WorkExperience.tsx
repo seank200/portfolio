@@ -24,19 +24,23 @@ const dict = createIntlDict(
     WORK_EXPERIENCE: 'Work Experience',
     SUBHEADING:
       'I am a fast learner and a natural team player, with experiences to blend in seamlessly with any team or project.',
+    CURRENT: 'Current',
   },
   {
     WORK_EXPERIENCE: '업무 경험',
+    SUBHEADING:
+      '새로운 것을 배움에 즐거움을 느끼고 학습 속도가 빠른 편입니다. 여러 프로젝트 경험을 통해 다양한 팀원과 문화에도 쉽게 적응할 수 있다는 자신감이 있습니다.',
+    CURRENT: '현재',
   }
 );
 
 export default function WorkExperience({ lang }: { lang: SupportedLang }) {
-  const { WORK_EXPERIENCE, SUBHEADING } = dict[lang];
+  const { WORK_EXPERIENCE, SUBHEADING, CURRENT } = dict[lang];
   return (
     <Section id="work-experience" className="relative">
       <Container className="pt-24 flex flex-col">
         <SectionHeading>{WORK_EXPERIENCE}</SectionHeading>
-        <p className="mb-8 text-lg font-light leading-relaxed">{SUBHEADING}</p>
+        <p className="mb-8 text-lg leading-relaxed">{SUBHEADING}</p>
       </Container>
       <Container className="pb-24 flex flex-col" mobilePaddingX="px-0">
         {experienceDicts.map((exp) => {
@@ -47,7 +51,7 @@ export default function WorkExperience({ lang }: { lang: SupportedLang }) {
             | React.ReactNode[]
             | undefined;
           // Format time period
-          const [fStartedAt, fEndedAt] = formatDates(exp);
+          const [fStartedAt, fEndedAt] = formatDates(exp, lang);
 
           return (
             <div
@@ -117,14 +121,14 @@ export default function WorkExperience({ lang }: { lang: SupportedLang }) {
                   label={
                     <>
                       <span>{fStartedAt}</span>&nbsp;-&nbsp;
-                      <span>{fEndedAt || 'Current'}</span>
+                      <span>{fEndedAt || CURRENT}</span>
                     </>
                   }
                   title="Duration"
                 />
               )}
               {CONTENTS && (
-                <ul className="mt-6 list-disc list-inside leading-relaxed text-background-on-variant font-light">
+                <ul className="mt-6 list-disc list-inside leading-relaxed text-background-on-variant">
                   {CONTENTS.map((content, idx) => (
                     <li
                       key={
@@ -146,7 +150,8 @@ export default function WorkExperience({ lang }: { lang: SupportedLang }) {
 }
 
 function formatDates(
-  item: ExpItem
+  item: ExpItem,
+  lang: SupportedLang
 ): [string, string | undefined, string | undefined] {
   const startedAt = item.startedAt.toJSDate();
   const endedAt = item.endedAt?.toJSDate();
@@ -161,11 +166,15 @@ function formatDates(
       formatOptions.year = 'numeric';
       break;
   }
-  const dtFormat = new Intl.DateTimeFormat('en-US', formatOptions);
+  const locale: Record<SupportedLang, string> = {
+    en: 'en-US',
+    kr: 'ko-KR',
+  };
+  const dtFormat = new Intl.DateTimeFormat(locale[lang], formatOptions);
   const fStartedAt = dtFormat.format(startedAt);
   const fEndedAt = endedAt ? dtFormat.format(endedAt) : undefined;
   formatOptions.month = 'numeric';
-  const dtShortFormat = new Intl.DateTimeFormat('en-US', formatOptions);
+  const dtShortFormat = new Intl.DateTimeFormat(locale[lang], formatOptions);
   const fEndedAtShort = endedAt ? dtShortFormat.format(endedAt) : undefined;
 
   return [fStartedAt, fEndedAt, fEndedAtShort];
@@ -183,7 +192,7 @@ function IconLabel({
   url?: string;
 }) {
   const containerClassName =
-    'flex items-start font-light text-lg text-background-on-variant leading-relaxed';
+    'flex items-start text-background-on-variant leading-relaxed';
   const iconClassName = 'mr-3 relative top-1 w-3';
   if (url) {
     return (

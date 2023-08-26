@@ -32,28 +32,49 @@ export type ExpItem = {
 
 export const experienceDicts: ExpItem[] = [
   {
-    dict: createIntlDict({
-      TITLE: 'Research Assistant',
-      AFFILIATION:
-        'Translational Systems Brain Science Research Institute, Institute of Human Complexity and System Science',
-      LOCATION: 'Seoul, South Korea',
-      TAGS: ['Current'],
-      CONTENTS: [
-        <>
-          Postbach research assistant at a computational neuroscience laboratory
-          (Advisor:{' '}
-          <a
-            href="https://sites.google.com/site/uicschun/?pli=1"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline"
-          >
-            Dr. Sehun Chun
-          </a>
-          )
-        </>,
-      ],
-    }),
+    dict: createIntlDict(
+      {
+        TITLE: 'Research Assistant',
+        AFFILIATION:
+          'Translational Systems Brain Science Research Institute, Institute of Human Complexity and System Science',
+        LOCATION: 'Seoul, South Korea',
+        TAGS: ['Current'],
+        CONTENTS: [
+          <>
+            Postbach research assistant at a computational neuroscience
+            laboratory (Advisor:{' '}
+            <a
+              href="https://sites.google.com/site/uicschun/?pli=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              Dr. Sehun Chun
+            </a>
+            )
+          </>,
+        ],
+      },
+      {
+        TITLE: '연구원',
+        AFFILIATION: '시스템과학융합연구원, 연세대학교',
+        LOCATION: '서울',
+        TAGS: ['현재'],
+        CONTENTS: [
+          <>
+            연세대학교 계산뇌과학연구실 학부 연구원{' '}
+            <a
+              href="https://sites.google.com/site/uicschun/?pli=1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:underline"
+            >
+              (지도교수: 천세훈 조교수)
+            </a>
+          </>,
+        ],
+      }
+    ),
     logo: { src: HCSSLogo, width: 110, url: 'https://www.hcss.or.kr' },
     startedAt: DateTime.fromObject({ year: 2023, month: 3 }),
   },

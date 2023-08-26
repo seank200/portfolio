@@ -18,7 +18,7 @@ const dict = createIntlDict(
   {
     TITLE_1: '열정 가득한',
     TITLE_2: '백엔드 웹 개발자',
-    SUBTITLE_1: '김영우입니다. 안녕하세요',
+    SUBTITLE_1: '안녕하세요 김영우입니다',
     SUBTITLE_2: '개발과 함께했던 제 시간들을 소개합니다.',
     VIEW_PORTFOLIO: '포트폴리오 살펴보기',
     CONTACT_ME: '연락하기',
@@ -45,7 +45,7 @@ export default function Hero({ lang }: { lang: SupportedLang }) {
             <br />
             <span className="text-gradient">{TITLE_2}</span>
           </h1>
-          <p className="group mb-20 md:mb-28 text-xl md:text-2xl font-light leading-relaxed md:leading-relaxed">
+          <p className="group mb-20 md:mb-28 text-xl md:text-2xl leading-relaxed md:leading-relaxed">
             {SUBTITLE_1}&nbsp;
             <span className="relative transition-transform group-hover:rotate-12">
               👋
