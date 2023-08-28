@@ -5,5 +5,7 @@ export default function StickyContainer({
   className?: string;
   children?: React.ReactNode;
 }) {
-  return <div className={`sticky top-24 ${className || ''}`}>{children}</div>;
+  return (
+    <div className={`sticky top-0 py-10 ${className || ''}`}>{children}</div>
+  );
 }

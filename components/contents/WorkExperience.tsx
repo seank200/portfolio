@@ -76,6 +76,9 @@ export const experienceDicts: ExpItem[] = [
       }
     ),
     logo: { src: HCSSLogo, width: 110, url: 'https://www.hcss.or.kr' },
+    affiliation: {
+      url: 'https://www.hcss.or.kr/html/?pmode=rcIntroduce3',
+    },
     startedAt: DateTime.fromObject({ year: 2023, month: 3 }),
   },
   {
@@ -89,6 +92,9 @@ export const experienceDicts: ExpItem[] = [
       ],
     }),
     logo: { src: ANLLogo, width: 100, url: 'https://www.anl.gov' },
+    affiliation: {
+      url: 'https://www.anl.gov/mcs',
+    },
     startedAt: DateTime.fromObject({ year: 2023, month: 5 }),
     endedAt: DateTime.fromObject({ year: 2023, month: 8 }),
   },
@@ -114,6 +120,9 @@ export const experienceDicts: ExpItem[] = [
       ],
     }),
     logo: { src: YonseiLogo, width: 100 },
+    affiliation: {
+      url: 'https://www.yonsei.ac.kr',
+    },
     startedAt: DateTime.fromObject({ year: 2021, month: 9 }),
     endedAt: DateTime.fromObject({ year: 2023, month: 2 }),
   },
@@ -144,6 +153,7 @@ export const experienceDicts: ExpItem[] = [
       ],
     }),
     logo: { src: CFCLogo, height: 28 },
+    affiliation: { url: 'https://www.usfk.mil/About/CFC/' },
     startedAt: DateTime.fromObject({ year: 2019, month: 2 }),
     endedAt: DateTime.fromObject({ year: 2020, month: 12 }),
   },
@@ -158,6 +168,7 @@ export const experienceDicts: ExpItem[] = [
       ],
     }),
     logo: { src: YonseiRCLogo, darkSrc: YonseiRCLogoDark, width: 110 },
+    affiliation: { url: 'https://yicrc.yonsei.ac.kr' },
     startedAt: DateTime.fromObject({ year: 2018, month: 3 }),
     endedAt: DateTime.fromObject({ year: 2018, month: 12 }),
   },
