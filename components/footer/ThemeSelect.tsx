@@ -22,24 +22,31 @@ const dict = createIntlDict(
   }
 );
 
+const otherTheme = {
+  light: 'dark',
+  dark: 'light',
+};
+
 export default function ThemeSelect({ lang }: { lang: SupportedLang }) {
   const [theme, setTheme] = useLocalStorage<string | null>('theme', null);
   const { THEME, LIGHT, DARK, AUTO } = dict[lang];
 
   const handleThemeClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     const button = e.currentTarget;
-    const root = document.documentElement;
-    setTheme((_prevTheme) => {
-      const prevTheme = _prevTheme || 'device';
-      const newTheme = button.dataset.theme || null;
-      root.classList.remove(`theme-${prevTheme}`);
-      root.classList.add(`theme-${newTheme || 'device'}`);
-      return newTheme;
-    });
+    // const root = document.documentElement;
+    // setTheme((_prevTheme) => {
+    //   const prevTheme = _prevTheme || 'device';
+    //   const newTheme = button.dataset.theme || null;
+    //   root.classList.remove(`theme-${prevTheme}`);
+    //   root.classList.add(`theme-${newTheme || 'device'}`);
+    //   return newTheme;
+    // });
+    setTheme(button.dataset.theme || null);
   };
 
   const selectedClassName =
     'transition-all bg-secondary-variant group-hover:bg-gradient-to-br group-hover:from-primary group-hover:to-secondary text-background-variant';
+
   useEffect(() => {
     const root = document.documentElement;
     const properties = [
@@ -60,15 +67,23 @@ export default function ThemeSelect({ lang }: { lang: SupportedLang }) {
       '--color-success',
       '--color-success-on',
     ];
-    if (!theme) {
+    if (theme) {
+      const themeProperties = properties.map((p) => `${p}-${theme}`);
+      properties.forEach((property, idx) => {
+        const themeProperty = themeProperties[idx];
+        root.style.setProperty(property, `var(${themeProperty})`);
+      });
+      root.classList.remove('theme-device');
+      root.classList.remove(
+        `theme-${otherTheme[theme as keyof typeof otherTheme]}`
+      );
+      root.classList.add(`theme-${theme}`);
+    } else {
       properties.forEach((property) => root.style.removeProperty(property));
-      return;
+      root.classList.remove('theme-light');
+      root.classList.remove('theme-dark');
+      root.classList.add('theme-device');
     }
-    const themeProperties = properties.map((p) => `${p}-${theme}`);
-    properties.forEach((property, idx) => {
-      const themeProperty = themeProperties[idx];
-      root.style.setProperty(property, `var(${themeProperty})`);
-    });
   }, [theme]);
 
   return (
