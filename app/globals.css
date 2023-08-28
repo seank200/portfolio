@@ -57,6 +57,12 @@
     --color-success: var(--color-success-light);
     --color-success-on: var(--color-success-on-light);
   }
+
+  html.theme-device .dark-only,
+  html.theme-light .dark-only,
+  html.theme-dark .light-only {
+    display: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -77,6 +83,12 @@
     --color-error-on: var(--color-error-on-dark);
     --color-success: var(--color-success-dark);
     --color-success-on: var(--color-success-on-dark);
+  }
+
+  html.theme-device .light-only,
+  html.theme-light .dark-only,
+  html.theme-dark .light-only {
+    display: none;
   }
 }
 

@@ -42,7 +42,7 @@ export default function Footer({ lang }: { lang: SupportedLang }) {
               {NAME}
             </Link>
           </h2>
-          <p className="mb-8 text-sm">
+          <p className="mb-8">
             {INTRO}&nbsp;
             <FooterCta lang={lang}>{GOTO_PORTFOLIO}</FooterCta>
           </p>

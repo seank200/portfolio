@@ -5,8 +5,10 @@ import SectionHeading from '@components/home/SectionHeading';
 import StickyContainer from '@components/home/StickyContainer';
 import portfolioDict from '@/components/contents/Portfolio';
 import sigmateLogo from '@/public/images/LOGO_Sigmate.png';
+import sigmateLogoDark from '@/public/images/LOGO_Sigmate_Dark.png';
 import poolinkLogo from '@/public/images/LOGO_Poolink.png';
 import Image from 'next/image';
+import ThemedImage from '@/components/ThemedImage';
 
 export default function Portfolio({ lang }: { lang: SupportedLang }) {
   const { PORTFOLIO, SUBHEADING } = portfolioDict[lang];
@@ -54,11 +56,12 @@ function SigmatePortfolio({ lang }: { lang: SupportedLang }) {
     <>
       <PortfolioHero className="flex flex-col justify-center items-center">
         <StickyContainer className="px-8 flex flex-col justify-start items-center">
-          <Image
+          <ThemedImage
             src={sigmateLogo}
+            darkSrc={sigmateLogoDark}
             alt={`${SIGMATE}`}
             width={300}
-            className="mb-4"
+            className="mb-4 max-w-[80%]"
           />
           <p className="text-2xl text-center">{SIGMATE_DESC}</p>
         </StickyContainer>
@@ -89,7 +92,7 @@ function PoolinkPortfolio({ lang }: { lang: SupportedLang }) {
             src={poolinkLogo}
             alt={`${POOLINK}`}
             width={300}
-            className="mb-6"
+            className="mb-6 max-w-[80%]"
           />
           <p className="text-2xl text-center">{POOLINK_DESC}</p>
         </StickyContainer>

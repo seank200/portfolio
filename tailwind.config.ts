@@ -53,6 +53,10 @@ const config: Config = {
       transitionProperty: {
         position: 'top, bottom, left, right',
       },
+      scale: {
+        101: '1.01',
+        102: '1.02',
+      },
     },
   },
   plugins: [],

@@ -17,7 +17,7 @@ export default function Layout({
   params: { lang: string };
 }) {
   return (
-    <html lang={params.lang} className="scroll-smooth">
+    <html lang={params.lang} className="scroll-smooth theme-device">
       <body
         className={`m-0 w-full min-h-screen bg-background text-background-on ${inter.className}`}
       >

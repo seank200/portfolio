@@ -28,7 +28,14 @@ export default function ThemeSelect({ lang }: { lang: SupportedLang }) {
 
   const handleThemeClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     const button = e.currentTarget;
-    setTheme(button.dataset.theme || null);
+    const root = document.documentElement;
+    setTheme((_prevTheme) => {
+      const prevTheme = _prevTheme || 'device';
+      const newTheme = button.dataset.theme || null;
+      root.classList.remove(`theme-${prevTheme}`);
+      root.classList.add(`theme-${newTheme || 'device'}`);
+      return newTheme;
+    });
   };
 
   const selectedClassName =
@@ -57,13 +64,7 @@ export default function ThemeSelect({ lang }: { lang: SupportedLang }) {
       properties.forEach((property) => root.style.removeProperty(property));
       return;
     }
-    const prefersDark = window.matchMedia(
-      '(prefers-color-scheme: dark)'
-    ).matches;
-    const deviceTheme = prefersDark ? 'dark' : 'light';
-    const themeProperties = properties.map(
-      (p) => `${p}-${theme || deviceTheme}`
-    );
+    const themeProperties = properties.map((p) => `${p}-${theme}`);
     properties.forEach((property, idx) => {
       const themeProperty = themeProperties[idx];
       root.style.setProperty(property, `var(${themeProperty})`);

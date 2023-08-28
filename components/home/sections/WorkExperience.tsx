@@ -25,17 +25,19 @@ const dict = createIntlDict(
     SUBHEADING:
       'I am a fast learner and a natural team player, with experiences to blend in seamlessly with any team or project.',
     CURRENT: 'Current',
+    PORTFOLIO: 'Portfolio',
   },
   {
     WORK_EXPERIENCE: '업무 경험',
     SUBHEADING:
       '새로운 것을 배움에 즐거움을 느끼고 학습 속도가 빠른 편입니다. 여러 프로젝트 경험을 통해 다양한 팀원과 문화에도 쉽게 적응할 수 있다는 자신감이 있습니다.',
     CURRENT: '현재',
+    PORTFOLIO: '포트폴리오',
   }
 );
 
 export default function WorkExperience({ lang }: { lang: SupportedLang }) {
-  const { WORK_EXPERIENCE, SUBHEADING, CURRENT } = dict[lang];
+  const { WORK_EXPERIENCE, SUBHEADING, CURRENT, PORTFOLIO } = dict[lang];
   return (
     <Section id="work-experience" className="relative">
       <Container className="pt-24 flex flex-col">
@@ -55,7 +57,7 @@ export default function WorkExperience({ lang }: { lang: SupportedLang }) {
 
           return (
             <div
-              className="relative w-full mb-8 md:mb-4 md:rounded px-8 py-6 bg-surface text-surface-on shadow"
+              className="mb-8 md:mb-4 relative w-full hover:scale-101 transition-transform md:rounded px-8 py-6 bg-surface text-surface-on shadow hover:shadow-md"
               key={`${TITLE} ${AFFILIATION || ''}`}
             >
               <div className="mb-8 md:mb-0 pt-14 md:pt-0 flex flex-col-reverse md:flex-row justify-between items-start md:items-center">
@@ -144,7 +146,7 @@ export default function WorkExperience({ lang }: { lang: SupportedLang }) {
           );
         })}
       </Container>
-      <ScrollGuide scrollTo="#portfolio">포트폴리오</ScrollGuide>
+      <ScrollGuide scrollTo="#portfolio">{PORTFOLIO}</ScrollGuide>
     </Section>
   );
 }
