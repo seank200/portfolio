@@ -1,17 +1,13 @@
 export default function Container({
+  className = '',
   children,
-  className,
-  mobilePaddingX = 'px-8',
 }: {
-  children?: React.ReactNode;
   className?: string;
-  mobilePaddingX?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <div
-      className={`mx-auto w-full max-w-7xl ${mobilePaddingX} md:px-16 2xl:px-0 ${
-        className || ''
-      }`}
+      className={`mx-auto w-full max-w-6xl px-12 md:px-16 2xl:px-0 ${className}`}
     >
       {children}
     </div>

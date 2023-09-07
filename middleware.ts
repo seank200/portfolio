@@ -1,6 +1,6 @@
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
-import { SUPPORTED_LANGS, DEFAULT_LANG, SupportedLang } from './i18n/utils';
+import { SUPPORTED_LANGS, DEFAULT_LANG, SupportedLang } from './i18n';
 
 export const config = {
   matcher: ['/((?!_next|images|fonts|favicon).*)'],

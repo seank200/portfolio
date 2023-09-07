@@ -1,28 +1,5 @@
-import Footer from '@/components/Footer';
-import Hero from '@/components/home/sections/Hero';
-import Portfolio from '@/components/home/sections/Portfolio';
-import WorkExperience from '@/components/home/sections/WorkExperience';
-import Nav from '@/components/Nav';
-import type { SupportedLang } from '@i18n/utils';
+import Container from '@/components/Container';
 
-const SUPPORTED_LANGS: SupportedLang[] = ['kr', 'en'];
-
-export function generateStaticParams() {
-  return SUPPORTED_LANGS.map((lang) => {
-    lang;
-  });
-}
-
-export default function Home({ params }: { params: { lang: SupportedLang } }) {
-  return (
-    <>
-      <Nav lang={params.lang} />
-      <main>
-        <Hero lang={params.lang} />
-        <WorkExperience lang={params.lang} />
-        <Portfolio lang={params.lang} />
-      </main>
-      <Footer lang={params.lang} />
-    </>
-  );
+export default function page() {
+  return <Container>Homepage content</Container>;
 }

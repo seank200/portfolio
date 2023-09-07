@@ -1,120 +1,89 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Container from './Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faBars } from '@fortawesome/free-solid-svg-icons';
-import Container from '@/components/Container';
-import useScroll from '@/hooks/useScroll';
-import LangSelect from './LangSelect';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { MouseEventHandler, useEffect, useState } from 'react';
 import throttle from 'lodash/throttle';
-import { SupportedLang, createIntlDict } from '@/i18n/utils';
 
-const dict = createIntlDict(
-  {
-    HOME: 'Home',
-    EXPERIENCE: 'Experience',
-    PORTFOLIO: 'Portfolio',
-    CONTACT_ME: 'Contact Me',
-  },
-  {
-    HOME: '홈',
-    EXPERIENCE: '업무 경험',
-    PORTFOLIO: '포트폴리오',
-    CONTACT_ME: '연락하기',
-  }
-);
+export default function Nav() {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-export default function Nav({ lang }: { lang: SupportedLang }) {
-  const [isOpen, setIsOpen] = useState<boolean>(false); // mobile only
-  const [scrollY, isScrollingDown] = useScroll();
-  const shadow = scrollY > 50 ? 'drop-shadow' : '';
-  const top =
-    !isOpen && scrollY > 50 && isScrollingDown ? '-top-full' : 'top-0';
-
-  const { HOME, EXPERIENCE, PORTFOLIO } = dict[lang];
-
-  const handleNavLinkClick = () => {
-    setIsOpen(false);
-  };
+  const handleLinkClick = () => setIsOpen(false);
 
   useEffect(() => {
-    const handleResize = throttle(() => {
-      if (isOpen && window.innerWidth > 640) setIsOpen(false);
-    }, 250);
+    const handleResize = throttle(() => setIsOpen(false), 100);
     window.addEventListener('resize', handleResize);
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, []);
 
   return (
-    <nav
-      className={`${shadow} fixed z-10 ${top} left-0 right-0 ${
-        isOpen ? 'bottom-0' : ''
-      } py-8 md:py-6 bg-background transition-position`}
-    >
-      <Container className="flex flex-col md:flex-row md:justify-between">
-        <div className="flex justify-between items-center">
-          <Link
-            href="/"
-            className="relative top-1 leading-none text-xl font-display font-extrabold uppercase text-gradient-hover"
-          >
-            Youngwoo
-          </Link>
-          {isOpen ? (
-            <FontAwesomeIcon
-              icon={faXmark}
-              className="text-xl md:hidden"
-              onClick={() => setIsOpen(false)}
-            />
-          ) : (
-            <FontAwesomeIcon
-              icon={faBars}
-              className="md:hidden"
-              onClick={() => setIsOpen(true)}
-            />
-          )}
-        </div>
-        <ul
-          className={`${
-            isOpen ? '' : 'hidden'
-          } mt-12 md:mt-0 md:flex md:space-x-8`}
+    <nav className="fixed top-0 left-0 right-0 py-6 flex bg-background z-10">
+      <Container className="flex justify-between items-center">
+        <Link
+          href="/"
+          className="relative top-0.5 font-display font-bold text-lg"
         >
-          <NavItem onClick={handleNavLinkClick} href={`#home`}>
-            {HOME}
+          YOUNGWOO
+        </Link>
+        <ul
+          className={`fixed md:static top-0 bottom-0 left-0 right-0 ${
+            isOpen ? 'translate-x-0' : 'translate-x-full'
+          } md:translate-x-0 z-10 p-12 md:p-0 flex flex-col md:flex-row bg-background-variant md:bg-background transition-position`}
+        >
+          <button
+            className="mb-4 md:hidden self-end"
+            onClick={() => setIsOpen(false)}
+          >
+            <FontAwesomeIcon icon={faXmark} className="h-5" />
+          </button>
+          <NavItem href="/" onClick={handleLinkClick}>
+            Home
           </NavItem>
-          <NavItem onClick={handleNavLinkClick} href={`#work-experience`}>
-            {EXPERIENCE}
+          <NavItem href="/" onClick={handleLinkClick}>
+            Experience
           </NavItem>
-          <NavItem onClick={handleNavLinkClick} href={`#portfolio`}>
-            {PORTFOLIO}
+          <NavItem href="/" onClick={handleLinkClick}>
+            Portfolio
           </NavItem>
-          <li onClick={handleNavLinkClick}>
-            <LangSelect lang={lang} />
-          </li>
+          <NavItem href="/" onClick={handleLinkClick}>
+            Contact Me
+          </NavItem>
+          <div className="grow md:hidden flex flex-col justify-end">
+            <Link
+              href="/"
+              className="relative top-0.5 font-display font-bold text-faded-var"
+            >
+              YOUNGWOO
+            </Link>
+          </div>
         </ul>
+        <button className="md:hidden" onClick={() => setIsOpen(true)}>
+          <FontAwesomeIcon icon={faBars} className="h-4" />
+        </button>
       </Container>
     </nav>
   );
 }
 
 function NavItem({
-  onClick: handleClick,
   href,
+  onClick,
   children,
 }: {
-  onClick?: React.MouseEventHandler;
   href: string;
+  onClick?: MouseEventHandler<HTMLLIElement>;
   children?: React.ReactNode;
 }) {
   return (
     <li
-      onClick={handleClick}
-      className="mb-8 md:mb-0 font-light md:font-normal text-xl md:text-base hover:text-primary"
+      onClick={onClick}
+      className="mb-6 last-of-type:mb-0 md:mb-0 md:mr-8 md:last-of-type:mr-0 text-xl md:text-base"
     >
-      <a href={href}>{children}</a>
+      <Link href={href}>{children}</Link>
     </li>
   );
 }

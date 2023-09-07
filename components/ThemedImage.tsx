@@ -1,8 +1,6 @@
-'use client';
-
 import Image, { StaticImageData } from 'next/image';
 
-type NumberLike = number | `${number}`;
+type ImageSrc = StaticImageData | string;
 
 export default function ThemedImage({
   src,
@@ -12,31 +10,29 @@ export default function ThemedImage({
   height,
   className,
 }: {
-  src: StaticImageData | string;
-  darkSrc?: StaticImageData | string;
+  src: ImageSrc;
+  darkSrc: ImageSrc;
   alt: string;
-  width?: NumberLike;
-  height?: NumberLike;
+  width?: number;
+  height?: number;
   className?: string;
 }) {
   return (
-    <>
+    <div className={`relative block ${className || ''}`}>
       <Image
         src={src}
         alt={alt}
-        className={`${darkSrc ? 'light-only ' : ''}${className || ''}`}
         width={width}
         height={height}
+        className="dark__invisible"
       />
-      {darkSrc && (
-        <Image
-          src={darkSrc}
-          alt={alt}
-          className={`dark-only ${className || ''}`}
-          width={width}
-          height={height}
-        />
-      )}
-    </>
+      <Image
+        src={darkSrc}
+        alt={alt}
+        width={width}
+        height={height}
+        className="light__invisible absolute top-0 left-0"
+      />
+    </div>
   );
 }
