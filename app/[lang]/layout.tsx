@@ -26,7 +26,7 @@ export default function Layout({
         className={`m-0 w-full min-h-screen bg-background text-background-on ${inter.className}`}
       >
         <Nav lang={params.lang} />
-        <main className="pt-20 pb-12 min-h-screen">{children}</main>
+        <main className="pb-12 min-h-screen">{children}</main>
         <Footer lang={params.lang} />
       </body>
     </html>

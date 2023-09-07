@@ -12,20 +12,46 @@ import LangSelect from './LangSelect';
 export default function Nav({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
 
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false); // mobile
+  const [scrollY, setScrollY] = useState<number>(0);
+  const [isScrollingDown, setIsScrollingDown] = useState<boolean>(false); // scrolling down
 
   const handleLinkClick = () => setIsOpen(false);
 
   useEffect(() => {
     const handleResize = throttle(() => setIsOpen(false), 100);
+    const handleScroll = throttle(() => {
+      setScrollY((prevScrollY) => {
+        const newScrollY = window.scrollY;
+
+        if (newScrollY > 50 && newScrollY > prevScrollY + 20) {
+          setIsScrollingDown(true);
+        }
+        if (newScrollY < 50 || newScrollY < prevScrollY - 10) {
+          setIsScrollingDown(false);
+        }
+
+        return newScrollY;
+      });
+    }, 200);
     window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.addEventListener('scroll', handleScroll);
     };
   }, []);
 
+  const translateX = `${
+    isOpen ? 'translate-x-0' : 'translate-x-full'
+  } md:translate-x-0`;
+  const translateY = isScrollingDown ? '-translate-y-full' : 'translate-y-0';
+  const boxShadow = scrollY > 100 ? 'shadow-lg' : '';
+
   return (
-    <nav className="fixed top-0 left-0 right-0 py-6 flex bg-background z-10">
+    <nav
+      className={`fixed top-0 left-0 right-0 ${translateY} ${boxShadow} py-6 flex bg-background z-10 transition-all`}
+    >
       <Container className="flex justify-between items-center">
         <Link
           href="/"
@@ -34,9 +60,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           YOUNGWOO
         </Link>
         <ul
-          className={`fixed md:static top-0 bottom-0 left-0 right-0 ${
-            isOpen ? 'translate-x-0' : 'translate-x-full'
-          } md:translate-x-0 z-10 p-12 md:p-0 flex flex-col md:flex-row bg-background-variant md:bg-background transition-position`}
+          className={`fixed md:static top-0 bottom-0 left-0 right-0 ${translateX} z-10 p-12 md:p-0 flex flex-col md:flex-row bg-background-variant md:bg-background transition-position`}
         >
           <button
             className="mb-4 md:hidden self-end"
