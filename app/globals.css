@@ -14,13 +14,13 @@
     --color-background: 244, 244, 246;
     --color-background-variant: 209, 213, 219;
     --color-background-on: 15, 23, 42;
-    --color-faded: 100, 116, 139;
-    --color-faded-variant: 71, 85, 105;
+    --color-faded: 71, 85, 105;
+    --color-faded-variant: 100, 116, 139;
   }
 
   .dark:root {
-    --color-primary: 106, 27, 243;
-    --color-primary-variant: 70, 9, 174;
+    --color-primary: 131, 71, 235;
+    --color-primary-variant: 122, 52, 244;
     --color-primary-on: 249, 250, 251;
     --color-secondary: 17, 100, 232;
     --color-secondary-variant: 9, 73, 174;
@@ -79,4 +79,19 @@
       visibility: unset;
     }
   }
+}
+/*
+.text-gradient {
+  background-color: var(--color-primary);
+  background-image: linear-gradient(
+    to right bottom,
+    var(--color-primary),
+    var(--color-secondary)
+  );
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+*/
+
+@layer utilites {
 }

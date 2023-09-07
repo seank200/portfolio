@@ -4,8 +4,10 @@ import useLocalStorage from '@/hooks/useLocalStorage';
 import { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faDesktop } from '@fortawesome/free-solid-svg-icons';
+import { createTranslator } from '@/i18n';
 
-export default function ThemeSelect() {
+export default function ThemeSelect({ lang }: { lang: string }) {
+  const t = createTranslator(lang);
   const [userTheme, setUserTheme] = useLocalStorage<string | null>(
     'theme',
     null
@@ -32,6 +34,7 @@ export default function ThemeSelect() {
         className={`p-2 rounded-full flex justify-center items-center ${
           userTheme === 'light' ? selectedClass : ''
         }`}
+        title={t('Theme: Light', '테마: 밝음')}
       >
         <FontAwesomeIcon
           icon={faSun}
@@ -43,6 +46,7 @@ export default function ThemeSelect() {
         className={`p-2 rounded-full flex justify-center items-center ${
           userTheme === 'dark' ? selectedClass : ''
         }`}
+        title={t('Theme: Dark', '테마: 어두움')}
       >
         <FontAwesomeIcon
           icon={faMoon}
@@ -54,6 +58,7 @@ export default function ThemeSelect() {
         className={`p-2 rounded-full flex justify-center items-center ${
           userTheme === null ? selectedClass : ''
         }`}
+        title={t('Theme: Auto', '테마: 자동')}
       >
         <FontAwesomeIcon
           icon={faDesktop}

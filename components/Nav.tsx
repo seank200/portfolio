@@ -6,8 +6,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import throttle from 'lodash/throttle';
+import { SupportedLang, createTranslator } from '@/i18n';
+import LangSelect from './LangSelect';
 
-export default function Nav() {
+export default function Nav({ lang }: { lang: SupportedLang }) {
+  const t = createTranslator(lang);
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleLinkClick = () => setIsOpen(false);
@@ -25,7 +29,7 @@ export default function Nav() {
       <Container className="flex justify-between items-center">
         <Link
           href="/"
-          className="relative top-0.5 font-display font-bold text-lg"
+          className="relative top-0.5 bg-clip-text bg-gradient-to-br from-primary to-secondary font-display font-extrabold text-xl hover:text-transparent transition-colors"
         >
           YOUNGWOO
         </Link>
@@ -41,24 +45,19 @@ export default function Nav() {
             <FontAwesomeIcon icon={faXmark} className="h-5" />
           </button>
           <NavItem href="/" onClick={handleLinkClick}>
-            Home
+            {t('Home', '홈')}
           </NavItem>
           <NavItem href="/" onClick={handleLinkClick}>
-            Experience
+            {t('Experience', '업무 경험')}
           </NavItem>
           <NavItem href="/" onClick={handleLinkClick}>
-            Portfolio
+            {t('Portfolio', '포트폴리오')}
           </NavItem>
           <NavItem href="/" onClick={handleLinkClick}>
-            Contact Me
+            {t('Contact Me', '연락하기')}
           </NavItem>
-          <div className="grow md:hidden flex flex-col justify-end">
-            <Link
-              href="/"
-              className="relative top-0.5 font-display font-bold text-faded-var"
-            >
-              YOUNGWOO
-            </Link>
+          <div className="grow md:grow-0 flex flex-col justify-end">
+            <LangSelect lang={lang} />
           </div>
         </ul>
         <button className="md:hidden" onClick={() => setIsOpen(true)}>
@@ -81,7 +80,7 @@ function NavItem({
   return (
     <li
       onClick={onClick}
-      className="mb-6 last-of-type:mb-0 md:mb-0 md:mr-8 md:last-of-type:mr-0 text-xl md:text-base"
+      className="mb-6 md:mb-0 md:mr-8 py-1 text-xl md:text-base md:text-faded hover:text-background-on"
     >
       <Link href={href}>{children}</Link>
     </li>
