@@ -57,6 +57,9 @@ const config: Config = {
         101: '1.01',
         102: '1.02',
       },
+      gridTemplateColumns: {
+        lg: 'repeat(auto-fit, minmax(200px, 1fr))',
+      },
     },
   },
   plugins: [],

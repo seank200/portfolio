@@ -38,7 +38,7 @@ export default function Hero({ lang }: { lang: SupportedLang }) {
   } = dict[lang];
   return (
     <Section id="home" className="relative">
-      <Container className="relative flex justify-between items-center h-screen">
+      <Container className="py-24 min-h-screen relative flex justify-between items-center ">
         <div className="flex flex-col">
           <h1 className="mb-6 text-4xl md:text-5xl font-semibold leading-snug md:leading-snug">
             {TITLE_1}
