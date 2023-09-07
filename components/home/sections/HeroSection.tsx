@@ -5,6 +5,7 @@ import Section from '@/components/home/Section';
 import Container from '@/components/Container';
 import Memoji from '@/components/home/Memoji';
 import ScrollGuide from '@/components/ScrollGuide';
+import { motion } from 'framer-motion';
 
 const dict = createIntlDict(
   {
@@ -49,12 +50,20 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
               {TITLE_2}
             </span>
           </h1>
-          <p className="group mb-20 md:mb-28 text-xl md:text-2xl leading-relaxed md:leading-relaxed">
+          <p className="group flex text-xl md:text-2xl leading-relaxed md:leading-relaxed">
             {SUBTITLE_1}&nbsp;
-            <span className="relative transition-transform group-hover:rotate-12">
+            <motion.span
+              className="block"
+              initial={false}
+              whileHover={{
+                scale: [1, 1.1, 1.1, 1.1, 1.1, 1],
+                rotate: [0, -10, 10, -10, 10, 0],
+              }}
+            >
               👋
-            </span>
-            <br />
+            </motion.span>
+          </p>
+          <p className="mb-20 md:mb-28 text-xl md:text-2xl leading-relaxed md:leading-relaxed">
             {SUBTITLE_2}
           </p>
           <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">

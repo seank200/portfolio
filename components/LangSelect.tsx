@@ -27,7 +27,7 @@ export default function LangSelect({ lang }: { lang: SupportedLang }) {
     <Link
       href={href}
       title={t('Switch Language', '언어 변경')}
-      className="group rounded md:px-2 py-1 flex items-center hover:bg-background-on/10 md:text-faded md:hover:text-background-on"
+      className="group rounded md:px-2 py-1 flex items-center hover:bg-background-on/10 text-faded hover:text-background-on"
     >
       <FontAwesomeIcon icon={faEarthAsia} className="transition-all" />
       <span
