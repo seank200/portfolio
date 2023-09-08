@@ -87,7 +87,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           Youngwoo
         </Link>
         <button
-          className="z-20 md:hidden"
+          className="z-20 md:hidden relative"
           onClick={() => setIsOpen((p) => !p)}
           title={
             isOpen
@@ -95,7 +95,35 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
               : t('Open navigation', '메뉴 열기')
           }
         >
-          <FontAwesomeIcon icon={isOpen ? faXmark : faBars} />
+          <motion.div
+            variants={{
+              mobileOpen: {
+                opacity: 0,
+                rotate: 180,
+              },
+              mobileClosed: {
+                opacity: 1,
+                rotate: 0,
+              },
+            }}
+          >
+            <FontAwesomeIcon icon={faBars} className="h-5" />
+          </motion.div>
+          <motion.div
+            className="absolute top-0 left-0"
+            variants={{
+              mobileOpen: {
+                opacity: 1,
+                rotate: 0,
+              },
+              mobileClosed: {
+                opacity: 0,
+                rotate: 180,
+              },
+            }}
+          >
+            <FontAwesomeIcon icon={faXmark} className="h-6" />
+          </motion.div>
         </button>
         <motion.ul
           className={`absolute md:static top-0 left-0 right-0 z-10 flex flex-col md:flex-row items-start md:items-center p-12 md:p-0 overflow-hidden bg-background`}
@@ -128,6 +156,9 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           </NavItem>
           <NavItem href="/" onClick={handleLinkClick}>
             {t('Portfolio', '포트폴리오')}
+          </NavItem>
+          <NavItem href="/" onClick={handleLinkClick}>
+            {t('Contact Me', '연락하기')}
           </NavItem>
           <motion.li
             className="grow flex items-end md:items-center"
