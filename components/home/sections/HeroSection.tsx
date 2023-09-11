@@ -41,32 +41,35 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
 
   return (
     <Section id="home" className="relative">
-      <Container className="py-24 min-h-screen relative flex justify-between items-center ">
+      <Container className="py-24 min-h-screen relative flex justify-center md:justify-between items-center ">
         <div className="flex flex-col">
-          <h1 className="mb-6 text-4xl md:text-5xl font-semibold leading-snug md:leading-snug">
+          <h1 className="mb-6 text-4xl sm:text-5xl font-semibold leading-snug sm:leading-snug">
             {TITLE_1}
             <br />
             <span className="bg-gradient-to-br from-primary to-secondary bg-clip-text text-transparent">
               {TITLE_2}
             </span>
           </h1>
-          <p className="group flex text-xl md:text-2xl leading-relaxed md:leading-relaxed">
+          <p className="group flex text-xl sm:text-2xl leading-relaxed sm:leading-relaxed">
             {SUBTITLE_1}&nbsp;
             <motion.span
               className="block"
-              initial={false}
-              whileHover={{
-                scale: [1, 1.1, 1.1, 1.1, 1.1, 1],
+              animate={{
                 rotate: [0, -10, 10, -10, 10, 0],
+                transition: {
+                  repeat: Infinity,
+                  repeatDelay: 5,
+                },
               }}
+              whileHover={{ scale: 1.1 }}
             >
               👋
             </motion.span>
           </p>
-          <p className="mb-20 md:mb-28 text-xl md:text-2xl leading-relaxed md:leading-relaxed">
+          <p className="mb-20 md:mb-28 text-xl sm:text-2xl leading-relaxed sm:leading-relaxed">
             {SUBTITLE_2}
           </p>
-          <div className="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0">
+          <div className="flex flex-col sm:items-start sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
             <button className="px-6 py-3 md:py-2 rounded-md bg-background-on font-medium text-background transition-colors hover:bg-primary hover:text-primary-on">
               {VIEW_PORTFOLIO}
             </button>

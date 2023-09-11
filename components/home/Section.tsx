@@ -8,7 +8,7 @@ export default function Section({
   children?: React.ReactNode;
 }) {
   return (
-    <section id={id} className={`${className || ''}`}>
+    <section id={id} className={`w-full ${className || ''}`}>
       {children}
     </section>
   );

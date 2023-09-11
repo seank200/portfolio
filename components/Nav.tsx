@@ -10,6 +10,10 @@ import { SupportedLang, createTranslator } from '@/i18n';
 import LangSelect from './LangSelect';
 import { motion } from 'framer-motion';
 
+const SCROLL_DOWN_THRSH = 20;
+const SCROLL_UP_THRSH = 10;
+const SCROLL_TOP_THRSH = 50;
+
 export default function Nav({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
 
@@ -38,10 +42,16 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
       setScrollY((prevScrollY) => {
         const newScrollY = window.scrollY;
 
-        if (newScrollY >= 20 && newScrollY > prevScrollY + 20) {
+        if (
+          newScrollY >= SCROLL_TOP_THRSH &&
+          newScrollY > prevScrollY + SCROLL_DOWN_THRSH
+        ) {
           setIsScrollingDown(true);
         }
-        if (newScrollY < 20 || newScrollY < prevScrollY - 10) {
+        if (
+          newScrollY < SCROLL_TOP_THRSH ||
+          newScrollY < prevScrollY - SCROLL_UP_THRSH
+        ) {
           setIsScrollingDown(false);
         }
 
@@ -56,7 +66,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
     };
   }, []);
 
-  const shadow = scrollY >= 50 ? 'shadow' : '';
+  const shadow = scrollY >= SCROLL_TOP_THRSH ? 'shadow' : '';
 
   return (
     <motion.nav
@@ -79,7 +89,11 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
       initial={false}
       animate={[animationVariant, isScrollingDown ? 'hidden' : 'visible']}
     >
-      <Container className="py-8 flex justify-between items-center">
+      <Container
+        className={`${
+          scrollY > SCROLL_TOP_THRSH ? 'py-4' : 'py-6'
+        } flex justify-between items-center`}
+      >
         <Link
           href="/"
           className="relative top-0.5 z-20 bg-clip-text bg-gradient-to-br from-primary to-secondary font-display font-extrabold text-xl hover:text-transparent uppercase transition-colors"
@@ -149,13 +163,10 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           }}
         >
           <NavItem href="/" onClick={handleLinkClick}>
-            {t('Home', '홈')}
-          </NavItem>
-          <NavItem href="/" onClick={handleLinkClick}>
-            {t('Experience', '업무 경험')}
-          </NavItem>
-          <NavItem href="/" onClick={handleLinkClick}>
             {t('Portfolio', '포트폴리오')}
+          </NavItem>
+          <NavItem href="/" onClick={handleLinkClick}>
+            {t('Resume', '이력서')}
           </NavItem>
           <NavItem href="/" onClick={handleLinkClick}>
             {t('Contact Me', '연락하기')}

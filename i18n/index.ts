@@ -33,8 +33,8 @@ export const createIntlDict = <
 >(
   base: T,
   other: StrictMode extends true
-    ? Record<keyof T, DictValue>
-    : Record<K, DictValue> = base,
+    ? Record<keyof T, T[keyof T]>
+    : Record<K, T[K]> = base,
   options: { strict?: StrictMode; base?: SupportedLang } = {}
 ): Readonly<Record<SupportedLang, Record<keyof T, DictValue>>> => {
   if (options.strict) {

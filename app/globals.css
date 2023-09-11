@@ -22,8 +22,8 @@
     --color-primary: 131, 71, 235;
     --color-primary-variant: 122, 52, 244;
     --color-primary-on: 249, 250, 251;
-    --color-secondary: 17, 100, 232;
-    --color-secondary-variant: 9, 73, 174;
+    --color-secondary: 28, 106, 232;
+    --color-secondary-variant: 26, 99, 217;
     --color-secondary-on: 249, 250, 251;
     --color-background: 15, 23, 42;
     --color-background-variant: 18, 28, 51;
@@ -50,11 +50,11 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-primary: 106, 27, 243;
-      --color-primary-variant: 70, 9, 174;
+      --color-primary: 131, 71, 235;
+      --color-primary-variant: 122, 52, 244;
       --color-primary-on: 249, 250, 251;
-      --color-secondary: 17, 100, 232;
-      --color-secondary-variant: 9, 73, 174;
+      --color-secondary: 28, 106, 232;
+      --color-secondary-variant: 26, 99, 217;
       --color-secondary-on: 249, 250, 251;
       --color-background: 15, 23, 42;
       --color-background-variant: 18, 28, 51;
