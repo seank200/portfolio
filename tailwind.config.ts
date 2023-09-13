@@ -40,10 +40,21 @@ const config: Config = {
           variant: 'rgba(var(--color-background-variant), <alpha-value>)',
           on: 'rgba(var(--color-background-on), <alpha-value>)',
         },
+        surface: {
+          DEFAULT: 'rgba(var(--color-surface), <alpha-value>)',
+          on: 'rgba(var(--color-surface-on), <alpha-value>)',
+        },
       },
       scale: {
         101: '1.01',
         102: '1.02',
+        104: '1.04',
+      },
+      spacing: {
+        88: '22rem',
+      },
+      height: {
+        'screen-1/2': '50vh',
       },
       transitionProperty: {
         position: 'top, left, bottom, right, transform',

@@ -14,8 +14,15 @@
     --color-background: 244, 244, 246;
     --color-background-variant: 209, 213, 219;
     --color-background-on: 15, 23, 42;
+    --color-surface: 255, 255, 255;
+    --color-surface-on: 15, 23, 42;
     --color-faded: 71, 85, 105;
     --color-faded-variant: 100, 116, 139;
+    --rgb-primary: rgb(var(--color-primary));
+    --rgb-background-on: rgb(var(--color-background-on));
+    --rgb-faded: rgb(var(--color-faded));
+    --rgb-surface: rgb(var(--color-surface));
+    --rgb-surface-on: rgb(var(--color-surface-on));
   }
 
   .dark:root {
@@ -28,6 +35,8 @@
     --color-background: 15, 23, 42;
     --color-background-variant: 18, 28, 51;
     --color-background-on: 244, 244, 246;
+    --color-surface: 31, 39, 56;
+    --color-surface-on: 244, 244, 246;
     --color-faded: 148, 163, 184;
     --color-faded-variant: 100, 116, 139;
   }
@@ -59,6 +68,8 @@
       --color-background: 15, 23, 42;
       --color-background-variant: 18, 28, 51;
       --color-background-on: 244, 244, 246;
+      --color-surface: 31, 39, 56;
+      --color-surface-on: 244, 244, 246;
       --color-faded: 148, 163, 184;
       --color-faded-variant: 100, 116, 139;
     }
