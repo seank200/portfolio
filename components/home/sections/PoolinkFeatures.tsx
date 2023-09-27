@@ -142,15 +142,15 @@ export default function PoolinkFeatures({ lang }: { lang: SupportedLang }) {
   > = {
     save: () => {
       setHighlighted('save');
-      scrollDiv1.current?.scrollIntoView({ behavior: 'instant' });
+      scrollDiv1.current?.scrollIntoView({ behavior: 'auto' });
     },
     explore: () => {
       setHighlighted('explore');
-      scrollDiv2.current?.scrollIntoView({ behavior: 'instant' });
+      scrollDiv2.current?.scrollIntoView({ behavior: 'auto' });
     },
     share: () => {
       setHighlighted('share');
-      scrollDiv3.current?.scrollIntoView({ behavior: 'instant' });
+      scrollDiv3.current?.scrollIntoView({ behavior: 'auto' });
     },
   };
 
