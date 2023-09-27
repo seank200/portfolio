@@ -140,7 +140,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           </motion.div>
         </button>
         <motion.ul
-          className={`absolute md:static top-0 left-0 right-0 z-10 flex flex-col md:flex-row items-start md:items-center p-12 md:p-0 overflow-hidden bg-background`}
+          className={`absolute md:static top-0 left-0 right-0 z-10 px-8 pb-6 md:px-0 md:pb-0 flex flex-col md:flex-row items-start md:items-center overflow-hidden bg-background`}
           variants={{
             mobileOpen: {
               bottom: 0,

@@ -2,6 +2,7 @@ import Container from '@/components/Container';
 import Section from '@/components/home/Section';
 import SectionHeading from '@/components/home/SectionHeading';
 import HeroSection from '@/components/home/sections/HeroSection';
+import PoolinkSection from '@/components/home/sections/PoolinkSection';
 import SigmateSection from '@/components/home/sections/SigmateSection';
 import { SUPPORTED_LANGS, SupportedLang, createIntlDict } from '@/i18n';
 
@@ -35,6 +36,7 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
         </Container>
       </Section>
       <SigmateSection lang={lang} className="py-8" />
+      <PoolinkSection lang={lang} className="py-8" />
       <section className="h-screen"></section>
     </>
   );

@@ -46,6 +46,9 @@ const config: Config = {
           on: 'rgba(var(--color-surface-on), <alpha-value>)',
         },
       },
+      textColor: {
+        poolink: 'rgba(var(--color-poolink), <alpha-value>)',
+      },
       scale: {
         101: '1.01',
         102: '1.02',

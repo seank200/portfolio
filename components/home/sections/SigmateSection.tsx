@@ -28,6 +28,8 @@ import Image from 'next/image';
 import { throttle } from 'lodash';
 import ProjectStickyHeader from '../projects/ProjectStickyHeader';
 import SigmateArch from './SigmateArch';
+import ProjectHeader from '../projects/ProjectHeader';
+import ProjectMyRoleList from '../projects/ProjectMyRoleList';
 
 const dict = createIntlDict(
   {
@@ -35,7 +37,7 @@ const dict = createIntlDict(
     DESCRIPTION:
       'Sigmate is a wiki platform for the NFT community, created by Facade Inc., a Web3 startup.',
     CATEGORY: 'Work Experience',
-    H_FEATURE_HIGHLIGHTS: '💡 Feature Highlights',
+    H_FEATURE_HIGHLIGHTS: 'Feature Highlights',
     H_FEAT_1: 'Easy',
     FEAT_1: 'All information in one place',
     FEAT_1_CAPTION:
@@ -47,6 +49,7 @@ const dict = createIntlDict(
     FEAT_3: 'Integrated asset valuation using both on and off-chain data',
     FEAT_3_CAPTION:
       'NFT Valuation based on utility, funding and social hype analysis',
+    H_MY_ROLE: 'My Role',
     JOB_DETAILS: [
       'Implemented a REST API app server using NodeJS and TypeScript.',
       'Managed DevOps workflows on Amazon Web Services (AWS)',
@@ -59,6 +62,7 @@ const dict = createIntlDict(
   {
     TITLE: 'CTO',
     DESCRIPTION: 'NFT 커뮤니티를 위한 위키 플랫폼',
+    H_MY_ROLE: '세부 업무내용',
     JOB_DETAILS: [
       'NodeJS와 TypeScript를 사용한 REST API app server 개발.',
       'AWS(Amazon Web Services) 상의 배포 및 DevOps 워크플로우 관리',
@@ -88,6 +92,7 @@ export default function SigmateSection({
     FEAT_2_CAPTION,
     FEAT_3,
     FEAT_3_CAPTION,
+    H_MY_ROLE,
   } = dict[lang];
 
   const JOB_DETAILS = dict[lang].JOB_DETAILS as Array<React.ReactNode>;
@@ -146,7 +151,7 @@ export default function SigmateSection({
             src={sigmateLogo}
             darkSrc={sigmateLogoDark}
             alt="Sigmate"
-            height={36}
+            height={34}
             className="relative right-[2px]"
           />
         }
@@ -155,25 +160,18 @@ export default function SigmateSection({
         period={period}
       />
       <Container className="mb-12 relative bottom-1">
-        <p className="md:hidden font-medium text-faded">{TITLE}</p>
-        <p className="mb-4 md:hidden text-sm text-faded">{period}</p>
-        <p className="font-light md:text-lg">{DESCRIPTION}</p>
-        <h4 className="mt-8 mb-4 text-2xl font-semibold">🎯 My Role</h4>
-        <ul className="">
-          {JOB_DETAILS.map((detail) => (
-            <li
-              key={String(detail).slice(0, 10)}
-              className="before:mr-4 before:content-['•'] flex items-start text-faded leading-relaxed"
-            >
-              {detail}
-            </li>
-          ))}
-        </ul>
+        <ProjectHeader
+          title={TITLE}
+          period={period}
+          description={DESCRIPTION}
+        />
+        <h4 className="mt-8 mb-2 text-2xl font-semibold">🎯 {H_MY_ROLE}</h4>
+        <ProjectMyRoleList items={JOB_DETAILS} />
       </Container>
       <div className="relative">
         <Container className="md:sticky top-0 md:min-h-screen hidden md:flex flex-col justify-center items-start">
           <h4 className="mb-6 text-2xl font-semibold">
-            {H_FEATURE_HIGHLIGHTS}
+            💡 {H_FEATURE_HIGHLIGHTS}
           </h4>
           <FeatureHighlight
             heading={H_FEAT_1}
@@ -196,6 +194,11 @@ export default function SigmateSection({
             onClick={createFeatureSelector(3)}
             featureId={3}
           />
+        </Container>
+        <Container className="md:hidden">
+          <h4 className="mb-6 text-2xl font-semibold">
+            💡 {H_FEATURE_HIGHLIGHTS}
+          </h4>
         </Container>
         <motion.div
           className={`${containerClassName} md:absolute top-0 left-1/2 md:-translate-x-1/2 md:min-h-screen py-8 md:py-16 flex flex-col items-start justify-center md:flex-row md:justify-start md:items-center`}
