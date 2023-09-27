@@ -70,7 +70,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-10 ${shadow} shadow-background-on/10 bg-background`}
+      className={`fixed top-0 left-0 right-0 z-20 ${shadow} shadow-background-on/10 bg-background`}
       variants={{
         mobileOpen: {
           bottom: 0,

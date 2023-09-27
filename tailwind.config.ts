@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
@@ -61,5 +62,12 @@ const config: Config = {
       },
     },
   },
+  plugins: [
+    plugin(({ addVariant }) => {
+      addVariant('hmd', '@media (min-height: 600px)');
+      addVariant('hlg', '@media (min-height: 700px)');
+      addVariant('hxl', '@media (min-height: 768px)');
+    }),
+  ],
 };
 export default config;

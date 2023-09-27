@@ -29,12 +29,12 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
     <>
       <HeroSection lang={lang} />
       <Section className="pt-8">
-        <Container className="mb-24">
+        <Container>
           <SectionHeading>{H_PROJECTS}</SectionHeading>
-          <p className="mb-8 text-faded leading-relaxed">{D_PROJECTS}</p>
+          <p className="text-faded 2xl:text-lg leading-relaxed">{D_PROJECTS}</p>
         </Container>
       </Section>
-      <SigmateSection lang={lang} />
+      <SigmateSection lang={lang} className="py-8" />
       <section className="h-screen"></section>
     </>
   );

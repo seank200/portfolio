@@ -3,12 +3,14 @@
 import {
   MouseEventHandler,
   MutableRefObject,
+  useCallback,
   useEffect,
   useRef,
   useState,
 } from 'react';
 import { motion } from 'framer-motion';
-import { SupportedLang, createIntlDict } from '@/i18n';
+import { DateTime } from 'luxon';
+import { SupportedLang, createIntlDict, formatTimePeriod } from '@/i18n';
 import ThemedImage from '@/components/ThemedImage';
 import sigmateLogo from '@images/LOGO_Sigmate.png';
 import sigmateLogoDark from '@images/LOGO_Sigmate_Dark.png';
@@ -24,11 +26,14 @@ import Section from '../Section';
 import Container, { containerClassName } from '@/components/Container';
 import Image from 'next/image';
 import { throttle } from 'lodash';
+import ProjectStickyHeader from '../projects/ProjectStickyHeader';
+import SigmateArch from './SigmateArch';
 
 const dict = createIntlDict(
   {
     TITLE: 'Chief Technology Officer',
-    DESCRIPTION: 'A wiki platform for the NFT community',
+    DESCRIPTION:
+      'Sigmate is a wiki platform for the NFT community, created by Facade Inc., a Web3 startup.',
     CATEGORY: 'Work Experience',
     H_FEATURE_HIGHLIGHTS: '💡 Feature Highlights',
     H_FEAT_1: 'Easy',
@@ -45,8 +50,6 @@ const dict = createIntlDict(
     JOB_DETAILS: [
       'Implemented a REST API app server using NodeJS and TypeScript.',
       'Managed DevOps workflows on Amazon Web Services (AWS)',
-    ],
-    JOB_DETAILS_BE: [
       'Modeled and deployed MYSQL server on AWS RDS with multi A-Z, read replicas, and auto backups',
       'Set up NoSQL server for content audit logs using AWS DynamoDB',
       'Deployed HTTPS NodeJS servers on Load balanced(ELB) EC2 instances',
@@ -60,10 +63,17 @@ const dict = createIntlDict(
       'NodeJS와 TypeScript를 사용한 REST API app server 개발.',
       'AWS(Amazon Web Services) 상의 배포 및 DevOps 워크플로우 관리',
     ],
+    H_FEATURE_HIGHLIGHTS: '기능 상세',
   }
 );
 
-export default function SigmateSection({ lang }: { lang: SupportedLang }) {
+export default function SigmateSection({
+  lang,
+  className,
+}: {
+  lang: SupportedLang;
+  className?: string;
+}) {
   const {
     TITLE,
     DESCRIPTION,
@@ -80,35 +90,45 @@ export default function SigmateSection({ lang }: { lang: SupportedLang }) {
     FEAT_3_CAPTION,
   } = dict[lang];
 
+  const JOB_DETAILS = dict[lang].JOB_DETAILS as Array<React.ReactNode>;
+
+  const startedAt = DateTime.fromObject({ year: 2021, month: 3 });
+  const endedAt = DateTime.fromObject({ year: 2023, month: 3 });
+  const period = formatTimePeriod(lang, startedAt, endedAt, {
+    precision: 'month',
+  });
+
   const [selectedFeature, setSelectedFeature] = useState<number>(0);
   const [marginTop, setMarginTop] = useState<number>(0);
-
   const feat1Ref = useRef<HTMLDivElement | null>(null);
   const feat2Ref = useRef<HTMLDivElement | null>(null);
   const feat3Ref = useRef<HTMLDivElement | null>(null);
 
-  const createFeatureSelector = (featureId: number) => () => {
-    let ref: MutableRefObject<HTMLDivElement | null>;
-    switch (featureId) {
-      case 1:
-        ref = feat1Ref;
-        break;
-      case 2:
-        ref = feat2Ref;
-        break;
-      case 3:
-        ref = feat3Ref;
-        break;
-      default:
-        throw new Error(`Unexpected featureId: ${featureId}`);
-    }
-    if (!ref.current) return;
-    ref.current.scrollIntoView({ behavior: 'smooth' });
-  };
+  const createFeatureSelector = useCallback(
+    (featureId: number) => () => {
+      let ref: MutableRefObject<HTMLDivElement | null>;
+      switch (featureId) {
+        case 1:
+          ref = feat1Ref;
+          break;
+        case 2:
+          ref = feat2Ref;
+          break;
+        case 3:
+          ref = feat3Ref;
+          break;
+        default:
+          throw new Error(`Unexpected featureId: ${featureId}`);
+      }
+      if (!ref.current) return;
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    },
+    [feat1Ref, feat2Ref, feat3Ref]
+  );
 
   useEffect(() => {
-    const elemHeight = feat1Ref.current?.getBoundingClientRect()?.height;
     const handleResize = throttle(() => {
+      const elemHeight = feat1Ref.current?.getBoundingClientRect()?.height;
       setMarginTop(Math.ceil(elemHeight ? elemHeight - window.innerHeight : 0));
     }, 200);
     handleResize();
@@ -119,69 +139,39 @@ export default function SigmateSection({ lang }: { lang: SupportedLang }) {
   }, []);
 
   return (
-    <Section className="min-h-screen">
-      <div className="z-20 sticky top-0 -translate-y-[1px] shadow shadow-background/20 py-4 bg-background">
-        <Container>
-          <div className="w-full flex flex-row justify-between">
-            <div className="flex flex-row items-center">
-              <h3>
-                <ThemedImage
-                  src={sigmateLogo}
-                  darkSrc={sigmateLogoDark}
-                  alt="Sigmate"
-                  height={36}
-                  className="relative bottom-0.5"
-                />
-              </h3>
-              <p className="ml-4 rounded px-3 py-1 bg-secondary/10 text-faded text-sm">
-                {CATEGORY}
-              </p>
-            </div>
-            <div className="flex flex-row items-center">
-              <p className="font-medium">{TITLE}</p>
-              <span className="mx-2">·</span>
-              <p className="text-faded">2021 - 2023</p>
-            </div>
-          </div>
-        </Container>
-      </div>
-      <Container>
-        <p className="font-light text-lg">{DESCRIPTION}</p>
+    <Section className={`min-h-screen ${className || ''}`}>
+      <ProjectStickyHeader
+        heading={
+          <ThemedImage
+            src={sigmateLogo}
+            darkSrc={sigmateLogoDark}
+            alt="Sigmate"
+            height={36}
+            className="relative right-[2px]"
+          />
+        }
+        title={TITLE}
+        category={CATEGORY}
+        period={period}
+      />
+      <Container className="mb-12 relative bottom-1">
+        <p className="md:hidden font-medium text-faded">{TITLE}</p>
+        <p className="mb-4 md:hidden text-sm text-faded">{period}</p>
+        <p className="font-light md:text-lg">{DESCRIPTION}</p>
+        <h4 className="mt-8 mb-4 text-2xl font-semibold">🎯 My Role</h4>
+        <ul className="">
+          {JOB_DETAILS.map((detail) => (
+            <li
+              key={String(detail).slice(0, 10)}
+              className="before:mr-4 before:content-['•'] flex items-start text-faded leading-relaxed"
+            >
+              {detail}
+            </li>
+          ))}
+        </ul>
       </Container>
       <div className="relative">
-        <motion.div
-          className={`${containerClassName} absolute top-0 left-1/2 -translate-x-1/2 min-h-screen py-16 flex justify-start items-center`}
-          onViewportEnter={() => setSelectedFeature(1)}
-          viewport={{ once: false, amount: 0.3 }}
-          ref={feat1Ref}
-        >
-          <FeatureImage className="flex flex-col items-center">
-            <Image
-              src={sigmateUIWiki}
-              alt="Sigmate UI: Wiki"
-              width={1158}
-              className="mb-12 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
-            />
-            <Image
-              src={sigmateUIWH}
-              alt="Sigmate UI: What's Happening"
-              width={1158}
-              className="mb-12 w-2/3 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
-            />
-            <Image
-              src={sigmateUIUpcoming}
-              alt="Sigmate UI: What's Happening"
-              width={1158}
-              className="hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
-            />
-            <p className="mt-6 text-center text-faded text-lg font-light">
-              {FEAT_1_CAPTION}
-            </p>
-          </FeatureImage>
-        </motion.div>
-      </div>
-      <div className="-z-10 sticky top-0">
-        <Container className="min-h-screen flex flex-col justify-center items-start">
+        <Container className="md:sticky top-0 md:min-h-screen hidden md:flex flex-col justify-center items-start">
           <h4 className="mb-6 text-2xl font-semibold">
             {H_FEATURE_HIGHLIGHTS}
           </h4>
@@ -207,70 +197,101 @@ export default function SigmateSection({ lang }: { lang: SupportedLang }) {
             featureId={3}
           />
         </Container>
+        <motion.div
+          className={`${containerClassName} md:absolute top-0 left-1/2 md:-translate-x-1/2 md:min-h-screen py-8 md:py-16 flex flex-col items-start justify-center md:flex-row md:justify-start md:items-center`}
+          onViewportEnter={() => setSelectedFeature(1)}
+          viewport={{ once: false, amount: 0.3 }}
+          ref={feat1Ref}
+        >
+          <FeatureImage className="flex flex-col items-center">
+            <Image
+              src={sigmateUIWiki}
+              alt="Sigmate UI: Wiki"
+              width={1158}
+              className="mb-12 shrink-0 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
+            />
+            <Image
+              src={sigmateUIWH}
+              alt="Sigmate UI: What's Happening"
+              width={1158}
+              className="mb-12 shrink-0 md:w-2/3 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
+            />
+            <Image
+              src={sigmateUIUpcoming}
+              alt="Sigmate UI: What's Happening"
+              width={1158}
+              className="shrink-0 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
+            />
+            <p className="mt-8 block px-8 md:px-0 text-center text-faded text-lg font-light">
+              {FEAT_1_CAPTION}
+            </p>
+          </FeatureImage>
+        </motion.div>
+        <div style={{ height: marginTop }} className="hidden md:block"></div>
+        <motion.div
+          className={`${containerClassName} md:min-h-screen py-8 md:py-16 flex justify-start items-center`}
+          viewport={{ once: false, amount: 0.5 }}
+          onViewportEnter={() => setSelectedFeature(2)}
+          ref={feat2Ref}
+        >
+          <FeatureImage className="flex flex-col items-center">
+            <Image
+              src={sigmateUIVerification}
+              alt="Sigmate UI: Verification"
+              width={1158}
+              className="w-full hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
+            />
+            <Image
+              src={sigmateUIVerificationModal}
+              alt="Sigmate UI: Verification Modal"
+              width={1158}
+              className="w-1/2 hover:scale-102 transition-transform -translate-y-1/4 shadow-lg shadow-background-on/20"
+            />
+            <p className="px-8 md:px-0 text-center text-faded text-lg font-light">
+              {FEAT_2_CAPTION}
+            </p>
+          </FeatureImage>
+        </motion.div>
+        <motion.div
+          className={`${containerClassName} md:min-h-screen py-8 md:py-16 flex justify-start items-center`}
+          viewport={{ once: false, amount: 0.5 }}
+          onViewportEnter={() => setSelectedFeature(3)}
+          ref={feat3Ref}
+        >
+          <FeatureImage className="flex flex-col items-center">
+            <div className="w-1/2 flex flex-col gap-4">
+              <div>
+                <Image
+                  src={sigmateUIValuationUtility}
+                  alt="Sigmate UI: Valuation (Utility)"
+                  width={600}
+                  className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20"
+                />
+              </div>
+              <div>
+                <Image
+                  src={sigmateUIValuationFunding}
+                  alt="Sigmate UI: Valuation (Funding)"
+                  width={600}
+                  className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20"
+                />
+              </div>
+              <div>
+                <Image
+                  src={sigmateUIValuationSocialHype}
+                  alt="Sigmate UI: Valuation (Social Hype)"
+                  width={600}
+                  className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20"
+                />
+              </div>
+            </div>
+            <p className="mt-8 px-8 md:px-0 text-center text-faded text-lg font-light">
+              {FEAT_3_CAPTION}
+            </p>
+          </FeatureImage>
+        </motion.div>
       </div>
-      <div style={{ height: marginTop }} />
-      <motion.div
-        className={`${containerClassName} min-h-screen py-16 flex justify-start items-center`}
-        viewport={{ once: false, amount: 0.5 }}
-        onViewportEnter={() => setSelectedFeature(2)}
-        ref={feat2Ref}
-      >
-        <FeatureImage className="flex flex-col items-center">
-          <Image
-            src={sigmateUIVerification}
-            alt="Sigmate UI: Verification"
-            width={1158}
-            className="w-full hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
-          />
-          <Image
-            src={sigmateUIVerificationModal}
-            alt="Sigmate UI: Verification Modal"
-            width={1158}
-            className="w-1/2 hover:scale-102 transition-transform -translate-y-1/4 shadow-lg shadow-background-on/20"
-          />
-          <p className="text-center text-faded text-lg font-light">
-            {FEAT_2_CAPTION}
-          </p>
-        </FeatureImage>
-      </motion.div>
-      <motion.div
-        className={`${containerClassName} min-h-screen py-16 flex justify-start items-center`}
-        viewport={{ once: false, amount: 0.5 }}
-        onViewportEnter={() => setSelectedFeature(3)}
-        ref={feat3Ref}
-      >
-        <FeatureImage className="flex flex-col items-center">
-          <div className="w-1/2 flex flex-col gap-4">
-            <div>
-              <Image
-                src={sigmateUIValuationUtility}
-                alt="Sigmate UI: Valuation (Utility)"
-                width={600}
-                className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20"
-              />
-            </div>
-            <div>
-              <Image
-                src={sigmateUIValuationFunding}
-                alt="Sigmate UI: Valuation (Funding)"
-                width={600}
-                className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20"
-              />
-            </div>
-            <div>
-              <Image
-                src={sigmateUIValuationSocialHype}
-                alt="Sigmate UI: Valuation (Social Hype)"
-                width={600}
-                className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20"
-              />
-            </div>
-          </div>
-          <p className="mt-8 text-center text-faded text-lg font-light">
-            {FEAT_3_CAPTION}
-          </p>
-        </FeatureImage>
-      </motion.div>
+      <SigmateArch lang={lang} />
     </Section>
   );
 }
@@ -284,8 +305,8 @@ function FeatureImage({
 }) {
   return (
     <>
-      <div className="mr-12 shrink-0 w-88" />
-      <div className={`grow ${className || ''}`}>{children}</div>
+      <div className="mr-20 shrink-0 w-88 hidden md:block" />
+      <div className={`md:grow ${className || ''}`}>{children}</div>
     </>
   );
 }
@@ -305,7 +326,7 @@ function FeatureHighlight({
 }) {
   return (
     <motion.div
-      className={`mb-6 last-of-type:mb-0 w-88 cursor-pointer shadow-lg border-2 border-surface rounded-lg px-8 py-4 bg-surface text-surface-on`}
+      className={`mb-6 last-of-type:mb-0 w-full md:w-88 cursor-pointer shadow-lg border-2 border-surface rounded-lg px-8 py-4 bg-surface text-surface-on`}
       onClick={onClick}
       animate={selectedFeature === featureId ? 'selected' : 'normal'}
       variants={{
@@ -332,7 +353,7 @@ function FeatureHighlight({
         variants={{
           selected: { color: 'var(--rgb-primary)' },
           normal: { color: 'var(--rgb-faded)' },
-          hover: { color: 'var(--rgb-surface-on)' },
+          hover: { color: 'var(--rgb-primary)' },
         }}
       >
         {heading}
