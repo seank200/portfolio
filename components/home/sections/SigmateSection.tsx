@@ -33,7 +33,7 @@ import ProjectMyRoleList from '../projects/ProjectMyRoleList';
 
 const dict = createIntlDict(
   {
-    TITLE: 'Chief Technology Officer',
+    TITLE: 'CTO/Backend Developer',
     DESCRIPTION:
       'Sigmate is a wiki platform for the NFT community, created by Facade Inc., a Web3 startup.',
     CATEGORY: 'Work Experience',
@@ -60,14 +60,27 @@ const dict = createIntlDict(
     ],
   },
   {
-    TITLE: 'CTO',
+    TITLE: 'CTO/백엔드 개발',
     DESCRIPTION: 'NFT 커뮤니티를 위한 위키 플랫폼',
+    CATEGORY: '업무 경험',
+    H_FEATURE_HIGHLIGHTS: '기능 상세',
+    H_FEAT_1: 'Easy',
+    FEAT_1: '위키 기반의 각종 NFT 데이터 한곳에서 모아보기',
+    FEAT_1_CAPTION:
+      '민팅 일정부터 사기 여부까지, 한 페이지에서 모든 정보를 확인. 트위터, 디스코드, 미디엄 등의 오프체인 데이터 트래킹.',
+    H_FEAT_2: 'Reliable',
+    FEAT_2: '유저와 운영자간 교차검증 서비스',
+    FEAT_2_CAPTION: '교차 검증 시스템을 통한 정보 신뢰성 향상',
+    H_FEAT_3: 'Valuated',
+    FEAT_3: '온/오프체인 데이터 통합형 가치평가',
+    FEAT_3_CAPTION:
+      'Utility, Funding, Social Hype 등 다양한 지표 분석을 통한 NFT 가치평가 제공',
+
     H_MY_ROLE: '세부 업무내용',
     JOB_DETAILS: [
       'NodeJS와 TypeScript를 사용한 REST API app server 개발.',
       'AWS(Amazon Web Services) 상의 배포 및 DevOps 워크플로우 관리',
     ],
-    H_FEATURE_HIGHLIGHTS: '기능 상세',
   }
 );
 

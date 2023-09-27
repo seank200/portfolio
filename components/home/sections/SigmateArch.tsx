@@ -23,6 +23,8 @@ const dict = createIntlDict(
   },
   {
     H_ARCH: '아키텍쳐 다이어그램',
+    ARCH_DESC:
+      'Sigmate 백엔드는 아마존 웹 서비스(AWS)에 배포되었습니다. 배포 아키텍처는 서비스 연속성 보장과 보안 유지가 가능하도록 설계되었습니다.',
     ARCHITECTURE: '아키텍쳐',
     SUMMARY: '요약',
     FULL: '상세',
