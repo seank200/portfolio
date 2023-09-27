@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import Container from './Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faXmark, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import throttle from 'lodash/throttle';
 import { SupportedLang, createTranslator } from '@/i18n';
@@ -162,14 +163,32 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
             },
           }}
         >
-          <NavItem href="/" onClick={handleLinkClick}>
-            {t('Portfolio', '포트폴리오')}
+          <NavItem
+            href="https://github.com/seanK200"
+            external
+            onClick={handleLinkClick}
+          >
+            <FontAwesomeIcon icon={faGithub} title="Github" />
+            <span className="ml-4 md:hidden">Github</span>
           </NavItem>
-          <NavItem href="/" onClick={handleLinkClick}>
-            {t('Resume', '이력서')}
+          <NavItem
+            href="https://www.linkedin.com/in/youngwoo-kim-sean/"
+            external
+            onClick={handleLinkClick}
+          >
+            <FontAwesomeIcon
+              icon={faLinkedin}
+              title={t('LinkedIn', '링크드인')}
+            />
+            <span className="ml-4 md:hidden">{t('LinkedIn', '링크드인')}</span>
           </NavItem>
-          <NavItem href="/" onClick={handleLinkClick}>
-            {t('Contact Me', '연락하기')}
+          <NavItem
+            href="mailto:yw.sean.kim@gmail.com"
+            external
+            onClick={handleLinkClick}
+          >
+            <FontAwesomeIcon icon={faEnvelope} title={t('Email', '이메일')} />
+            <span className="ml-4 md:hidden">{t('Email', '이메일')}</span>
           </NavItem>
           <motion.li
             className="grow flex items-end md:items-center"
@@ -192,10 +211,12 @@ function NavItem({
   href,
   onClick,
   children,
+  external,
 }: {
   href: string;
   onClick?: MouseEventHandler<HTMLLIElement>;
   children?: React.ReactNode;
+  external?: boolean;
 }) {
   return (
     <motion.li
@@ -207,7 +228,13 @@ function NavItem({
         desktop: { opacity: 1 },
       }}
     >
-      <Link href={href}>{children}</Link>
+      {external ? (
+        <a href={href} target="_blank" rel="noopener noreferrer">
+          {children}
+        </a>
+      ) : (
+        <Link href={href}>{children}</Link>
+      )}
     </motion.li>
   );
 }
