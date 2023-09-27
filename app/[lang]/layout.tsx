@@ -1,6 +1,10 @@
 import '../globals.css';
+import '../fonts.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
+import { SupportedLang } from '@/i18n';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -14,14 +18,16 @@ export default function Layout({
   params,
 }: {
   children: React.ReactNode;
-  params: { lang: string };
+  params: { lang: SupportedLang };
 }) {
   return (
-    <html lang={params.lang} className="scroll-smooth theme-device">
+    <html lang={params.lang} className="scroll-smooth">
       <body
         className={`m-0 w-full min-h-screen bg-background text-background-on ${inter.className}`}
       >
-        {children}
+        <Nav lang={params.lang} />
+        <main className="pb-12 min-h-screen">{children}</main>
+        <Footer lang={params.lang} />
       </body>
     </html>
   );

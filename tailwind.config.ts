@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import plugin from 'tailwindcss/plugin';
 
 const config: Config = {
   content: [
@@ -6,6 +7,7 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       fontFamily: {
@@ -19,49 +21,56 @@ const config: Config = {
         display: ['Rota', 'Helvetica', 'Arial', 'ui-sans-serif', 'sans-serif'],
       },
       colors: {
+        transparent: 'transparent',
         primary: {
-          DEFAULT: 'var(--color-primary)',
-          variant: 'var(--color-primary-variant)',
-          on: 'var(--color-primary-on)',
+          DEFAULT: 'rgba(var(--color-primary), <alpha-value>)',
+          var: 'rgba(var(--color-primary-variant), <alpha-value>)',
+          on: 'rgba(var(--color-primary-on), <alpha-value>)',
         },
         secondary: {
-          DEFAULT: 'var(--color-secondary)',
-          variant: 'var(--color-secondary-variant)',
-          on: 'var(--color-secondary-on)',
+          DEFAULT: 'rgba(var(--color-secondary), <alpha-value>)',
+          var: 'rgba(var(--color-secondary-variant), <alpha-value>)',
+          on: 'rgba(var(--color-secondary-on), <alpha-value>)',
+        },
+        faded: {
+          DEFAULT: 'rgba(var(--color-faded), <alpha-value>)',
+          var: 'rgba(var(--color-faded-variant), <alpha-value>)',
         },
         background: {
-          DEFAULT: 'var(--color-background)',
-          variant: 'var(--color-background-variant)',
-          on: 'var(--color-background-on)',
+          DEFAULT: 'rgba(var(--color-background), <alpha-value>)',
+          variant: 'rgba(var(--color-background-variant), <alpha-value>)',
+          on: 'rgba(var(--color-background-on), <alpha-value>)',
         },
         surface: {
-          DEFAULT: 'var(--color-surface)',
-          on: 'var(--color-surface-on)',
-        },
-        error: {
-          DEFAULT: 'var(--color-error)',
-          on: 'var(--color-error-on)',
-        },
-        success: {
-          DEFAULT: 'var(--color-success)',
-          on: 'var(--color-success-on)',
+          DEFAULT: 'rgba(var(--color-surface), <alpha-value>)',
+          on: 'rgba(var(--color-surface-on), <alpha-value>)',
         },
       },
-      animation: {
-        beckon: 'beckon 5s linear infinite',
-      },
-      transitionProperty: {
-        position: 'top, bottom, left, right',
+      textColor: {
+        poolink: 'rgba(var(--color-poolink), <alpha-value>)',
       },
       scale: {
         101: '1.01',
         102: '1.02',
+        104: '1.04',
       },
-      gridTemplateColumns: {
-        lg: 'repeat(auto-fit, minmax(200px, 1fr))',
+      spacing: {
+        88: '22rem',
+      },
+      height: {
+        'screen-1/2': '50vh',
+      },
+      transitionProperty: {
+        position: 'top, left, bottom, right, transform',
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(({ addVariant }) => {
+      addVariant('hmd', '@media (min-height: 600px)');
+      addVariant('hlg', '@media (min-height: 700px)');
+      addVariant('hxl', '@media (min-height: 768px)');
+    }),
+  ],
 };
 export default config;

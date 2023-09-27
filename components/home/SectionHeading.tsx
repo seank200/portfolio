@@ -1,14 +1,14 @@
 export default function SectionHeading({
-  color = 'primary',
+  className,
   children,
 }: {
-  color?: 'primary' | 'secondary';
-  children: React.ReactNode;
+  className?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <h2
-      className={`text-4xl md:text-5xl font-semibold mb-4 ${
-        color === 'secondary' ? 'text-gradient-secondary' : 'text-gradient'
+      className={`mb-2 2xl:mb-4 bg-clip-text bg-gradient-to-br from-secondary to-primary text-4xl 2xl:text-5xl text-transparent font-semibold leading-relaxed ${
+        className || ''
       }`}
     >
       {children}

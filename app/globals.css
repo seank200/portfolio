@@ -2,104 +2,97 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-primary-light: #6a1bf3;
-  --color-primary-variant-light: #4609ae;
-  --color-primary-on-light: #f9fafb;
-  --color-secondary-light: #1164e8;
-  --color-secondary-variant-light: #64748b;
-  --color-secondary-on-light: #f9fafb;
-  --color-background-light: #f4f4f6;
-  --color-background-variant-light: #e2e8f0;
-  --color-background-on-light: #0f172a;
-  --color-surface-light: #ffffff;
-  --color-surface-variant-light: #ffffff;
-  --color-surface-on-light: #020617;
-  --color-error-light: #dc2626;
-  --color-error-on-light: #f8fafc;
-  --color-success-light: #22c55e;
-  --color-success-on-light: #f8fafc;
-
-  --color-primary-dark: #8347eb;
-  --color-primary-variant-dark: #7a34f4;
-  --color-primary-on-dark: #f9fafb;
-  --color-secondary-dark: #1164e8;
-  --color-secondary-variant-dark: #64748b;
-  --color-secondary-on-dark: #f9fafb;
-  --color-background-dark: #0f172a;
-  --color-background-variant-dark: #243347;
-  --color-background-on-dark: #f4f4f6;
-  --color-surface-dark: #252d41;
-  --color-surface-variant-dark: #243347;
-  --color-surface-on-dark: #f4f4f6;
-  --color-error-dark: #dc2626;
-  --color-error-on-dark: #f8fafc;
-  --color-success-dark: #22c55e;
-  --color-success-on-dark: #f8fafc;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    --color-primary: var(--color-primary-light);
-    --color-primary-variant: var(--color-primary-variant-light);
-    --color-primary-on: var(--color-primary-on-light);
-    --color-secondary: var(--color-secondary-light);
-    --color-secondary-variant: var(--color-secondary-variant-light);
-    --color-secondary-on: var(--color-secondary-on-light);
-    --color-background: var(--color-background-light);
-    --color-background-variant: var(--color-background-variant-light);
-    --color-background-on: var(--color-background-on-light);
-    --color-surface: var(--color-surface-light);
-    --color-surface-variant: var(--color-surface-variant-light);
-    --color-surface-on: var(--color-surface-on-light);
-    --color-error: var(--color-error-light);
-    --color-error-on: var(--color-error-on-light);
-    --color-success: var(--color-success-light);
-    --color-success-on: var(--color-success-on-light);
+@layer base {
+  :root,
+  .light:root {
+    --color-primary: 106, 27, 243;
+    --color-primary-variant: 70, 9, 174;
+    --color-primary-on: 249, 250, 251;
+    --color-secondary: 17, 100, 232;
+    --color-secondary-variant: 9, 73, 174;
+    --color-secondary-on: 249, 250, 251;
+    --color-background: 244, 244, 246;
+    --color-background-variant: 209, 213, 219;
+    --color-background-on: 15, 23, 42;
+    --color-surface: 255, 255, 255;
+    --color-surface-on: 15, 23, 42;
+    --color-faded: 71, 85, 105;
+    --color-faded-variant: 100, 116, 139;
+    --rgb-primary: rgb(var(--color-primary));
+    --rgb-background-on: rgb(var(--color-background-on));
+    --rgb-faded: rgb(var(--color-faded));
+    --rgb-surface: rgb(var(--color-surface));
+    --rgb-surface-on: rgb(var(--color-surface-on));
   }
 
-  html.theme-device .dark-only,
-  html.theme-light .dark-only,
-  html.theme-dark .light-only {
-    display: none;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-primary: var(--color-primary-dark);
-    --color-primary-variant: var(--color-primary-variant-dark);
-    --color-primary-on: var(--color-primary-on-dark);
-    --color-secondary: var(--color-secondary-dark);
-    --color-secondary-variant: var(--color-secondary-variant-dark);
-    --color-secondary-on: var(--color-secondary-on-dark);
-    --color-background: var(--color-background-dark);
-    --color-background-variant: var(--color-background-variant-dark);
-    --color-background-on: var(--color-background-on-dark);
-    --color-surface: var(--color-surface-dark);
-    --color-surface-variant: var(--color-surface-variant-dark);
-    --color-surface-on: var(--color-surface-on-dark);
-    --color-error: var(--color-error-dark);
-    --color-error-on: var(--color-error-on-dark);
-    --color-success: var(--color-success-dark);
-    --color-success-on: var(--color-success-on-dark);
+  .dark:root {
+    --color-primary: 131, 71, 235;
+    --color-primary-variant: 122, 52, 244;
+    --color-primary-on: 249, 250, 251;
+    --color-secondary: 28, 106, 232;
+    --color-secondary-variant: 26, 99, 217;
+    --color-secondary-on: 249, 250, 251;
+    --color-background: 15, 23, 42;
+    --color-background-variant: 18, 28, 51;
+    --color-background-on: 244, 244, 246;
+    --color-surface: 31, 39, 56;
+    --color-surface-on: 244, 244, 246;
+    --color-faded: 148, 163, 184;
+    --color-faded-variant: 100, 116, 139;
   }
 
-  html.theme-device .light-only,
-  html.theme-light .dark-only,
-  html.theme-dark .light-only {
-    display: none;
+  .light__invisible {
+    visibility: hidden;
+  }
+
+  .dark .light__invisible {
+    visibility: unset;
+  }
+
+  .dark__invisible {
+    visibility: unset;
+  }
+
+  .dark .dark__invisible {
+    visibility: hidden;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-primary: 131, 71, 235;
+      --color-primary-variant: 122, 52, 244;
+      --color-primary-on: 249, 250, 251;
+      --color-secondary: 28, 106, 232;
+      --color-secondary-variant: 26, 99, 217;
+      --color-secondary-on: 249, 250, 251;
+      --color-background: 15, 23, 42;
+      --color-background-variant: 18, 28, 51;
+      --color-background-on: 244, 244, 246;
+      --color-surface: 31, 39, 56;
+      --color-surface-on: 244, 244, 246;
+      --color-faded: 148, 163, 184;
+      --color-faded-variant: 100, 116, 139;
+      --color-poolink: 61, 128, 245;
+    }
+
+    .light__invisible {
+      visibility: unset;
+    }
+
+    .light .light__invisible {
+      visibility: hidden;
+    }
+
+    .dark__invisible {
+      visibility: hidden;
+    }
+
+    .light .dark__invisible {
+      visibility: unset;
+    }
   }
 }
-
-.bg-gradient {
-  background: linear-gradient(
-    to right bottom,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-}
-
+/*
 .text-gradient {
   background-color: var(--color-primary);
   background-image: linear-gradient(
@@ -110,324 +103,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+*/
 
-.text-gradient-hover {
-  transition: all 0.15s linear;
-  background-color: var(--color-primary);
-  background-image: linear-gradient(
-    to right bottom,
-    var(--color-primary),
-    var(--color-secondary)
-  );
-  background-clip: text;
-}
-
-.text-gradient-hover:hover {
-  color: transparent;
-}
-
-.text-gradient-secondary {
-  background-color: var(--color-secondary);
-  background: linear-gradient(
-    to right bottom,
-    var(--color-secondary),
-    var(--color-primary)
-  );
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-@keyframes beckon {
-  0%,
-  16%,
-  32% {
-    top: 0;
-  }
-  8%,
-  24% {
-    top: 4px;
-  }
-  100% {
-    top: 0;
-  }
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 100;
-  font-style: normal;
-  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Thin.woff') format('woff'),
-    url('/fonts/HKGrotesk-Thin.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 100;
-  font-style: italic;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-ThinItalic.woff') format('woff'),
-    url('/fonts/HKGrotesk-ThinItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 200;
-  font-style: normal;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-ExtraLight.woff') format('woff'),
-    url('/fonts/HKGrotesk-ExtraLight.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 200;
-  font-style: italic;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-ExtraLightItalic.woff') format('woff'),
-    url('/fonts/HKGrotesk-ExtraLightItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 300;
-  font-style: normal;
-  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Light.woff') format('woff'),
-    url('/fonts/HKGrotesk-Light.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 300;
-  font-style: italic;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-LightItalic.woff') format('woff'),
-    url('/fonts/HKGrotesk-LightItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 400;
-  font-style: normal;
-  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Regular.woff') format('woff'),
-    url('/fonts/HKGrotesk-Regular.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 400;
-  font-style: italic;
-  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Italic.woff') format('woff'),
-    url('/fonts/HKGrotesk-Italic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 500;
-  font-style: normal;
-  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Medium.woff') format('woff'),
-    url('/fonts/HKGrotesk-Medium.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 500;
-  font-style: italic;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-MediumItalic.woff') format('woff'),
-    url('/fonts/HKGrotesk-MediumItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 600;
-  font-style: normal;
-  src: local('HK Grotesk'), url('/fonts/HKGrotesk-SemiBold.woff') format('woff'),
-    url('/fonts/HKGrotesk-SemiBold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 600;
-  font-style: italic;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-SemiBoldItalic.woff') format('woff'),
-    url('/fonts/HKGrotesk-SemiBoldItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 700;
-  font-style: normal;
-  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Bold.woff') format('woff'),
-    url('/fonts/HKGrotesk-Bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 700;
-  font-style: italic;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-BoldItalic.woff') format('woff'),
-    url('/fonts/HKGrotesk-BoldItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 800;
-  font-style: normal;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-ExtraBold.woff') format('woff'),
-    url('/fonts/HKGrotesk-ExtraBold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 800;
-  font-style: italic;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-ExtraBoldItalic.woff') format('woff'),
-    url('/fonts/HKGrotesk-ExtraBoldItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 900;
-  font-style: normal;
-  src: local('HK Grotesk'), url('/fonts/HKGrotesk-Black.woff') format('woff'),
-    url('/fonts/HKGrotesk-Black.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: HKGrotesk;
-  font-weight: 900;
-  font-style: italic;
-  src: local('HK Grotesk'),
-    url('/fonts/HKGrotesk-BlackItalic.woff') format('woff'),
-    url('/fonts/HKGrotesk-BlackItalic.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 100;
-  font-style: normal;
-  src: local('Rota'), url('/fonts/Rota-Thin.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 100;
-  font-style: italic;
-  src: local('Rota'), url('/fonts/Rota-ThinItalic.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 200;
-  font-style: normal;
-  src: local('Rota'), url('/fonts/Rota-ExtraLight.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 200;
-  font-style: italic;
-  src: local('Rota'), url('/fonts/Rota-ExtraLightItalic.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 300;
-  font-style: normal;
-  src: local('Rota'), url('/fonts/Rota-Light.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 300;
-  font-style: italic;
-  src: local('Rota'), url('/fonts/Rota-LightItalic.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 400;
-  font-style: normal;
-  src: local('Rota'), url('/fonts/Rota-Regular.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 400;
-  font-style: italic;
-  src: local('Rota'), url('/fonts/Rota-Italic.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 500;
-  font-style: normal;
-  src: local('Rota'), url('/fonts/Rota-Medium.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 500;
-  font-style: italic;
-  src: local('Rota'), url('/fonts/Rota-MediumItalic.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 600;
-  font-style: normal;
-  src: local('Rota'), url('/fonts/Rota-SemiBold.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 600;
-  font-style: italic;
-  src: local('Rota'), url('/fonts/Rota-SemiBoldItalic.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 700;
-  font-style: normal;
-  src: local('Rota'), url('/fonts/Rota-Bold.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 700;
-  font-style: italic;
-  src: local('Rota'), url('/fonts/Rota-BoldItalic.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 800;
-  font-style: normal;
-  src: local('Rota'), url('/fonts/Rota-ExtraBold.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 800;
-  font-style: italic;
-  src: local('Rota'), url('/fonts/Rota-ExtraBoldItalic.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 900;
-  font-style: normal;
-  src: local('Rota'), url('/fonts/Rota-Black.otf') format('opentype');
-}
-
-@font-face {
-  font-family: Rota;
-  font-weight: 900;
-  font-style: italic;
-  src: local('Rota'), url('/fonts/Rota-BlackItalic.otf') format('opentype');
+@layer utilites {
 }

@@ -1,120 +1,213 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import Container from './Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faXmark, faBars } from '@fortawesome/free-solid-svg-icons';
-import Container from '@/components/Container';
-import useScroll from '@/hooks/useScroll';
-import LangSelect from './LangSelect';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { MouseEventHandler, useEffect, useState } from 'react';
 import throttle from 'lodash/throttle';
-import { SupportedLang, createIntlDict } from '@/i18n/utils';
+import { SupportedLang, createTranslator } from '@/i18n';
+import LangSelect from './LangSelect';
+import { motion } from 'framer-motion';
 
-const dict = createIntlDict(
-  {
-    HOME: 'Home',
-    EXPERIENCE: 'Experience',
-    PORTFOLIO: 'Portfolio',
-    CONTACT_ME: 'Contact Me',
-  },
-  {
-    HOME: '홈',
-    EXPERIENCE: '업무 경험',
-    PORTFOLIO: '포트폴리오',
-    CONTACT_ME: '연락하기',
-  }
-);
+const SCROLL_DOWN_THRSH = 20;
+const SCROLL_UP_THRSH = 10;
+const SCROLL_TOP_THRSH = 50;
 
 export default function Nav({ lang }: { lang: SupportedLang }) {
-  const [isOpen, setIsOpen] = useState<boolean>(false); // mobile only
-  const [scrollY, isScrollingDown] = useScroll();
-  const shadow = scrollY > 50 ? 'drop-shadow' : '';
-  const top =
-    !isOpen && scrollY > 50 && isScrollingDown ? '-top-full' : 'top-0';
+  const t = createTranslator(lang);
 
-  const { HOME, EXPERIENCE, PORTFOLIO } = dict[lang];
+  const [isOpen, setIsOpen] = useState<boolean>(false); // mobile
+  const [scrollY, setScrollY] = useState<number>(0);
+  const [isScrollingDown, setIsScrollingDown] = useState<boolean>(false); // scrolling down
+  const [screenW, setScreenW] = useState<number>(0);
+  const isMobile = screenW < 768;
+  const animationVariant = isMobile
+    ? isOpen
+      ? 'mobileOpen'
+      : 'mobileClosed'
+    : 'desktop';
 
-  const handleNavLinkClick = () => {
-    setIsOpen(false);
-  };
+  const handleLinkClick = () => setIsOpen(false);
 
   useEffect(() => {
+    setScrollY(window.scrollY);
+    setScreenW(window.innerWidth);
+
     const handleResize = throttle(() => {
-      if (isOpen && window.innerWidth > 640) setIsOpen(false);
-    }, 250);
+      setIsOpen(false);
+      setScreenW(window.innerWidth);
+    }, 100);
+    const handleScroll = throttle(() => {
+      setScrollY((prevScrollY) => {
+        const newScrollY = window.scrollY;
+
+        if (
+          newScrollY >= SCROLL_TOP_THRSH &&
+          newScrollY > prevScrollY + SCROLL_DOWN_THRSH
+        ) {
+          setIsScrollingDown(true);
+        }
+        if (
+          newScrollY < SCROLL_TOP_THRSH ||
+          newScrollY < prevScrollY - SCROLL_UP_THRSH
+        ) {
+          setIsScrollingDown(false);
+        }
+
+        return newScrollY;
+      });
+    }, 200);
     window.addEventListener('resize', handleResize);
+    window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('resize', handleResize);
+      window.addEventListener('scroll', handleScroll);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, []);
+
+  const shadow = scrollY >= SCROLL_TOP_THRSH ? 'shadow' : '';
 
   return (
-    <nav
-      className={`${shadow} fixed z-10 ${top} left-0 right-0 ${
-        isOpen ? 'bottom-0' : ''
-      } py-8 md:py-6 bg-background transition-position`}
+    <motion.nav
+      className={`fixed top-0 left-0 right-0 z-20 ${shadow} shadow-background-on/10 bg-background`}
+      variants={{
+        mobileOpen: {
+          bottom: 0,
+        },
+        mobileClosed: {},
+        desktop: {
+          bottom: 'unset',
+        },
+        hidden: {
+          y: '-100%',
+        },
+        visible: {
+          y: 0,
+        },
+      }}
+      initial={false}
+      animate={[animationVariant, isScrollingDown ? 'hidden' : 'visible']}
     >
-      <Container className="flex flex-col md:flex-row md:justify-between">
-        <div className="flex justify-between items-center">
-          <Link
-            href="/"
-            className="relative top-1 leading-none text-xl font-display font-extrabold uppercase text-gradient-hover"
-          >
-            Youngwoo
-          </Link>
-          {isOpen ? (
-            <FontAwesomeIcon
-              icon={faXmark}
-              className="text-xl md:hidden"
-              onClick={() => setIsOpen(false)}
-            />
-          ) : (
-            <FontAwesomeIcon
-              icon={faBars}
-              className="md:hidden"
-              onClick={() => setIsOpen(true)}
-            />
-          )}
-        </div>
-        <ul
-          className={`${
-            isOpen ? '' : 'hidden'
-          } mt-12 md:mt-0 md:flex md:space-x-8`}
+      <Container
+        className={`${
+          scrollY > SCROLL_TOP_THRSH ? 'py-4' : 'py-6'
+        } flex justify-between items-center`}
+      >
+        <Link
+          href="/"
+          className="relative top-0.5 z-20 bg-clip-text bg-gradient-to-br from-primary to-secondary font-display font-extrabold text-xl hover:text-transparent uppercase transition-colors"
         >
-          <NavItem onClick={handleNavLinkClick} href={`#home`}>
-            {HOME}
+          Youngwoo
+        </Link>
+        <button
+          className="z-20 md:hidden relative"
+          onClick={() => setIsOpen((p) => !p)}
+          title={
+            isOpen
+              ? t('Close navigation', '메뉴 닫기')
+              : t('Open navigation', '메뉴 열기')
+          }
+        >
+          <motion.div
+            variants={{
+              mobileOpen: {
+                opacity: 0,
+                rotate: 180,
+              },
+              mobileClosed: {
+                opacity: 1,
+                rotate: 0,
+              },
+            }}
+          >
+            <FontAwesomeIcon icon={faBars} className="h-5" />
+          </motion.div>
+          <motion.div
+            className="absolute top-0 left-0"
+            variants={{
+              mobileOpen: {
+                opacity: 1,
+                rotate: 0,
+              },
+              mobileClosed: {
+                opacity: 0,
+                rotate: 180,
+              },
+            }}
+          >
+            <FontAwesomeIcon icon={faXmark} className="h-6" />
+          </motion.div>
+        </button>
+        <motion.ul
+          className={`absolute md:static top-0 left-0 right-0 z-10 px-8 pb-6 md:px-0 md:pb-0 flex flex-col md:flex-row items-start md:items-center overflow-hidden bg-background`}
+          variants={{
+            mobileOpen: {
+              bottom: 0,
+              opacity: 1,
+              paddingTop: '6rem',
+              transition: {
+                when: 'beforeChildren',
+                staggerChildren: 0.05,
+              },
+            },
+            mobileClosed: {
+              bottom: '100%',
+              opacity: 0,
+              paddingTop: 0,
+            },
+            desktop: {
+              opacity: 1,
+              paddingTop: 0,
+            },
+          }}
+        >
+          <NavItem href="/" onClick={handleLinkClick}>
+            {t('Portfolio', '포트폴리오')}
           </NavItem>
-          <NavItem onClick={handleNavLinkClick} href={`#work-experience`}>
-            {EXPERIENCE}
+          <NavItem href="/" onClick={handleLinkClick}>
+            {t('Resume', '이력서')}
           </NavItem>
-          <NavItem onClick={handleNavLinkClick} href={`#portfolio`}>
-            {PORTFOLIO}
+          <NavItem href="/" onClick={handleLinkClick}>
+            {t('Contact Me', '연락하기')}
           </NavItem>
-          <li onClick={handleNavLinkClick}>
+          <motion.li
+            className="grow flex items-end md:items-center"
+            variants={{
+              mobileOpen: { opacity: 1 },
+              mobileClosed: { opacity: 0 },
+              desktop: { opacity: 1 },
+            }}
+            onClick={handleLinkClick}
+          >
             <LangSelect lang={lang} />
-          </li>
-        </ul>
+          </motion.li>
+        </motion.ul>
       </Container>
-    </nav>
+    </motion.nav>
   );
 }
 
 function NavItem({
-  onClick: handleClick,
   href,
+  onClick,
   children,
 }: {
-  onClick?: React.MouseEventHandler;
   href: string;
+  onClick?: MouseEventHandler<HTMLLIElement>;
   children?: React.ReactNode;
 }) {
   return (
-    <li
-      onClick={handleClick}
-      className="mb-8 md:mb-0 font-light md:font-normal text-xl md:text-base hover:text-primary"
+    <motion.li
+      onClick={onClick}
+      className="mb-6 md:mb-0 md:mr-8 py-1 text-lg md:text-base text-faded"
+      variants={{
+        mobileOpen: { opacity: 1 },
+        mobileClosed: { opacity: 0 },
+        desktop: { opacity: 1 },
+      }}
     >
-      <a href={href}>{children}</a>
-    </li>
+      <Link href={href}>{children}</Link>
+    </motion.li>
   );
 }

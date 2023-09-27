@@ -1,19 +1,20 @@
+export const containerClassName =
+  'mx-auto w-full max-w-7xl px-8 md:px-16 2xl:px-0';
+
+export const containerNoPaddingXOnMobileClassName =
+  'mx-auto w-full md:max-w-7xl md:px-16 2xl:px-0';
+
 export default function Container({
+  noPaddingXOnMobile,
+  className = '',
   children,
-  className,
-  mobilePaddingX = 'px-8',
 }: {
-  children?: React.ReactNode;
+  noPaddingXOnMobile?: boolean;
   className?: string;
-  mobilePaddingX?: string;
+  children?: React.ReactNode;
 }) {
-  return (
-    <div
-      className={`mx-auto w-full max-w-7xl ${mobilePaddingX} md:px-16 2xl:px-0 ${
-        className || ''
-      }`}
-    >
-      {children}
-    </div>
-  );
+  const base = noPaddingXOnMobile
+    ? containerNoPaddingXOnMobileClassName
+    : containerClassName;
+  return <div className={`${base} ${className}`}>{children}</div>;
 }

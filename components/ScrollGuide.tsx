@@ -19,7 +19,7 @@ export default function ScrollGuide({
   return (
     <div
       onClick={handleClick}
-      className={`group absolute left-1/2 -translate-x-1/2 bottom-6 flex flex-col justify-center items-center text-sm text-primary hover:text-primary-variant ${
+      className={`group absolute left-1/2 -translate-x-1/2 bottom-8 flex flex-col justify-center items-center text-sm text-primary hover:text-primary-variant ${
         scrollTo ? 'cursor-pointer' : ''
       }`}
     >
