@@ -39,6 +39,18 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
     LEARN_MORE,
   } = dict[lang];
 
+  const handleViewPortfolioClick = () => {
+    document
+      .querySelector('#section__projects')
+      ?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleContactClick = () => {
+    document
+      .querySelector('#section__contact')
+      ?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <Section id="home" className="relative">
       <Container className="py-24 min-h-screen relative flex justify-center md:justify-between items-center ">
@@ -70,10 +82,16 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
             {SUBTITLE_2}
           </p>
           <div className="flex flex-col sm:items-start sm:flex-row sm:space-x-4 space-y-4 sm:space-y-0">
-            <button className="px-6 py-3 md:py-2 rounded-md bg-background-on font-medium text-background transition-colors hover:bg-primary hover:text-primary-on">
+            <button
+              onClick={handleViewPortfolioClick}
+              className="px-6 py-3 md:py-2 rounded-md bg-background-on font-medium text-background transition-colors hover:bg-primary hover:text-primary-on"
+            >
               {VIEW_PORTFOLIO}
             </button>
-            <button className="px-6 py-3 md:py-2 rounded-md border-2 border-background-on font-medium text-background-on transition-colors hover:border-primary hover:text-primary">
+            <button
+              onClick={handleContactClick}
+              className="px-6 py-3 md:py-2 rounded-md border-2 border-background-on font-medium text-background-on transition-colors hover:border-primary hover:text-primary"
+            >
               {CONTACT_ME}
             </button>
           </div>

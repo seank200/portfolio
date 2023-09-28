@@ -24,7 +24,7 @@ export default function ContactSection({
 }) {
   const { CONTACT_ME, CFA, GITHUB, LINKEDIN, EMAIL } = dict[lang];
   return (
-    <Section className={`${className || ''}`}>
+    <Section className={`${className || ''}`} id="section__contact">
       <Container>
         <SectionHeading>{CONTACT_ME}</SectionHeading>
         <p>{CFA}</p>
