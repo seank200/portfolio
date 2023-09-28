@@ -1,6 +1,8 @@
 import Container from '@/components/Container';
 import Section from '@/components/home/Section';
 import SectionHeading from '@/components/home/SectionHeading';
+import ContactSection from '@/components/home/sections/ContactSection';
+import ExperienceSection from '@/components/home/sections/ExperienceSection';
 import HeroSection from '@/components/home/sections/HeroSection';
 import PoolinkSection from '@/components/home/sections/PoolinkSection';
 import SigmateSection from '@/components/home/sections/SigmateSection';
@@ -39,6 +41,8 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
       </Section>
       <SigmateSection lang={lang} className="py-8" />
       <PoolinkSection lang={lang} className="py-8" />
+      <ExperienceSection lang={lang} className="py-8" />
+      <ContactSection lang={lang} className="py-8" />
     </>
   );
 }

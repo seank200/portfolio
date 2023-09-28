@@ -2,6 +2,7 @@ import { xor } from 'lodash';
 import { DateTime } from 'luxon';
 
 export type SupportedLang = 'en' | 'ko';
+type TimePrecisionOption = 'year' | 'month' | 'day';
 
 export const SUPPORTED_LANGS = ['en', 'ko'];
 
@@ -55,11 +56,35 @@ export const createIntlDict = <
   });
 };
 
+export function formatTime(
+  lang: SupportedLang,
+  time: Date | DateTime | null,
+  options: { precision?: TimePrecisionOption } = {}
+) {
+  if (!time) return lang === 'ko' ? '현재' : 'Current';
+  const { precision = 'month' } = options;
+  const opts: Intl.DateTimeFormatOptions = {};
+  switch (precision) {
+    case 'day':
+      opts.day = 'numeric';
+    // eslint-disable-next-line no-fallthrough
+    case 'month':
+      opts.month = 'short';
+    // eslint-disable-next-line no-fallthrough
+    case 'year':
+      opts.year = 'numeric';
+      break;
+  }
+  const locale = lang === 'ko' ? 'ko-KR' : 'en-US';
+  const dtfmt = new Intl.DateTimeFormat(locale, opts);
+  return dtfmt.format(time instanceof DateTime ? time.toJSDate() : time);
+}
+
 export function formatTimePeriod(
   lang: SupportedLang,
   startedAt: Date | DateTime,
   endedAt: Date | DateTime | null | undefined = null,
-  options: { precision?: 'year' | 'month' | 'day' } = {}
+  options: { precision?: TimePrecisionOption } = {}
 ) {
   const { precision = 'month' } = options;
   const sep = lang === 'ko' ? '~' : '-';
