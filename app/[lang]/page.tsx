@@ -33,7 +33,7 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
   return (
     <>
       <HeroSection lang={lang} />
-      <Section className="pt-8">
+      <Section id="section__projects" className="pt-8">
         <Container>
           <SectionHeading>{H_PROJECTS}</SectionHeading>
           <p className="text-faded text-lg leading-relaxed">{D_PROJECTS}</p>

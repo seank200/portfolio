@@ -80,7 +80,7 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
         </div>
         <Memoji />
       </Container>
-      <ScrollGuide scrollTo="#work-experience">{LEARN_MORE}</ScrollGuide>
+      <ScrollGuide scrollTo="#section__projects">{LEARN_MORE}</ScrollGuide>
     </Section>
   );
 }

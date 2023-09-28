@@ -12,8 +12,9 @@ export default function ScrollGuide({
   children?: React.ReactNode;
 }) {
   const handleClick = () => {
-    if (!scrollTo) return;
-    document.querySelector(scrollTo)?.scrollIntoView({ behavior: 'smooth' });
+    if (scrollTo) {
+      document.querySelector(scrollTo)?.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

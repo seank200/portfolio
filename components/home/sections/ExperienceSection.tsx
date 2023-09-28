@@ -191,7 +191,7 @@ export default function ExperienceSection({
   const offsetY = useTransform(scrollYProgress, [0, 1], [600, 0]);
 
   return (
-    <Section className={`${className} || ''`}>
+    <Section className={`${className || ''}`}>
       <Container>
         <SectionHeading>{t('Résumé', '이력서')}</SectionHeading>
         <div className="relative flex items-start">
