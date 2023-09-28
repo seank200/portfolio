@@ -39,7 +39,6 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
       </Section>
       <SigmateSection lang={lang} className="py-8" />
       <PoolinkSection lang={lang} className="py-8" />
-      <section className="h-screen"></section>
     </>
   );
 }

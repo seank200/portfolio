@@ -32,7 +32,7 @@ export default function ThemeSelect({ lang }: { lang: string }) {
     <div className="relative rounded-full p-1 bg-background-on/10 flex flex-row items-center">
       <button
         className={`p-2 rounded-full flex justify-center items-center ${
-          userTheme === 'light' ? selectedClass : ''
+          userTheme === 'light' ? selectedClass : 'hover:bg-background-on/20'
         }`}
         title={t('Theme: Light', '테마: 밝음')}
       >
@@ -44,7 +44,7 @@ export default function ThemeSelect({ lang }: { lang: string }) {
       </button>
       <button
         className={`p-2 rounded-full flex justify-center items-center ${
-          userTheme === 'dark' ? selectedClass : ''
+          userTheme === 'dark' ? selectedClass : 'hover:bg-background-on/20'
         }`}
         title={t('Theme: Dark', '테마: 어두움')}
       >
@@ -56,7 +56,7 @@ export default function ThemeSelect({ lang }: { lang: string }) {
       </button>
       <button
         className={`p-2 rounded-full flex justify-center items-center ${
-          userTheme === null ? selectedClass : ''
+          userTheme === null ? selectedClass : 'hover:bg-background-on/20'
         }`}
         title={t('Theme: Auto', '테마: 자동')}
       >
