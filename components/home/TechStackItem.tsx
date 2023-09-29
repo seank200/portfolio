@@ -25,7 +25,7 @@ export default function TechStackItem({
   const contents = (
     <>
       {icon}
-      <span className="mt-3 text-sm md:text-base leading-tight md:leading-tight text-center text-faded font-medium">
+      <span className="mt-3 text-sm leading-tight md:leading-tight text-center text-faded font-medium">
         {label}
       </span>
     </>

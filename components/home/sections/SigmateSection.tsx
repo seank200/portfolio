@@ -44,6 +44,12 @@ import {
   TSPm2,
   TSTypeScript,
 } from '../TechStackItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faLightbulb,
+  faServer,
+  faStar,
+} from '@fortawesome/free-solid-svg-icons';
 
 const sigmateDict = createIntlDict(
   {
@@ -172,7 +178,13 @@ export default function SigmateSection({
           period={period}
           description={DESCRIPTION}
         />
-        <h4 className="mt-10 mb-4 text-2xl font-semibold">💻 {H_TECH_STACK}</h4>
+        <h4 className="mt-10 mb-4 text-xl font-semibold">
+          <FontAwesomeIcon
+            icon={faServer}
+            className="mr-3 text-cyan-500 dark:text-cyan-300"
+          />
+          {H_TECH_STACK}
+        </h4>
         <TechStack>
           <TSNodeJS />
           <TSTypeScript />
@@ -184,12 +196,24 @@ export default function SigmateSection({
           <TSGNUBash />
           <TSGithubActions />
         </TechStack>
-        <h4 className="mt-12 mb-2 text-2xl font-semibold">🎯 {H_MY_ROLE}</h4>
+        <h4 className="mt-12 mb-2 text-xl font-semibold">
+          <FontAwesomeIcon
+            icon={faStar}
+            className="mr-3 text-yellow-400 dark:text-yellow-300"
+          />
+          {H_MY_ROLE}
+        </h4>
         <ProjectMyRoleList items={DETAILS} />
       </Container>
       <div className="relative">
         <Container className="md:sticky top-0 md:min-h-screen hidden md:flex flex-col justify-center items-start">
-          <h4 className="mb-6 text-2xl font-semibold">💡 {H_FEAT}</h4>
+          <h4 className="mb-6 text-xl font-semibold">
+            <FontAwesomeIcon
+              icon={faLightbulb}
+              className="mr-3 text-orange-500 dark:text-orange-400"
+            />
+            {H_FEAT}
+          </h4>
           <FeatureHighlight
             heading={H_FEAT_1}
             body={FEAT_1}
@@ -240,7 +264,7 @@ export default function SigmateSection({
               width={1158}
               className="shrink-0 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
             />
-            <p className="mt-8 block px-8 md:px-0 text-center text-faded text-lg">
+            <p className="mt-8 block px-8 md:px-0 text-center text-faded">
               {FEAT_1_CAPTION}
             </p>
           </FeatureImage>
@@ -265,7 +289,7 @@ export default function SigmateSection({
               width={1158}
               className="w-1/2 hover:scale-102 transition-transform -translate-y-1/4 shadow-lg shadow-background-on/20"
             />
-            <p className="px-8 md:px-0 text-center text-faded text-lg">
+            <p className="px-8 md:px-0 text-center text-faded">
               {FEAT_2_CAPTION}
             </p>
           </FeatureImage>
@@ -283,7 +307,7 @@ export default function SigmateSection({
                   src={sigmateUIValuationUtility}
                   alt="Sigmate UI: Valuation (Utility)"
                   width={600}
-                  className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20"
+                  className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20 rounded-lg"
                 />
               </div>
               <div>
@@ -291,7 +315,7 @@ export default function SigmateSection({
                   src={sigmateUIValuationFunding}
                   alt="Sigmate UI: Valuation (Funding)"
                   width={600}
-                  className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20"
+                  className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20 rounded-lg"
                 />
               </div>
               <div>
@@ -299,11 +323,11 @@ export default function SigmateSection({
                   src={sigmateUIValuationSocialHype}
                   alt="Sigmate UI: Valuation (Social Hype)"
                   width={600}
-                  className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20"
+                  className="hover:scale-104 transition-transform shadow-lg shadow-background-on/20 rounded-lg"
                 />
               </div>
             </div>
-            <p className="mt-8 px-8 md:px-0 text-center text-faded text-lg">
+            <p className="mt-8 px-8 md:px-0 text-center text-faded">
               {FEAT_3_CAPTION}
             </p>
           </FeatureImage>
@@ -367,7 +391,7 @@ function FeatureHighlight({
       whileHover="hover"
     >
       <motion.h5
-        className="mb-2 text-2xl text-faded font-bold"
+        className="mb-2 text-xl text-faded font-bold"
         variants={{
           selected: { color: 'var(--rgb-primary)' },
           normal: { color: 'var(--rgb-faded)' },

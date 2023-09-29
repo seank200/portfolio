@@ -348,7 +348,7 @@ function ExperienceItem({
       onViewportEnter={() => setCurrentItem(name)}
     >
       <p className="mb-2 font-medium text-primary">{period}</p>
-      <h3 className="mb-2 flex flex-wrap items-center gap-4 text-3xl font-bold">
+      <h3 className="mb-2 flex flex-wrap items-center gap-4 text-2xl font-bold">
         {title}
         {category && (
           <span className="px-2 py-1 bg-primary/10 dark:bg-primary/30 text-sm font-medium">
@@ -356,11 +356,11 @@ function ExperienceItem({
           </span>
         )}
       </h3>
-      {division && <p className="text-lg text-faded">{division}</p>}
-      {affiliation && <p className="text-lg text-faded">{affiliation}</p>}
-      {location && <p className="text-lg text-faded">{location}</p>}
+      {division && <p className="text-faded">{division}</p>}
+      {affiliation && <p className="text-faded">{affiliation}</p>}
+      {location && <p className="text-faded">{location}</p>}
       {contents && (
-        <ul className="mt-6 text-lg leading-relaxed list-inside list-disc">
+        <ul className="mt-6 leading-relaxed list-inside list-disc">
           {contents.map((content, idx) => (
             <li key={idx}>{content}</li>
           ))}

@@ -26,7 +26,7 @@
   }
 
   .dark:root {
-    --color-primary: 131, 71, 235;
+    --color-primary: 150, 101, 236;
     --color-primary-variant: 122, 52, 244;
     --color-primary-on: 249, 250, 251;
     --color-secondary: 28, 106, 232;
@@ -34,8 +34,8 @@
     --color-secondary-on: 249, 250, 251;
     --color-background: 15, 23, 42;
     --color-background-variant: 18, 28, 51;
-    --color-background-on: 244, 244, 246;
-    --color-surface: 31, 39, 56;
+    --color-background-on: 227, 227, 232;
+    --color-surface: 34, 43, 63;
     --color-surface-on: 244, 244, 246;
     --color-faded: 148, 163, 184;
     --color-faded-variant: 100, 116, 139;
@@ -59,7 +59,7 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      --color-primary: 131, 71, 235;
+      --color-primary: 150, 101, 236;
       --color-primary-variant: 122, 52, 244;
       --color-primary-on: 249, 250, 251;
       --color-secondary: 28, 106, 232;
@@ -67,8 +67,8 @@
       --color-secondary-on: 249, 250, 251;
       --color-background: 15, 23, 42;
       --color-background-variant: 18, 28, 51;
-      --color-background-on: 244, 244, 246;
-      --color-surface: 31, 39, 56;
+      --color-background-on: 227, 227, 232;
+      --color-surface: 34, 43, 63;
       --color-surface-on: 244, 244, 246;
       --color-faded: 148, 163, 184;
       --color-faded-variant: 100, 116, 139;

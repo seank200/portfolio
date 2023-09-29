@@ -112,7 +112,7 @@ export const expLink: Record<ExperienceItem, string> = {
   ucn: 'https://www.hcss.or.kr/html/',
   anl: 'https://www.anl.gov',
   facade: '',
-  yonseiBC: 'https://uic.yonsei.ac.kr/main/default.asp',
+  yonseiBC: 'https://uic.yonsei.ac.kr/main/major.asp?mid=m02_04_03',
   yonseiCS: 'https://cs.yonsei.ac.kr',
   poolink: '',
   ceos: 'https://ceos-sinchon.com',

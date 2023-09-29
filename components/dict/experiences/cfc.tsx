@@ -15,9 +15,9 @@ export const cfcDict = createIntlDict(
     ],
   },
   {
-    TITLE: '어학병/공군 병장',
+    TITLE: '어학병',
     CATEGORY: '군 복무',
-    DIVISION: '병장 만기제대',
+    DIVISION: '대한민국 공군 병797기 병장 만기제대',
     AFFILIATION: '한미연합군사령부',
     LOCATION: '서울 용산',
   }

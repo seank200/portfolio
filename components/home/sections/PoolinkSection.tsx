@@ -19,6 +19,12 @@ import {
   TSReactJS,
   TSVercel,
 } from '../TechStackItem';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faLightbulb,
+  faMicrochip,
+  faStar,
+} from '@fortawesome/free-solid-svg-icons';
 
 export default function PoolinkSection({
   lang,
@@ -53,16 +59,34 @@ export default function PoolinkSection({
           period={period}
           description={DESCRIPTION}
         />
-        <h4 className="mt-10 mb-4 text-2xl font-semibold">💻 {H_TECH_STACK}</h4>
+        <h4 className="mt-10 mb-4 text-xl font-semibold">
+          <FontAwesomeIcon
+            icon={faMicrochip}
+            className="mr-3 text-cyan-500 dark:text-cyan-300"
+          />
+          {H_TECH_STACK}
+        </h4>
         <TechStack>
           <TSReactJS />
           <TSJavaScript />
           <TSGithubActions />
           <TSVercel />
         </TechStack>
-        <h4 className="mt-12 mb-2 text-2xl font-semibold">🎯 {H_MY_ROLE}</h4>
+        <h4 className="mt-12 mb-2 text-xl font-semibold">
+          <FontAwesomeIcon
+            icon={faStar}
+            className="mr-3 text-yellow-400 dark:text-yellow-300"
+          />
+          {H_MY_ROLE}
+        </h4>
         <ProjectMyRoleList items={DETAILS} />
-        <h4 className="mt-16 mb-2 text-2xl font-semibold">💡 {H_OVERVIEW}</h4>
+        <h4 className="mt-16 mb-2 text-xl font-semibold">
+          <FontAwesomeIcon
+            icon={faLightbulb}
+            className="mr-3 text-orange-500 dark:text-orange-400"
+          />
+          {H_OVERVIEW}
+        </h4>
       </Container>
       <div className="py-8 relative w-full">
         <PoolinkHero lang={lang} />

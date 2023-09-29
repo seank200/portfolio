@@ -7,13 +7,34 @@ import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faArrowRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
-const dict = createIntlDict({
-  CONTACT_ME: 'Contact Me',
-  CFA: 'Thank you for visiting my portfolio. I am currently open for hire, and you can reach out to me using the links below.',
-  GITHUB: 'Github',
-  LINKEDIN: 'LinkedIn',
-  EMAIL: 'Email',
-});
+const dict = createIntlDict(
+  {
+    CONTACT_ME: 'Contact Me',
+    CFA: (
+      <>
+        Thank you for visiting my portfolio. I am currently{' '}
+        <b>[open for hire]</b>, and you can reach out to me using the links
+        below.
+      </>
+    ),
+    GITHUB: 'Github',
+    LINKEDIN: 'LinkedIn',
+    EMAIL: 'Email',
+  },
+  {
+    CONTACT_ME: '연락하기',
+    CFA: (
+      <>
+        제 포트폴리오를 방문해주셔서 감사합니다. 저는 현재 <b>[구직중]</b>이며,
+        아래 링크를 통해 저에 대해 더 많은 정보를 얻으시거나, 저에게 연락하실 수
+        있습니다.
+      </>
+    ),
+    GITHUB: '깃허브',
+    LINKEDIN: '링크드인',
+    EMAIL: '이메일',
+  }
+);
 
 export default function ContactSection({
   lang,
