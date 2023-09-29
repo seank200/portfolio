@@ -173,76 +173,56 @@ export default function PoolinkFeatures({ lang }: { lang: SupportedLang }) {
   };
 
   return (
-    <div className="relative py-8">
-      <div className="w-full min-h-screen sticky top-0 flex flex-col justify-center items-start">
-        <div className="w-full flex justify-center">
-          <FeatureButton
-            onClick={featureClickHandler.save}
-            selected={highlighted === 'save'}
-          >
-            {FEAT_SAVE}
-          </FeatureButton>
-          <FeatureButton
-            onClick={featureClickHandler.explore}
-            selected={highlighted === 'explore'}
-          >
-            {FEAT_EXPLORE}
-          </FeatureButton>
-          <FeatureButton
-            onClick={featureClickHandler.share}
-            selected={highlighted === 'share'}
-          >
-            {FEAT_SHARE}
-          </FeatureButton>
-        </div>
-        <motion.div
-          className="relative w-full py-12 overflow-x-hidden overflow-y-visible"
-          animate={highlighted}
+    <div className="mt-16 py-8 w-full flex flex-col justify-center items-start">
+      <div className="w-full flex justify-center">
+        <FeatureButton
+          onClick={featureClickHandler.save}
+          selected={highlighted === 'save'}
         >
-          <FeatureHighlight
-            heading={SAVE_H}
-            description={SAVE_DESC}
-            imgSrc={poolinkScreenShot1}
-            imgAlt="Create board modal"
-            className="relative"
-            variants={motionVariants.save}
-          />
-          <FeatureHighlight
-            heading={EXPLORE_H}
-            description={EXPLORE_DESC}
-            imgSrc={poolinkScreenShot2}
-            imgAlt="Explore tab"
-            className="absolute top-1/2 -translate-y-1/2"
-            variants={motionVariants.explore}
-          />
-          <FeatureHighlight
-            heading={SHARE_H}
-            description={SHARE_DESC}
-            imgSrc={poolinkScreenShot3}
-            imgAlt="Share menu"
-            className="absolute top-1/2 -translate-y-1/2"
-            variants={motionVariants.share}
-          />
-        </motion.div>
+          {FEAT_SAVE}
+        </FeatureButton>
+        <FeatureButton
+          onClick={featureClickHandler.explore}
+          selected={highlighted === 'explore'}
+        >
+          {FEAT_EXPLORE}
+        </FeatureButton>
+        <FeatureButton
+          onClick={featureClickHandler.share}
+          selected={highlighted === 'share'}
+        >
+          {FEAT_SHARE}
+        </FeatureButton>
       </div>
       <motion.div
-        viewport={{ once: false, amount: 0.5 }}
-        onViewportEnter={() => setHighlighted('save')}
-        className="h-screen -z-10 absolute top-8 left-0 right-0"
-        ref={scrollDiv1}
-      ></motion.div>
-      <motion.div
-        viewport={{ once: false, amount: 0.5 }}
-        onViewportEnter={() => setHighlighted('explore')}
-        className="h-screen"
-        ref={scrollDiv2}
-      ></motion.div>
-      <motion.div
-        viewport={{ once: false, amount: 0.5 }}
-        onViewportEnter={() => setHighlighted('share')}
-        className="h-screen"
-        ref={scrollDiv3}
-      ></motion.div>
+        className="relative w-full py-12 overflow-x-hidden overflow-y-visible"
+        animate={highlighted}
+      >
+        <FeatureHighlight
+          heading={SAVE_H}
+          description={SAVE_DESC}
+          imgSrc={poolinkScreenShot1}
+          imgAlt="Create board modal"
+          className="relative"
+          variants={motionVariants.save}
+        />
+        <FeatureHighlight
+          heading={EXPLORE_H}
+          description={EXPLORE_DESC}
+          imgSrc={poolinkScreenShot2}
+          imgAlt="Explore tab"
+          className="absolute top-1/2 -translate-y-1/2"
+          variants={motionVariants.explore}
+        />
+        <FeatureHighlight
+          heading={SHARE_H}
+          description={SHARE_DESC}
+          imgSrc={poolinkScreenShot3}
+          imgAlt="Share menu"
+          className="absolute top-1/2 -translate-y-1/2"
+          variants={motionVariants.share}
+        />
+      </motion.div>
     </div>
   );
 }
