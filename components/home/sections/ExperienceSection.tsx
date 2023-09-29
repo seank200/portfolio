@@ -1,16 +1,22 @@
 'use client';
 
-import { useState, useRef, SetStateAction } from 'react';
+import { useState, useRef, SetStateAction, useEffect } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { motion, MotionValue, useScroll, useTransform } from 'framer-motion';
-import { DateTime } from 'luxon';
+import mapValues from 'lodash/mapValues';
+import throttle from 'lodash/throttle';
 import {
   SupportedLang,
-  createIntlDict,
   createTranslator,
   formatTime,
   formatTimePeriod,
 } from '@/i18n';
+import {
+  ExperienceItem,
+  expPeriod,
+  expDict,
+  expLink,
+} from '@/components/dict/experiences';
 import Section from '../Section';
 import SectionHeading from '../SectionHeading';
 import Container from '@/components/Container';
@@ -20,125 +26,8 @@ import FacadeLogo from '@images/LOGO_Facade.png';
 import YonseiLogo from '@images/LOGO_Yonsei.jpg';
 import YonseiRCLogo from '@images/LOGO_Yonsei_RC.png';
 import CFCLogo from '@images/LOGO_CFC.png';
-
-type ExperienceItem =
-  | 'anl'
-  | 'ucn'
-  | 'facade'
-  | 'yonseiCS'
-  | 'yonseiBC'
-  | 'cfc'
-  | 'yicrc';
-
-const dict = createIntlDict({
-  UCN_TITLE: 'Research Assistant',
-  UCN_DIVISION: 'Underwood Computational Neuroscience Laboratory',
-  UCN_AFFILIATION: 'Yonsei University HCSS',
-  UCN_LOCATION: 'Seoul, S. Korea',
-  UCN_DETAILS: [
-    'Etiam tincidunt dui ut ligula tempor cursus. Ut eget eros vitae leo placerat lacinia. Sed a semper neque.',
-    'Integer consequat arcu ut nibh euismod, nec viverra ligula vestibulum. Cras varius lectus vel dolor auctor aliquam.',
-    'Quisque velit risus, consectetur in efficitur quis, tristique finibus tellus.',
-    'Nullam pharetra elementum velit ut malesuada. Maecenas ut diam quis ligula vulputate rutrum',
-    'Integer pellentesque nibh eu diam imperdiet volutpat. Suspendisse lobortis lorem eu nibh imperdiet molestie.',
-  ],
-  ANL_TITLE: 'Postbachelorette Appointee',
-  ANL_DIVISION: 'Mathematics and Computer Science Division',
-  ANL_AFFILIATION: 'Argonne National Laboratory',
-  ANL_LOCATION: 'Lemont, IL, USA 🇺🇸',
-  ANL_DETAILS: [
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut lorem quis orci ornare efficitur vel id urna.',
-    'Etiam tincidunt dui ut ligula tempor cursus. Ut eget eros vitae leo placerat lacinia. Sed a semper neque.',
-    'Quisque velit risus, consectetur in efficitur quis, tristique finibus tellus.',
-    'Integer consequat arcu ut nibh euismod, nec viverra ligula vestibulum. Cras varius lectus vel dolor auctor aliquam.',
-    'Integer pellentesque nibh eu diam imperdiet volutpat. Suspendisse lobortis lorem eu nibh imperdiet molestie.',
-    'Nullam pharetra elementum velit ut malesuada. Maecenas ut diam quis ligula vulputate rutrum',
-  ],
-  FACADE_TITLE: 'CTO/Backend Developer',
-  FACADE_AFFILIATION: 'Facade Inc.',
-  FACADE_LOCATION: 'Seoul, S. Korea',
-  FACADE_DETAILS: [
-    'Etiam tincidunt dui ut ligula tempor cursus. Ut eget eros vitae leo placerat lacinia. Sed a semper neque.',
-    'Integer consequat arcu ut nibh euismod, nec viverra ligula vestibulum. Cras varius lectus vel dolor auctor aliquam.',
-    'Quisque velit risus, consectetur in efficitur quis, tristique finibus tellus.',
-    'Nullam pharetra elementum velit ut malesuada. Maecenas ut diam quis ligula vulputate rutrum',
-    'Integer pellentesque nibh eu diam imperdiet volutpat. Suspendisse lobortis lorem eu nibh imperdiet molestie.',
-  ],
-  YONSEI_CS_TITLE: 'B.S.E. in Computer Science (Double Major)',
-  YONSEI_CS_DIVISION: 'College of Computing',
-  YONSEI_CS_AFFILIATION: 'Yonsei University',
-  YONSEI_CS_LOCATION: 'Seoul, S. Korea',
-  YONSEI_BC_TITLE: 'B.S.E. in Bio-Convergence',
-  YONSEI_BC_DIVISION: 'Underwood International College',
-  YONSEI_BC_AFFILIATION: 'Yonsei University',
-  YONSEI_BC_LOCATION: 'Seoul, S. Korea',
-  CFC_TITLE: 'SSgt/Language Specialist',
-  CFC_AFFILIATION: 'R.O.K. - U.S. Combined Forces Command',
-  CFC_DETAILS: [
-    'Quisque velit risus, consectetur in efficitur quis, tristique finibus tellus.',
-    'Etiam tincidunt dui ut ligula tempor cursus. Ut eget eros vitae leo placerat lacinia. Sed a semper neque.',
-    'Nullam pharetra elementum velit ut malesuada. Maecenas ut diam quis ligula vulputate rutrum',
-    'Integer pellentesque nibh eu diam imperdiet volutpat. Suspendisse lobortis lorem eu nibh imperdiet molestie.',
-  ],
-  YICRC_TITLE: 'Vice Chief Residential Assistant',
-  YICRC_DIVISION: 'Yonsei Residential College',
-  YICRC_AFFILIATION: 'Yonsei University',
-  YICRC_LOCATION: 'Incheon, S. Korea',
-  YICRC_DETAILS: [
-    'Etiam tincidunt dui ut ligula tempor cursus. Ut eget eros vitae leo placerat lacinia. Sed a semper neque.',
-    'Quisque velit risus, consectetur in efficitur quis, tristique finibus tellus.',
-    'Nullam pharetra elementum velit ut malesuada. Maecenas ut diam quis ligula vulputate rutrum',
-    'Integer pellentesque nibh eu diam imperdiet volutpat. Suspendisse lobortis lorem eu nibh imperdiet molestie.',
-  ],
-});
-
-const periodEnd: Record<ExperienceItem, DateTime | Date | null> = {
-  ucn: null,
-  anl: DateTime.fromObject({ year: 2023, month: 8 }),
-  facade: DateTime.fromObject({ year: 2023, month: 2 }),
-  yonseiCS: DateTime.fromObject({ year: 2023, month: 2 }),
-  yonseiBC: DateTime.fromObject({ year: 2023, month: 2 }),
-  cfc: DateTime.fromObject({ year: 2020, month: 12 }),
-  yicrc: DateTime.fromObject({ year: 2018, month: 12 }),
-};
-
-const getPeriod = (lang: SupportedLang): Record<ExperienceItem, string> => ({
-  ucn: formatTimePeriod(
-    lang,
-    DateTime.fromObject({ year: 2021, month: 9 }),
-    periodEnd.ucn
-  ),
-  anl: formatTimePeriod(
-    lang,
-    DateTime.fromObject({ year: 2023, month: 6 }),
-    periodEnd.anl
-  ),
-  facade: formatTimePeriod(
-    lang,
-    DateTime.fromObject({ year: 2022, month: 3 }),
-    periodEnd.facade
-  ),
-  yonseiCS: formatTimePeriod(
-    lang,
-    DateTime.fromObject({ year: 2017, month: 3 }),
-    periodEnd.yonseiCS
-  ),
-  yonseiBC: formatTimePeriod(
-    lang,
-    DateTime.fromObject({ year: 2017, month: 3 }),
-    periodEnd.yonseiCS
-  ),
-  cfc: formatTimePeriod(
-    lang,
-    DateTime.fromObject({ year: 2019, month: 2 }),
-    periodEnd.cfc
-  ),
-  yicrc: formatTimePeriod(
-    lang,
-    DateTime.fromObject({ year: 2018, month: 3 }),
-    periodEnd.yicrc
-  ),
-});
+import PoolinkLogo from '@images/LOGO_Poolink.png';
+import CEOSLogo from '@images/LOGO_CEOS.png';
 
 export default function ExperienceSection({
   lang,
@@ -148,56 +37,125 @@ export default function ExperienceSection({
   className?: string;
 }) {
   const t = createTranslator(lang);
-  const {
-    UCN_TITLE,
-    UCN_DIVISION,
-    UCN_AFFILIATION,
-    UCN_LOCATION,
-    ANL_TITLE,
-    ANL_DIVISION,
-    ANL_AFFILIATION,
-    ANL_LOCATION,
-    FACADE_TITLE,
-    FACADE_AFFILIATION,
-    FACADE_LOCATION,
-    YONSEI_CS_TITLE,
-    YONSEI_CS_DIVISION,
-    YONSEI_CS_AFFILIATION,
-    YONSEI_CS_LOCATION,
-    YONSEI_BC_TITLE,
-    YONSEI_BC_DIVISION,
-    YONSEI_BC_AFFILIATION,
-    YONSEI_BC_LOCATION,
-    CFC_TITLE,
-    CFC_AFFILIATION,
-    YICRC_TITLE,
-    YICRC_DIVISION,
-    YICRC_AFFILIATION,
-    YICRC_LOCATION,
-  } = dict[lang];
-  const period = getPeriod(lang);
-  const ANL_DETAILS = dict[lang].ANL_DETAILS as React.ReactNode[];
-  const UCN_DETAILS = dict[lang].UCN_DETAILS as React.ReactNode[];
-  const FACADE_DETAILS = dict[lang].FACADE_DETAILS as React.ReactNode[];
-  const CFC_DETAILS = dict[lang].CFC_DETAILS as React.ReactNode[];
-  const YICRC_DETAILS = dict[lang].YICRC_DETAILS as React.ReactNode[];
+  const fExpPeriod = mapValues(expPeriod, (period) =>
+    formatTimePeriod(lang, period.start, period.end, {
+      precision: period.precision,
+    })
+  );
+  const expPeriodEnd = mapValues(expPeriod, (period) => period.end);
 
   const [currentItem, setCurrentItem] = useState<ExperienceItem>('ucn');
+  const [windowH, setWindowH] = useState<number>(500);
+  const timelineHeight = windowH - 152;
   const contentDiv = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: contentDiv,
     offset: ['end end', 'start start'],
   });
-  const offsetY = useTransform(scrollYProgress, [0, 1], [600, 0]);
+  const offsetY = useTransform(scrollYProgress, [0, 1], [timelineHeight, 0]);
+
+  const {
+    ucn: UCN_PERIOD,
+    anl: ANL_PERIOD,
+    facade: FACADE_PERIOD,
+    yonseiBC: YONSEI_BC_PERIOD,
+    yonseiCS: YONSEI_CS_PERIOD,
+    poolink: POOLINK_PERIOD,
+    ceos: CEOS_PERIOD,
+    cfc: CFC_PERIOD,
+    yicrc: YICRC_PERIOD,
+  } = fExpPeriod;
+
+  const {
+    TITLE: UCN_TITLE,
+    DIVISION: UCN_DIVISION,
+    AFFILIATION: UCN_AFFILIATION,
+    LOCATION: UCN_LOCATION,
+    CATEGORY: UCN_CATEGORY,
+  } = expDict.ucn[lang];
+  const UCN_DETAILS = expDict.ucn[lang].DETAILS as React.ReactNode[];
+
+  const {
+    TITLE: ANL_TITLE,
+    DIVISION: ANL_DIVISION,
+    AFFILIATION: ANL_AFFILIATION,
+    LOCATION: ANL_LOCATION,
+    CATEGORY: ANL_CATEGORY,
+  } = expDict.anl[lang];
+  const ANL_DETAILS = expDict.anl[lang].DETAILS as React.ReactNode[];
+
+  const {
+    TITLE: FACADE_TITLE,
+    AFFILIATION: FACADE_AFFILIATION,
+    CATEGORY: FACADE_CATEGORY,
+  } = expDict.facade[lang];
+  const FACADE_DETAILS = expDict.facade[lang].DETAILS as React.ReactNode[];
+
+  const {
+    TITLE: YONSEI_BC_TITLE,
+    DIVISION: YONSEI_BC_DIVISION,
+    AFFILIATION: YONSEI_BC_AFFILIATION,
+    CATEGORY: YONSEI_BC_CATEGORY,
+    LOCATION: YONSEI_BC_LOCATION,
+  } = expDict.yonseiBC[lang];
+
+  const {
+    TITLE: YONSEI_CS_TITLE,
+    DIVISION: YONSEI_CS_DIVISION,
+    AFFILIATION: YONSEI_CS_AFFILIATION,
+    CATEGORY: YONSEI_CS_CATEGORY,
+    LOCATION: YONSEI_CS_LOCATION,
+  } = expDict.yonseiCS[lang];
+
+  const {
+    TITLE: POOLINK_TITLE,
+    AFFILIATION: POOLINK_AFFILIATION,
+    CATEGORY: POOLINK_CATEGORY,
+  } = expDict.poolink[lang];
+
+  const {
+    TITLE: CEOS_TITLE,
+    CATEGORY: CEOS_CATEGORY,
+    DIVISION: CEOS_DIVISION,
+    AFFILIATION: CEOS_AFFILIATION,
+  } = expDict.ceos[lang];
+
+  const {
+    TITLE: CFC_TITLE,
+    CATEGORY: CFC_CATEGORY,
+    DIVISION: CFC_DIVISION,
+    AFFILIATION: CFC_AFFILIATION,
+    LOCATION: CFC_LOCATION,
+  } = expDict.cfc[lang];
+  const CFC_DETAILS = expDict.cfc[lang].DETAILS as React.ReactNode[];
+
+  const {
+    TITLE: YICRC_TITLE,
+    CATEGORY: YICRC_CATEGORY,
+    DIVISION: YICRC_DIVISION,
+    AFFILIATION: YICRC_AFFILIATION,
+  } = expDict.yicrc[lang];
+  const YICRC_DETAILS = expDict.yicrc[lang].DETAILS as React.ReactNode[];
+
+  useEffect(() => {
+    setWindowH(window.innerHeight);
+    const handleResize = throttle(() => {
+      setWindowH(window.innerHeight);
+    }, 200);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
-    <Section className={`${className || ''}`}>
+    <Section id="section-experiences" className={`${className || ''}`}>
       <Container>
         <SectionHeading>{t('Résumé', '이력서')}</SectionHeading>
         <div className="relative flex items-start">
           <div className="sticky top-0 hidden mr-6 md:mr-12 shrink-0 min-h-screen md:flex flex-col justify-center">
-            <Timeline offsetY={offsetY}>
-              {formatTime(lang, periodEnd[currentItem])}
+            <Timeline height={timelineHeight} offsetY={offsetY}>
+              {formatTime(lang, expPeriodEnd[currentItem])}
             </Timeline>
           </div>
           <motion.div className="grow" ref={contentDiv}>
@@ -207,10 +165,12 @@ export default function ExperienceSection({
               affiliation={UCN_AFFILIATION}
               division={UCN_DIVISION}
               location={UCN_LOCATION}
+              category={UCN_CATEGORY}
               contents={UCN_DETAILS}
-              period={period.ucn}
+              period={UCN_PERIOD}
               logoSrc={HCSSLogo}
               logoAlt={t('HCSS', '연세대학교 시스템과학융합연구원')}
+              url={expLink.ucn}
               setCurrentItem={setCurrentItem}
             />
             <ExperienceItem
@@ -219,10 +179,24 @@ export default function ExperienceSection({
               affiliation={ANL_AFFILIATION}
               division={ANL_DIVISION}
               location={ANL_LOCATION}
+              category={ANL_CATEGORY}
               contents={ANL_DETAILS}
-              period={period.anl}
+              period={ANL_PERIOD}
               logoSrc={ANLLogo}
               logoAlt={t('Argonne National Laboratory', '아르곤 국립 연구소')}
+              url={expLink.anl}
+              setCurrentItem={setCurrentItem}
+            />
+            <ExperienceItem
+              name="facade"
+              title={FACADE_TITLE}
+              affiliation={FACADE_AFFILIATION}
+              category={FACADE_CATEGORY}
+              contents={FACADE_DETAILS}
+              period={FACADE_PERIOD}
+              logoSrc={FacadeLogo}
+              logoAlt={t('Facade Inc.', '파사드')}
+              logoHeight={24}
               setCurrentItem={setCurrentItem}
             />
             <ExperienceItem
@@ -230,10 +204,12 @@ export default function ExperienceSection({
               title={YONSEI_CS_TITLE}
               affiliation={YONSEI_CS_AFFILIATION}
               division={YONSEI_CS_DIVISION}
+              category={YONSEI_CS_CATEGORY}
               location={YONSEI_CS_LOCATION}
-              period={period.yonseiCS}
+              period={YONSEI_CS_PERIOD}
               logoSrc={YonseiLogo}
               logoAlt={t('Yonsei Univeristy', '연세대학교(신촌)')}
+              url={expLink.yonseiCS}
               setCurrentItem={setCurrentItem}
             />
             <ExperienceItem
@@ -241,32 +217,49 @@ export default function ExperienceSection({
               title={YONSEI_BC_TITLE}
               affiliation={YONSEI_BC_AFFILIATION}
               division={YONSEI_BC_DIVISION}
+              category={YONSEI_BC_CATEGORY}
               location={YONSEI_BC_LOCATION}
-              period={period.yonseiBC}
+              period={YONSEI_BC_PERIOD}
               logoSrc={YonseiLogo}
               logoAlt={t('Yonsei Univeristy', '연세대학교(신촌)')}
+              url={expLink.yonseiBC}
               setCurrentItem={setCurrentItem}
             />
             <ExperienceItem
-              name="facade"
-              title={FACADE_TITLE}
-              affiliation={FACADE_AFFILIATION}
-              location={FACADE_LOCATION}
-              contents={FACADE_DETAILS}
-              period={period.facade}
-              logoSrc={FacadeLogo}
-              logoAlt={t('Facade Inc.', '파사드')}
-              logoHeight={24}
+              name="poolink"
+              title={POOLINK_TITLE}
+              affiliation={POOLINK_AFFILIATION}
+              category={POOLINK_CATEGORY}
+              period={POOLINK_PERIOD}
+              logoSrc={PoolinkLogo}
+              logoAlt="Poolink"
+              logoHeight={28}
+              setCurrentItem={setCurrentItem}
+            />
+            <ExperienceItem
+              name="ceos"
+              title={CEOS_TITLE}
+              affiliation={CEOS_AFFILIATION}
+              division={CEOS_DIVISION}
+              category={CEOS_CATEGORY}
+              period={CEOS_PERIOD}
+              logoSrc={CEOSLogo}
+              logoAlt="CEOS"
+              url={expLink.ceos}
               setCurrentItem={setCurrentItem}
             />
             <ExperienceItem
               name="cfc"
               title={CFC_TITLE}
+              division={CFC_DIVISION}
               affiliation={CFC_AFFILIATION}
+              category={CFC_CATEGORY}
               contents={CFC_DETAILS}
-              period={period.cfc}
+              period={CFC_PERIOD}
+              location={CFC_LOCATION}
               logoSrc={CFCLogo}
               logoAlt={t('ROK-US Combined Forces Command', '한미연합군사령부')}
+              url={expLink.cfc}
               setCurrentItem={setCurrentItem}
             />
             <ExperienceItem
@@ -274,14 +267,15 @@ export default function ExperienceSection({
               title={YICRC_TITLE}
               affiliation={YICRC_AFFILIATION}
               division={YICRC_DIVISION}
-              location={YICRC_LOCATION}
+              category={YICRC_CATEGORY}
               contents={YICRC_DETAILS}
-              period={period.yicrc}
+              period={YICRC_PERIOD}
               logoSrc={YonseiRCLogo}
               logoAlt={t(
                 'Yonsei Univeristy Residential College',
                 '연세대학교 RC교육원'
               )}
+              url={expLink.yicrc}
               setCurrentItem={setCurrentItem}
             />
           </motion.div>
@@ -294,15 +288,20 @@ export default function ExperienceSection({
 function Timeline({
   offsetY,
   children,
+  height,
 }: {
   offsetY: MotionValue<number>;
+  height: number;
   children?: React.ReactNode;
 }) {
   return (
-    <div className="relative h-[600px] max-h-screen border-l-4 border-primary">
+    <div
+      style={{ height: `${height}px` }}
+      className="relative max-h-screen border-l-4 border-primary"
+    >
       <motion.div style={{ height: offsetY }}></motion.div>
       <div className="relative">
-        <motion.h3 className="relative bottom-2 block pl-6 text-primary font-semibold leading-none">
+        <motion.h3 className="ml-6 relative bottom-2 block min-w-[9ch] text-primary font-semibold leading-none">
           {children}
         </motion.h3>
         <div className="absolute -top-1 -left-0.5 -translate-x-1/2 w-3 h-3 rounded-full bg-primary"></div>
@@ -317,11 +316,13 @@ function ExperienceItem({
   affiliation,
   division,
   location,
+  category,
   contents,
   period,
   logoSrc,
   logoAlt,
   logoHeight,
+  url,
   setCurrentItem,
 }: {
   name: ExperienceItem;
@@ -329,33 +330,58 @@ function ExperienceItem({
   affiliation?: React.ReactNode;
   division?: React.ReactNode;
   location?: React.ReactNode;
+  category?: React.ReactNode;
   contents?: React.ReactNode[];
   period: string;
   logoSrc?: StaticImageData | string;
   logoAlt?: string;
   logoHeight?: number;
+  url?: string;
   setCurrentItem: React.Dispatch<SetStateAction<ExperienceItem>>;
 }) {
+  const logoClassName =
+    'mt-6 w-full rounded py-3 flex justify-center items-center bg-white';
   return (
     <motion.div
-      className="min-h-screen py-16 flex flex-col justify-center"
-      viewport={{ once: false, amount: 0.5 }}
+      className="py-16 flex flex-col justify-center"
+      viewport={{ once: false, amount: 1 }}
       onViewportEnter={() => setCurrentItem(name)}
     >
       <p className="mb-2 font-medium text-primary">{period}</p>
-      <h3 className="mb-2 text-3xl font-bold">{title}</h3>
+      <h3 className="mb-2 flex flex-wrap items-center gap-4 text-3xl font-bold">
+        {title}
+        {category && (
+          <span className="px-2 py-1 bg-primary/10 text-sm font-medium">
+            {category}
+          </span>
+        )}
+      </h3>
       {division && <p className="text-lg text-faded">{division}</p>}
       {affiliation && <p className="text-lg text-faded">{affiliation}</p>}
       {location && <p className="text-lg text-faded">{location}</p>}
-      <ul className="mt-6 text-lg leading-relaxed list-inside list-disc">
-        {contents &&
-          contents.map((content, idx) => <li key={idx}>{content}</li>)}
-      </ul>
-      {logoSrc && logoAlt && (
-        <div className="mt-6 w-full rounded py-3 flex justify-center items-center bg-white">
-          <Image src={logoSrc} alt={logoAlt} height={logoHeight || 32} />
-        </div>
+      {contents && (
+        <ul className="mt-6 text-lg leading-relaxed list-inside list-disc">
+          {contents.map((content, idx) => (
+            <li key={idx}>{content}</li>
+          ))}
+        </ul>
       )}
+      {logoSrc &&
+        logoAlt &&
+        (url ? (
+          <a
+            href={url}
+            className={`${logoClassName} hover:shadow-lg`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Image src={logoSrc} alt={logoAlt} height={logoHeight || 32} />
+          </a>
+        ) : (
+          <div className="mt-6 w-full rounded py-3 flex justify-center items-center bg-white">
+            <Image src={logoSrc} alt={logoAlt} height={logoHeight || 32} />
+          </div>
+        ))}
     </motion.div>
   );
 }

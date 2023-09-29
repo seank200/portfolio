@@ -33,7 +33,8 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
   return (
     <>
       <HeroSection lang={lang} />
-      <Section id="section__projects" className="pt-8">
+      <ExperienceSection lang={lang} className="py-8" />
+      <Section id="section-projects" className="pt-8">
         <Container>
           <SectionHeading>{H_PROJECTS}</SectionHeading>
           <p className="text-faded text-lg leading-relaxed">{D_PROJECTS}</p>
@@ -41,7 +42,6 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
       </Section>
       <SigmateSection lang={lang} className="py-8" />
       <PoolinkSection lang={lang} className="py-8" />
-      <ExperienceSection lang={lang} className="py-8" />
       <ContactSection lang={lang} className="py-8" />
     </>
   );

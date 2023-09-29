@@ -9,7 +9,7 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const dict = createIntlDict({
   CONTACT_ME: 'Contact Me',
-  CFA: 'Thank you for visiting my personal portfolio page. I am currently open for hire, and you can reach out to me using the links below.',
+  CFA: 'Thank you for visiting my portfolio. I am currently open for hire, and you can reach out to me using the links below.',
   GITHUB: 'Github',
   LINKEDIN: 'LinkedIn',
   EMAIL: 'Email',
@@ -24,7 +24,7 @@ export default function ContactSection({
 }) {
   const { CONTACT_ME, CFA, GITHUB, LINKEDIN, EMAIL } = dict[lang];
   return (
-    <Section className={`${className || ''}`} id="section__contact">
+    <Section className={`${className || ''}`} id="section-contact">
       <Container>
         <SectionHeading>{CONTACT_ME}</SectionHeading>
         <p>{CFA}</p>

@@ -4,7 +4,6 @@ import { SupportedLang, createIntlDict } from '@/i18n';
 import Section from '@/components/home/Section';
 import Container from '@/components/Container';
 import Memoji from '@/components/home/Memoji';
-import ScrollGuide from '@/components/ScrollGuide';
 import { motion } from 'framer-motion';
 
 const dict = createIntlDict(
@@ -13,7 +12,6 @@ const dict = createIntlDict(
     TITLE_2: 'Backend Web Developer',
     SUBTITLE_1: "Hi, I'm Youngwoo",
     SUBTITLE_2: 'I am a developer based on Seoul, South Korea.',
-    VIEW_PORTFOLIO: 'View Portfolio',
     CONTACT_ME: 'Contact Me',
     LEARN_MORE: 'Learn more about me',
   },
@@ -22,37 +20,31 @@ const dict = createIntlDict(
     TITLE_2: '백엔드 웹 개발자',
     SUBTITLE_1: '안녕하세요 김영우입니다',
     SUBTITLE_2: '개발과 함께했던 제 시간들을 소개합니다.',
-    VIEW_PORTFOLIO: '포트폴리오 살펴보기',
     CONTACT_ME: '연락하기',
-    LEARN_MORE: '업무 경험',
+    LEARN_MORE: '더 알아보기',
   }
 );
 
 export default function HeroSection({ lang }: { lang: SupportedLang }) {
-  const {
-    TITLE_1,
-    TITLE_2,
-    SUBTITLE_1,
-    SUBTITLE_2,
-    VIEW_PORTFOLIO,
-    CONTACT_ME,
-    LEARN_MORE,
-  } = dict[lang];
+  const { TITLE_1, TITLE_2, SUBTITLE_1, SUBTITLE_2, CONTACT_ME, LEARN_MORE } =
+    dict[lang];
 
   const handleViewPortfolioClick = () => {
-    document
-      .querySelector('#section__projects')
-      ?.scrollIntoView({ behavior: 'smooth' });
+    const rect = document
+      .querySelector('#section-home')
+      ?.getBoundingClientRect();
+    const heroHeight = rect?.height || window.innerHeight;
+    window.scrollBy({ top: heroHeight, left: 0, behavior: 'smooth' });
   };
 
   const handleContactClick = () => {
     document
-      .querySelector('#section__contact')
-      ?.scrollIntoView({ behavior: 'smooth' });
+      .querySelector('#section-contact')
+      ?.scrollIntoView({ behavior: 'auto' });
   };
 
   return (
-    <Section id="home" className="relative">
+    <Section id="section-home" className="relative">
       <Container className="py-24 min-h-screen relative flex justify-center md:justify-between items-center ">
         <div className="flex flex-col">
           <h1 className="mb-6 text-4xl sm:text-5xl font-semibold leading-snug sm:leading-snug">
@@ -86,7 +78,7 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
               onClick={handleViewPortfolioClick}
               className="px-6 py-3 md:py-2 rounded-md bg-background-on font-medium text-background transition-colors hover:bg-primary hover:text-primary-on"
             >
-              {VIEW_PORTFOLIO}
+              {LEARN_MORE}
             </button>
             <button
               onClick={handleContactClick}
@@ -98,7 +90,6 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
         </div>
         <Memoji />
       </Container>
-      <ScrollGuide scrollTo="#section__projects">{LEARN_MORE}</ScrollGuide>
     </Section>
   );
 }

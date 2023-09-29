@@ -9,7 +9,6 @@ import {
   useState,
 } from 'react';
 import { motion } from 'framer-motion';
-import { DateTime } from 'luxon';
 import { SupportedLang, createIntlDict, formatTimePeriod } from '@/i18n';
 import ThemedImage from '@/components/ThemedImage';
 import sigmateLogo from '@images/LOGO_Sigmate.png';
@@ -30,14 +29,14 @@ import ProjectStickyHeader from '../projects/ProjectStickyHeader';
 import SigmateArch from './SigmateArch';
 import ProjectHeader from '../projects/ProjectHeader';
 import ProjectMyRoleList from '../projects/ProjectMyRoleList';
+import { facadeDict } from '@/components/dict/experiences/facade';
+import { generalDict } from '@/components/dict/experiences/general';
+import { expPeriod } from '@/components/dict/experiences';
 
-const dict = createIntlDict(
+const sigmateDict = createIntlDict(
   {
-    TITLE: 'CTO/Backend Developer',
     DESCRIPTION:
       'Sigmate is a wiki platform for the NFT community, created by Facade Inc., a Web3 startup.',
-    CATEGORY: 'Work Experience',
-    H_FEATURE_HIGHLIGHTS: 'Feature Highlights',
     H_FEAT_1: 'Easy',
     FEAT_1: 'All information in one place',
     FEAT_1_CAPTION:
@@ -49,21 +48,9 @@ const dict = createIntlDict(
     FEAT_3: 'Integrated asset valuation using both on and off-chain data',
     FEAT_3_CAPTION:
       'NFT Valuation based on utility, funding and social hype analysis',
-    H_MY_ROLE: 'My Role',
-    JOB_DETAILS: [
-      'Implemented a REST API app server using NodeJS and TypeScript.',
-      'Managed DevOps workflows on Amazon Web Services (AWS)',
-      'Modeled and deployed MYSQL server on AWS RDS with multi A-Z, read replicas, and auto backups',
-      'Set up NoSQL server for content audit logs using AWS DynamoDB',
-      'Deployed HTTPS NodeJS servers on Load balanced(ELB) EC2 instances',
-      'Configured VPC with best security practices (subnet separation, firewall in/outbound rules, etc.)',
-    ],
   },
   {
-    TITLE: 'CTO/백엔드 개발',
     DESCRIPTION: 'NFT 커뮤니티를 위한 위키 플랫폼',
-    CATEGORY: '업무 경험',
-    H_FEATURE_HIGHLIGHTS: '기능 상세',
     H_FEAT_1: 'Easy',
     FEAT_1: '위키 기반의 각종 NFT 데이터 한곳에서 모아보기',
     FEAT_1_CAPTION:
@@ -75,12 +62,6 @@ const dict = createIntlDict(
     FEAT_3: '온/오프체인 데이터 통합형 가치평가',
     FEAT_3_CAPTION:
       'Utility, Funding, Social Hype 등 다양한 지표 분석을 통한 NFT 가치평가 제공',
-
-    H_MY_ROLE: '세부 업무내용',
-    JOB_DETAILS: [
-      'NodeJS와 TypeScript를 사용한 REST API app server 개발.',
-      'AWS(Amazon Web Services) 상의 배포 및 DevOps 워크플로우 관리',
-    ],
   }
 );
 
@@ -91,11 +72,9 @@ export default function SigmateSection({
   lang: SupportedLang;
   className?: string;
 }) {
+  const { TITLE, CATEGORY } = facadeDict[lang];
   const {
-    TITLE,
     DESCRIPTION,
-    CATEGORY,
-    H_FEATURE_HIGHLIGHTS,
     H_FEAT_1,
     H_FEAT_2,
     H_FEAT_3,
@@ -105,16 +84,19 @@ export default function SigmateSection({
     FEAT_2_CAPTION,
     FEAT_3,
     FEAT_3_CAPTION,
-    H_MY_ROLE,
-  } = dict[lang];
+  } = sigmateDict[lang];
+  const { H_FEAT, H_MY_ROLE } = generalDict[lang];
 
-  const JOB_DETAILS = dict[lang].JOB_DETAILS as Array<React.ReactNode>;
+  const DETAILS = facadeDict[lang].DETAILS as Array<React.ReactNode>;
 
-  const startedAt = DateTime.fromObject({ year: 2021, month: 3 });
-  const endedAt = DateTime.fromObject({ year: 2023, month: 3 });
-  const period = formatTimePeriod(lang, startedAt, endedAt, {
-    precision: 'month',
-  });
+  const period = formatTimePeriod(
+    lang,
+    expPeriod.facade.start,
+    expPeriod.facade.end,
+    {
+      precision: 'month',
+    }
+  );
 
   const [selectedFeature, setSelectedFeature] = useState<number>(0);
   const [marginTop, setMarginTop] = useState<number>(0);
@@ -179,13 +161,11 @@ export default function SigmateSection({
           description={DESCRIPTION}
         />
         <h4 className="mt-8 mb-2 text-2xl font-semibold">🎯 {H_MY_ROLE}</h4>
-        <ProjectMyRoleList items={JOB_DETAILS} />
+        <ProjectMyRoleList items={DETAILS} />
       </Container>
       <div className="relative">
         <Container className="md:sticky top-0 md:min-h-screen hidden md:flex flex-col justify-center items-start">
-          <h4 className="mb-6 text-2xl font-semibold">
-            💡 {H_FEATURE_HIGHLIGHTS}
-          </h4>
+          <h4 className="mb-6 text-2xl font-semibold">💡 {H_FEAT}</h4>
           <FeatureHighlight
             heading={H_FEAT_1}
             body={FEAT_1}
@@ -209,9 +189,7 @@ export default function SigmateSection({
           />
         </Container>
         <Container className="md:hidden">
-          <h4 className="mb-6 text-2xl font-semibold">
-            💡 {H_FEATURE_HIGHLIGHTS}
-          </h4>
+          <h4 className="mb-6 text-2xl font-semibold">💡 {H_FEAT}</h4>
         </Container>
         <motion.div
           className={`${containerClassName} md:absolute top-0 left-1/2 md:-translate-x-1/2 md:min-h-screen py-8 md:py-16 flex flex-col items-start justify-center md:flex-row md:justify-start md:items-center`}
