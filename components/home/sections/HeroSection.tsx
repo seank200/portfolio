@@ -13,8 +13,8 @@ const dict = createIntlDict(
     TITLE_2: 'Backend Web Developer',
     SUBTITLE_1: "Hi, I'm Youngwoo",
     SUBTITLE_2: 'I am a developer based on Seoul, South Korea.',
-    CONTACT_ME: 'Contact Me',
-    LEARN_MORE: 'Learn more about me',
+    CONTACT_ME: 'Contact me',
+    LEARN_MORE: 'Learn more',
     VIEW_EXPERIENCES: 'My Experiences',
   },
   {

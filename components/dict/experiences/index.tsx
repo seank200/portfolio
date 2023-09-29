@@ -72,7 +72,7 @@ export const expPeriod: Record<ExperienceItem, TimePeriod> = {
   },
   ceos: {
     start: DateTime.fromObject({ year: 2021, month: 3 }),
-    end: null,
+    end: DateTime.fromObject({ year: 2021, month: 12 }),
   },
   cfc: {
     start: DateTime.fromObject({ year: 2019, month: 2, day: 18 }),

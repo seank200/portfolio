@@ -196,11 +196,11 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           <motion.li
             className="md:hidden grow pb-32 flex items-end text-faded leading-none"
             variants={{
-              mobileHidden: { opacity: 0, translateY: '-1rem' },
-              mobileNormal: { opacity: 0, translateY: '-1rem' },
-              mobileExpanded: { opacity: 1, translateY: 0 },
-              desktopHidden: { opacity: 1, translateY: 0 },
-              desktopNormal: { opacity: 1, translateY: 0 },
+              mobileHidden: { opacity: 0 },
+              mobileNormal: { opacity: 0 },
+              mobileExpanded: { opacity: 1 },
+              desktopHidden: { opacity: 1 },
+              desktopNormal: { opacity: 1 },
             }}
           >
             <Link href={otherLangLink}>

@@ -25,7 +25,7 @@ export default function TechStackItem({
   const contents = (
     <>
       {icon}
-      <span className="mt-2 text-sm md:text-base text-center text-faded font-medium">
+      <span className="mt-3 text-sm md:text-base leading-tight md:leading-tight text-center text-faded font-medium">
         {label}
       </span>
     </>
@@ -34,13 +34,13 @@ export default function TechStackItem({
   return (
     <li
       className={`rounded bg-surface text-surface-on shadow transition-all ${
-        url ? 'hover:scale-102 hover:shadow-lg' : innerClass
+        url ? 'flex justify-center hover:scale-102 hover:shadow-lg' : innerClass
       }`}
     >
       {url ? (
         <a
           href={url}
-          className={innerClass}
+          className={`${innerClass} grow`}
           target="_blank"
           rel="noopener noreferrer"
         >

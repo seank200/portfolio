@@ -7,7 +7,9 @@ const SUPPORTED_LANGS = ['en', 'ko'];
 const DEFAULT_LANG = SUPPORTED_LANGS[0];
 
 export const config = {
-  matcher: ['/((?!_next|images|fonts|favicon).*)'],
+  matcher: [
+    '/((?!_next|images|fonts|favicon|site|apple|android|browserconfig|mstile|safari).*)',
+  ],
 };
 
 export function middleware(request: NextRequest) {
