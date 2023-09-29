@@ -151,7 +151,7 @@ export default function ExperienceSection({
   return (
     <Section id="section-experiences" className={`${className || ''}`}>
       <Container>
-        <SectionHeading>{t('Résumé', '이력서')}</SectionHeading>
+        <SectionHeading>{t('Experiences', '이력')}</SectionHeading>
         <div className="relative flex items-start">
           <div className="sticky top-0 hidden mr-6 md:mr-12 shrink-0 min-h-screen md:flex flex-col justify-center">
             <Timeline height={timelineHeight} offsetY={offsetY}>
@@ -351,7 +351,7 @@ function ExperienceItem({
       <h3 className="mb-2 flex flex-wrap items-center gap-4 text-3xl font-bold">
         {title}
         {category && (
-          <span className="px-2 py-1 bg-primary/10 text-sm font-medium">
+          <span className="px-2 py-1 bg-primary/10 dark:bg-primary/30 text-sm font-medium">
             {category}
           </span>
         )}
@@ -371,7 +371,7 @@ function ExperienceItem({
         (url ? (
           <a
             href={url}
-            className={`${logoClassName} hover:shadow-lg`}
+            className={`${logoClassName} hover:shadow-lg hover:scale-102 transition-all`}
             target="_blank"
             rel="noopener noreferrer"
           >

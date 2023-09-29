@@ -12,6 +12,13 @@ import PoolinkPainpoint from './PoolinkPainpoint';
 import { poolinkDict } from '@/components/dict/experiences/poolink';
 import { generalDict } from '@/components/dict/experiences/general';
 import { expPeriod } from '@/components/dict/experiences';
+import TechStack from '../TechStack';
+import {
+  TSGithubActions,
+  TSJavaScript,
+  TSReactJS,
+  TSVercel,
+} from '../TechStackItem';
 
 export default function PoolinkSection({
   lang,
@@ -21,7 +28,7 @@ export default function PoolinkSection({
   className?: string;
 }) {
   const { TITLE, CATEGORY, DESCRIPTION } = poolinkDict[lang];
-  const { H_FEAT, H_MY_ROLE } = generalDict[lang];
+  const { H_OVERVIEW, H_MY_ROLE, H_TECH_STACK } = generalDict[lang];
   const DETAILS = poolinkDict[lang].DETAILS as React.ReactNode[];
   const period = formatTimePeriod(
     lang,
@@ -46,9 +53,16 @@ export default function PoolinkSection({
           period={period}
           description={DESCRIPTION}
         />
-        <h4 className="mt-8 mb-2 text-2xl font-semibold">🎯 {H_MY_ROLE}</h4>
+        <h4 className="mt-10 mb-4 text-2xl font-semibold">💻 {H_TECH_STACK}</h4>
+        <TechStack>
+          <TSReactJS />
+          <TSJavaScript />
+          <TSGithubActions />
+          <TSVercel />
+        </TechStack>
+        <h4 className="mt-12 mb-2 text-2xl font-semibold">🎯 {H_MY_ROLE}</h4>
         <ProjectMyRoleList items={DETAILS} />
-        <h4 className="mt-16 mb-2 text-2xl font-semibold">💡 {H_FEAT}</h4>
+        <h4 className="mt-16 mb-2 text-2xl font-semibold">💡 {H_OVERVIEW}</h4>
       </Container>
       <div className="py-8 relative w-full">
         <PoolinkHero lang={lang} />

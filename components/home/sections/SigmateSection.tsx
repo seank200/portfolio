@@ -32,6 +32,18 @@ import ProjectMyRoleList from '../projects/ProjectMyRoleList';
 import { facadeDict } from '@/components/dict/experiences/facade';
 import { generalDict } from '@/components/dict/experiences/general';
 import { expPeriod } from '@/components/dict/experiences';
+import TechStack from '../TechStack';
+import {
+  TSAWS,
+  TSAWSDynamoDB,
+  TSDocker,
+  TSGNUBash,
+  TSGithubActions,
+  TSMYSQL,
+  TSNodeJS,
+  TSPm2,
+  TSTypeScript,
+} from '../TechStackItem';
 
 const sigmateDict = createIntlDict(
   {
@@ -85,7 +97,7 @@ export default function SigmateSection({
     FEAT_3,
     FEAT_3_CAPTION,
   } = sigmateDict[lang];
-  const { H_FEAT, H_MY_ROLE } = generalDict[lang];
+  const { H_FEAT, H_MY_ROLE, H_TECH_STACK } = generalDict[lang];
 
   const DETAILS = facadeDict[lang].DETAILS as Array<React.ReactNode>;
 
@@ -160,7 +172,19 @@ export default function SigmateSection({
           period={period}
           description={DESCRIPTION}
         />
-        <h4 className="mt-8 mb-2 text-2xl font-semibold">🎯 {H_MY_ROLE}</h4>
+        <h4 className="mt-10 mb-4 text-2xl font-semibold">💻 {H_TECH_STACK}</h4>
+        <TechStack>
+          <TSNodeJS />
+          <TSTypeScript />
+          <TSDocker />
+          <TSPm2 />
+          <TSAWS />
+          <TSMYSQL />
+          <TSAWSDynamoDB />
+          <TSGNUBash />
+          <TSGithubActions />
+        </TechStack>
+        <h4 className="mt-12 mb-2 text-2xl font-semibold">🎯 {H_MY_ROLE}</h4>
         <ProjectMyRoleList items={DETAILS} />
       </Container>
       <div className="relative">
@@ -216,7 +240,7 @@ export default function SigmateSection({
               width={1158}
               className="shrink-0 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
             />
-            <p className="mt-8 block px-8 md:px-0 text-center text-faded text-lg font-light">
+            <p className="mt-8 block px-8 md:px-0 text-center text-faded text-lg">
               {FEAT_1_CAPTION}
             </p>
           </FeatureImage>
@@ -241,7 +265,7 @@ export default function SigmateSection({
               width={1158}
               className="w-1/2 hover:scale-102 transition-transform -translate-y-1/4 shadow-lg shadow-background-on/20"
             />
-            <p className="px-8 md:px-0 text-center text-faded text-lg font-light">
+            <p className="px-8 md:px-0 text-center text-faded text-lg">
               {FEAT_2_CAPTION}
             </p>
           </FeatureImage>
@@ -279,7 +303,7 @@ export default function SigmateSection({
                 />
               </div>
             </div>
-            <p className="mt-8 px-8 md:px-0 text-center text-faded text-lg font-light">
+            <p className="mt-8 px-8 md:px-0 text-center text-faded text-lg">
               {FEAT_3_CAPTION}
             </p>
           </FeatureImage>

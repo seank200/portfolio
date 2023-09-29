@@ -5,6 +5,7 @@ import Section from '@/components/home/Section';
 import Container from '@/components/Container';
 import Memoji from '@/components/home/Memoji';
 import { motion } from 'framer-motion';
+import ScrollGuide from '@/components/ScrollGuide';
 
 const dict = createIntlDict(
   {
@@ -14,6 +15,7 @@ const dict = createIntlDict(
     SUBTITLE_2: 'I am a developer based on Seoul, South Korea.',
     CONTACT_ME: 'Contact Me',
     LEARN_MORE: 'Learn more about me',
+    VIEW_EXPERIENCES: 'My Experiences',
   },
   {
     TITLE_1: '열정 가득한',
@@ -22,12 +24,20 @@ const dict = createIntlDict(
     SUBTITLE_2: '개발과 함께했던 제 시간들을 소개합니다.',
     CONTACT_ME: '연락하기',
     LEARN_MORE: '더 알아보기',
+    VIEW_EXPERIENCES: '이력 보기',
   }
 );
 
 export default function HeroSection({ lang }: { lang: SupportedLang }) {
-  const { TITLE_1, TITLE_2, SUBTITLE_1, SUBTITLE_2, CONTACT_ME, LEARN_MORE } =
-    dict[lang];
+  const {
+    TITLE_1,
+    TITLE_2,
+    SUBTITLE_1,
+    SUBTITLE_2,
+    CONTACT_ME,
+    LEARN_MORE,
+    VIEW_EXPERIENCES,
+  } = dict[lang];
 
   const handleViewPortfolioClick = () => {
     const rect = document
@@ -90,6 +100,9 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
         </div>
         <Memoji />
       </Container>
+      <ScrollGuide scrollTo="#section-experiences">
+        {VIEW_EXPERIENCES}
+      </ScrollGuide>
     </Section>
   );
 }

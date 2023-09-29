@@ -10,7 +10,7 @@ export default function Footer({ lang }: { lang: SupportedLang }) {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
   };
   return (
-    <footer className="py-8 bg-background-variant">
+    <footer className="mt-16 py-8 bg-background-variant">
       <Container className="flex flex-row justify-between items-center">
         <h2
           onClick={handleLogoClick}

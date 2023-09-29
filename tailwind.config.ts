@@ -63,6 +63,10 @@ const config: Config = {
       transitionProperty: {
         position: 'top, left, bottom, right, transform',
       },
+      gridTemplateColumns: {
+        sm: 'repeat(auto-fill, minmax(140px, 1fr))',
+        md: 'repeat(auto-fill, minmax(240px, 1fr))',
+      },
     },
   },
   plugins: [

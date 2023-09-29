@@ -65,7 +65,7 @@ function ContactLink({
   id: string;
 }) {
   return (
-    <li className="group rounded px-6 py-4 flex bg-surface hover:bg-gradient-to-br from-primary to-secondary shadow transition-all">
+    <li className="group hover:scale-102 rounded px-6 py-4 flex bg-surface hover:bg-gradient-to-br from-primary to-secondary shadow transition-all">
       <a
         href={href}
         target="_blank"
