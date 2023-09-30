@@ -8,14 +8,13 @@ import {
   faXmark,
   faEnvelope,
   faSquareRss,
-  faGlobeAsia,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import throttle from 'lodash/throttle';
 import { SupportedLang, createTranslator } from '@/i18n';
 import { motion } from 'framer-motion';
-import useSwitchLang from '@/hooks/useSwitchLang';
+import LangSelect from './LangSelect';
 
 const SCROLL_DOWN_THRSH = 20;
 const SCROLL_UP_THRSH = 10;
@@ -42,7 +41,6 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [scrollY, setScrollY] = useState<number>(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
-  const otherLangLink = useSwitchLang(lang);
 
   const isNearTop = scrollY < SCROLL_TOP_THRSH;
   const navShadow = isNearTop && !isExpanded ? '' : 'shadow';
@@ -142,7 +140,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           </motion.div>
         </button>
         <motion.ul
-          className="absolute md:static top-0 left-0 right-0 -translate-y-full md:translate-y-0 h-screen md:h-auto bg-background px-8 md:px-0 pt-24 md:pt-0 flex flex-col justify-start items-start md:flex-row md:items-center gap-6 md:gap-2"
+          className="absolute md:static top-0 left-0 right-0 -translate-y-full md:translate-y-0 h-screen md:h-auto bg-background px-8 md:px-0 pt-24 md:pt-0 flex flex-col justify-start items-start md:flex-row md:items-center gap-6 md:gap-3"
           variants={{
             mobileNormal: {
               translateY: '-100%',
@@ -157,6 +155,20 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
             desktopHidden: { translateY: 0 },
           }}
         >
+          {!isMobile && (
+            <motion.li
+              className="flex items-end text-faded leading-none"
+              variants={{
+                mobileHidden: { opacity: 0 },
+                mobileNormal: { opacity: 0 },
+                mobileExpanded: { opacity: 1 },
+                desktopHidden: { opacity: 1 },
+                desktopNormal: { opacity: 1 },
+              }}
+            >
+              <LangSelect lang={lang} />
+            </motion.li>
+          )}
           <NavItem href={LINK_GITHUB} onClick={handleLinkClick}>
             <FontAwesomeIcon
               icon={faGithub}
@@ -193,21 +205,20 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
             />
             <span className="md:hidden">{LABEL_EMAIL}</span>
           </NavItem>
-          <motion.li
-            className="md:hidden grow pb-32 flex items-end text-faded leading-none"
-            variants={{
-              mobileHidden: { opacity: 0 },
-              mobileNormal: { opacity: 0 },
-              mobileExpanded: { opacity: 1 },
-              desktopHidden: { opacity: 1 },
-              desktopNormal: { opacity: 1 },
-            }}
-          >
-            <Link href={otherLangLink}>
-              <FontAwesomeIcon icon={faGlobeAsia} className="h-4 mr-3" />
-              {t('Switch Language', '언어 변경')}
-            </Link>
-          </motion.li>
+          {isMobile && (
+            <motion.li
+              className="flex items-end text-faded leading-none"
+              variants={{
+                mobileHidden: { opacity: 0 },
+                mobileNormal: { opacity: 0 },
+                mobileExpanded: { opacity: 1 },
+                desktopHidden: { opacity: 1 },
+                desktopNormal: { opacity: 1 },
+              }}
+            >
+              <LangSelect lang={lang} />
+            </motion.li>
+          )}
         </motion.ul>
       </Container>
     </motion.nav>

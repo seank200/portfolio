@@ -2,7 +2,6 @@
 
 import { SupportedLang } from '@/i18n';
 import Container from './Container';
-import LangSelect from './LangSelect';
 import ThemeSelect from './ThemeSelect';
 
 export default function Footer({ lang }: { lang: SupportedLang }) {
@@ -20,7 +19,6 @@ export default function Footer({ lang }: { lang: SupportedLang }) {
           Youngwoo Kim
         </h2>
         <div className="flex items-center gap-2">
-          <LangSelect lang={lang} />
           <ThemeSelect lang={lang} />
         </div>
       </Container>
