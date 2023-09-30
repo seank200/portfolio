@@ -33,7 +33,7 @@ export default function PoolinkSection({
   lang: SupportedLang;
   className?: string;
 }) {
-  const { TITLE, CATEGORY, DESCRIPTION } = poolinkDict[lang];
+  const { TITLE, DESCRIPTION } = poolinkDict[lang];
   const { H_OVERVIEW, H_MY_ROLE, H_TECH_STACK } = generalDict[lang];
   const DETAILS = poolinkDict[lang].DETAILS as React.ReactNode[];
   const period = formatTimePeriod(
@@ -50,7 +50,6 @@ export default function PoolinkSection({
       <ProjectStickyHeader
         heading={<Image src={poolinkLogo} alt="Poolink" height={28} />}
         title={TITLE}
-        category={CATEGORY}
         period={period}
       />
       <Container>
@@ -59,7 +58,7 @@ export default function PoolinkSection({
           period={period}
           description={DESCRIPTION}
         />
-        <h4 className="mt-10 mb-4 text-xl font-semibold">
+        <h4 className="mt-20 mb-4 text-2xl font-semibold">
           <FontAwesomeIcon
             icon={faMicrochip}
             className="mr-3 text-cyan-500 dark:text-cyan-300"
@@ -72,7 +71,7 @@ export default function PoolinkSection({
           <TSGithubActions />
           <TSVercel />
         </TechStack>
-        <h4 className="mt-12 mb-2 text-xl font-semibold">
+        <h4 className="mt-24 mb-3 text-2xl font-semibold">
           <FontAwesomeIcon
             icon={faStar}
             className="mr-3 text-yellow-400 dark:text-yellow-300"
@@ -80,7 +79,7 @@ export default function PoolinkSection({
           {H_MY_ROLE}
         </h4>
         <ProjectMyRoleList items={DETAILS} />
-        <h4 className="mt-16 mb-2 text-xl font-semibold">
+        <h4 className="mt-28 mb-2 text-2xl font-semibold">
           <FontAwesomeIcon
             icon={faLightbulb}
             className="mr-3 text-orange-500 dark:text-orange-400"

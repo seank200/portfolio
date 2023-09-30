@@ -13,9 +13,7 @@ import { SupportedLang, createIntlDict, formatTimePeriod } from '@/i18n';
 import ThemedImage from '@/components/ThemedImage';
 import sigmateLogo from '@images/LOGO_Sigmate.png';
 import sigmateLogoDark from '@images/LOGO_Sigmate_Dark.png';
-import sigmateUIWiki from '@images/sigmate/Sigmate_UI_Wiki.png';
-import sigmateUIWH from '@images/sigmate/Sigmate_UI_WH.png';
-import sigmateUIUpcoming from '@images/sigmate/Sigmate_UI_Upcoming.png';
+import sigmateUIWiki from '@images/sigmate/Sigmate_UI_1.png';
 import sigmateUIVerification from '@images/sigmate/Sigmate_UI_Verification.png';
 import sigmateUIVerificationModal from '@images/sigmate/Sigmate_UI_Verification_Modal.png';
 import sigmateUIValuationUtility from '@images/sigmate/Sigmate_UI_Val_Utility.png';
@@ -90,7 +88,7 @@ export default function SigmateSection({
   lang: SupportedLang;
   className?: string;
 }) {
-  const { TITLE, CATEGORY } = facadeDict[lang];
+  const { TITLE } = facadeDict[lang];
   const {
     DESCRIPTION,
     H_FEAT_1,
@@ -169,7 +167,6 @@ export default function SigmateSection({
           />
         }
         title={TITLE}
-        category={CATEGORY}
         period={period}
       />
       <Container className="mb-12 relative bottom-1">
@@ -178,7 +175,7 @@ export default function SigmateSection({
           period={period}
           description={DESCRIPTION}
         />
-        <h4 className="mt-10 mb-4 text-xl font-semibold">
+        <h4 className="mt-16 mb-4 text-2xl font-semibold">
           <FontAwesomeIcon
             icon={faServer}
             className="mr-3 text-cyan-500 dark:text-cyan-300"
@@ -196,7 +193,7 @@ export default function SigmateSection({
           <TSGNUBash />
           <TSGithubActions />
         </TechStack>
-        <h4 className="mt-12 mb-2 text-xl font-semibold">
+        <h4 className="mt-24 mb-3 text-2xl font-semibold">
           <FontAwesomeIcon
             icon={faStar}
             className="mr-3 text-yellow-400 dark:text-yellow-300"
@@ -207,7 +204,7 @@ export default function SigmateSection({
       </Container>
       <div className="relative">
         <Container className="md:sticky top-0 md:min-h-screen hidden md:flex flex-col justify-center items-start">
-          <h4 className="mb-6 text-xl font-semibold">
+          <h4 className="mb-6 text-2xl font-semibold">
             <FontAwesomeIcon
               icon={faLightbulb}
               className="mr-3 text-orange-500 dark:text-orange-400"
@@ -240,7 +237,7 @@ export default function SigmateSection({
           <h4 className="mb-6 text-2xl font-semibold">💡 {H_FEAT}</h4>
         </Container>
         <motion.div
-          className={`${containerClassName} md:absolute top-0 left-1/2 md:-translate-x-1/2 md:min-h-screen py-8 md:py-16 flex flex-col items-start justify-center md:flex-row md:justify-start md:items-center`}
+          className={`${containerClassName} -z-10 md:absolute top-0 left-1/2 md:-translate-x-1/2 md:min-h-screen py-8 md:py-16 flex flex-col items-start justify-center md:flex-row md:justify-start md:items-center`}
           onViewportEnter={() => setSelectedFeature(1)}
           viewport={{ once: false, amount: 0.3 }}
           ref={feat1Ref}
@@ -250,19 +247,7 @@ export default function SigmateSection({
               src={sigmateUIWiki}
               alt="Sigmate UI: Wiki"
               width={1158}
-              className="mb-12 shrink-0 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
-            />
-            <Image
-              src={sigmateUIWH}
-              alt="Sigmate UI: What's Happening"
-              width={1158}
-              className="mb-12 shrink-0 md:w-2/3 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
-            />
-            <Image
-              src={sigmateUIUpcoming}
-              alt="Sigmate UI: What's Happening"
-              width={1158}
-              className="shrink-0 hover:scale-102 transition-transform shadow-lg shadow-background-on/20"
+              className="mb-12 shrink-0 hover:scale-102 transition-transform"
             />
             <p className="mt-8 block px-8 md:px-0 text-center text-faded">
               {FEAT_1_CAPTION}

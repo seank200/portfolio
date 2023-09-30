@@ -2,7 +2,7 @@ import { createIntlDict } from '@/i18n';
 
 export const facadeDict = createIntlDict(
   {
-    TITLE: 'CTO/Backend Developer',
+    TITLE: 'CTO / Backend Developer',
     AFFILIATION: 'Facade Inc.',
     CATEGORY: 'Work Experience',
     DESCRIPTION:
@@ -17,7 +17,7 @@ export const facadeDict = createIntlDict(
     ],
   },
   {
-    TITLE: 'CTO/백엔드 개발',
+    TITLE: 'CTO / 백엔드 개발',
     AFFILIATION: '파사드',
     CATEGORY: '업무 경험',
     DESCRIPTION: 'NFT 커뮤니티를 위한 위키 플랫폼',
