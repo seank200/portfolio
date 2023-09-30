@@ -9,7 +9,7 @@ import { ceosDict } from './ceos';
 import { cfcDict } from './cfc';
 import { poolinkDict } from './poolink';
 
-export type ExperienceItem =
+export type ExperienceItemName =
   | 'ucn'
   | 'anl'
   | 'yonseiCS'
@@ -45,7 +45,7 @@ export const myInfo = {
   },
 };
 
-export const expPeriod: Record<ExperienceItem, TimePeriod> = {
+export const expPeriod: Record<ExperienceItemName, TimePeriod> = {
   ucn: {
     start: DateTime.fromObject({ year: 2021, month: 9 }),
     end: null,
@@ -108,7 +108,7 @@ export const expDict = {
   yicrc: yicrcDict,
 };
 
-export const expLink: Record<ExperienceItem, string> = {
+export const expLink: Record<ExperienceItemName, string> = {
   ucn: 'https://www.hcss.or.kr/html/',
   anl: 'https://www.anl.gov',
   facade: '',

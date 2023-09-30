@@ -15,6 +15,7 @@ import throttle from 'lodash/throttle';
 import { SupportedLang, createTranslator } from '@/i18n';
 import { motion } from 'framer-motion';
 import LangSelect from './LangSelect';
+import Image from 'next/image';
 
 const SCROLL_DOWN_THRSH = 20;
 const SCROLL_UP_THRSH = 10;
@@ -94,22 +95,38 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-20 ${navShadow} shadow-background-on/10 bg-background`}
+      className={`fixed top-0 left-0 right-0 z-20 ${navShadow} -translate-y-full shadow-background-on/10 bg-background`}
       animate={motionVariant}
+      initial={{ opacity: 0 }}
       variants={{
-        mobileNormal: { translateY: 0 },
-        mobileHidden: { translateY: '-100%' },
-        mobileExpanded: { translateY: 0 },
-        desktopNormal: { translateY: 0 },
-        desktopHidden: { translateY: '-100%' },
+        mobileNormal: { translateY: 0, opacity: 1 },
+        mobileHidden: { translateY: '-100%', opacity: 1 },
+        mobileExpanded: { translateY: 0, opacity: 1 },
+        desktopNormal: { translateY: 0, opacity: 1 },
+        desktopHidden: { translateY: '-100%', opacity: 1 },
       }}
     >
-      <Container className="flex justify-between items-center py-5">
+      <Container className="flex justify-between items-center py-4">
         <Link
           href="/"
-          className="relative top-0.5 z-20 bg-clip-text bg-gradient-to-br from-primary to-secondary font-display font-extrabold text-2xl hover:text-transparent uppercase transition-colors"
+          className="relative z-20 bg-clip-text bg-gradient-to-br from-primary to-secondary font-extrabold text-xl hover:text-transparent uppercase transition-colors"
         >
-          Youngwoo
+          <Image
+            src="/apple-touch-icon.png"
+            className={`${
+              isNearTop ? 'opacity-100' : 'opacity-0'
+            } rounded transition-all`}
+            alt="Youngwoo Kim"
+            width={24}
+            height={24}
+          />
+          <span
+            className={`${
+              isNearTop ? 'opacity-0' : 'opacity-100'
+            } absolute top-0 left-0 font-display transition-all`}
+          >
+            Youngwoo
+          </span>
         </Link>
         <button
           className="z-20 relative md:hidden"
@@ -141,34 +158,47 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
         </button>
         <motion.ul
           className="absolute md:static top-0 left-0 right-0 -translate-y-full md:translate-y-0 h-screen md:h-auto bg-background px-8 md:px-0 pt-24 md:pt-0 flex flex-col justify-start items-start md:flex-row md:items-center gap-6 md:gap-3"
+          initial={{
+            translateY: '-100%',
+          }}
+          animate={motionVariant}
           variants={{
             mobileNormal: {
               translateY: '-100%',
-              transition: { when: 'afterChildren' },
+              transition: {
+                staggerChildren: 0.05,
+                bounce: 0,
+              },
+              opacity: 0,
             },
-            mobileHidden: { translateY: '-100%' },
+            mobileHidden: { translateY: '-100%', opacity: 0 },
             mobileExpanded: {
               translateY: 0,
-              transition: { when: 'beforeChildren', staggerChildren: 0.05 },
+              opacity: 1,
+              transition: {
+                when: 'beforeChildren',
+                staggerChildren: 0.05,
+                bounce: 0,
+              },
             },
             desktopNormal: { translateY: 0 },
             desktopHidden: { translateY: 0 },
           }}
         >
-          {!isMobile && (
-            <motion.li
-              className="flex items-end text-faded leading-none"
-              variants={{
-                mobileHidden: { opacity: 0 },
-                mobileNormal: { opacity: 0 },
-                mobileExpanded: { opacity: 1 },
-                desktopHidden: { opacity: 1 },
-                desktopNormal: { opacity: 1 },
-              }}
-            >
-              <LangSelect lang={lang} />
-            </motion.li>
-          )}
+          <motion.li
+            className={`${
+              isMobile ? 'hidden' : 'flex'
+            } items-end text-faded leading-none`}
+            variants={{
+              mobileHidden: { opacity: 0 },
+              mobileNormal: { opacity: 0 },
+              mobileExpanded: { opacity: 1 },
+              desktopHidden: { opacity: 1 },
+              desktopNormal: { opacity: 1 },
+            }}
+          >
+            <LangSelect lang={lang} />
+          </motion.li>
           <NavItem href={LINK_GITHUB} onClick={handleLinkClick}>
             <FontAwesomeIcon
               icon={faGithub}
@@ -205,20 +235,20 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
             />
             <span className="md:hidden">{LABEL_EMAIL}</span>
           </NavItem>
-          {isMobile && (
-            <motion.li
-              className="flex items-end text-faded leading-none"
-              variants={{
-                mobileHidden: { opacity: 0 },
-                mobileNormal: { opacity: 0 },
-                mobileExpanded: { opacity: 1 },
-                desktopHidden: { opacity: 1 },
-                desktopNormal: { opacity: 1 },
-              }}
-            >
-              <LangSelect lang={lang} />
-            </motion.li>
-          )}
+          <motion.li
+            className={`${
+              isMobile ? 'flex' : 'hidden'
+            } mt-16 items-center text-faded leading-none`}
+            variants={{
+              mobileHidden: { opacity: 0 },
+              mobileNormal: { opacity: 0 },
+              mobileExpanded: { opacity: 1 },
+              desktopHidden: { opacity: 1 },
+              desktopNormal: { opacity: 1 },
+            }}
+          >
+            <LangSelect lang={lang} />
+          </motion.li>
         </motion.ul>
       </Container>
     </motion.nav>

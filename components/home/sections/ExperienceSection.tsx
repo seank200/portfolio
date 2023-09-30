@@ -12,7 +12,7 @@ import {
   formatTimePeriod,
 } from '@/i18n';
 import {
-  ExperienceItem,
+  ExperienceItemName,
   expPeriod,
   expDict,
   expLink,
@@ -44,7 +44,7 @@ export default function ExperienceSection({
   );
   const expPeriodEnd = mapValues(expPeriod, (period) => period.end);
 
-  const [currentItem, setCurrentItem] = useState<ExperienceItem>('ucn');
+  const [currentItem, setCurrentItem] = useState<ExperienceItemName>('ucn');
   const [windowH, setWindowH] = useState<number>(500);
   const timelineHeight = windowH - 152;
   const contentDiv = useRef<HTMLDivElement>(null);
@@ -325,7 +325,7 @@ function ExperienceItem({
   url,
   setCurrentItem,
 }: {
-  name: ExperienceItem;
+  name: ExperienceItemName;
   title: React.ReactNode;
   affiliation?: React.ReactNode;
   division?: React.ReactNode;
@@ -337,7 +337,7 @@ function ExperienceItem({
   logoAlt?: string;
   logoHeight?: number;
   url?: string;
-  setCurrentItem: React.Dispatch<SetStateAction<ExperienceItem>>;
+  setCurrentItem: React.Dispatch<SetStateAction<ExperienceItemName>>;
 }) {
   const logoClassName =
     'mt-6 w-full rounded py-3 flex justify-center items-center bg-white';
