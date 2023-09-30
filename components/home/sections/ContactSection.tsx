@@ -9,7 +9,14 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const dict = createIntlDict(
   {
-    CONTACT_ME: 'Contact Me',
+    H_LINKS: 'External Links / Contacts',
+    H_NAME: 'Name',
+    NAME: 'Youngwoo Kim',
+    H_TIMEZONE: 'My Timezone',
+    TIMEZONE: 'Seoul (UTC +09:00)',
+    H_LANGUAGE: 'Languages I Speak',
+    LANGUAGE: 'Korean (native), English (native speaker proficiency)',
+    H_CONTACT_ME: 'Contact Me',
     CFA: (
       <>
         Thank you for visiting my portfolio. I am currently{' '}
@@ -22,7 +29,10 @@ const dict = createIntlDict(
     EMAIL: 'Email',
   },
   {
-    CONTACT_ME: '연락하기',
+    H_LINKS: '외부 링크 / 연락처',
+    H_NAME: '이름',
+    NAME: '김영우',
+    H_CONTACT_ME: '연락하기',
     CFA: (
       <>
         제 포트폴리오를 방문해주셔서 감사합니다. 저는 현재 <b>[구직중]</b>이며,
@@ -43,13 +53,39 @@ export default function ContactSection({
   lang: SupportedLang;
   className?: string;
 }) {
-  const { CONTACT_ME, CFA, GITHUB, LINKEDIN, EMAIL } = dict[lang];
+  const {
+    H_LINKS,
+    H_NAME,
+    NAME,
+    H_TIMEZONE,
+    TIMEZONE,
+    H_LANGUAGE,
+    LANGUAGE,
+    H_CONTACT_ME,
+    CFA,
+    GITHUB,
+    LINKEDIN,
+    EMAIL,
+  } = dict[lang];
   return (
     <Section className={`${className || ''}`} id="section-contact">
       <Container>
-        <SectionHeading>{CONTACT_ME}</SectionHeading>
-        <p>{CFA}</p>
-        <ul className="mt-8 grid grid-rows-3 md:grid-rows-none md:grid-cols-3 gap-4">
+        <SectionHeading>{H_CONTACT_ME}</SectionHeading>
+        <p className="text-lg">{CFA}</p>
+        <h3 className="mt-8 mb-2 text-xl font-semibold">{H_NAME}</h3>
+        <p className="text-lg">{NAME}</p>
+        <h3 className="mt-8 mb-2 text-xl font-semibold">{H_LANGUAGE}</h3>
+        <p className="text-lg">{LANGUAGE}</p>
+        <h3 className="mt-8 mb-2 text-xl font-semibold">{H_TIMEZONE}</h3>
+        <p className="text-lg">{TIMEZONE}</p>
+        <h3 className="mt-8 mb-4 text-xl font-semibold">{H_LINKS}</h3>
+        <ul className="grid grid-rows-3 md:grid-rows-none md:grid-cols-3 gap-4">
+          <ContactLink
+            href="mailto:yw.sean.kim@gmail.com"
+            label={EMAIL}
+            icon={faEnvelope}
+            id="yw.sean.kim@gmail.com"
+          />
           <ContactLink
             href="https://github.com/seanK200"
             label={GITHUB}
@@ -61,12 +97,6 @@ export default function ContactSection({
             label={LINKEDIN}
             icon={faLinkedin}
             id="youngwoo-kim-sean"
-          />
-          <ContactLink
-            href="mailto:yw.sean.kim@gmail.com"
-            label={EMAIL}
-            icon={faEnvelope}
-            id="yw.sean.kim@gmail.com"
           />
         </ul>
       </Container>
