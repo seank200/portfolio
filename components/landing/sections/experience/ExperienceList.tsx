@@ -9,7 +9,6 @@ import {
 import ANLLogo from '@images/LOGO_ANL_RGB-01.jpg';
 import HCSSLogo from '@images/LOGO_HCSS.png';
 import FacadeLogo from '@images/LOGO_Facade.png';
-import YonseiLogo from '@images/LOGO_Yonsei.jpg';
 import YonseiRCLogo from '@images/LOGO_Yonsei_RC.png';
 import CFCLogo from '@images/LOGO_CFC.png';
 import PoolinkLogo from '@images/LOGO_Poolink.png';
@@ -57,22 +56,6 @@ export default function ExperienceList({
   const FACADE_DETAILS = expDict.facade[lang].DETAILS as React.ReactNode[];
 
   const {
-    TITLE: YONSEI_BC_TITLE,
-    DIVISION: YONSEI_BC_DIVISION,
-    AFFILIATION: YONSEI_BC_AFFILIATION,
-    CATEGORY: YONSEI_BC_CATEGORY,
-    LOCATION: YONSEI_BC_LOCATION,
-  } = expDict.yonseiBC[lang];
-
-  const {
-    TITLE: YONSEI_CS_TITLE,
-    DIVISION: YONSEI_CS_DIVISION,
-    AFFILIATION: YONSEI_CS_AFFILIATION,
-    CATEGORY: YONSEI_CS_CATEGORY,
-    LOCATION: YONSEI_CS_LOCATION,
-  } = expDict.yonseiCS[lang];
-
-  const {
     TITLE: POOLINK_TITLE,
     AFFILIATION: POOLINK_AFFILIATION,
     CATEGORY: POOLINK_CATEGORY,
@@ -111,8 +94,6 @@ export default function ExperienceList({
     ucn: UCN_PERIOD,
     anl: ANL_PERIOD,
     facade: FACADE_PERIOD,
-    yonseiBC: YONSEI_BC_PERIOD,
-    yonseiCS: YONSEI_CS_PERIOD,
     poolink: POOLINK_PERIOD,
     ceos: CEOS_PERIOD,
     cfc: CFC_PERIOD,
@@ -157,30 +138,6 @@ export default function ExperienceList({
       logoAlt: t('Facade Inc.', '파사드'),
       logoHeight: 24,
       url: expLink.facade,
-    },
-    {
-      name: 'yonseiCS',
-      title: YONSEI_CS_TITLE,
-      affiliation: YONSEI_CS_AFFILIATION,
-      division: YONSEI_CS_DIVISION,
-      location: YONSEI_CS_LOCATION,
-      category: YONSEI_CS_CATEGORY,
-      period: YONSEI_CS_PERIOD,
-      logoSrc: YonseiLogo,
-      logoAlt: t('Yonsei Univeristy', '연세대학교(신촌)'),
-      url: expLink.yonseiCS,
-    },
-    {
-      name: 'yonseiBC',
-      title: YONSEI_BC_TITLE,
-      affiliation: YONSEI_BC_AFFILIATION,
-      division: YONSEI_BC_DIVISION,
-      location: YONSEI_BC_LOCATION,
-      category: YONSEI_BC_CATEGORY,
-      period: YONSEI_BC_PERIOD,
-      logoSrc: YonseiLogo,
-      logoAlt: t('Yonsei Univeristy', '연세대학교(신촌)'),
-      url: expLink.yonseiBC,
     },
     {
       name: 'poolink',
