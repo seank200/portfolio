@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon, faDesktop } from '@fortawesome/free-solid-svg-icons';
 import { createTranslator } from '@/i18n';
 
+const darkModeQuery = '(prefers-color-scheme: dark)';
+
 export default function ThemeSelect({ lang }: { lang: string }) {
   const t = createTranslator(lang);
   const [userTheme, setUserTheme] = useLocalStorage<string | null>(
@@ -15,13 +17,18 @@ export default function ThemeSelect({ lang }: { lang: string }) {
 
   useEffect(() => {
     const root = document.documentElement;
+    const isSystemDark = window.matchMedia(darkModeQuery).matches;
     if (userTheme) {
       const otherTheme = userTheme === 'light' ? 'dark' : 'light';
       root.classList.add(userTheme);
       root.classList.remove(otherTheme);
     } else {
       root.classList.remove('light');
-      root.classList.remove('dark');
+      if (isSystemDark) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
     }
   }, [userTheme]);
 

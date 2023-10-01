@@ -9,7 +9,7 @@ import SectionH2 from '@/components/SectionH2';
 
 const dict = createIntlDict(
   {
-    H_LINKS: 'External Links / Contacts',
+    H_LINKS: 'External Links',
     H_NAME: 'Name',
     NAME: 'Youngwoo Kim',
     H_TIMEZONE: 'My Timezone',
@@ -29,7 +29,7 @@ const dict = createIntlDict(
     EMAIL: 'Email',
   },
   {
-    H_LINKS: '외부 링크 / 연락처',
+    H_LINKS: '외부 링크',
     H_NAME: '이름',
     NAME: '김영우',
     H_CONTACT_ME: '연락하기',
@@ -74,10 +74,14 @@ export default function ContactSection({
         <p className="text-lg">{CFA}</p>
         <h3 className="mt-8 mb-2 text-xl font-semibold">{H_NAME}</h3>
         <p className="text-lg">{NAME}</p>
-        <h3 className="mt-8 mb-2 text-xl font-semibold">{H_LANGUAGE}</h3>
-        <p className="text-lg">{LANGUAGE}</p>
-        <h3 className="mt-8 mb-2 text-xl font-semibold">{H_TIMEZONE}</h3>
-        <p className="text-lg">{TIMEZONE}</p>
+        {lang === 'en' && (
+          <>
+            <h3 className="mt-8 mb-2 text-xl font-semibold">{H_LANGUAGE}</h3>
+            <p className="text-lg">{LANGUAGE}</p>
+            <h3 className="mt-8 mb-2 text-xl font-semibold">{H_TIMEZONE}</h3>
+            <p className="text-lg">{TIMEZONE}</p>
+          </>
+        )}
         <h3 className="mt-8 mb-4 text-xl font-semibold">{H_LINKS}</h3>
         <ul className="grid grid-cols-lg gap-4">
           <ContactLink
@@ -116,7 +120,7 @@ function ContactLink({
   id: string;
 }) {
   return (
-    <li className="group hover:scale-102 rounded px-6 py-4 flex bg-surface hover:bg-gradient-to-br from-primary to-secondary shadow transition-all">
+    <li className="group hover:scale-102 rounded px-5 py-4 flex bg-surface hover:bg-gradient-to-br from-primary to-secondary shadow transition-all">
       <a
         href={href}
         target="_blank"

@@ -11,7 +11,14 @@ import {
   SiVercel,
   SiDocker,
   SiPm2,
+  SiC,
+  SiCplusplus,
+  SiGithub,
 } from '@icons-pack/react-simple-icons';
+import Image from 'next/image';
+import JavaLogo from '@images/tech/java.png';
+import CMakeLogo from '@images/tech/cmake.png';
+import { SupportedLang } from '@/i18n';
 
 export default function TechStackItem({
   icon,
@@ -53,7 +60,8 @@ export default function TechStackItem({
   );
 }
 
-const iconSize = 'w-10 h-10 md:w-12 md:h-12';
+const iconHeight = 'h-10 md:h-12';
+const iconSize = `w-10 md:w-12 ${iconHeight}`;
 
 export function TSNodeJS() {
   return (
@@ -178,6 +186,79 @@ export function TSGNUBash() {
       icon={<SiGnubash color="default" className={`${iconSize}`} />}
       label="Bash Scripting"
       url="https://www.gnu.org/software/bash/"
+    />
+  );
+}
+
+export function TSC({ lang }: { lang?: SupportedLang }) {
+  const wikipedia = {
+    en: 'https://en.wikipedia.org/wiki/C_(programming_language)',
+    ko: 'https://ko.wikipedia.org/wiki/C_(프로그래밍_언어)',
+  };
+  const url = wikipedia[lang || 'en'];
+  return (
+    <TechStackItem
+      icon={<SiC color="default" className={`${iconSize}`} />}
+      label="C"
+      url={url}
+    />
+  );
+}
+export function TSCPP({ lang }: { lang?: SupportedLang }) {
+  const wikipedia = {
+    en: 'https://en.wikipedia.org/wiki/C%2B%2B',
+    ko: 'https://ko.wikipedia.org/wiki/C%2B%2B',
+  };
+  const url = wikipedia[lang || 'en'];
+  return (
+    <TechStackItem
+      icon={<SiCplusplus color="default" className={`${iconSize}`} />}
+      label="C++"
+      url={url}
+    />
+  );
+}
+
+export function TSCMake() {
+  return (
+    <TechStackItem
+      icon={
+        <Image src={CMakeLogo} alt="CMake" className={iconHeight} height={48} />
+      }
+      label="CMake"
+      url="https://cmake.org"
+    />
+  );
+}
+
+export function TSJava() {
+  return (
+    <TechStackItem
+      icon={
+        <Image
+          src={JavaLogo}
+          alt="Java"
+          height={48}
+          className={`${iconHeight} w-auto`}
+        />
+      }
+      label="Java"
+      url="https://www.java.com"
+    />
+  );
+}
+
+export function TSGithub() {
+  return (
+    <TechStackItem
+      icon={
+        <SiGithub
+          color="default"
+          className={`${iconSize} dark:fill-surface-on`}
+        />
+      }
+      label="Github"
+      url="https://github.com"
     />
   );
 }

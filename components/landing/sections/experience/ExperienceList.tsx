@@ -16,7 +16,7 @@ import CEOSLogo from '@images/LOGO_CEOS.png';
 import { mapValues } from 'lodash';
 import ExperienceItem, { ExperienceItemProps } from './ExperienceItem';
 
-type ExperienceItemData = Omit<ExperienceItemProps, 'setCurrentItem'>;
+type ExperienceItemData = Omit<ExperienceItemProps, 'setCurrentItem' | 'lang'>;
 
 export default function ExperienceList({
   elemRef,
@@ -218,6 +218,7 @@ export default function ExperienceList({
           logoHeight={item.logoHeight}
           url={item.url}
           setCurrentItem={setCurrentItem}
+          lang={lang}
         />
       ))}
     </div>

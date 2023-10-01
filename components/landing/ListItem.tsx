@@ -27,7 +27,7 @@ export default function ListItem({
 }) {
   const content = (
     <>
-      <div className="mr-8">
+      <div className="md:mr-8">
         <h3 className="mb-2 text-lg md:text-xl font-semibold group-hover:text-primary">
           {icon && (
             <FontAwesomeIcon
@@ -62,7 +62,7 @@ export default function ListItem({
   );
 
   const className =
-    'mt-6 flex flex-col-reverse md:flex-row md:justify-between items-start md:items-center px-4 md:px-5 py-5 rounded shadow bg-surface transition-all';
+    'mt-6 flex flex-col-reverse md:flex-row md:justify-between items-start md:items-center px-5 py-5 rounded shadow bg-surface transition-all';
 
   return url ? (
     <ExternalLink

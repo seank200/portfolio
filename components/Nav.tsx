@@ -110,7 +110,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
       }}
     >
       <Container className="flex justify-between items-center py-4">
-        <Link href="/" className="relative z-20">
+        <Link href={`/${lang}`} className="relative z-20">
           <Image
             src="/apple-touch-icon.png"
             className={`${

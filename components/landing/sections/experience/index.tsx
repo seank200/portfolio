@@ -113,43 +113,41 @@ export default function ExperienceSection({ lang }: { lang: SupportedLang }) {
         </p>
       </Container>
       <Container className="mt-8 md:mt-0 relative flex flex-col md:flex-row">
-        <div className="absolute top-0 bottom-0 z-10 md:relative">
-          <div className="pt-4 md:pt-0 w-full md:min-h-screen md:w-fit sticky top-0 flex flex-col md:flex-row justify-center md:justify-start md:items-center bg-background">
-            <div className="mt-3 md:hidden flex items-center text-sm text-faded font-bold">
-              <FontAwesomeIcon icon={faClock} className="mr-2 h-4" />
-              {t('Timeline', '타임라인')}
-            </div>
-            <div className="w-full md:w-auto pt-4 md:pt-0 flex flex-col md:flex-row items-start">
-              <div
-                ref={timelineElem}
-                className="w-full h-1 md:w-1 rounded-full bg-gradient-to-b from-primary to-secondary"
-                style={{
-                  width: isMobile ? timeLineWidth : undefined,
-                  height: isMobile ? 3 : timelineHeight,
-                }}
-              ></div>
-              <div className="mt-3 md:mt-0 md:ml-4 min-w-[10ch] flex flex-row md:flex-col">
+        <div className="z-10 md:z-0 md:mr-8 pt-4 md:pt-0 w-full md:h-screen md:w-fit sticky top-0 flex flex-col md:flex-row justify-center md:justify-start md:items-center bg-background">
+          <div className="mt-3 md:hidden flex items-center text-sm text-faded font-bold">
+            <FontAwesomeIcon icon={faClock} className="mr-2 h-4" />
+            {t('Timeline', '타임라인')}
+          </div>
+          <div className="w-full md:w-auto pt-4 md:pt-0 flex flex-col md:flex-row items-start">
+            <div
+              ref={timelineElem}
+              className="w-full h-1 md:w-1 rounded-full bg-gradient-to-b from-primary to-secondary"
+              style={{
+                width: isMobile ? timeLineWidth : undefined,
+                height: isMobile ? 3 : timelineHeight,
+              }}
+            ></div>
+            <div className="mt-3 md:mt-0 md:ml-4 min-w-[10ch] flex flex-row md:flex-col">
+              <motion.div
+                style={{ width: labelOffsetX, height: labelOffsetY }}
+                className="relative"
+              >
                 <motion.div
-                  style={{ width: labelOffsetX, height: labelOffsetY }}
-                  className="relative"
-                >
-                  <motion.div
-                    className="absolute -top-8 left-0 md:top-0 md:-left-6 w-3 h-3 rounded-full bg-primary"
-                    style={{
-                      top: indicatorOffsetY,
-                      left: indicatorOffsetX,
-                      backgroundColor: labelColor,
-                    }}
-                  ></motion.div>
-                </motion.div>
-                <motion.p
-                  ref={labelElem}
-                  className="shrink-0 -translate-y-1/4 text-primary font-semibold md:font-medium"
-                  style={{ color: labelColor }}
-                >
-                  {formatTime(lang, expPeriodEnd[currentItem])}
-                </motion.p>
-              </div>
+                  className="absolute -top-8 left-0 md:top-0 md:-left-6 w-3 h-3 rounded-full bg-primary"
+                  style={{
+                    top: indicatorOffsetY,
+                    left: indicatorOffsetX,
+                    backgroundColor: labelColor,
+                  }}
+                ></motion.div>
+              </motion.div>
+              <motion.p
+                ref={labelElem}
+                className="shrink-0 -translate-y-1/4 text-primary font-semibold md:font-medium"
+                style={{ color: labelColor }}
+              >
+                {formatTime(lang, expPeriodEnd[currentItem])}
+              </motion.p>
             </div>
           </div>
         </div>

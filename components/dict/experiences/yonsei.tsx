@@ -20,14 +20,19 @@ export const yonseiBCDict = createIntlDict(
 export const yonseiCSDict = createIntlDict(
   {
     TITLE: 'B.S.E. in Computer Science (Double Major)',
-    DIVISION: 'College of Computing',
+    DIVISION: <>College of Computing</>,
     AFFILIATION: 'Yonsei University',
     CATEGORY: 'Education',
     LOCATION: 'Seoul, South Korea',
   },
   {
     TITLE: '컴퓨터과학과 학부졸업',
-    DIVISION: '인공지능융합대학(舊 공과대학 컴퓨터과학과)',
+    DIVISION: (
+      <>
+        인공지능융합대학{' '}
+        <span className="text-[0.75em]">(舊 공과대학 컴퓨터과학과)</span>
+      </>
+    ),
     AFFILIATION: '연세대학교 신촌캠퍼스',
     CATEGORY: '교육',
     LOCATION: '',

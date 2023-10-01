@@ -4,6 +4,7 @@ import EducationSection from '@/components/landing/sections/education';
 import ExperienceSection from '@/components/landing/sections/experience';
 import HeroSection from '@/components/landing/sections/hero';
 import ProjectsSection from '@/components/landing/sections/projects';
+import SkillsetSection from '@/components/landing/sections/skillset';
 import { SUPPORTED_LANGS, SupportedLang } from '@/i18n';
 
 export function generateStaticParams() {
@@ -19,6 +20,7 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
       <HeroSection lang={lang} />
       <ExperienceSection lang={lang} />
       <ProjectsSection lang={lang} />
+      <SkillsetSection lang={lang} />
       <EducationSection lang={lang} />
       <AwardSection lang={lang} />
       <ContactSection lang={lang} />

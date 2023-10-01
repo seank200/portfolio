@@ -1,8 +1,11 @@
+'use client';
+
 import { ExperienceItemName } from '@/components/dict/experiences';
 import Image, { StaticImageData } from 'next/image';
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { SupportedLang, createTranslator } from '@/i18n';
 
 export type ExperienceItemProps = {
   name: ExperienceItemName;
@@ -18,6 +21,7 @@ export type ExperienceItemProps = {
   logoHeight?: number;
   url?: string;
   setCurrentItem: Dispatch<SetStateAction<ExperienceItemName>>;
+  lang: SupportedLang;
 };
 
 export default function ExperienceItem({
@@ -34,7 +38,11 @@ export default function ExperienceItem({
   logoHeight,
   url,
   setCurrentItem,
+  lang,
 }: ExperienceItemProps) {
+  const t = createTranslator(lang);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const logoClassName =
     'mt-6 w-full rounded py-3 flex justify-center items-center bg-white';
 
@@ -77,8 +85,8 @@ export default function ExperienceItem({
 
   return (
     <motion.div
-      className="py-16 flex flex-col justify-center"
-      viewport={{ once: false, amount: 0.75 }}
+      className="md py-16 flex flex-col justify-center"
+      viewport={{ once: false, amount: 0.5 }}
       onViewportEnter={() => setCurrentItem(name)}
     >
       <p className="mb-2 font-medium text-primary">{period}</p>
@@ -95,11 +103,27 @@ export default function ExperienceItem({
       {location && <p className="text-faded">{location}</p>}
       {contents && (
         <ul className="mt-6 leading-relaxed list-inside list-disc">
-          {contents.map((content, idx) => (
-            <li key={idx} className="pl-5 -indent-5">
-              {content}
-            </li>
-          ))}
+          {contents
+            .slice(0, isOpen ? contents.length : 3)
+            .map((content, idx) => (
+              <li
+                key={idx}
+                className="pl-4 md:pl-[22px] -indent-[16px] md:-indent-6"
+              >
+                {content}
+              </li>
+            ))}
+          {contents && contents.length > 3 ? (
+            <button
+              className={`mt-2 pl-4 md:pl-[22px] text-primary`}
+              onClick={() => setIsOpen((p) => !p)}
+            >
+              {t(
+                isOpen ? `View less` : `View more`,
+                isOpen ? `숨기기` : `더 보기`
+              )}
+            </button>
+          ) : null}
         </ul>
       )}
       {url ? linkElem : dividerElem}
