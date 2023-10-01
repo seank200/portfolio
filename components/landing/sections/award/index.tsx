@@ -15,7 +15,7 @@ const dict = createIntlDict(
       <Image
         src={kosafLogoEn}
         alt="Korea Student Aid Foundation"
-        width={128}
+        height={24}
         className={listItemImageClassName}
       />
     ),
@@ -25,7 +25,7 @@ const dict = createIntlDict(
       <Image
         src={kosafLogoKo}
         alt="푸른등대 한국장학재단"
-        width={128}
+        height={24}
         className={listItemImageClassName}
       />
     ),

@@ -24,14 +24,14 @@ export default function ThemedImage({
         alt={alt}
         width={width}
         height={height}
-        className="dark__invisible"
+        className="dark__invisible max-w-full"
       />
       <Image
         src={darkSrc}
         alt={alt}
         width={width}
         height={height}
-        className="light__invisible absolute top-0 left-0"
+        className="light__invisible absolute top-0 left-0 max-w-full"
       />
     </div>
   );

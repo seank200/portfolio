@@ -2,10 +2,10 @@ import { createIntlDict } from '@/i18n';
 
 export const poolinkDict = createIntlDict(
   {
-    TITLE: 'Lead Developer (Frontend)',
+    TITLE: 'Lead Developer (FE)',
     CATEGORY: 'Team Project',
     AFFILIATION: 'Poolink',
-    DESCRIPTION: 'A web platform to save, share and explore links',
+    DESCRIPTION: 'A web app to save, share and explore links',
     DETAILS: [
       'Developed and maintained a responsive web single-page application(SPA) using ReactJS',
       'Set up CI/CD on Vercel to automatically publish development, testing and production branches of the website for internal testing and production deployment',
@@ -17,7 +17,7 @@ export const poolinkDict = createIntlDict(
     TITLE: '개발팀장/Web 프론트엔드 개발',
     CATEGORY: '동아리 팀프로젝트',
     AFFILIATION: 'Poolink',
-    DESCRIPTION: '링크(URL) 저장, 탐색 및 공유 플랫폼',
+    DESCRIPTION: '쉽고 간편한 링크(URL) 저장, 탐색 및 공유 플랫폼',
     DETAILS: [
       '[개발] ReactJS를 사용한 반응형 웹 프론트엔드 SPA(Single-Page Application) 개발',
       '[CI/CD] 개발, 테스팅, 프로덕션 Git 브랜치의 별도 자동 배포 설정을 통한 효율적인 내부 테스팅 및 프로덕션 배포 관리',

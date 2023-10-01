@@ -10,7 +10,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import ExperienceList from './ExperienceList';
 import { ExperienceItemName, expPeriod } from '@/components/dict/experiences';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faClock } from '@fortawesome/free-regular-svg-icons';
 
 export default function ExperienceSection({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
@@ -115,7 +115,7 @@ export default function ExperienceSection({ lang }: { lang: SupportedLang }) {
       <Container className="mt-8 md:mt-0 relative flex flex-col md:flex-row">
         <div className="absolute top-0 bottom-0 z-10 md:relative">
           <div className="pt-4 md:pt-0 w-full md:min-h-screen md:w-fit sticky top-0 flex flex-col md:flex-row justify-center md:justify-start md:items-center bg-background">
-            <div className="mb-1 md:hidden text-faded text-lg font-bold">
+            <div className="mt-3 md:hidden flex items-center text-sm text-faded font-bold">
               <FontAwesomeIcon icon={faClock} className="mr-2 h-4" />
               {t('Timeline', '타임라인')}
             </div>

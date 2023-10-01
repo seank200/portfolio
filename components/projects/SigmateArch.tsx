@@ -38,8 +38,8 @@ export default function SigmateArch({ lang }: { lang: SupportedLang }) {
 
   const imgBaseUrl = '/images/sigmate';
   const imgUrl = {
-    concise: `${imgBaseUrl}/Sigmate_Arch.png`,
-    full: `${imgBaseUrl}/Sigmate_Arch_Concise.png`,
+    concise: `${imgBaseUrl}/Sigmate_Arch_Concise.png`,
+    full: `${imgBaseUrl}/Sigmate_Arch.png`,
   };
 
   const imgPadding = 'px-1 py-2 md:px-6 md:py-8';

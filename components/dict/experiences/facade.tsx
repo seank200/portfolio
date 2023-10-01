@@ -7,8 +7,7 @@ export const facadeDict = createIntlDict(
     AFFILIATION:
       'Startup funded by Ministry of SMEs and Startup(MSS), Repulbic of Korea',
     CATEGORY: 'Work Experience',
-    DESCRIPTION:
-      'Sigmate is a wiki platform for the NFT community, created by Facade Inc., a Web3 startup.',
+    DESCRIPTION: 'A wiki platform for the NFT community',
     DETAILS: [
       'Lead backend developer/CTO in developing a platform that provided verified, user-provided information on NFTs and blockchains ',
       'Implemented a REST API app server using NodeJS wtih TypeScript.',
@@ -22,7 +21,8 @@ export const facadeDict = createIntlDict(
   {
     TITLE: 'CTO / 백엔드 개발',
     DIVISION: '파사드',
-    AFFILIATION: '대한민국 중소벤처사업부 예비창업패키지 선정 대상 스타트업',
+    AFFILIATION:
+      '대한민국 중소벤처사업부 예비창업패키지 선정 대상 Web3/블록체인 스타트업',
     CATEGORY: '업무 경험',
     DESCRIPTION: 'NFT 커뮤니티를 위한 위키 플랫폼',
     DETAILS: [
