@@ -8,12 +8,10 @@ export const anlDict = createIntlDict(
     CATEGORY: 'Work Experience',
     LOCATION: 'Lemont, IL, USA 🇺🇸',
     DETAILS: [
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut lorem quis orci ornare efficitur vel id urna.',
-      'Etiam tincidunt dui ut ligula tempor cursus. Ut eget eros vitae leo placerat lacinia. Sed a semper neque.',
-      'Quisque velit risus, consectetur in efficitur quis, tristique finibus tellus.',
-      'Integer consequat arcu ut nibh euismod, nec viverra ligula vestibulum. Cras varius lectus vel dolor auctor aliquam.',
-      'Integer pellentesque nibh eu diam imperdiet volutpat. Suspendisse lobortis lorem eu nibh imperdiet molestie.',
-      'Nullam pharetra elementum velit ut malesuada. Maecenas ut diam quis ligula vulputate rutrum',
+      'Developed optimized algorithm for processing raw brain diffusion MRI scan data for brain connectivity analysis using MATLAB and C++.',
+      'Collaborated with team that created Nek5000 and NekRS, a highly-scalable open source library popular for efficiently solving Navier-Stokes equations for incompressible fluid flow',
+      'Contributed to shared team-wide repository using Git best-practice workflows (branching, merging, PRs)',
+      'Worked together with supervisors/teammates from various educational and cultural backgrounds, with daily lab meetings for progress reports and future planning',
     ],
   },
   {

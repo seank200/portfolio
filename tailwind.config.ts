@@ -66,6 +66,7 @@ const config: Config = {
       gridTemplateColumns: {
         sm: 'repeat(auto-fill, minmax(140px, 1fr))',
         md: 'repeat(auto-fill, minmax(240px, 1fr))',
+        lg: 'repeat(auto-fill, minmax(280px, 1fr))',
       },
     },
   },

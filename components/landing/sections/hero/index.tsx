@@ -2,7 +2,7 @@
 
 import { SupportedLang, createTranslator } from '@/i18n';
 import Container from '../../../Container';
-import Section from '../../Section';
+import Section from '../../../Section';
 import Memoji from './Memoji';
 import { MouseEventHandler, useRef } from 'react';
 
@@ -27,6 +27,7 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
 
   return (
     <Section
+      id="home"
       elementRef={sectionRef}
       className="flex flex-col justify-center"
       screen

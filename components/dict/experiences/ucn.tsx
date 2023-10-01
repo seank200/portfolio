@@ -8,11 +8,12 @@ export const ucnDict = createIntlDict(
     LOCATION: 'Seoul, South Korea',
     CATEGORY: 'Internship',
     DETAILS: [
-      'Etiam tincidunt dui ut ligula tempor cursus. Ut eget eros vitae leo placerat lacinia. Sed a semper neque.',
-      'Integer consequat arcu ut nibh euismod, nec viverra ligula vestibulum. Cras varius lectus vel dolor auctor aliquam.',
-      'Quisque velit risus, consectetur in efficitur quis, tristique finibus tellus.',
-      'Nullam pharetra elementum velit ut malesuada. Maecenas ut diam quis ligula vulputate rutrum',
-      'Integer pellentesque nibh eu diam imperdiet volutpat. Suspendisse lobortis lorem eu nibh imperdiet molestie.',
+      'Supported development of diffusion MRI high-order tractography calculation solvers using C++',
+      'Developed of neuroimage data processing pipeline, including reading from raw images (such as DICOM and NiFTI) and mapping them to C/C++ datatypes',
+      'Managed 2 laboratory computation workstations. Performed general maintenance including software dependency installs and firmware updates. Set up ssh and vnc remote access environments with best security practices including per-user privilege tuning and IP-based bans. Monitored server hardware status (CPU/GPU temperature, activity levels) periodically. Set up Linux environments and scripts for efficient monitoring and management of long-running server calculations (bash, tmux, conda, etc)',
+      'Communicated with server workstation hardware providers for regular maintenance with the hardware providers, such as workstation NVIDIA GPU coolant refills and replacements.',
+      'Management of laboratory code version control system (VCS) of major operations such as forking from upstream codebases, collaboration with external organizations and conflict resolving, using git',
+      'Advisor: Dr. Sehun Chun (Assistant Professor of Mathematics, Integrated Science and Engineering Division, Yonsei University)',
     ],
   },
   {

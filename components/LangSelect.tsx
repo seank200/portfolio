@@ -17,12 +17,12 @@ export default function LangSelect({ lang }: { lang: SupportedLang }) {
 
   const engItem = (
     <>
-      🇺🇸 <span className="ml-2">{t('English', '영어')}</span>
+      🇺🇸 <span className="ml-2">English</span>
     </>
   );
   const korItem = (
     <>
-      🇰🇷 <span className="ml-2">{t('Korean', '한국어')}</span>
+      🇰🇷 <span className="ml-2">한국어</span>
     </>
   );
 
@@ -33,7 +33,8 @@ export default function LangSelect({ lang }: { lang: SupportedLang }) {
       onClick={() => setIsOpen((p) => !p)}
     >
       <GlobeIcon className="mr-1 w-4 h-4 stroke-background-on" />
-      <span className="ml-2 text-sm">{t('English', '한국어')}</span>
+      <span className="ml-2 md:hidden text-sm">{t('Language:', '언어:')}</span>
+      <span className="ml-1 md:ml-2 text-sm">{t('English', '한국어')}</span>
       <FontAwesomeIcon
         icon={faChevronDown}
         className={`ml-4 h-2 transition-transform ${arrowRotate}`}

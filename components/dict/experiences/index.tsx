@@ -8,6 +8,7 @@ import { createIntlDict } from '@/i18n';
 import { ceosDict } from './ceos';
 import { cfcDict } from './cfc';
 import { poolinkDict } from './poolink';
+import { TimePeriod } from '..';
 
 export type ExperienceItemName =
   | 'ucn'
@@ -19,16 +20,6 @@ export type ExperienceItemName =
   | 'ceos'
   | 'cfc'
   | 'yicrc';
-
-type TimePrecision = 'year' | 'month' | 'day';
-
-type TimePeriod = {
-  start: Date | DateTime;
-  /** Set to `null` for current */
-  end: Date | DateTime | null;
-  /** Defaults to `month`. */
-  precision?: TimePrecision;
-};
 
 export const myInfo = {
   github: {
@@ -111,10 +102,10 @@ export const expDict = {
 export const expLink: Record<ExperienceItemName, string> = {
   ucn: 'https://www.hcss.or.kr/html/',
   anl: 'https://www.anl.gov',
-  facade: '',
+  facade: '/project/sigmate',
   yonseiBC: 'https://uic.yonsei.ac.kr/main/major.asp?mid=m02_04_03',
   yonseiCS: 'https://cs.yonsei.ac.kr',
-  poolink: '',
+  poolink: '/project/poolink',
   ceos: 'https://ceos-sinchon.com',
   cfc: 'https://www.usfk.mil/About/CFC/',
   yicrc: 'https://yicrc.yonsei.ac.kr/main/default.asp?mid=m00',

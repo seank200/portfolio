@@ -32,6 +32,7 @@ export default function Memoji({
   useEffect(() => {
     const videoElem = videoRef.current;
     if (!videoElem) return;
+    videoElem.load();
     const handleStart = () => setIsEnded(false);
     const handleEnd = () => setIsEnded(true);
     videoElem.addEventListener('play', handleStart);

@@ -1,3 +1,5 @@
+import ContactSection from '@/components/landing/sections/ContactSection';
+import AwardSection from '@/components/landing/sections/award';
 import EducationSection from '@/components/landing/sections/education';
 import ExperienceSection from '@/components/landing/sections/experience';
 import HeroSection from '@/components/landing/sections/hero';
@@ -16,7 +18,8 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
       <HeroSection lang={lang} />
       <ExperienceSection lang={lang} />
       <EducationSection lang={lang} />
-      <div className="h-screen" />
+      <AwardSection lang={lang} />
+      <ContactSection lang={lang} />
     </>
   );
 }

@@ -7,9 +7,10 @@ export const poolinkDict = createIntlDict(
     AFFILIATION: 'Poolink',
     DESCRIPTION: 'A web platform to save, share and explore links',
     DETAILS: [
-      'Implemented a responsive web single-page application(SPA) using ReactJS',
+      'Developed and maintained a responsive web single-page application(SPA) using ReactJS',
       'Set up CI/CD on Vercel to automatically publish development, testing and production branches of the website for internal testing and production deployment',
       'Collaborated with 4 developers as the development team leader, establishing SOPs for agile development and managing Git workflows',
+      'Maintained the service for over a year with weekly update schedules for bug patches and monthly feature releases, with efficient workflows that allowed every team member to keep up with this schedule whilst going through college semester coursework',
     ],
   },
   {

@@ -2,6 +2,7 @@ import { ExperienceItemName } from '@/components/dict/experiences';
 import Image, { StaticImageData } from 'next/image';
 import { Dispatch, SetStateAction } from 'react';
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export type ExperienceItemProps = {
   name: ExperienceItemName;
@@ -36,6 +37,44 @@ export default function ExperienceItem({
 }: ExperienceItemProps) {
   const logoClassName =
     'mt-6 w-full rounded py-3 flex justify-center items-center bg-white';
+
+  const clickableLogoClassName = `${logoClassName} hover:shadow-lg hover:scale-102 transition-all`;
+
+  let logoImage: React.ReactNode = null;
+  let linkElem: React.ReactNode = null;
+  let dividerElem: React.ReactNode = null;
+  if (logoSrc && logoAlt) {
+    logoImage = <Image src={logoSrc} alt={logoAlt} height={logoHeight || 32} />;
+
+    if (url) {
+      const isInternalUrl = url.charAt(0) === '/';
+      if (isInternalUrl) {
+        linkElem = (
+          <Link href={url} className={clickableLogoClassName}>
+            {logoImage}
+          </Link>
+        );
+      } else {
+        linkElem = (
+          <a
+            href={url}
+            className={clickableLogoClassName}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {logoImage}
+          </a>
+        );
+      }
+    } else {
+      dividerElem = (
+        <div className="mt-6 w-full rounded py-3 flex justify-center items-center bg-white">
+          {logoImage}
+        </div>
+      );
+    }
+  }
+
   return (
     <motion.div
       className="py-16 flex flex-col justify-center"
@@ -57,26 +96,13 @@ export default function ExperienceItem({
       {contents && (
         <ul className="mt-6 leading-relaxed list-inside list-disc">
           {contents.map((content, idx) => (
-            <li key={idx}>{content}</li>
+            <li key={idx} className="pl-5 -indent-5">
+              {content}
+            </li>
           ))}
         </ul>
       )}
-      {logoSrc &&
-        logoAlt &&
-        (url ? (
-          <a
-            href={url}
-            className={`${logoClassName} hover:shadow-lg hover:scale-102 transition-all`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image src={logoSrc} alt={logoAlt} height={logoHeight || 32} />
-          </a>
-        ) : (
-          <div className="mt-6 w-full rounded py-3 flex justify-center items-center bg-white">
-            <Image src={logoSrc} alt={logoAlt} height={logoHeight || 32} />
-          </div>
-        ))}
+      {url ? linkElem : dividerElem}
     </motion.div>
   );
 }

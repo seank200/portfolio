@@ -3,12 +3,15 @@ import { createIntlDict } from '@/i18n';
 export const facadeDict = createIntlDict(
   {
     TITLE: 'CTO / Backend Developer',
-    AFFILIATION: 'Facade Inc.',
+    DIVISION: 'Facade Inc.',
+    AFFILIATION:
+      'Startup funded by Ministry of SMEs and Startup(MSS), Repulbic of Korea',
     CATEGORY: 'Work Experience',
     DESCRIPTION:
       'Sigmate is a wiki platform for the NFT community, created by Facade Inc., a Web3 startup.',
     DETAILS: [
-      'Implemented a REST API app server using NodeJS and TypeScript.',
+      'Lead backend developer/CTO in developing a platform that provided verified, user-provided information on NFTs and blockchains ',
+      'Implemented a REST API app server using NodeJS wtih TypeScript.',
       'Managed DevOps workflows on Amazon Web Services (AWS)',
       'Modeled and deployed MYSQL server on AWS RDS with multi A-Z, read replicas, and auto backups',
       'Set up NoSQL server for content audit logs using AWS DynamoDB',
@@ -18,7 +21,8 @@ export const facadeDict = createIntlDict(
   },
   {
     TITLE: 'CTO / 백엔드 개발',
-    AFFILIATION: '파사드',
+    DIVISION: '파사드',
+    AFFILIATION: '대한민국 중소벤처사업부 예비창업패키지 선정 대상 스타트업',
     CATEGORY: '업무 경험',
     DESCRIPTION: 'NFT 커뮤니티를 위한 위키 플랫폼',
     DETAILS: [

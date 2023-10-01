@@ -1,14 +1,16 @@
 'use client';
 
 import { SupportedLang, createTranslator, formatTime } from '@/i18n';
-import Section from '../../Section';
-import Container from '../../../Container';
-import SectionH2 from '../../SectionH2';
+import Section from '@components/Section';
+import Container from '@components/Container';
+import SectionH2 from '@components/SectionH2';
 import { useEffect, useRef, useState } from 'react';
 import { mapValues, throttle } from 'lodash';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import ExperienceList from './ExperienceList';
 import { ExperienceItemName, expPeriod } from '@/components/dict/experiences';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 export default function ExperienceSection({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
@@ -98,21 +100,26 @@ export default function ExperienceSection({ lang }: { lang: SupportedLang }) {
   }, []);
 
   return (
-    <Section>
+    <Section id="experiences">
       <Container>
-        <SectionH2>{t('Experiences', '이력')}</SectionH2>
+        <SectionH2 className="#experiences">
+          {t('Experiences', '이력')}
+        </SectionH2>
         <p className="text-faded">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed
-          nisi libero. Donec in arcu non ante facilisis finibus rhoncus ut
-          magna. Phasellus nec cursus quam. Morbi ultricies nunc at viverra
-          eleifend. Donec congue sem eu nulla pharetra elementum. Nam cursus
-          aliquam finibus.
+          {t(
+            'Introducing my development work/project experiences. My experiences range from personal hobby projects to contribution to large open-source projects during internship programs.',
+            '소프트웨어 개발 관련 프로젝트 및 인턴십 경험입니다. 개인 취미 프로젝트부터 인턴십 기간 중 오픈 소스 프로젝트에 기여하는 등, 다양한 경험을 가지고 있습니다.'
+          )}
         </p>
       </Container>
-      <Container className="relative flex flex-col md:flex-row">
+      <Container className="mt-8 md:mt-0 relative flex flex-col md:flex-row">
         <div className="absolute top-0 bottom-0 z-10 md:relative">
-          <div className="pt-4 md:pt-0 w-full md:min-h-screen md:w-fit sticky top-0 flex items-center bg-background">
-            <div className="w-full md:w-auto pt-8 md:pt-0 flex flex-col md:flex-row items-start">
+          <div className="pt-4 md:pt-0 w-full md:min-h-screen md:w-fit sticky top-0 flex flex-col md:flex-row justify-center md:justify-start md:items-center bg-background">
+            <div className="mb-1 md:hidden text-faded text-lg font-bold">
+              <FontAwesomeIcon icon={faClock} className="mr-2 h-4" />
+              {t('Timeline', '타임라인')}
+            </div>
+            <div className="w-full md:w-auto pt-4 md:pt-0 flex flex-col md:flex-row items-start">
               <div
                 ref={timelineElem}
                 className="w-full h-1 md:w-1 rounded-full bg-gradient-to-b from-primary to-secondary"
@@ -137,7 +144,7 @@ export default function ExperienceSection({ lang }: { lang: SupportedLang }) {
                 </motion.div>
                 <motion.p
                   ref={labelElem}
-                  className="shrink-0 -translate-y-1/4 text-primary font-medium"
+                  className="shrink-0 -translate-y-1/4 text-primary font-semibold md:font-medium"
                   style={{ color: labelColor }}
                 >
                   {formatTime(lang, expPeriodEnd[currentItem])}

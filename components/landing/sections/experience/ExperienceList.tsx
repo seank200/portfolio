@@ -51,6 +51,7 @@ export default function ExperienceList({
   const {
     TITLE: FACADE_TITLE,
     AFFILIATION: FACADE_AFFILIATION,
+    DIVISION: FACADE_DIVISION,
     CATEGORY: FACADE_CATEGORY,
   } = expDict.facade[lang];
   const FACADE_DETAILS = expDict.facade[lang].DETAILS as React.ReactNode[];
@@ -60,6 +61,7 @@ export default function ExperienceList({
     AFFILIATION: POOLINK_AFFILIATION,
     CATEGORY: POOLINK_CATEGORY,
   } = expDict.poolink[lang];
+  const POOLINK_DETAILS = expDict.poolink[lang].DETAILS as React.ReactNode[];
 
   const {
     TITLE: CEOS_TITLE,
@@ -67,6 +69,7 @@ export default function ExperienceList({
     DIVISION: CEOS_DIVISION,
     AFFILIATION: CEOS_AFFILIATION,
   } = expDict.ceos[lang];
+  const CEOS_DETAILS = expDict.ceos[lang].DETAILS as React.ReactNode[];
 
   const {
     TITLE: CFC_TITLE,
@@ -131,6 +134,7 @@ export default function ExperienceList({
       name: 'facade',
       title: FACADE_TITLE,
       affiliation: FACADE_AFFILIATION,
+      division: FACADE_DIVISION,
       category: FACADE_CATEGORY,
       contents: FACADE_DETAILS,
       period: FACADE_PERIOD,
@@ -144,9 +148,11 @@ export default function ExperienceList({
       title: POOLINK_TITLE,
       affiliation: POOLINK_AFFILIATION,
       category: POOLINK_CATEGORY,
+      contents: POOLINK_DETAILS,
       period: POOLINK_PERIOD,
       logoSrc: PoolinkLogo,
       logoAlt: t('Yonsei Univeristy', '연세대학교(신촌)'),
+      url: expLink.poolink,
       logoHeight: 26,
     },
     {
@@ -155,6 +161,7 @@ export default function ExperienceList({
       affiliation: CEOS_AFFILIATION,
       division: CEOS_DIVISION,
       category: CEOS_CATEGORY,
+      contents: CEOS_DETAILS,
       period: CEOS_PERIOD,
       logoSrc: CEOSLogo,
       logoAlt: 'CEOS',
@@ -170,7 +177,7 @@ export default function ExperienceList({
       period: CFC_PERIOD,
       contents: CFC_DETAILS,
       logoSrc: CFCLogo,
-      logoAlt: 'CEOS',
+      logoAlt: t('ROK-US Combined Forces Command', '한미연합군사령부'),
       url: expLink.cfc,
     },
     {
@@ -193,7 +200,7 @@ export default function ExperienceList({
   return (
     <div
       ref={elemRef}
-      className={`-translate-y-1 pt-8 md:pt-0 w-full ${className}`}
+      className={`-translate-y-1 pt-16 md:pt-0 w-full ${className}`}
     >
       {experiences.map((item) => (
         <ExperienceItem

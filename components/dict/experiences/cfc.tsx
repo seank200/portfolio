@@ -8,10 +8,9 @@ export const cfcDict = createIntlDict(
     AFFILIATION: 'R.O.K. - U.S. Combined Forces Command',
     LOCATION: 'USAG Yongsan-Casey, South Korea',
     DETAILS: [
-      'Quisque velit risus, consectetur in efficitur quis, tristique finibus tellus.',
-      'Etiam tincidunt dui ut ligula tempor cursus. Ut eget eros vitae leo placerat lacinia. Sed a semper neque.',
-      'Nullam pharetra elementum velit ut malesuada. Maecenas ut diam quis ligula vulputate rutrum',
-      'Integer pellentesque nibh eu diam imperdiet volutpat. Suspendisse lobortis lorem eu nibh imperdiet molestie.',
+      'Simultaneous English/Korean interpretation without script on a daily basis',
+      'Meeting interpretation on site, over phone and over video conference calls in the presence of major(0-6) - major general(O-8) ranking officers from various units subordinate to ROKA, ROKN, ROKAF, ROKMC and USFK (United States Forces Korea)',
+      'Translation of military documents including intelligence analysis reports',
     ],
   },
   {
