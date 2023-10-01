@@ -16,7 +16,7 @@ export default function ProjectStickyHeader({
           <div className="flex justify-between md:justify-start items-center">
             <h3>{heading}</h3>
             {title && (
-              <p className="md:ml-4 rounded px-3 py-1 bg-secondary/10 font-semibold text-faded text-sm">
+              <p className="hidden md:block md:ml-4 rounded px-3 py-1 bg-secondary/10 font-semibold text-faded text-sm">
                 {title}
               </p>
             )}
