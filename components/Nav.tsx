@@ -16,6 +16,7 @@ import { SupportedLang, createTranslator } from '@/i18n';
 import { motion } from 'framer-motion';
 import LangSelect from './LangSelect';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const SCROLL_DOWN_THRSH = 20;
 const SCROLL_UP_THRSH = 10;
@@ -31,6 +32,7 @@ const LINK_BLOG = 'https://velog.io/@seank200';
 
 export default function Nav({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
+  const pathname = usePathname();
   const LABEL_GITHUB = 'Github';
   const LABEL_LINKEDIN = t('LinkedIn', '링크드인');
   const LABEL_BLOG = t('Blog', '블로그');
@@ -48,6 +50,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
   const motionVariant = `${isMobile ? 'mobile' : 'desktop'}${
     isMobile && isExpanded ? 'Expanded' : isHidden ? 'Hidden' : 'Normal'
   }`;
+  const showNameLogo = pathname === '/' && isNearTop;
 
   const handleLinkClick: MouseEventHandler<HTMLLIElement> = () => {
     setIsExpanded(false);
@@ -107,14 +110,11 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
       }}
     >
       <Container className="flex justify-between items-center py-4">
-        <Link
-          href="/"
-          className="relative z-20 bg-clip-text bg-gradient-to-br from-primary to-secondary font-extrabold text-xl hover:text-transparent uppercase transition-colors"
-        >
+        <Link href="/" className="relative z-20">
           <Image
             src="/apple-touch-icon.png"
             className={`${
-              isNearTop ? 'opacity-100' : 'opacity-0'
+              showNameLogo ? 'opacity-100' : 'opacity-0'
             } rounded transition-all`}
             alt="Youngwoo Kim"
             width={24}
@@ -122,8 +122,8 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           />
           <span
             className={`${
-              isNearTop ? 'opacity-0' : 'opacity-100'
-            } absolute top-0 left-0 font-display transition-all`}
+              showNameLogo ? 'opacity-0' : 'opacity-100'
+            } absolute top-0 left-0 bg-clip-text bg-gradient-to-br from-primary to-secondary font-display font-extrabold text-xl hover:text-transparent uppercase transition-all`}
           >
             Youngwoo
           </span>
