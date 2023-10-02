@@ -31,7 +31,7 @@ export default function SectionH2({
         <Link href={href} className="flex items-center">
           <FontAwesomeIcon
             icon={faLink}
-            className="ml-4 h-5 opacity-0 scale-95 group-hover:scale-100 group-hover:opacity-100 transition-all"
+            className="ml-4 h-5 opacity-0 scale-95 group-hover:scale-100 group-hover:opacity-100 text-faded transition-all"
           />
         </Link>
       )}

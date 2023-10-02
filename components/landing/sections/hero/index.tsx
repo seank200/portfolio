@@ -1,37 +1,24 @@
-'use client';
-
 import { SupportedLang, createTranslator } from '@/i18n';
 import Container from '../../../Container';
 import Section from '../../../Section';
 import Memoji from './Memoji';
-import { MouseEventHandler, useRef } from 'react';
+import Link from 'next/link';
 
 export default function HeroSection({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
-  const sectionRef = useRef<HTMLElement>(null);
-  const handlePrimaryClick = () => {
-    if (!sectionRef.current) return;
-    const { height } = sectionRef.current.getBoundingClientRect();
-    window.scrollTo({ top: height, left: 0, behavior: 'smooth' });
-  };
 
   const h1FontSize = t('text-4xl', 'text-5xl');
   const buttons = (
     <>
-      <HeroButton primary onClick={handlePrimaryClick}>
+      <HeroButton primary href="#experiences">
         {t('View portfolio', '포트폴리오 보기')}
       </HeroButton>
-      <HeroButton>{t('Contact me', '연락하기')}</HeroButton>
+      <HeroButton href="#contacts">{t('Contact me', '연락하기')}</HeroButton>
     </>
   );
 
   return (
-    <Section
-      id="home"
-      elementRef={sectionRef}
-      className="flex flex-col justify-center"
-      screen
-    >
+    <Section id="home" className="flex flex-col justify-center" screen>
       <Container className="pt-8 flex flex-col md:flex-row justify-center md:justify-between items-center">
         <div className="md:mr-12">
           <h1
@@ -60,23 +47,23 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
 }
 
 function HeroButton({
+  href,
   primary,
   children,
-  onClick,
 }: {
+  href: string;
   primary?: boolean;
   children: React.ReactNode;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
 }) {
   const bgText: string = primary
     ? 'bg-background-on text-background hover:bg-primary hover:text-primary-on'
     : 'hover:text-primary';
   return (
-    <button
+    <Link
+      href={href}
       className={`px-6 py-2 rounded-lg border-2 border-background-on hover:border-primary ${bgText} font-medium transition-colors`}
-      onClick={onClick}
     >
       {children}
-    </button>
+    </Link>
   );
 }

@@ -2,10 +2,8 @@ import {
   SiAmazonaws,
   SiAmazondynamodb,
   SiGnubash,
-  SiMysql,
   SiNodedotjs,
   SiGithubactions,
-  SiTypescript,
   SiReact,
   SiJavascript,
   SiVercel,
@@ -14,10 +12,17 @@ import {
   SiC,
   SiCplusplus,
   SiGithub,
+  SiUbuntu,
+  SiCentos,
+  SiMongodb,
 } from '@icons-pack/react-simple-icons';
 import Image from 'next/image';
 import JavaLogo from '@images/tech/java.png';
 import CMakeLogo from '@images/tech/cmake.png';
+import PythonLogo from '@images/tech/python.png';
+import MySQLLogo from '@images/tech/mysql.png';
+import PostgreSQLLogo from '@images/tech/postgresql.png';
+import TypeScriptLogo from '@images/tech/typescript.png';
 import { SupportedLang } from '@/i18n';
 
 export default function TechStackItem({
@@ -41,7 +46,7 @@ export default function TechStackItem({
   return (
     <li
       className={`rounded bg-surface text-surface-on shadow transition-all ${
-        url ? 'flex justify-center hover:scale-102 hover:shadow-lg' : innerClass
+        url ? 'flex justify-center hover:scale-105 hover:shadow-lg' : innerClass
       }`}
     >
       {url ? (
@@ -86,7 +91,7 @@ export function TSReactJS() {
 export function TSDocker() {
   return (
     <TechStackItem
-      icon={<SiDocker color="default" className={`${iconSize}`} />}
+      icon={<SiDocker color="#1D63ED" className={`${iconSize}`} />}
       label="Docker"
       url="https://www.docker.com"
     />
@@ -128,7 +133,14 @@ export function TSVercel() {
 export function TSTypeScript() {
   return (
     <TechStackItem
-      icon={<SiTypescript color="default" className={`${iconSize}`} />}
+      icon={
+        <Image
+          src={TypeScriptLogo}
+          alt="TypeScript"
+          height={48}
+          className={iconHeight}
+        />
+      }
       label="TypeScript"
       url="https://www.typescriptlang.org"
     />
@@ -169,13 +181,27 @@ export function TSMYSQL() {
   return (
     <TechStackItem
       icon={
-        <SiMysql
-          color="default"
-          className={`${iconSize} dark:fill-surface-on`}
-        />
+        <Image src={MySQLLogo} alt="MYSQL" height={48} className={iconHeight} />
       }
       label="MYSQL"
       url="https://www.mysql.com"
+    />
+  );
+}
+
+export function TSPostgreSQL() {
+  return (
+    <TechStackItem
+      icon={
+        <Image
+          src={PostgreSQLLogo}
+          alt="PostgreSQL"
+          height={48}
+          className={iconHeight}
+        />
+      }
+      label="PostgreSQL"
+      url="https://www.postgresql.org"
     />
   );
 }
@@ -269,6 +295,58 @@ export function TSGithubActions() {
       icon={<SiGithubactions color="default" className={`${iconSize}`} />}
       label="Github Actions"
       url="https://github.com/features/actions"
+    />
+  );
+}
+
+export function TSPython() {
+  return (
+    <TechStackItem
+      icon={
+        <Image
+          src={PythonLogo}
+          alt="Python"
+          height={48}
+          className={iconHeight}
+        />
+      }
+      label="Python"
+      url="https://www.python.org"
+    />
+  );
+}
+
+export function TSUbuntu() {
+  return (
+    <TechStackItem
+      icon={<SiUbuntu color="default" className={iconSize} />}
+      label="Ubuntu"
+      url="https://ubuntu.com"
+    />
+  );
+}
+
+export function TSCentOS() {
+  return (
+    <TechStackItem
+      icon={
+        <SiCentos
+          color="default"
+          className={`${iconSize} dark:fill-surface-on`}
+        />
+      }
+      label="CentOS"
+      url="https://www.centos.org"
+    />
+  );
+}
+
+export function TSMongoDB() {
+  return (
+    <TechStackItem
+      icon={<SiMongodb color="default" className={`${iconSize}`} />}
+      label="MongoDB"
+      url="https://www.mongodb.com"
     />
   );
 }

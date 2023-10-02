@@ -19,7 +19,7 @@ export const yonseiBCDict = createIntlDict(
 
 export const yonseiCSDict = createIntlDict(
   {
-    TITLE: 'B.S.E. in Computer Science (Double Major)',
+    TITLE: 'B.S.E. in Computer Science',
     DIVISION: <>College of Computing</>,
     AFFILIATION: 'Yonsei University',
     CATEGORY: 'Education',

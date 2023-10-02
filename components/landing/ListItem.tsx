@@ -28,12 +28,11 @@ export default function ListItem({
   const content = (
     <>
       <div className="md:mr-8">
-        <h3 className="mb-2 text-lg md:text-xl font-semibold group-hover:text-primary">
+        <h3 className="mb-2 text-lg md:text-xl font-semibold">
           {icon && (
-            <FontAwesomeIcon
-              icon={icon}
-              className="mr-2 hidden md:inline-block"
-            />
+            <span className="mr-2 hidden md:inline-block">
+              <FontAwesomeIcon icon={icon} />
+            </span>
           )}
           {title}
         </h3>
@@ -41,7 +40,7 @@ export default function ListItem({
           {contents.map((content, idx) => (
             <li
               key={typeof content === 'string' ? content : idx}
-              className="pl-5 -indent-5 text-faded leading-relaxed"
+              className="pl-5 -indent-[17px] md:pl-5 md:-indent-5 text-faded leading-relaxed"
             >
               {content}
             </li>

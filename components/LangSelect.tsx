@@ -29,15 +29,17 @@ export default function LangSelect({ lang }: { lang: SupportedLang }) {
   return (
     <button
       title={t('Switch Language', '언어 변경')}
-      className="relative md:px-4 flex justify-center items-center text-xl"
+      className="relative md:px-4 flex justify-center items-center text-sm"
       onClick={() => setIsOpen((p) => !p)}
     >
       <GlobeIcon className="mr-1 w-4 h-4 stroke-background-on" />
-      <span className="ml-2 md:hidden text-sm">{t('Language:', '언어:')}</span>
-      <span className="ml-1 md:ml-2 text-sm">{t('English', '한국어')}</span>
+      <span className="ml-2 md:hidden">{t('Language:', '언어:')}</span>
+      <span className="ml-1 md:ml-2">{t('English', '한국어')}</span>
       <FontAwesomeIcon
         icon={faChevronDown}
-        className={`ml-4 h-2 transition-transform ${arrowRotate}`}
+        className={`ml-4 text-[0.5rem] transition-transform ${arrowRotate}`}
+        role="button"
+        title={t('Toggle language switcher', '언어 선택 메뉴 보기/숨기기')}
       />
       <ul
         className={`mt-2 absolute top-full left-0 w-36 border border-faded/20 shadow rounded px-2 py-2 ${menuDisplay} flex-col items-stretch bg-background text-sm break-keep`}

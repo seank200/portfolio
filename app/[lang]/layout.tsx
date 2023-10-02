@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Nav from '@/components/Nav';
 import Footer from '@/components/Footer';
-import { SupportedLang } from '@/i18n';
+import { SUPPORTED_LANGS, SupportedLang } from '@/i18n';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -20,6 +20,7 @@ export default function Layout({
   children: React.ReactNode;
   params: { lang: SupportedLang };
 }) {
+  if (!SUPPORTED_LANGS.includes(params.lang)) return <html></html>;
   return (
     <html lang={params.lang} className="scroll-smooth">
       <head>

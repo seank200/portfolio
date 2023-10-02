@@ -18,6 +18,8 @@
     --color-surface-on: 24, 28, 37;
     --color-faded: 71, 85, 105;
     --color-faded-variant: 100, 116, 139;
+    --color-sigmate: 234, 245, 255;
+    --color-poolink: 61, 128, 245;
     --rgb-primary: rgb(var(--color-primary));
     --rgb-background-on: rgb(var(--color-background-on));
     --rgb-faded: rgb(var(--color-faded));
@@ -36,9 +38,10 @@
     --color-background-variant: 18, 28, 51;
     --color-background-on: 227, 227, 232;
     --color-surface: 34, 43, 63;
-    --color-surface-on: 244, 244, 246;
+    --color-surface-on: 227, 227, 232;
     --color-faded: 148, 163, 184;
     --color-faded-variant: 100, 116, 139;
+    --color-sigmate: 0, 40, 77;
   }
 
   .light__invisible {
@@ -69,10 +72,10 @@
       --color-background-variant: 18, 28, 51;
       --color-background-on: 227, 227, 232;
       --color-surface: 34, 43, 63;
-      --color-surface-on: 244, 244, 246;
+      --color-surface-on: 227, 227, 232;
       --color-faded: 148, 163, 184;
       --color-faded-variant: 100, 116, 139;
-      --color-poolink: 61, 128, 245;
+      --color-sigmate: 0, 40, 77;
     }
 
     .light__invisible {

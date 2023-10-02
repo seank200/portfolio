@@ -40,7 +40,7 @@ export default function AwardSection({ lang }: { lang: SupportedLang }) {
     <Section id="awards-scholarships">
       <Container>
         <SectionH2 href="#awards-scholarships">
-          {t('Awards / Scholarships', '수상 / 장학')}
+          {t('Awards & Scholarships', '수상/장학')}
         </SectionH2>
         <ListItem
           title={TITLE}

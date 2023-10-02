@@ -7,15 +7,20 @@ import {
   TSC,
   TSCMake,
   TSCPP,
+  TSCentOS,
   TSDocker,
   TSGNUBash,
   TSGithub,
   TSGithubActions,
   TSJava,
   TSMYSQL,
+  TSMongoDB,
   TSNodeJS,
+  TSPostgreSQL,
+  TSPython,
   TSReactJS,
   TSTypeScript,
+  TSUbuntu,
 } from '@/components/projects/TechStackItem';
 import { SupportedLang, createTranslator } from '@/i18n';
 
@@ -30,16 +35,21 @@ export default function SkillsetSection({ lang }: { lang: SupportedLang }) {
           <TSTypeScript />
           <TSC lang={lang} />
           <TSCPP lang={lang} />
-          <TSCMake />
-          <TSGNUBash />
-          <TSMYSQL />
+          <TSPython />
           <TSJava />
           <TSNodeJS />
           <TSReactJS />
-          <TSDocker />
-          <TSAWS />
+          <TSGNUBash />
           <TSGithub />
+          <TSAWS />
+          <TSUbuntu />
+          <TSMYSQL />
+          <TSPostgreSQL />
+          <TSMongoDB />
+          <TSDocker />
+          <TSCMake />
           <TSGithubActions />
+          <TSCentOS />
         </TechStack>
       </Container>
     </Section>
