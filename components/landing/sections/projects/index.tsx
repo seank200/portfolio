@@ -2,7 +2,7 @@ import Container from '@/components/Container';
 import Section from '@/components/Section';
 import SectionH2 from '@/components/SectionH2';
 import { SupportedLang, createTranslator } from '@/i18n';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 import sigmateLogo from '@images/LOGO_Sigmate.png';
 import sigmateLogoDark from '@images/LOGO_Sigmate_Dark.png';
 import poolinkLogo from '@images/LOGO_Poolink.png';
@@ -16,85 +16,90 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function ProjectsSection({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
-  const VIEW_DETAILS = t('View more', '상세정보 보기');
   const SIGMATE_DESC = expDict.facade[lang].DESCRIPTION;
   const POOLINK_DESC = expDict.poolink[lang].DESCRIPTION;
   return (
     <Section>
       <Container>
-        <SectionH2>{t('Projects', '프로젝트')}</SectionH2>
+        <SectionH2 className="mb-6">{t('Projects', '프로젝트')}</SectionH2>
       </Container>
-      <ProjectContainer href="/project/sigmate">
-        <Container className="relative h-96 flex flex-col justify-center items-start">
-          <ThemedImage
-            src={sigmateLogo}
-            darkSrc={sigmateLogoDark}
-            alt="Sigmate"
-            className="mb-2 w-fit h-8 md:h-10"
-            height={48}
-          />
-          <Description>{SIGMATE_DESC}</Description>
-          <button className="mt-16 text-primary group-hover:underline font-medium">
-            {VIEW_DETAILS}
-            <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-          </button>
-          <Image
-            src={sigmateUIUpcoming}
-            alt="Sigmate Upcoming UI"
-            height={300}
-            className="-z-10 absolute right-1/2 translate-x-1/2 md:translate-x-0 md:right-16 2xl:right-0"
-          />
-        </Container>
-      </ProjectContainer>
-      <ProjectContainer href="/project/poolink">
-        <Container className="relative h-96 flex flex-col justify-center items-start">
-          <Image
-            src={poolinkLogo}
-            alt="Poolink"
-            className="w-auto max-w-full h-8 md:h-10"
-            height={40}
-          />
-          <Description>{POOLINK_DESC}</Description>
-          <button className="mt-16 text-primary group-hover:underline font-medium">
-            {VIEW_DETAILS}
-            <FontAwesomeIcon icon={faArrowRight} className="ml-2" />
-          </button>
-
-          <Image
-            src={poolinkCover}
-            alt="Poolink Cover Image"
-            height={300}
-            className="-z-10 absolute right-1/2 translate-x-1/2 md:translate-x-0 md:right-16 2xl:right-0"
-          />
-        </Container>
-      </ProjectContainer>
+      <ul className="w-full flex flex-col gap-8">
+        <ProjectItem
+          lang={lang}
+          href="/project/sigmate"
+          heading={
+            <ThemedImage
+              src={sigmateLogo}
+              darkSrc={sigmateLogoDark}
+              alt="Sigmate"
+              height={48}
+            />
+          }
+          description={SIGMATE_DESC}
+          coverSrc={sigmateUIUpcoming}
+          coverAlt="Sigmate UI: Upcoming Mintings View"
+        />
+        <ProjectItem
+          lang={lang}
+          href="/project/poolink"
+          heading={<Image src={poolinkLogo} alt="Poolink" height={40} />}
+          description={POOLINK_DESC}
+          coverSrc={poolinkCover}
+          coverAlt="Poolink"
+        />
+      </ul>
     </Section>
   );
 }
 
-function Description({ children }: { children?: React.ReactNode }) {
-  return (
-    <p className="mt-4 text-base sm:text-lg md:text-xl text-faded group-hover:text-surface-on">
-      {children}
-    </p>
-  );
-}
-
-function ProjectContainer({
+function ProjectItem({
+  lang,
   href,
-  children,
-  className,
+  heading,
+  description,
+  coverSrc,
+  coverAlt,
 }: {
+  lang: SupportedLang;
   href: string;
-  children?: React.ReactNode;
-  className?: string;
+  heading: React.ReactNode;
+  description: React.ReactNode;
+  coverSrc: StaticImageData | string;
+  coverAlt: string;
 }) {
+  const t = createTranslator(lang);
+  const VIEW_DETAILS = t('View more', '상세정보 보기');
+
   return (
-    <Link
-      href={href}
-      className={`group mt-8 w-full shadow-lg flex flex-col justify-center items-center bg-gradient-to-r from-surface md:from-50% to-surface/90 md:to-surface/0 ${className}`}
-    >
-      {children}
-    </Link>
+    <li>
+      <Link
+        href={href}
+        className="group py-12 min-h-[360px] flex justify-between bg-surface"
+      >
+        <Container className="group-hover:scale-101 flex justify-between items-center transition">
+          <div className="z-10 absolute flex flex-col justify-center">
+            <div className="mb-20">
+              <h3 className="opacity-95 group-hover:opacity-100">{heading}</h3>
+              <p className="mt-4 text-base sm:text-lg md:text-xl text-faded group-hover:text-surface-on">
+                {description}
+              </p>
+            </div>
+            <div>
+              <Link href={href} className="text-primary group-hover:underline">
+                {VIEW_DETAILS}
+                <FontAwesomeIcon icon={faArrowRight} className="ml-2 h-4" />
+              </Link>
+            </div>
+          </div>
+          <div></div>
+          <Image
+            src={coverSrc}
+            alt={coverAlt}
+            height={320}
+            className="max-h-72 lg:max-h-80 opacity-10 md:opacity-90 lg:group-hover:opacity-100"
+          />
+        </Container>
+      </Link>
+    </li>
   );
 }
