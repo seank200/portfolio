@@ -27,11 +27,15 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
             {t('Youngwoo Kim', '김영우')}
           </h1>
           <p
-            className={`text-xl md:text-2xl lg:text-[1.75rem] text-center md:text-left leading-normal md:leading-normal lg:leading-relaxed`}
+            className={`text-xl md:text-2xl text-center md:text-left leading-relaxed md:leading-normal lg:leading-relaxed`}
           >
+            <span className="hidden md:inline">{t('', '안녕하세요, ')}</span>
             {t('Hi, I am a full-stack web developer. ', '풀스택 웹 개발자 ')}
+            <span className="hidden md:inline">{t('', '김영우입니다. ')}</span>
             <br className={t('hidden md:inline', 'inline')} />
+            <span className="hidden md:inline">{t('', '제 ')}</span>
             {t('Welcome to my portfolio.', '프로젝트 포트폴리오')}
+            <span className="hidden md:inline">{t('', '를 소개합니다.')}</span>
           </p>
           <div className="md:mt-16 lg:mt-24 hidden md:flex flex-row gap-4">
             {buttons}
