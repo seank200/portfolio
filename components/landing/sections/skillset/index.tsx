@@ -243,19 +243,6 @@ export default function SkillsetSection({ lang }: { lang: SupportedLang }) {
       url: 'https://www.mongodb.com',
     },
     {
-      label: 'PostgreSQL',
-      level: 1,
-      icon: (size: SkillItemVariant) => (
-        <Image
-          src={PostgreSQLLogo}
-          alt="PostgreSQL"
-          height={iconHeight}
-          className={`w-auto ${iconSize(size)}`}
-        />
-      ),
-      url: 'https://www.postgresql.org',
-    },
-    {
       label: 'PM2',
       level: 2,
       icon: (size: SkillItemVariant) => (
@@ -276,6 +263,19 @@ export default function SkillsetSection({ lang }: { lang: SupportedLang }) {
         />
       ),
       url: 'https://github.com/features/actions',
+    },
+    {
+      label: 'PostgreSQL',
+      level: 1,
+      icon: (size: SkillItemVariant) => (
+        <Image
+          src={PostgreSQLLogo}
+          alt="PostgreSQL"
+          height={iconHeight}
+          className={`w-auto ${iconSize(size)}`}
+        />
+      ),
+      url: 'https://www.postgresql.org',
     },
   ];
 
@@ -360,9 +360,9 @@ function Stars({
         <FontAwesomeIcon
           key={idx}
           icon={filled ? faStarSolid : faStarRegular}
-          className={`h-3 text-faded ${filled ? 'text-yellow-400' : ''} ${
-            size === 'small' ? `${filled ? '' : 'md:hidden'} md:h-2` : ''
-          }`}
+          className={`h-3 text-faded ${
+            filled ? 'text-yellow-400' : 'hidden md:block'
+          } ${size === 'small' ? 'md:h-2' : ''}`}
         />
       ))}
     </p>
@@ -405,9 +405,9 @@ function SkillItem({
         size === 'small'
           ? ''
           : size === 'large'
-          ? 'px-5 py-4 bg-surface'
-          : 'md:px-5 md:py-4 md:bg-surface'
-      }`}
+          ? 'px-5 py-4 bg-surface hover:scale-101'
+          : 'md:px-5 md:py-4 md:bg-surface hover:scale-102'
+      } transition`}
     >
       <a
         className="group flex gap-5 items-center"
@@ -428,7 +428,7 @@ function SkillItem({
           {label}
         </h4>
         {size === 'large' && desc && (
-          <p className="text-xs text-faded">{desc}</p>
+          <p className="hidden md:block text-xs text-faded">{desc}</p>
         )}
       </a>
       <Stars rating={level} size={size} />
