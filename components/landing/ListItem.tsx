@@ -1,6 +1,7 @@
 import Image, { StaticImageData } from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import ThemedImage from '../ThemedImage';
 
 export const listItemImageClassName = 'mb-4 md:mb-0 max-w-full';
 
@@ -9,6 +10,7 @@ export default function ListItem({
   title,
   icon,
   imgSrc,
+  imgDarkSrc,
   imgAlt,
   imgWidth,
   imgHeight,
@@ -19,6 +21,7 @@ export default function ListItem({
   title: React.ReactNode;
   icon?: IconProp;
   imgSrc?: StaticImageData;
+  imgDarkSrc?: StaticImageData;
   imgAlt?: string;
   imgWidth?: number;
   imgHeight?: number;
@@ -47,15 +50,24 @@ export default function ListItem({
           ))}
         </ul>
       </div>
-      {imgSrc && imgAlt && (
-        <Image
-          src={imgSrc}
-          alt={imgAlt}
-          className={listItemImageClassName}
-          width={imgWidth}
-          height={imgHeight}
-        />
-      )}
+      {imgSrc &&
+        imgAlt &&
+        (imgDarkSrc ? (
+          <ThemedImage
+            src={imgSrc}
+            darkSrc={imgDarkSrc}
+            alt={imgAlt}
+            width={imgWidth}
+            height={imgHeight}
+          />
+        ) : (
+          <Image
+            src={imgSrc}
+            alt={imgAlt}
+            width={imgWidth}
+            height={imgHeight}
+          />
+        ))}
       {children}
     </>
   );

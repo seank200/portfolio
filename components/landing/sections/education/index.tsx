@@ -8,7 +8,8 @@ import {
   yonseiBCDict,
   yonseiCSDict,
 } from '@/components/dict/experiences/yonsei';
-import yonseiLogo from '@images/LOGO_Yonsei.jpg';
+import yonseiLogo from '@images/LOGO_Yonsei.png';
+import yonseiLogoDark from '@images/Logo_Yonsei_Dark.png';
 import ListItem from '@components/landing/ListItem';
 
 export default function EducationSection({ lang }: { lang: SupportedLang }) {
@@ -34,6 +35,7 @@ export default function EducationSection({ lang }: { lang: SupportedLang }) {
             ),
           ]}
           imgSrc={yonseiLogo}
+          imgDarkSrc={yonseiLogoDark}
           imgAlt={t('Yonsei University', '연세대학교 신촌캠퍼스')}
           imgWidth={96}
         />
@@ -51,6 +53,7 @@ export default function EducationSection({ lang }: { lang: SupportedLang }) {
             ),
           ]}
           imgSrc={yonseiLogo}
+          imgDarkSrc={yonseiLogoDark}
           imgAlt={t('Yonsei University', '연세대학교 신촌캠퍼스')}
           imgWidth={96}
         />
