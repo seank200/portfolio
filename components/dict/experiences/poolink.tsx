@@ -4,6 +4,7 @@ export const poolinkDict = createIntlDict(
   {
     TITLE: 'Lead Developer (FE)',
     CATEGORY: 'Team Project',
+    DIVISION: 'FE Development Team',
     AFFILIATION: 'Poolink',
     DESCRIPTION: 'A web app to save, share and explore links',
     DETAILS: [
@@ -16,6 +17,7 @@ export const poolinkDict = createIntlDict(
   {
     TITLE: '개발팀장/Web 프론트엔드 개발',
     CATEGORY: '동아리 팀프로젝트',
+    DIVISION: '프론트엔드 개발팀',
     AFFILIATION: 'Poolink',
     DESCRIPTION: '쉽고 간편한 링크(URL) 저장, 탐색 및 공유 플랫폼',
     DETAILS: [

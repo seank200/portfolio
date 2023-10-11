@@ -96,7 +96,7 @@ function ProjectItem({
             src={coverSrc}
             alt={coverAlt}
             height={320}
-            className="max-h-72 lg:max-h-80 opacity-10 md:opacity-90 lg:group-hover:opacity-100"
+            className="max-h-72 lg:max-h-80 opacity-5 md:opacity-90 lg:group-hover:opacity-100"
           />
         </Container>
       </Link>

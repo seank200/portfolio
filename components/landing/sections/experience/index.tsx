@@ -41,7 +41,7 @@ export default function ExperienceSection({ lang }: { lang: SupportedLang }) {
   const [currentItem, setCurrentItem] = useState<ExperienceItemName>('ucn');
   const expPeriodEnd = mapValues(expPeriod, (period) => period.end);
   const timelineElem = useRef<HTMLDivElement>(null);
-  const contentElem = useRef<HTMLDivElement>(null);
+  const contentElem = useRef<HTMLUListElement>(null);
   const labelElem = useRef<HTMLParagraphElement>(null);
 
   const labelWidth = labelElem.current?.getBoundingClientRect().width || 0;

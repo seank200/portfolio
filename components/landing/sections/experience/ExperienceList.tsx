@@ -24,7 +24,7 @@ export default function ExperienceList({
   className,
   setCurrentItem,
 }: {
-  elemRef: LegacyRef<HTMLDivElement>;
+  elemRef: LegacyRef<HTMLUListElement>;
   lang: SupportedLang;
   className?: string;
   setCurrentItem: Dispatch<SetStateAction<ExperienceItemName>>;
@@ -58,6 +58,7 @@ export default function ExperienceList({
 
   const {
     TITLE: POOLINK_TITLE,
+    DIVISION: POOLINK_DIVISION,
     AFFILIATION: POOLINK_AFFILIATION,
     CATEGORY: POOLINK_CATEGORY,
   } = expDict.poolink[lang];
@@ -146,6 +147,7 @@ export default function ExperienceList({
     {
       name: 'poolink',
       title: POOLINK_TITLE,
+      division: POOLINK_DIVISION,
       affiliation: POOLINK_AFFILIATION,
       category: POOLINK_CATEGORY,
       contents: POOLINK_DETAILS,
@@ -198,9 +200,9 @@ export default function ExperienceList({
   ];
 
   return (
-    <div
+    <ul
       ref={elemRef}
-      className={`-translate-y-1 pt-16 md:pt-0 w-full ${className}`}
+      className={`-translate-y-1 pt-8 md:pt-0 w-full ${className}`}
     >
       {experiences.map((item) => (
         <ExperienceItem
@@ -221,6 +223,6 @@ export default function ExperienceList({
           lang={lang}
         />
       ))}
-    </div>
+    </ul>
   );
 }

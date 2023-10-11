@@ -83,9 +83,11 @@ export default function ExperienceItem({
     }
   }
 
+  const toggleExpand = () => setIsOpen((p) => !p);
+
   return (
     <motion.div
-      className="md py-16 flex flex-col justify-center"
+      className="py-16 first:pt-0 md:first:pt-16 flex flex-col justify-center"
       viewport={{ once: false, amount: 0.5 }}
       onViewportEnter={() => setCurrentItem(name)}
     >
@@ -102,21 +104,20 @@ export default function ExperienceItem({
       {affiliation && <p className="text-faded">{affiliation}</p>}
       {location && <p className="text-faded">{location}</p>}
       {contents && (
-        <ul className="mt-6 leading-relaxed list-inside list-disc">
+        <ul className="group mt-6 list-inside list-disc" onClick={toggleExpand}>
           {contents
             .slice(0, isOpen ? contents.length : 3)
             .map((content, idx) => (
               <li
                 key={idx}
-                className="pl-4 md:pl-[22px] -indent-[16px] md:-indent-6"
+                className="before:content-['•'] before:block before:w-5 md:before:w-6 before:shrink-0 mb-1 flex"
               >
                 {content}
               </li>
             ))}
           {contents && contents.length > 3 ? (
             <button
-              className={`mt-2 pl-4 md:pl-[22px] text-primary`}
-              onClick={() => setIsOpen((p) => !p)}
+              className={`mt-1 pl-5 md:pl-6 text-secondary font-medium hover:underline group-hover:underline`}
             >
               {t(
                 isOpen ? `View less` : `View more`,
