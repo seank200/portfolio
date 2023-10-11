@@ -360,8 +360,8 @@ function Stars({
         <FontAwesomeIcon
           key={idx}
           icon={filled ? faStarSolid : faStarRegular}
-          className={`h-3 text-faded ${
-            filled ? 'text-yellow-400' : 'hidden md:block'
+          className={`h-3 text-faded/50 ${
+            filled ? 'text-yellow-400/100' : ''
           } ${size === 'small' ? 'md:h-2' : ''}`}
         />
       ))}
@@ -378,7 +378,7 @@ function SkillList({
   className?: string;
   size: SkillItemVariant;
 }) {
-  const gap = size === 'small' ? 'gap-x-8 gap-y-5' : 'gap-5';
+  const gap = size === 'small' ? 'gap-x-8 gap-y-4' : 'gap-4';
   return (
     <ul className={`mt-2 grow-[1] grid ${gap} ${className}`}>{children}</ul>
   );
@@ -420,7 +420,7 @@ function SkillItem({
             size === 'large'
               ? 'text-lg'
               : size === 'small'
-              ? 'text-sm'
+              ? 'text-base md:text-sm'
               : 'text-base'
           } font-medium group-hover:underline`}
         >

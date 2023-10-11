@@ -83,6 +83,8 @@ export default function ExperienceItem({
     }
   }
 
+  const isExpandable = contents && contents.length > 3;
+
   const toggleExpand = () => setIsOpen((p) => !p);
 
   return (
@@ -104,7 +106,12 @@ export default function ExperienceItem({
       {affiliation && <p className="text-faded">{affiliation}</p>}
       {location && <p className="text-faded">{location}</p>}
       {contents && (
-        <ul className="group mt-6 list-inside list-disc" onClick={toggleExpand}>
+        <ul
+          className={`group mt-6 list-inside list-disc ${
+            isExpandable ? 'cursor-pointer' : ''
+          }`}
+          onClick={isExpandable ? toggleExpand : undefined}
+        >
           {contents
             .slice(0, isOpen ? contents.length : 3)
             .map((content, idx) => (

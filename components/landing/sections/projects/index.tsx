@@ -32,6 +32,7 @@ export default function ProjectsSection({ lang }: { lang: SupportedLang }) {
               src={sigmateLogo}
               darkSrc={sigmateLogoDark}
               alt="Sigmate"
+              className="w-auto"
               height={48}
             />
           }
@@ -42,7 +43,14 @@ export default function ProjectsSection({ lang }: { lang: SupportedLang }) {
         <ProjectItem
           lang={lang}
           href="/project/poolink"
-          heading={<Image src={poolinkLogo} alt="Poolink" height={40} />}
+          heading={
+            <Image
+              src={poolinkLogo}
+              alt="Poolink"
+              className="w-auto h-10"
+              height={40}
+            />
+          }
           description={POOLINK_DESC}
           coverSrc={poolinkCover}
           coverAlt="Poolink"
@@ -77,7 +85,7 @@ function ProjectItem({
         className="group py-12 min-h-[360px] flex justify-between bg-surface"
       >
         <Container className="group-hover:scale-101 flex justify-between items-center transition">
-          <div className="z-10 absolute flex flex-col justify-center">
+          <div className="z-10 absolute px-2 flex flex-col justify-center">
             <div className="mb-20">
               <h3 className="opacity-95 group-hover:opacity-100">{heading}</h3>
               <p className="mt-4 text-base sm:text-lg md:text-xl text-faded group-hover:text-surface-on">
@@ -96,7 +104,7 @@ function ProjectItem({
             src={coverSrc}
             alt={coverAlt}
             height={320}
-            className="max-h-72 lg:max-h-80 opacity-5 md:opacity-90 lg:group-hover:opacity-100"
+            className="w-auto max-h-72 lg:max-h-80 opacity-5 md:opacity-40 lg:opacity-90 lg:group-hover:opacity-100"
           />
         </Container>
       </Link>
