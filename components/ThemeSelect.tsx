@@ -42,36 +42,27 @@ export default function ThemeSelect({ lang }: { lang: string }) {
           userTheme === 'light' ? selectedClass : 'hover:bg-background-on/20'
         }`}
         title={t('Theme: Light', '테마: 밝음')}
+        onClick={() => setUserTheme('light')}
       >
-        <FontAwesomeIcon
-          icon={faSun}
-          className="w-4 h-4"
-          onClick={() => setUserTheme('light')}
-        />
+        <FontAwesomeIcon icon={faSun} className="w-4 h-4" />
       </button>
       <button
         className={`p-2 rounded-full flex justify-center items-center ${
           userTheme === 'dark' ? selectedClass : 'hover:bg-background-on/20'
         }`}
         title={t('Theme: Dark', '테마: 어두움')}
+        onClick={() => setUserTheme('dark')}
       >
-        <FontAwesomeIcon
-          icon={faMoon}
-          className="w-4 h-4"
-          onClick={() => setUserTheme('dark')}
-        />
+        <FontAwesomeIcon icon={faMoon} className="w-4 h-4" />
       </button>
       <button
         className={`p-2 rounded-full flex justify-center items-center ${
           userTheme === null ? selectedClass : 'hover:bg-background-on/20'
         }`}
         title={t('Theme: Auto', '테마: 자동')}
+        onClick={() => setUserTheme(null)}
       >
-        <FontAwesomeIcon
-          icon={faDesktop}
-          className="w-4 h-4"
-          onClick={() => setUserTheme(null)}
-        />
+        <FontAwesomeIcon icon={faDesktop} className="w-4 h-4" />
       </button>
     </div>
   );
