@@ -302,7 +302,7 @@ export default function SkillsetSection({ lang }: { lang: SupportedLang }) {
           ))}
         </SkillList>
         <H3>{t('Moderate', '숙련도: 높음')}</H3>
-        <SkillList className="grid-cols-md" size="normal">
+        <SkillList className="grid-cols-lg" size="normal">
           {moderate.map(({ label, icon, level, desc, url }) => (
             <SkillItem
               key={label}
