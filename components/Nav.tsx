@@ -3,12 +3,7 @@
 import Link from 'next/link';
 import Container from './Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBars,
-  faXmark,
-  faEnvelope,
-  faSquareRss,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBars, faXmark, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { MouseEventHandler, Suspense, useEffect, useState } from 'react';
 import throttle from 'lodash/throttle';
@@ -28,14 +23,14 @@ const MOBILE_SCREEN_W = 768;
 const LINK_GITHUB = 'https://github.com/seanK200';
 const LINK_LINKEDIN = 'https://www.linkedin.com/in/youngwoo-kim-sean/';
 const LINK_MAILTO = 'mailto:yw.sean.kim@gmail.com';
-const LINK_BLOG = 'https://velog.io/@seank200';
+// const LINK_BLOG = 'https://velog.io/@seank200';
 
 export default function Nav({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
   const pathname = usePathname();
   const LABEL_GITHUB = 'Github';
   const LABEL_LINKEDIN = t('LinkedIn', '링크드인');
-  const LABEL_BLOG = t('Blog', '블로그');
+  // const LABEL_BLOG = t('Blog', '블로그');
   const LABEL_EMAIL = t('Email', '이메일');
 
   // Move up out of the screen when scrolling down, and re-appear when scrolling up
@@ -225,7 +220,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
             />
             <span className="md:hidden">{LABEL_LINKEDIN}</span>
           </NavItem>
-          <NavItem
+          {/* <NavItem
             href={LINK_BLOG}
             onClick={handleLinkClick}
             title={LABEL_BLOG}
@@ -236,7 +231,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
               fixedWidth
             />
             <span className="md:hidden">{LABEL_BLOG}</span>
-          </NavItem>
+          </NavItem> */}
           <NavItem
             href={LINK_MAILTO}
             onClick={handleLinkClick}
