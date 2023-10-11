@@ -85,10 +85,10 @@ function ProjectItem({
               </p>
             </div>
             <div>
-              <Link href={href} className="text-primary group-hover:underline">
+              <p className="text-primary group-hover:underline cursor-pointer">
                 {VIEW_DETAILS}
                 <FontAwesomeIcon icon={faArrowRight} className="ml-2 h-4" />
-              </Link>
+              </p>
             </div>
           </div>
           <div></div>
