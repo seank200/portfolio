@@ -39,7 +39,6 @@ export default function LangSelect({ lang }: { lang: SupportedLang }) {
         icon={faChevronDown}
         className={`ml-4 text-[0.5rem] transition-transform ${arrowRotate}`}
         role="button"
-        title={t('Toggle language switcher', '언어 선택 메뉴 보기/숨기기')}
       />
       <ul
         className={`mt-2 absolute top-full left-0 w-36 border border-faded/20 shadow rounded px-2 py-2 ${menuDisplay} flex-col items-stretch bg-background text-sm break-keep`}

@@ -201,39 +201,51 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
               <LangSelect lang={lang} />
             </Suspense>
           </motion.li>
-          <NavItem href={LINK_GITHUB} onClick={handleLinkClick}>
+          <NavItem
+            href={LINK_GITHUB}
+            onClick={handleLinkClick}
+            title={LABEL_GITHUB}
+          >
             <FontAwesomeIcon
               icon={faGithub}
               className="relative top-px mr-3 h-5"
               fixedWidth
-              title={LABEL_GITHUB}
             />
             <span className="md:hidden">{LABEL_GITHUB}</span>
           </NavItem>
-          <NavItem href={LINK_LINKEDIN} onClick={handleLinkClick}>
+          <NavItem
+            href={LINK_LINKEDIN}
+            onClick={handleLinkClick}
+            title={LABEL_LINKEDIN}
+          >
             <FontAwesomeIcon
               icon={faLinkedin}
               className="relative top-0.5 mr-3 h-5"
               fixedWidth
-              title={LABEL_LINKEDIN}
             />
             <span className="md:hidden">{LABEL_LINKEDIN}</span>
           </NavItem>
-          <NavItem href={LINK_BLOG} onClick={handleLinkClick}>
+          <NavItem
+            href={LINK_BLOG}
+            onClick={handleLinkClick}
+            title={LABEL_BLOG}
+          >
             <FontAwesomeIcon
               icon={faSquareRss}
               className="relative top-0.5 mr-3 h-5"
               fixedWidth
-              title={LABEL_BLOG}
             />
             <span className="md:hidden">{LABEL_BLOG}</span>
           </NavItem>
-          <NavItem href={LINK_MAILTO} onClick={handleLinkClick}>
+          <NavItem
+            href={LINK_MAILTO}
+            onClick={handleLinkClick}
+            title={LABEL_EMAIL}
+          >
             <FontAwesomeIcon
               icon={faEnvelope}
               className="relative top-0.5 mr-3 h-5"
               fixedWidth
-              title={LABEL_EMAIL}
             />
             <span className="md:hidden">{LABEL_EMAIL}</span>
           </NavItem>
@@ -263,10 +275,12 @@ function NavItem({
   href,
   children,
   onClick,
+  title,
 }: {
   href: string;
   children?: React.ReactNode;
   onClick: MouseEventHandler<HTMLLIElement>;
+  title: string;
 }) {
   const isInternalLink = href.charAt(0) === '/';
   return (
@@ -280,6 +294,7 @@ function NavItem({
         desktopNormal: { opacity: 1, translateY: 0 },
       }}
       onClick={onClick}
+      title={title}
     >
       {isInternalLink ? (
         <Link href={href}>{children}</Link>
