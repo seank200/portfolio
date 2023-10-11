@@ -102,9 +102,7 @@ export default function ExperienceSection({ lang }: { lang: SupportedLang }) {
   return (
     <Section id="experiences">
       <Container>
-        <SectionH2 className="#experiences">
-          {t('Experiences', '이력')}
-        </SectionH2>
+        <SectionH2 href="#experiences">{t('Experiences', '이력')}</SectionH2>
         <p className="text-faded">
           {t(
             'Introducing my development work/project experiences. My experiences range from personal hobby projects to contribution to large open-source projects during internship programs.',

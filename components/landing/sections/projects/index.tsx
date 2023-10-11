@@ -19,9 +19,11 @@ export default function ProjectsSection({ lang }: { lang: SupportedLang }) {
   const SIGMATE_DESC = expDict.facade[lang].DESCRIPTION;
   const POOLINK_DESC = expDict.poolink[lang].DESCRIPTION;
   return (
-    <Section>
+    <Section id="projects">
       <Container>
-        <SectionH2 className="mb-6">{t('Projects', '프로젝트')}</SectionH2>
+        <SectionH2 className="mb-6" href="#projects">
+          {t('Projects', '프로젝트')}
+        </SectionH2>
       </Container>
       <ul className="w-full flex flex-col gap-8">
         <ProjectItem
