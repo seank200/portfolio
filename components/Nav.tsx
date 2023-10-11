@@ -10,7 +10,7 @@ import {
   faSquareRss,
 } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
-import { MouseEventHandler, useEffect, useState } from 'react';
+import { MouseEventHandler, Suspense, useEffect, useState } from 'react';
 import throttle from 'lodash/throttle';
 import { SupportedLang, createTranslator } from '@/i18n';
 import { motion } from 'framer-motion';
@@ -197,7 +197,9 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
               desktopNormal: { opacity: 1 },
             }}
           >
-            <LangSelect lang={lang} />
+            <Suspense fallback={<div></div>}>
+              <LangSelect lang={lang} />
+            </Suspense>
           </motion.li>
           <NavItem href={LINK_GITHUB} onClick={handleLinkClick}>
             <FontAwesomeIcon
@@ -247,7 +249,9 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
               desktopNormal: { opacity: 1 },
             }}
           >
-            <LangSelect lang={lang} />
+            <Suspense fallback={<div></div>}>
+              <LangSelect lang={lang} />
+            </Suspense>
           </motion.li>
         </motion.ul>
       </Container>

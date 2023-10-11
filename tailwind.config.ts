@@ -55,6 +55,9 @@ const config: Config = {
         104: '1.04',
       },
       spacing: {
+        em: '1em',
+        'em-md': '1.25em',
+        'em-lg': '1.5em',
         88: '22rem',
       },
       height: {
@@ -64,7 +67,7 @@ const config: Config = {
         position: 'top, left, bottom, right, transform',
       },
       gridTemplateColumns: {
-        sm: 'repeat(auto-fill, minmax(140px, 1fr))',
+        sm: 'repeat(auto-fill, minmax(160px, 1fr))',
         md: 'repeat(auto-fill, minmax(240px, 1fr))',
         lg: 'repeat(auto-fill, minmax(280px, 1fr))',
       },
