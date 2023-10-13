@@ -23,14 +23,14 @@ import Section from '@components/Section';
 import Container, { containerClassName } from '@/components/Container';
 import Image from 'next/image';
 import { throttle } from 'lodash';
-import ProjectStickyHeader from './ProjectStickyHeader';
+import ProjectStickyHeader from '@components/projects/ProjectStickyHeader';
 import SigmateArch from './SigmateArch';
-import ProjectHeader from './ProjectHeader';
-import ProjectMyRoleList from '../projects/ProjectMyRoleList';
+import ProjectHeader from '@components/projects/ProjectHeader';
+import ProjectMyRoleList from '@components/projects/ProjectMyRoleList';
 import { facadeDict } from '@/components/dict/experiences/facade';
 import { generalDict } from '@/components/dict/experiences/general';
 import { expPeriod } from '@/components/dict/experiences';
-import TechStack from './TechStack';
+import TechStack from '@components/projects/TechStack';
 import {
   TSAWS,
   TSAWSDynamoDB,
@@ -41,7 +41,7 @@ import {
   TSNodeJS,
   TSPm2,
   TSTypeScript,
-} from './TechStackItem';
+} from '@components/projects/TechStackItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLightbulb,

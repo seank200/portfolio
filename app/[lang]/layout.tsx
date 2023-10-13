@@ -2,8 +2,6 @@ import '../globals.css';
 import '../fonts.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import { SUPPORTED_LANGS, SupportedLang } from '@/i18n';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -47,11 +45,9 @@ export default function Layout({
         <meta name="theme-color" content="#ffffff" />
       </head>
       <body
-        className={`m-0 w-full min-h-screen bg-background text-background-on ${inter.className}`}
+        className={`m-0 w-full min-h-screen bg-background text-background-on font-sans ${inter.className}`}
       >
-        <Nav lang={params.lang} />
-        <main className="pb-12 min-h-screen">{children}</main>
-        <Footer lang={params.lang} />
+        {children}
       </body>
     </html>
   );

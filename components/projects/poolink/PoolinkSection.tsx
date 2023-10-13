@@ -2,23 +2,23 @@ import Image from 'next/image';
 import poolinkLogo from '@images/LOGO_Poolink.png';
 import { SupportedLang, formatTimePeriod } from '@/i18n';
 import Section from '@components/Section';
-import ProjectStickyHeader from '../projects/ProjectStickyHeader';
+import ProjectStickyHeader from '@components/projects/ProjectStickyHeader';
 import Container from '@/components/Container';
-import ProjectHeader from './ProjectHeader';
-import ProjectMyRoleList from './ProjectMyRoleList';
+import ProjectHeader from '@components/projects/ProjectHeader';
+import ProjectMyRoleList from '@components/projects/ProjectMyRoleList';
 import PoolinkFeatures from './PoolinkFeatures';
 import PoolinkHero from './PoolinkHero';
 import PoolinkPainpoint from './PoolinkPainpoint';
 import { poolinkDict } from '@/components/dict/experiences/poolink';
 import { generalDict } from '@/components/dict/experiences/general';
 import { expPeriod } from '@/components/dict/experiences';
-import TechStack from './TechStack';
+import TechStack from '@components/projects/TechStack';
 import {
   TSGithubActions,
   TSJavaScript,
   TSReactJS,
   TSVercel,
-} from './TechStackItem';
+} from '@components/projects/TechStackItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faLightbulb,

@@ -10,7 +10,7 @@ export default function ProjectStickyHeader({
   period?: string;
 }) {
   return (
-    <div className="mt-32 mb-2 z-10 sticky top-0 -translate-y-[1px] shadow shadow-background/20 py-6 md:py-4 bg-background">
+    <div className="mt-4 z-10 sticky top-0 -translate-y-[1px] shadow shadow-background/20 py-6 md:py-4 bg-background">
       <Container>
         <div className="w-full flex flex-col md:flex-row md:justify-between">
           <div className="flex justify-between md:justify-start items-center">
