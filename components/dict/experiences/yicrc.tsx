@@ -1,4 +1,5 @@
 import { createIntlDict } from '@/i18n';
+import Link from 'next/link';
 
 const tagStyle = 'px-1 text-secondary text-sm font-semibold';
 
@@ -10,13 +11,16 @@ export const yicrcDict = createIntlDict(
     AFFILIATION: 'Yonsei University',
     DETAILS: [
       <>
-        Developed and implemented a web app, YREMS, that allowed over 340
-        students to sign up for house activities and provided student
-        information/cancellation/attendance administration features for RAs.
-        Front end development in HTML, CSS and Javascript. Featured responsive
-        web design and back end database processing server in PHP and MYSQL.
-        Frequently updated website based on student and RA feedbacks.{' '}
-        <span className={tagStyle}>#html</span>
+        Developed and implemented a web app,{' '}
+        <Link href="/project/yrems" className="text-secondary hover:underline">
+          YREMS
+        </Link>
+        , that allowed over 340 students to sign up for house activities and
+        provided student information/cancellation/attendance administration
+        features for RAs. Front end development in HTML, CSS and Javascript.
+        Featured responsive web design and back end database processing server
+        in PHP and MYSQL. Frequently updated website based on student and RA
+        feedbacks. <span className={tagStyle}>#html</span>
         <span className={tagStyle}>#css</span>
         <span className={tagStyle}>#vanilla-js</span>
         <span className={tagStyle}>#jquery</span>
@@ -40,11 +44,14 @@ export const yicrcDict = createIntlDict(
     DETAILS: [
       <>
         신입생 약 340명의 비교과프로그램 참가 신청, 취소, 출결 현황을 관리할 수
-        있는 시스템(YREMS)을 개발하여 1년간 운용하였음. HTML, CSS, Vanilla JS,
-        jQuery를 사용하여 프론트엔드 웹페이지를 개발하였고, PHP 백엔드와 MYSQL
-        서버를 모델링하여 배포하였음. 주기적으로 동료 조교들 및 학생들의
-        피드백을 바탕으로 업데이트를 배포함.{' '}
-        <span className={tagStyle}>#html</span>
+        있는 시스템(
+        <Link href="/project/yrems" className="text-secondary hover:underline">
+          YREMS
+        </Link>
+        )을 개발하여 1년간 운용하였음. HTML, CSS, Vanilla JS, jQuery를 사용하여
+        프론트엔드 웹페이지를 개발하였고, PHP 백엔드와 MYSQL 서버를 모델링하여
+        배포하였음. 주기적으로 동료 조교들 및 학생들의 피드백을 바탕으로
+        업데이트를 배포함. <span className={tagStyle}>#html</span>
         <span className={tagStyle}>#css</span>
         <span className={tagStyle}>#vanilla-js</span>
         <span className={tagStyle}>#jquery</span>
@@ -58,5 +65,19 @@ export const yicrcDict = createIntlDict(
       '개발 경험이 없는 신입생들을 위해 교육 프로그램을 기획하여 코딩 교육을 실시함. Python 을 사용하여 프로그래밍 기초부터 웹 크롤링과 NLP 라이브러리를 활용한 자동 내용 요약 어플리케이션 만들기 등 다양한 주제로 주기적인 수업을 진행하고 개발 과제를 부여함. 개발 경험이 전혀 없던 39명의 학생들 중 31명이 주어진 모든 과제를 기간 내 도움 없이 제출할 수 있을 정도로 학생들의 개발 실력을 향상시킴',
       '동료 조교들과 자원봉사자 수십 명이 숙지할 수 있도록 교내 프로그램 및 행사에 대해 큐시트(시간별 계획서)를 작성하여 배부하고, 효율적인 행사 운영이 이루어질 수 있도록 현장 감독함',
     ],
+  }
+);
+
+export const yremsDict = createIntlDict(
+  {
+    NAME: 'YREMS',
+    DESCRIPTION: 'Student Event RSVP and Attendance Management System',
+    H_FEAT_STUDENT: 'Student User Features',
+    H_FEAT_ADMIN: 'Admin User Features',
+  },
+  {
+    DESCRIPTION: '연세대학교 교내 프로그램 학생 참가 신청 및 출결 관리 시스템',
+    H_FEAT_STUDENT: '학생 유저 기능',
+    H_FEAT_ADMIN: '관리자 유저 기능',
   }
 );

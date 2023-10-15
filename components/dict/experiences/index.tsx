@@ -3,7 +3,7 @@ import { ucnDict } from './ucn';
 import { anlDict } from './anl';
 import { facadeDict } from './facade';
 import { yonseiBCDict, yonseiCSDict } from './yonsei';
-import { yicrcDict } from './yicrc';
+import { yicrcDict, yremsDict } from './yicrc';
 import { createIntlDict } from '@/i18n';
 import { ceosDict } from './ceos';
 import { cfcDict } from './cfc';
@@ -97,6 +97,7 @@ export const expDict = {
   ceos: ceosDict,
   cfc: cfcDict,
   yicrc: yicrcDict,
+  yrems: yremsDict,
 };
 
 export const expLink: Record<ExperienceItemName, string> = {

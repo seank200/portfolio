@@ -10,7 +10,7 @@ export default function ProjectMyRoleList({
           key={String(item).slice(0, 10)}
           className="before:mr-4 before:content-['•'] flex items-start leading-relaxed"
         >
-          {item}
+          <span>{item}</span>
         </li>
       ))}
     </ul>

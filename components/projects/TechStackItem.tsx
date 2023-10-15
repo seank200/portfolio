@@ -15,6 +15,8 @@ import {
   SiUbuntu,
   SiCentos,
   SiMongodb,
+  SiJquery,
+  SiPhp,
 } from '@icons-pack/react-simple-icons';
 import Image from 'next/image';
 import JavaLogo from '@images/tech/java.png';
@@ -23,6 +25,8 @@ import PythonLogo from '@images/tech/python.png';
 import MySQLLogo from '@images/tech/mysql.png';
 import PostgreSQLLogo from '@images/tech/postgresql.png';
 import TypeScriptLogo from '@images/tech/typescript.png';
+import HTMLLogo from '@images/tech/html.png';
+import CSSLogo from '@images/tech/css.png';
 import { SupportedLang } from '@/i18n';
 
 export default function TechStackItem({
@@ -110,12 +114,66 @@ export function TSPm2() {
   );
 }
 
+export function TSHTML({ lang }: { lang: SupportedLang }) {
+  const url = {
+    en: 'https://developer.mozilla.org/en-US/docs/Web/HTML',
+    ko: 'https://developer.mozilla.org/ko/docs/Web/HTML',
+  };
+
+  return (
+    <TechStackItem
+      icon={
+        <Image src={HTMLLogo} alt="HTML" height={48} className={iconHeight} />
+      }
+      label="HTML"
+      url={url[lang || 'en']}
+    />
+  );
+}
+
+export function TSCSS({ lang }: { lang: SupportedLang }) {
+  const url = {
+    en: 'https://developer.mozilla.org/en-US/docs/Web/CSS',
+    ko: 'https://developer.mozilla.org/ko/docs/Web/CSS',
+  };
+
+  return (
+    <TechStackItem
+      icon={
+        <Image src={CSSLogo} alt="CSS" height={48} className={iconHeight} />
+      }
+      label="CSS"
+      url={url[lang || 'en']}
+    />
+  );
+}
+
 export function TSJavaScript() {
   return (
     <TechStackItem
       icon={<SiJavascript color="default" className={`${iconSize}`} />}
       label="JavaScript"
       url="https://developer.mozilla.org/en-US/docs/Web/JavaScript#"
+    />
+  );
+}
+
+export function TSJQuery() {
+  return (
+    <TechStackItem
+      icon={<SiJquery color="default" className={`${iconSize}`} />}
+      label="jQuery"
+      url="https://jquery.com"
+    />
+  );
+}
+
+export function TSPHP() {
+  return (
+    <TechStackItem
+      icon={<SiPhp color="default" className={`${iconSize}`} />}
+      label="PHP"
+      url="https://www.php.net/"
     />
   );
 }

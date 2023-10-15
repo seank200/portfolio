@@ -1,23 +1,25 @@
+import Image, { StaticImageData } from 'next/image';
+import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import Container from '@/components/Container';
 import Section from '@/components/Section';
 import SectionH2 from '@/components/SectionH2';
+import ThemedImage from '@/components/ThemedImage';
+import { expDict } from '@/components/dict/experiences';
 import { SupportedLang, createTranslator } from '@/i18n';
-import Image, { StaticImageData } from 'next/image';
 import sigmateLogo from '@images/LOGO_Sigmate.png';
 import sigmateLogoDark from '@images/LOGO_Sigmate_Dark.png';
 import poolinkLogo from '@images/LOGO_Poolink.png';
 import sigmateUIUpcoming from '@images/sigmate/Sigmate_UI_Upcoming.png';
 import poolinkCover from '@images/poolink/1-1.png';
-import ThemedImage from '@/components/ThemedImage';
-import { expDict } from '@/components/dict/experiences';
-import Link from 'next/link';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import yremsCover from '@images/yrems/cover.png';
 
 export default function ProjectsSection({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
   const SIGMATE_DESC = expDict.facade[lang].DESCRIPTION;
   const POOLINK_DESC = expDict.poolink[lang].DESCRIPTION;
+  const YREMS_DESC = expDict.yrems[lang].DESCRIPTION;
   return (
     <Section id="projects">
       <Container>
@@ -57,6 +59,16 @@ export default function ProjectsSection({ lang }: { lang: SupportedLang }) {
           coverSrc={poolinkCover}
           coverAlt="Poolink"
         />
+        <ProjectItem
+          lang={lang}
+          href="/project/yrems"
+          heading={
+            <span className="text-5xl text-[#0A3879] font-bold">YREMS</span>
+          }
+          description={YREMS_DESC}
+          coverSrc={yremsCover}
+          coverAlt="YREMS"
+        />
       </ul>
     </Section>
   );
@@ -74,8 +86,8 @@ function ProjectItem({
   href: string;
   heading: React.ReactNode;
   description: React.ReactNode;
-  coverSrc: StaticImageData | string;
-  coverAlt: string;
+  coverSrc?: StaticImageData | string;
+  coverAlt?: string;
 }) {
   const t = createTranslator(lang);
   const VIEW_DETAILS = t('View more', '상세정보 보기');
@@ -102,12 +114,14 @@ function ProjectItem({
             </div>
           </div>
           <div></div>
-          <Image
-            src={coverSrc}
-            alt={coverAlt}
-            height={320}
-            className="w-auto max-h-72 lg:max-h-80 opacity-5 md:opacity-40 lg:opacity-90 lg:group-hover:opacity-100"
-          />
+          {coverSrc && coverAlt && (
+            <Image
+              src={coverSrc}
+              alt={coverAlt}
+              height={320}
+              className="w-auto max-h-72 lg:max-h-80 opacity-5 md:opacity-40 lg:opacity-90 lg:group-hover:opacity-100"
+            />
+          )}
         </Container>
       </Link>
     </li>
