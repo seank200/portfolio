@@ -106,7 +106,7 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
                 key={url}
                 src={`/images/yrems/${url}`}
                 alt="YREMS UI screenshot"
-                className="hover:scale-104 transition-all"
+                className="shadow hover:scale-104 transition-all"
                 width={355}
                 height={600}
               />
@@ -125,14 +125,13 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
                 key={url}
                 src={`/images/yrems/${url}`}
                 alt="YREMS UI screenshot"
-                className="hover:scale-104 transition-all"
+                className="shadow hover:scale-104 transition-all"
                 width={355}
                 height={600}
               />
             ))}
           </div>
         </Container>
-        <div className="h-screen"></div>
       </Section>
       <Footer lang={lang} />
     </>
