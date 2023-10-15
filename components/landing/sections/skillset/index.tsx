@@ -28,6 +28,7 @@ import CMakeLogo from '@images/tech/cmake.png';
 import DockerLogo from '@images/tech/docker.png';
 import JavaLogo from '@images/tech/java.png';
 import PostgreSQLLogo from '@images/tech/postgresql.png';
+import MPIForumLogo from '@images/tech/mpi-forum.png';
 
 type SkillItemVariant = 'small' | 'normal' | 'large';
 
@@ -201,6 +202,19 @@ export default function SkillsetSection({ lang }: { lang: SupportedLang }) {
       url: 'https://www.tensorflow.org',
     },
     {
+      label: 'MPI',
+      level: 3,
+      icon: (size: SkillItemVariant) => (
+        <Image
+          src={MPIForumLogo}
+          alt="MPI Forum"
+          height={iconHeight}
+          className={`w-auto ${iconSize(size)}`}
+        />
+      ),
+      url: 'https://www.mpi-forum.org',
+    },
+    {
       label: t('Java', '자바'),
       level: 2,
       icon: (size: SkillItemVariant) => (
@@ -233,14 +247,6 @@ export default function SkillsetSection({ lang }: { lang: SupportedLang }) {
         />
       ),
       url: 'https://cmake.org',
-    },
-    {
-      label: 'MongoDB',
-      level: 2,
-      icon: (size: SkillItemVariant) => (
-        <SiMongodb color="default" className={iconSize(size)} />
-      ),
-      url: 'https://www.mongodb.com',
     },
     {
       label: 'PM2',
@@ -276,6 +282,14 @@ export default function SkillsetSection({ lang }: { lang: SupportedLang }) {
         />
       ),
       url: 'https://www.postgresql.org',
+    },
+    {
+      label: 'MongoDB',
+      level: 1,
+      icon: (size: SkillItemVariant) => (
+        <SiMongodb color="default" className={iconSize(size)} />
+      ),
+      url: 'https://www.mongodb.com',
     },
   ];
 

@@ -72,13 +72,13 @@ export default function ContactSection({
       <Container>
         <SectionH2 href="#contacts">{H_CONTACT_ME}</SectionH2>
         <p className="text-lg text-faded">{CFA}</p>
-        <h3 className="mt-8 mb-2 text-xl font-semibold">{H_NAME}</h3>
+        <h3 className="mt-8 mb-1 text-xl font-semibold">{H_NAME}</h3>
         <p className="text-lg text-faded">{NAME}</p>
         {lang === 'en' && (
           <>
-            <h3 className="mt-8 mb-2 text-xl font-semibold">{H_LANGUAGE}</h3>
+            <h3 className="mt-8 mb-1 text-xl font-semibold">{H_LANGUAGE}</h3>
             <p className="text-lg text-faded">{LANGUAGE}</p>
-            <h3 className="mt-8 mb-2 text-xl font-semibold">{H_TIMEZONE}</h3>
+            <h3 className="mt-8 mb-1 text-xl font-semibold">{H_TIMEZONE}</h3>
             <p className="text-lg text-faded">{TIMEZONE}</p>
           </>
         )}

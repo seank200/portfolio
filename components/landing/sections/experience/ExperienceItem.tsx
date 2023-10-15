@@ -2,7 +2,7 @@
 
 import { ExperienceItemName } from '@/components/dict/experiences';
 import Image, { StaticImageData } from 'next/image';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, MouseEventHandler, SetStateAction, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { SupportedLang, createTranslator } from '@/i18n';
@@ -85,7 +85,12 @@ export default function ExperienceItem({
 
   const isExpandable = contents && contents.length > 3;
 
-  const toggleExpand = () => setIsOpen((p) => !p);
+  const handleListClick: MouseEventHandler<HTMLUListElement> = (e) => {
+    // Prevent anchor tag clicks from toggling expand/hide
+    const elem = e.target as HTMLElement;
+    if (elem.tagName == 'A') return;
+    setIsOpen((p) => !p);
+  };
 
   return (
     <motion.div
@@ -108,9 +113,9 @@ export default function ExperienceItem({
       {contents && (
         <ul
           className={`group mt-6 list-inside list-disc ${
-            isExpandable ? 'cursor-pointer' : ''
+            isExpandable && !isOpen ? 'cursor-pointer' : ''
           }`}
-          onClick={isExpandable ? toggleExpand : undefined}
+          onClick={isExpandable ? handleListClick : undefined}
         >
           {contents
             .slice(0, isOpen ? contents.length : 3)
@@ -119,7 +124,7 @@ export default function ExperienceItem({
                 key={idx}
                 className="before:content-['•'] before:block before:w-5 md:before:w-6 before:shrink-0 mb-1 flex"
               >
-                {content}
+                <span>{content}</span>
               </li>
             ))}
           {contents && contents.length > 3 ? (

@@ -105,8 +105,8 @@ export default function ExperienceSection({ lang }: { lang: SupportedLang }) {
         <SectionH2 href="#experiences">{t('Experiences', '이력')}</SectionH2>
         <p className="text-faded">
           {t(
-            'Introducing my development work/project experiences. My experiences range from personal hobby projects to contribution to large open-source projects during internship programs.',
-            '소프트웨어 개발 관련 프로젝트 및 인턴십 경험입니다. 개인 취미 프로젝트부터 인턴십 기간 중 오픈 소스 프로젝트에 기여하는 등, 다양한 경험을 가지고 있습니다.'
+            'Introducing my work and project experiences. My experiences range from personal hobby projects to contribution to large open-source projects during internship programs.',
+            '소프트웨어 개발 프로젝트 및 업무 경험입니다. 개인 취미 프로젝트부터 대규모 오픈 소스 프로젝트에 기여하는 등, 다양한 활동을 통해 실무 경험과 협업 능력을 키웠습니다.'
           )}
         </p>
       </Container>

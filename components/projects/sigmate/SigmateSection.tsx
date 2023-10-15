@@ -54,7 +54,7 @@ const sigmateDict = createIntlDict(
     DESCRIPTION:
       'Sigmate is a wiki platform for the NFT community, created by Facade Inc., a Web3 startup.',
     H_FEAT_1: 'Easy',
-    FEAT_1: 'All information in one place',
+    FEAT_1: 'All NFT information in one place',
     FEAT_1_CAPTION:
       'Check minting schedules, social media updates, floor prices, and more.',
     H_FEAT_2: 'Reliable',
