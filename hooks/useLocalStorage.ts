@@ -9,6 +9,8 @@ export default function useLocalStorage<
 >(key: string, initialValue: T | (() => T)): [T, Dispatch<SetStateAction<T>>] {
   const pKey = PREFIX + key;
 
+  const [init, setInit] = useState(false);
+
   const [value, setValue] = useState<T>(() => {
     return typeof initialValue === 'function' ? initialValue() : initialValue;
   });
@@ -18,12 +20,13 @@ export default function useLocalStorage<
     if (ls !== null && ls !== undefined) {
       setValue(JSON.parse(ls));
     }
+    setInit(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    localStorage.setItem(pKey, JSON.stringify(value));
-  }, [pKey, value]);
+    if (init) localStorage.setItem(pKey, JSON.stringify(value));
+  }, [pKey, value, init]);
 
   return [value, setValue];
 }
