@@ -116,9 +116,8 @@ export const facadeDict = createIntlDict(
   },
   {
     TITLE: 'CTO / 백엔드 개발',
-    DIVISION: '파사드',
-    AFFILIATION:
-      '대한민국 중소벤처사업부 예비창업패키지 선정 대상 Web3/블록체인 스타트업',
+    DIVISION: 'Sigmate 개발팀',
+    AFFILIATION: '파사드',
     CATEGORY: '업무 경험',
     DESCRIPTION: 'NFT 커뮤니티를 위한 위키 플랫폼',
     DETAILS: [
