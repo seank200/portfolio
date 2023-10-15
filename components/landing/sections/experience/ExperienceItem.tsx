@@ -85,7 +85,9 @@ export default function ExperienceItem({
 
   const isExpandable = contents && contents.length > 3;
 
-  const handleListClick: MouseEventHandler<HTMLUListElement> = (e) => {
+  const handleListClick: MouseEventHandler<
+    HTMLUListElement | HTMLButtonElement
+  > = (e) => {
     // Prevent anchor tag clicks from toggling expand/hide
     const elem = e.target as HTMLElement;
     if (elem.tagName == 'A') return;
@@ -115,7 +117,7 @@ export default function ExperienceItem({
           className={`group mt-6 list-inside list-disc ${
             isExpandable && !isOpen ? 'cursor-pointer' : ''
           }`}
-          onClick={isExpandable ? handleListClick : undefined}
+          onClick={isExpandable && !isOpen ? handleListClick : undefined}
         >
           {contents
             .slice(0, isOpen ? contents.length : 3)
@@ -129,11 +131,14 @@ export default function ExperienceItem({
             ))}
           {contents && contents.length > 3 ? (
             <button
-              className={`mt-1 pl-5 md:pl-6 text-secondary font-medium hover:underline group-hover:underline`}
+              className={`mt-1 pl-5 md:pl-6 text-primary font-semibold hover:underline ${
+                isOpen ? 'hover:underline' : 'group-hover:underline'
+              }`}
+              onClick={isExpandable && isOpen ? handleListClick : undefined}
             >
               {t(
-                isOpen ? `View less` : `View more`,
-                isOpen ? `숨기기` : `더 보기`
+                isOpen ? `View less` : `View more..`,
+                isOpen ? `숨기기` : `더 보기..`
               )}
             </button>
           ) : null}
