@@ -1,7 +1,7 @@
 import { createIntlDict } from '@/i18n';
 import Link from 'next/link';
 
-const tagStyle = 'px-1 text-secondary text-sm font-semibold';
+const tagStyle = 'px-1 inline-block text-secondary text-sm font-semibold';
 
 export const facadeDict = createIntlDict(
   {
@@ -36,8 +36,7 @@ export const facadeDict = createIntlDict(
         authentication, wiki content auditing/version control, and data
         fetching/caching from blockchains and SNS platforms. Modeled MYSQL, and
         Document (NoSQL) DBs for data storage, and AWS S3 bucket for static file
-        hosting.
-        <span className={tagStyle}>#node-js</span>
+        hosting. <span className={tagStyle}>#nodejs</span>
         <span className={tagStyle}>#typescript</span>
         <span className={tagStyle}>#docker</span>
         <span className={tagStyle}>#aws</span>

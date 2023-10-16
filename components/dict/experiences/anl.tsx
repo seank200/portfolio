@@ -1,6 +1,6 @@
 import { createIntlDict } from '@/i18n';
 
-const tagStyle = 'px-1 text-secondary text-sm font-semibold';
+const tagStyle = 'px-1 inline-block text-secondary text-sm font-semibold';
 
 export const anlDict = createIntlDict(
   {

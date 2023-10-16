@@ -202,6 +202,7 @@ export default function SigmateSection({
         </h4>
         <ProjectMyRoleList items={DETAILS} />
       </Container>
+      <SigmateArch lang={lang} />
       <div className="relative">
         <Container className="md:sticky top-0 md:min-h-screen hidden md:flex flex-col justify-center items-start">
           <h4 className="mb-6 text-2xl font-semibold">
@@ -318,7 +319,6 @@ export default function SigmateSection({
           </FeatureImage>
         </motion.div>
       </div>
-      <SigmateArch lang={lang} />
     </Section>
   );
 }
