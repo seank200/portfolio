@@ -3,6 +3,7 @@ import Container from '../../../Container';
 import Section from '../../../Section';
 import Memoji from './Memoji';
 import Link from 'next/link';
+import ScrollGuide from '@/components/ScrollGuide';
 
 export default function HeroSection({ lang }: { lang: SupportedLang }) {
   const t = createTranslator(lang);
@@ -46,6 +47,9 @@ export default function HeroSection({ lang }: { lang: SupportedLang }) {
       <Container className="flex md:hidden flex-row justify-center items-stretch gap-3">
         {buttons}
       </Container>
+      <ScrollGuide scrollTo="#experiences" desktopOnly>
+        {t('Learn more about me', '포트폴리오 보기')}
+      </ScrollGuide>
     </Section>
   );
 }

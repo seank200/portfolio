@@ -3,7 +3,12 @@
 import Link from 'next/link';
 import Container from './Container';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faXmark, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBars,
+  faXmark,
+  faEnvelope,
+  faGlobeAsia,
+} from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { MouseEventHandler, Suspense, useEffect, useState } from 'react';
 import throttle from 'lodash/throttle';
@@ -12,6 +17,8 @@ import { motion } from 'framer-motion';
 import LangSelect from './LangSelect';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import useLocalStorage from '@/hooks/useLocalStorage';
+import useSwitchLang from '@/hooks/useSwitchLang';
 
 const SCROLL_DOWN_THRSH = 20;
 const SCROLL_UP_THRSH = 10;
@@ -33,12 +40,24 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
   // const LABEL_BLOG = t('Blog', '블로그');
   const LABEL_EMAIL = t('Email', '이메일');
 
+  const SECTION_EXPERIENCES = t('Experiences', '이력');
+  const SECTION_PROJECTS = t('Projects', '프로젝트');
+  const SECTION_SKILLSETS = t('Skillsets', '기술 스택');
+  const SECTION_CONTACT = t('Contact Me', '연락하기');
+
   // Move up out of the screen when scrolling down, and re-appear when scrolling up
   const [isHidden, setIsHidden] = useState<boolean>(false);
   // Expand menu when clicked on mobile
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const [scrollY, setScrollY] = useState<number>(0);
   const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // Suggest language switch
+  const [showLangSuggest, setShowLangSuggest] = useState<boolean | null>(null);
+  const [neverShowLangSuggest, setNeverShowLangSuggest] = useLocalStorage<
+    boolean | null
+  >('never-show-lang-suggest', false);
+  const otherLangUrl = useSwitchLang(lang);
 
   const isNearTop = scrollY < SCROLL_TOP_THRSH;
   const navShadow = isNearTop && !isExpanded ? '' : 'shadow';
@@ -50,6 +69,29 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
   const handleLinkClick: MouseEventHandler<HTMLLIElement> = () => {
     setIsExpanded(false);
   };
+
+  useEffect(() => {
+    // If user is trying to close, don't run
+    if (showLangSuggest === false) return;
+
+    if (neverShowLangSuggest) {
+      setShowLangSuggest(false);
+    } else {
+      // Display language suggest banner
+      const deviceLocale = window.navigator?.language;
+      const deviceLang: SupportedLang =
+        deviceLocale === 'ko-KR' || deviceLocale === 'ko' ? 'ko' : 'en';
+
+      if (deviceLang !== lang) {
+        setShowLangSuggest(true);
+      }
+    }
+
+    // Disable ESLINT:
+    // Dependency array intentionally does not include dependency "lang"
+    // User manually changing languages should not trigger this effect again
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showLangSuggest, neverShowLangSuggest]);
 
   useEffect(() => {
     setScrollY(window.scrollY);
@@ -89,11 +131,13 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
     };
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-20 ${navShadow} -translate-y-full shadow-background-on/10 bg-background`}
+      className={`fixed top-0 left-0 right-0 z-20 ${navShadow} shadow-background-on/10 bg-background`}
       animate={motionVariant}
       initial={{ opacity: 0 }}
       variants={{
@@ -104,6 +148,43 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
         desktopHidden: { translateY: '-100%', opacity: 1 },
       }}
     >
+      <div
+        className={`${
+          showLangSuggest ? '' : 'hidden'
+        } py-2 bg-primary text-primary-on text-sm`}
+      >
+        <Container className="flex justify-between items-center">
+          <FontAwesomeIcon icon={faGlobeAsia} className="h-em mr-2" />
+          <div className="grow px-2">
+            <p className="hidden md:inline-block">
+              {t(
+                '제 포트폴리오는 한국어로도 제공됩니다.',
+                'My portfolio is also available in English.'
+              )}
+            </p>
+            <Link
+              href={otherLangUrl}
+              className="md:ml-4 inline-block font-semibold underline"
+            >
+              {t('한국어 포트폴리오 보기', 'View English version')}
+            </Link>
+          </div>
+          <div className="flex items-center">
+            <button
+              className="text-xs hover:underline"
+              onClick={() => {
+                setShowLangSuggest(false);
+                setNeverShowLangSuggest(true);
+              }}
+            >
+              {t('다시 묻지 않기', 'Never ask again')}
+            </button>
+            <button onClick={() => setShowLangSuggest(false)}>
+              <FontAwesomeIcon icon={faXmark} className="ml-4 h-em" />
+            </button>
+          </div>
+        </Container>
+      </div>
       <Container className="flex justify-between items-center py-4">
         <Link href={`/${lang}`} className="relative z-20">
           <Image
@@ -152,7 +233,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           </motion.div>
         </button>
         <motion.ul
-          className="absolute md:static top-0 left-0 right-0 -translate-y-full md:translate-y-0 h-screen md:h-auto bg-background px-8 md:px-0 pt-24 md:pt-0 flex flex-col justify-start items-start md:flex-row md:items-center gap-6 md:gap-3"
+          className="absolute md:static top-0 left-0 right-0 -translate-y-full md:translate-y-0 h-screen md:h-auto bg-background px-8 md:px-0 pt-24 md:pt-0 flex flex-col justify-start items-start md:flex-row md:items-center gap-6 md:gap-5"
           initial={{
             translateY: '-100%',
           }}
@@ -196,6 +277,19 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
               <LangSelect lang={lang} />
             </Suspense>
           </motion.li>
+          <NavItem href="#experiences" onClick={handleLinkClick} mobileOnly>
+            # {SECTION_EXPERIENCES}
+          </NavItem>
+          <NavItem href="#projects" onClick={handleLinkClick} mobileOnly>
+            # {SECTION_PROJECTS}
+          </NavItem>
+          <NavItem href="#skills" onClick={handleLinkClick} mobileOnly>
+            # {SECTION_SKILLSETS}
+          </NavItem>
+          <NavItem href="#contacts" onClick={handleLinkClick} mobileOnly>
+            # {SECTION_CONTACT}
+          </NavItem>
+          <NavHr />
           <NavItem
             href={LINK_GITHUB}
             onClick={handleLinkClick}
@@ -203,7 +297,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           >
             <FontAwesomeIcon
               icon={faGithub}
-              className="relative top-px mr-3 h-5"
+              className="relative top-px mr-3 md:mr-0 h-5"
               fixedWidth
             />
             <span className="md:hidden">{LABEL_GITHUB}</span>
@@ -215,7 +309,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           >
             <FontAwesomeIcon
               icon={faLinkedin}
-              className="relative top-0.5 mr-3 h-5"
+              className="relative top-0.5 mr-3 md:mr-0 h-5"
               fixedWidth
             />
             <span className="md:hidden">{LABEL_LINKEDIN}</span>
@@ -227,7 +321,7 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           >
             <FontAwesomeIcon
               icon={faSquareRss}
-              className="relative top-0.5 mr-3 h-5"
+              className="relative top-0.5 mr-3 md:mr-0 h-5"
               fixedWidth
             />
             <span className="md:hidden">{LABEL_BLOG}</span>
@@ -239,15 +333,16 @@ export default function Nav({ lang }: { lang: SupportedLang }) {
           >
             <FontAwesomeIcon
               icon={faEnvelope}
-              className="relative top-0.5 mr-3 h-5"
+              className="relative top-0.5 mr-3 md:mr-0 h-5"
               fixedWidth
             />
             <span className="md:hidden">{LABEL_EMAIL}</span>
           </NavItem>
+          <NavHr />
           <motion.li
             className={`${
               isMobile ? 'flex' : 'hidden'
-            } mt-16 items-center text-faded leading-none`}
+            } items-center text-faded leading-none`}
             variants={{
               mobileHidden: { opacity: 0 },
               mobileNormal: { opacity: 0 },
@@ -271,22 +366,30 @@ function NavItem({
   children,
   onClick,
   title,
+  mobileOnly,
 }: {
   href: string;
   children?: React.ReactNode;
   onClick: MouseEventHandler<HTMLLIElement>;
-  title: string;
+  title?: string;
+  mobileOnly?: boolean;
 }) {
-  const isInternalLink = href.charAt(0) === '/';
+  const isInternalLink = href.charAt(0) === '/' || href.charAt(0) === '#';
   return (
     <motion.li
-      className="text-lg md:text-base text-faded hover:text-primary"
+      className={`${
+        mobileOnly ? 'md:hidden' : ''
+      } text-lg md:text-base text-faded hover:text-primary`}
       variants={{
         mobileHidden: { opacity: 0, translateY: '-1rem' },
         mobileNormal: { opacity: 0, translateY: '-1rem' },
         mobileExpanded: { opacity: 1, translateY: 0 },
-        desktopHidden: { opacity: 1, translateY: 0 },
-        desktopNormal: { opacity: 1, translateY: 0 },
+        desktopHidden: mobileOnly
+          ? { display: 'none', opacity: 0 }
+          : { opacity: 1, translateY: 0 },
+        desktopNormal: mobileOnly
+          ? { display: 'none', opacity: 0 }
+          : { opacity: 1, translateY: 0 },
       }}
       onClick={onClick}
       title={title}
@@ -299,5 +402,20 @@ function NavItem({
         </a>
       )}
     </motion.li>
+  );
+}
+
+function NavHr() {
+  return (
+    <motion.hr
+      variants={{
+        mobileHidden: { opacity: 0, translateY: '-1rem' },
+        mobileNormal: { opacity: 0, translateY: '-1rem' },
+        mobileExpanded: { opacity: 1, translateY: 0 },
+        desktopHidden: { opacity: 1, translateY: 0 },
+        desktopNormal: { opacity: 1, translateY: 0 },
+      }}
+      className="md:hidden w-full border-faded/20"
+    />
   );
 }
