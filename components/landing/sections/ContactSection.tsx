@@ -7,6 +7,10 @@ import { faArrowRight, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import SectionH2 from '@/components/SectionH2';
 
+const emailUrl = 'mailto:yw.sean.kim@gmail.com';
+const githubUrl = 'https://github.com/seanK200';
+const linkedInUrl = 'https://linkedin.com/in/youngwoo-kim-sean/';
+
 const dict = createIntlDict(
   {
     H_LINKS: 'External Links',
@@ -20,8 +24,15 @@ const dict = createIntlDict(
     CFA: (
       <>
         Thank you for visiting my portfolio. I am currently{' '}
-        <b>[open for hire]</b>, and you can reach out to me using the links
-        below.
+        <b>[open for hire]</b>. Reach out to me by{' '}
+        <a href={emailUrl} rel="noopener noreferrer" className="underline">
+          my email
+        </a>{' '}
+        or visit{' '}
+        <a href={linkedInUrl} rel="noopener noreferrer" className="underline">
+          my LinkedIn profile
+        </a>{' '}
+        to send me a message.
       </>
     ),
     GITHUB: 'Github',
@@ -35,9 +46,16 @@ const dict = createIntlDict(
     H_CONTACT_ME: '연락하기',
     CFA: (
       <>
-        제 포트폴리오를 방문해주셔서 감사합니다. 저는 현재 <b>[구직중]</b>이며,
-        아래 링크를 통해 저에 대해 더 많은 정보를 얻으시거나, 저에게 연락하실 수
-        있습니다.
+        제 포트폴리오를 방문해주셔서 감사합니다. 저는 현재 <b>[구직중]</b>
+        입니다. 저에 대해 더 알고 싶으시다면, 아래{' '}
+        <a href={emailUrl} rel="noopener noreferrer" className="underline">
+          이메일
+        </a>{' '}
+        또는{' '}
+        <a href={linkedInUrl} rel="noopener noreferrer" className="underline">
+          링크드인 메세지
+        </a>
+        를 통해 연락주시면 회신드리도록 하겠습니다.
       </>
     ),
     GITHUB: '깃허브',
@@ -85,22 +103,22 @@ export default function ContactSection({
         <h3 className="mt-8 mb-4 text-xl font-semibold">{H_LINKS}</h3>
         <ul className="grid grid-cols-lg gap-4">
           <ContactLink
-            href="mailto:yw.sean.kim@gmail.com"
+            href={emailUrl}
             label={EMAIL}
             icon={faEnvelope}
             id="yw.sean.kim@gmail.com"
           />
           <ContactLink
-            href="https://github.com/seanK200"
-            label={GITHUB}
-            icon={faGithub}
-            id="seanK200"
-          />
-          <ContactLink
-            href="https://linkedin.com/in/youngwoo-kim-sean/"
+            href={linkedInUrl}
             label={LINKEDIN}
             icon={faLinkedin}
             id="youngwoo-kim-sean"
+          />
+          <ContactLink
+            href={githubUrl}
+            label={GITHUB}
+            icon={faGithub}
+            id="seanK200"
           />
         </ul>
       </Container>
