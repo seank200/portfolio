@@ -50,7 +50,7 @@ export const ucnDict = createIntlDict(
         occurred by communicating with the researcher in charge of the affected
         module. Also led periodic lab-wide meetings to consolidate downstream
         changes and create PRs, and then collaborated with upstream repo admins
-        to merge the PRs to the upstream repo
+        to merge the PRs to the upstream repo.
         <span className={tagStyle}>#git</span>
         <span className={tagStyle}>#github</span>
         <span className={tagStyle}>#gitlab</span>

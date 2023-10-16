@@ -1,4 +1,4 @@
-import { SupportedLang } from '@/i18n';
+import { SUPPORTED_LANGS, SupportedLang } from '@/i18n';
 import { usePathname, useSearchParams } from 'next/navigation';
 
 export default function useSwitchLang(lang: SupportedLang) {
@@ -10,7 +10,11 @@ export default function useSwitchLang(lang: SupportedLang) {
   // Generate relative URL for language change
   if (pathparts.length > 1) {
     // pathparts[1] = otherLang;
-    pathparts.splice(1, 1, otherLang);
+    pathparts.splice(
+      1,
+      SUPPORTED_LANGS.includes(pathparts[1]) ? 1 : 0,
+      otherLang
+    );
   } else {
     pathparts.push(otherLang);
   }

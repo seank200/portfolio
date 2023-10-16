@@ -105,7 +105,7 @@ export default function SigmateArch({ lang }: { lang: SupportedLang }) {
           animate={variant}
           className={`absolute top-0 ${imgPadding} rounded-lg shadow-lg shadow-background-on/20 bg-white overflow-hidden cursor-pointer`}
           onClick={() =>
-            window.open(imgUrl.concise, '_blank', 'noopener,noreferrer')
+            window.open(imgUrl[variant], '_blank', 'noopener,noreferrer')
           }
         >
           <Image src={sigmateArchConcise} alt="Sigmate Architecture Diagram" />

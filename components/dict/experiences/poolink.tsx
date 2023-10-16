@@ -38,7 +38,7 @@ export const poolinkDict = createIntlDict(
         Maintained the service for over a year with weekly update schedules for
         bug patches and monthly feature releases, with efficient workflows that
         allowed every team member to keep up with this schedule whilst going
-        through college semester coursework
+        through college semester coursework.
       </>,
     ],
   },
