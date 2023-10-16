@@ -374,9 +374,9 @@ function Stars({
         <FontAwesomeIcon
           key={idx}
           icon={filled ? faStarSolid : faStarRegular}
-          className={`h-3 text-faded/50 ${
+          className={`text-xs text-faded/50 ${
             filled ? 'text-yellow-400/100' : ''
-          } ${size === 'small' ? 'md:h-2' : ''}`}
+          } ${size === 'small' ? 'md:text-[0.5rem]' : ''}`}
         />
       ))}
     </p>
