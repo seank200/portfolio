@@ -59,6 +59,7 @@ export default function ListItem({
             alt={imgAlt}
             width={imgWidth}
             height={imgHeight}
+            className="mb-2 md:mb-0"
           />
         ) : (
           <Image
@@ -66,6 +67,7 @@ export default function ListItem({
             alt={imgAlt}
             width={imgWidth}
             height={imgHeight}
+            className="mb-2 md:mb-0"
           />
         ))}
       {children}

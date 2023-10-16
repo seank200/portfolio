@@ -69,7 +69,7 @@ export default function TechStackItem({
   );
 }
 
-const iconHeight = 'h-10 md:h-12';
+const iconHeight = 'w-auto h-10 md:h-12';
 const iconSize = `w-10 md:w-12 ${iconHeight}`;
 
 export function TSNodeJS() {

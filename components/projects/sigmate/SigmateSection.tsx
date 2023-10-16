@@ -203,7 +203,7 @@ export default function SigmateSection({
         <ProjectMyRoleList items={DETAILS} />
       </Container>
       <SigmateArch lang={lang} />
-      <div className="relative">
+      <div className="mt-16 md:mt-0 relative">
         <Container className="md:sticky top-0 md:min-h-screen hidden md:flex flex-col justify-center items-start">
           <h4 className="mb-6 text-2xl font-semibold">
             <FontAwesomeIcon

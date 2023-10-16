@@ -5,7 +5,7 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 const PREFIX = 'yw-';
 
 export default function useLocalStorage<
-  T extends string | number | object | null | undefined
+  T extends string | number | boolean | object | null | undefined
 >(key: string, initialValue: T | (() => T)): [T, Dispatch<SetStateAction<T>>] {
   const pKey = PREFIX + key;
 

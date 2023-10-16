@@ -63,7 +63,9 @@ export default function ProjectsSection({ lang }: { lang: SupportedLang }) {
           lang={lang}
           href="/project/yrems"
           heading={
-            <span className="text-5xl text-[#0A3879] font-bold">YREMS</span>
+            <span className="text-5xl text-[#0A3879] dark:text-blue-100 font-bold">
+              YREMS
+            </span>
           }
           description={YREMS_DESC}
           coverSrc={yremsCover}
