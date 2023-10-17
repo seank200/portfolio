@@ -15,6 +15,7 @@ import {
   SiMongodb,
   SiNextdotjs,
   SiNodedotjs,
+  SiPhp,
   SiPm2,
   SiReact,
   SiSpringboot,
@@ -145,18 +146,7 @@ export default function SkillsetSection({ lang }: { lang: SupportedLang }) {
       url: 'https://git-scm.com',
     },
     {
-      label: 'AWS DynamoDB',
-      level: 3,
-      icon: (size: SkillItemVariant) => (
-        <SiAmazondynamodb
-          color="default"
-          className={`${iconSize(size)} dark:fill-surface-on`}
-        />
-      ),
-      url: 'https://aws.amazon.com/dynamodb/',
-    },
-    {
-      label: 'GNU Bash',
+      label: t('GNU Bash', 'Bash'),
       level: 3,
       icon: (size: SkillItemVariant) => (
         <SiGnubash
@@ -269,6 +259,25 @@ export default function SkillsetSection({ lang }: { lang: SupportedLang }) {
         />
       ),
       url: 'https://github.com/features/actions',
+    },
+    {
+      label: 'PHP',
+      level: 2,
+      icon: (size: SkillItemVariant) => (
+        <SiPhp color="default" className={iconSize(size)} />
+      ),
+      url: 'https://www.php.net/',
+    },
+    {
+      label: 'DynamoDB',
+      level: 2,
+      icon: (size: SkillItemVariant) => (
+        <SiAmazondynamodb
+          color="default"
+          className={`${iconSize(size)} dark:fill-surface-on`}
+        />
+      ),
+      url: 'https://aws.amazon.com/dynamodb/',
     },
     {
       label: 'PostgreSQL',
