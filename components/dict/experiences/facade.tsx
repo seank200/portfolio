@@ -48,9 +48,9 @@ export const facadeDict = createIntlDict(
         <span className="font-bold">[System Design] </span>
         Designed and deployed a web server architecture on Amazon Web Services
         (AWS) to ensure service continuity, and enforce security. Achieved less
-        than 1% service downtime after official launch for a year, with 1552
-        active users and average 52K API calls per day. Detected and mitigated
-        average 3.7K malicious requests per day (SSH access, SQL injection and
+        than 1% service downtime after official launch for a year, with 125
+        active users and average 5.2K API calls per day. Detected and mitigated
+        average 1.2K malicious requests per day (SSH access, SQL injection and
         XSR attempts).{' '}
         <Link href="/project/sigmate" className="hover:underline">
           (Click here to view system architecture diagram){' '}
@@ -165,10 +165,10 @@ export const facadeDict = createIntlDict(
           백엔드 아키텍쳐
         </Link>{' '}
         를 설계함. 서비스 다운타임은 정식 런치 후 1년간 5% 미만으로 유지하였고,
-        1552명의 유저가 가입하였으며 하루 평균 약 52,000 건의 API 요청을 처리함.
-        또한, 하루 평균 약 3-4천 건의 악의적 접근 요청을 감지하고 로그 분석을
-        통해 해당 클라이언트를 차단 조치함 (SSH 접근 시도, SQL Injection, XSR
-        시도 등). <span className={tagStyle}>#aws</span>
+        125명의 유저가 가입하였으며 하루 평균 약 5,200 건의 API 요청을 처리함.
+        또한, 하루 평균 약 1천 건의 악의적 접근 요청을 감지하고 로그 분석을 통해
+        해당 클라이언트를 차단 조치함 (SSH 접근 시도, SQL Injection, XSR 시도
+        등). <span className={tagStyle}>#aws</span>
         <span className={tagStyle}>#aws-ec2</span>
         <span className={tagStyle}>#aws-rds</span>
         <span className={tagStyle}>#aws-load balancer</span>

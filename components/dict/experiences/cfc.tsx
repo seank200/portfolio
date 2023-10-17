@@ -11,17 +11,17 @@ export const cfcDict = createIntlDict(
       <>
         <span className="font-bold">[Language Abilities] </span>
         Simultaneous/sequential English→Korean and Korean→English interpretation
-        without script on a daily basis, 4 hours per day on average. Meeting
-        interpretation on site, over phone and over video conference calls in
-        the presence of colonel(O-6) - major general(O-8) ranking officers from
-        various units subordinate to United States Forces Korea(USFK) and
-        Republic of Korea Armed Forces.
+        without script on a daily basis, participating in 2-3 meetings every day
+        that each lasted 1-2 hours. Meeting interpretation on site, over phone
+        and over video conference calls in the presence of colonel(O-6) - major
+        general(O-8) ranking officers from various units subordinate to United
+        States Forces Korea(USFK) and Republic of Korea Armed Forces.
       </>,
       <>
         <span className="font-bold">[Language Abilities] </span>
         Translation of military analysis reports, report slides/scripts and
-        meeting minutes in both English and Korean. Translated around 20 pages
-        worth of text per day on average, and reported to Republic of Korea
+        meeting minutes in both English and Korean. Translated around 500-1000
+        words of text per day on average, and reported to Republic of Korea
         (ROK) and US officers.
       </>,
       <>
@@ -46,10 +46,10 @@ export const cfcDict = createIntlDict(
     LOCATION: '',
     DETAILS: [
       <>
-        <span className="font-bold">[언어능력-통역] </span>영→한 및 한→영 동시
-        및 순차 통역 임무를 수행함. 통역은 발언 대본 사전 통보 없이 현장에서
-        실시간으로 진행되었음. 한미 대령급 및 장성(소장)급 대면, 전화, 화상 정보
-        공조 회의를 복무 기간 내 일 평균 4시간 이상 참여하여 통역하였음.
+        <span className="font-bold">[언어능력-통역] </span>영→한 및 한→영 통역
+        임무를 수행함. 통역은 발언 대본 사전 통보 없이 현장에서 실시간으로
+        진행되었음. 한미 대령급 및 장성(소장)급 대면, 전화, 화상 정보 공조
+        회의를 복무 기간 내 일 평균 4시간 이상 참여하여 통역하였음.
       </>,
       <>
         <span className="font-bold">[언어능력-번역] </span>일 평균 A4용지 20장

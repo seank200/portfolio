@@ -17,7 +17,7 @@ const dict = createIntlDict(
     H_NAME: 'Name',
     NAME: 'Youngwoo Kim',
     H_TIMEZONE: 'My Timezone',
-    TIMEZONE: 'Seoul (UTC +09:00)',
+    TIMEZONE: 'Asia/Seoul (UTC+09:00)',
     H_LANGUAGE: 'Languages I Speak',
     LANGUAGE: 'English (native speaker proficiency), Korean (native)',
     H_CONTACT_ME: 'Contact Me',
@@ -46,8 +46,8 @@ const dict = createIntlDict(
     H_CONTACT_ME: '연락하기',
     CFA: (
       <>
-        제 포트폴리오를 방문해주셔서 감사합니다. 저는 현재 <b>[구직중]</b>
-        입니다. 저에 대해 더 알고 싶으시다면, 아래{' '}
+        제 포트폴리오를 방문해주셔서 감사합니다. 저에 대해 더 알고 싶으시다면,
+        아래{' '}
         <a href={emailUrl} rel="noopener noreferrer" className="underline">
           이메일
         </a>{' '}

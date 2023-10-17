@@ -43,7 +43,7 @@ export default function ListItem({
           {contents.map((content, idx) => (
             <li
               key={typeof content === 'string' ? content : idx}
-              className="pl-5 -indent-[17px] md:pl-5 md:-indent-5 text-faded leading-relaxed"
+              className="pl-6 -indent-[17px] md:pl-6 md:-indent-5 text-faded leading-relaxed"
             >
               {content}
             </li>

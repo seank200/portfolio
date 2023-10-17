@@ -71,12 +71,12 @@ export const yicrcDict = createIntlDict(
 export const yremsDict = createIntlDict(
   {
     NAME: 'YREMS',
-    DESCRIPTION: 'Student Event RSVP and Attendance Management System',
+    DESCRIPTION: 'Event RSVP and Attendance Management System',
     H_FEAT_STUDENT: 'Student User Features',
     H_FEAT_ADMIN: 'Admin User Features',
   },
   {
-    DESCRIPTION: '연세대학교 교내 프로그램 학생 참가 신청 및 출결 관리 시스템',
+    DESCRIPTION: '교내 행사/교육프로그램 참가 신청 및 출결 관리 시스템',
     H_FEAT_STUDENT: '학생 유저 기능',
     H_FEAT_ADMIN: '관리자 유저 기능',
   }
