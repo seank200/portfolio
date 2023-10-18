@@ -97,7 +97,7 @@ function ProjectItem({
   return (
     <li>
       <Link
-        href={href}
+        href={href.charAt(0) === '/' ? `/${lang}${href}` : href}
         className="group py-12 min-h-[360px] flex justify-between bg-surface"
       >
         <Container className="group-hover:scale-101 flex justify-between items-center transition">

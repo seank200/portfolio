@@ -55,10 +55,11 @@ export default function ExperienceItem({
     logoImage = <Image src={logoSrc} alt={logoAlt} height={logoHeight || 32} />;
 
     if (url) {
-      const isInternalUrl = url.charAt(0) === '/';
+      const isInternalUrl = url.charAt(0) === '/' || url.charAt(0) === '#';
+      const href = url.charAt(0) === '/' ? `/${lang}${url}` : url;
       if (isInternalUrl) {
         linkElem = (
-          <Link href={url} className={clickableLogoClassName}>
+          <Link href={href} className={clickableLogoClassName}>
             {logoImage}
           </Link>
         );

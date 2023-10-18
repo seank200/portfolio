@@ -1,6 +1,4 @@
 import Container from '@/components/Container';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
 import { SupportedLang, formatTimePeriod } from '@/i18n';
 import ProjectStickyHeader from '@/components/projects/ProjectStickyHeader';
 import { expDict, expPeriod } from '@/components/dict/experiences';
@@ -24,6 +22,29 @@ import {
   TSPHP,
 } from '@/components/projects/TechStackItem';
 import Image from 'next/image';
+import { createIntlMetadata } from '@/i18n/metadata';
+import { Metadata } from 'next';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: SupportedLang };
+}): Promise<Metadata> {
+  const { DESCRIPTION } = expDict.yrems[params.lang];
+  const description = typeof DESCRIPTION === 'string' ? DESCRIPTION : undefined;
+
+  const metadata = createIntlMetadata(
+    {
+      title: 'YREMS - Project Details',
+      description,
+    },
+    {
+      title: 'YREMS - 프로젝트 상세',
+    }
+  );
+
+  return metadata[params.lang];
+}
 
 export default function page({ params }: { params: { lang: SupportedLang } }) {
   const { lang } = params;
@@ -54,86 +75,82 @@ export default function page({ params }: { params: { lang: SupportedLang } }) {
     });
 
   return (
-    <>
-      <Nav lang={lang} />
-      <Section>
-        <ProjectStickyHeader
-          heading={
-            <span className="text-3xl text-[#0A3879] font-bold">YREMS</span>
-          }
+    <Section>
+      <ProjectStickyHeader
+        heading={
+          <span className="text-3xl text-[#0A3879] font-bold">YREMS</span>
+        }
+        title={TITLE}
+        period={period}
+      />
+      <Container className="min-h-screen">
+        <ProjectHeader
           title={TITLE}
           period={period}
+          description={DESCRIPTION}
         />
-        <Container className="min-h-screen">
-          <ProjectHeader
-            title={TITLE}
-            period={period}
-            description={DESCRIPTION}
+        <h4 className="mt-20 mb-4 text-2xl font-semibold">
+          <FontAwesomeIcon
+            icon={faMicrochip}
+            className="mr-3 h-em text-cyan-500 dark:text-cyan-300"
           />
-          <h4 className="mt-20 mb-4 text-2xl font-semibold">
-            <FontAwesomeIcon
-              icon={faMicrochip}
-              className="mr-3 h-em text-cyan-500 dark:text-cyan-300"
+          {H_TECH_STACK}
+        </h4>
+        <TechStack>
+          <TSHTML lang={lang} />
+          <TSCSS lang={lang} />
+          <TSJavaScript />
+          <TSJQuery />
+          <TSPHP />
+          <TSMYSQL />
+        </TechStack>
+        <h4 className="mt-24 mb-3 text-2xl font-semibold">
+          <FontAwesomeIcon
+            icon={faStar}
+            className="mr-3 h-em text-yellow-400 dark:text-yellow-300"
+          />
+          {H_MY_ROLE}
+        </h4>
+        <ProjectMyRoleList items={DETAILS} />
+        <h4 className="mt-28 mb-4 text-2xl font-semibold">
+          <FontAwesomeIcon
+            icon={faLightbulb}
+            className="mr-3 text-orange-500 dark:text-orange-400"
+          />
+          {H_SCREENSHOTS} ({H_FEAT_STUDENT})
+        </h4>
+        <div className="grid grid-cols-sm gap-6">
+          {userSrcUrls.map((url) => (
+            <Image
+              key={url}
+              src={`/images/yrems/${url}`}
+              alt="YREMS UI screenshot"
+              className="shadow hover:scale-104 transition-all"
+              width={355}
+              height={600}
             />
-            {H_TECH_STACK}
-          </h4>
-          <TechStack>
-            <TSHTML lang={lang} />
-            <TSCSS lang={lang} />
-            <TSJavaScript />
-            <TSJQuery />
-            <TSPHP />
-            <TSMYSQL />
-          </TechStack>
-          <h4 className="mt-24 mb-3 text-2xl font-semibold">
-            <FontAwesomeIcon
-              icon={faStar}
-              className="mr-3 h-em text-yellow-400 dark:text-yellow-300"
+          ))}
+        </div>
+        <h4 className="mt-28 mb-4 text-2xl font-semibold">
+          <FontAwesomeIcon
+            icon={faLightbulb}
+            className="mr-3 text-orange-500 dark:text-orange-400"
+          />
+          {H_SCREENSHOTS} ({H_FEAT_ADMIN})
+        </h4>
+        <div className="grid grid-cols-sm gap-6">
+          {adminSrcUrls.map((url) => (
+            <Image
+              key={url}
+              src={`/images/yrems/${url}`}
+              alt="YREMS UI screenshot"
+              className="shadow hover:scale-104 transition-all"
+              width={355}
+              height={600}
             />
-            {H_MY_ROLE}
-          </h4>
-          <ProjectMyRoleList items={DETAILS} />
-          <h4 className="mt-28 mb-4 text-2xl font-semibold">
-            <FontAwesomeIcon
-              icon={faLightbulb}
-              className="mr-3 text-orange-500 dark:text-orange-400"
-            />
-            {H_SCREENSHOTS} ({H_FEAT_STUDENT})
-          </h4>
-          <div className="grid grid-cols-sm gap-6">
-            {userSrcUrls.map((url) => (
-              <Image
-                key={url}
-                src={`/images/yrems/${url}`}
-                alt="YREMS UI screenshot"
-                className="shadow hover:scale-104 transition-all"
-                width={355}
-                height={600}
-              />
-            ))}
-          </div>
-          <h4 className="mt-28 mb-4 text-2xl font-semibold">
-            <FontAwesomeIcon
-              icon={faLightbulb}
-              className="mr-3 text-orange-500 dark:text-orange-400"
-            />
-            {H_SCREENSHOTS} ({H_FEAT_ADMIN})
-          </h4>
-          <div className="grid grid-cols-sm gap-6">
-            {adminSrcUrls.map((url) => (
-              <Image
-                key={url}
-                src={`/images/yrems/${url}`}
-                alt="YREMS UI screenshot"
-                className="shadow hover:scale-104 transition-all"
-                width={355}
-                height={600}
-              />
-            ))}
-          </div>
-        </Container>
-      </Section>
-      <Footer lang={lang} />
-    </>
+          ))}
+        </div>
+      </Container>
+    </Section>
   );
 }

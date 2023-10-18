@@ -1,15 +1,25 @@
 import '../globals.css';
 import '../fonts.css';
-import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { SUPPORTED_LANGS, SupportedLang } from '@/i18n';
+import { createIntlMetadata } from '@/i18n/metadata';
+import Nav from '@/components/Nav';
+import Footer from '@/components/Footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
-export const metadata: Metadata = {
-  title: 'Youngwoo Kim',
-  description: 'Developer portfolio',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: { lang: SupportedLang };
+}) {
+  const metadata = createIntlMetadata(
+    { description: 'Full stack web developer project portfolio' },
+    { description: '풀스택 웹 개발자 프로젝트 포트폴리오' }
+  );
+
+  return metadata[params.lang];
+}
 
 export default function Layout({
   children,
@@ -47,7 +57,9 @@ export default function Layout({
       <body
         className={`m-0 w-full min-h-screen bg-background text-background-on font-sans ${inter.className}`}
       >
+        <Nav lang={params.lang} />
         {children}
+        <Footer lang={params.lang} />
       </body>
     </html>
   );
