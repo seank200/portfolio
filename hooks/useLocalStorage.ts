@@ -1,32 +1,26 @@
-'use client';
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-
-const PREFIX = 'yw-';
+const PREFIX = "ywk-";
 
 export default function useLocalStorage<
-  T extends string | number | boolean | object | null | undefined
->(key: string, initialValue: T | (() => T)): [T, Dispatch<SetStateAction<T>>] {
-  const pKey = PREFIX + key;
+  T extends string | number | boolean | object | null | undefined,
+>(key: string, initialValue: T): [T, Dispatch<SetStateAction<T>>] {
+  const prefixedKey = PREFIX + key;
 
-  const [init, setInit] = useState(false);
-
-  const [value, setValue] = useState<T>(() => {
-    return typeof initialValue === 'function' ? initialValue() : initialValue;
-  });
+  const [loaded, setLoaded] = useState<boolean>(false);
+  const [value, setValue] = useState<T>(initialValue);
 
   useEffect(() => {
-    const ls = window?.localStorage.getItem(pKey);
-    if (ls !== null && ls !== undefined) {
-      setValue(JSON.parse(ls));
-    }
-    setInit(true);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (loaded) return;
+    const ls = window.localStorage.getItem(prefixedKey);
+    if (ls) setValue(JSON.parse(ls));
+    setLoaded(true);
+  }, [loaded, prefixedKey]);
 
   useEffect(() => {
-    if (init) localStorage.setItem(pKey, JSON.stringify(value));
-  }, [pKey, value, init]);
+    if (!loaded) return;
+    window.localStorage.setItem(prefixedKey, JSON.stringify(value));
+  }, [loaded, prefixedKey, value]);
 
   return [value, setValue];
 }

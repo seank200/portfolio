@@ -1,21 +1,15 @@
-export const containerPaddingX = `px-8 md:px-16 2xl:px-0`;
+import { type ReactNode } from "react";
 
-export const containerClassName = `mx-auto w-full max-w-7xl ${containerPaddingX}`;
-
-export const containerNoPaddingXOnMobileClassName =
-  'mx-auto w-full md:max-w-7xl md:px-16 2xl:px-0';
+export const containerClass = "mx-auto w-full max-w-7xl px-8 md:px-12 2xl:px-0";
 
 export default function Container({
-  noPaddingXOnMobile,
-  className = '',
+  className,
   children,
 }: {
-  noPaddingXOnMobile?: boolean;
   className?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }) {
-  const base = noPaddingXOnMobile
-    ? containerNoPaddingXOnMobileClassName
-    : containerClassName;
-  return <div className={`${base} ${className}`}>{children}</div>;
+  return (
+    <div className={`${containerClass} ${className || ""}`}>{children}</div>
+  );
 }

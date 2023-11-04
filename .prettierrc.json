@@ -1,0 +1,13 @@
+{
+    "semi": true,
+    "tabWidth": 2,
+    "printWidth": 80,
+    "overrides": [
+        {
+            "files": ["*.json"],
+            "options": {
+                "tabWidth": 4
+            }
+        }
+    ]
+}

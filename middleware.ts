@@ -1,37 +1,36 @@
-import type { NextRequest } from 'next/server';
-import { NextResponse } from 'next/server';
-
-type SupportedLang = 'en' | 'ko';
-
-const SUPPORTED_LANGS = ['en', 'ko'];
-const DEFAULT_LANG = SUPPORTED_LANGS[0];
+import { NextRequest, NextResponse } from "next/server";
+import alParser from "accept-language";
+import { LANG_DEFAULT, isMyLang, myLangs } from "@lib/i18n";
+import { splitPath } from "@lib/path";
 
 export const config = {
   matcher: [
-    '/((?!_next|images|fonts|favicon|site|apple|android|browserconfig|mstile|safari).*)',
+    "/((?!_next|images|fonts|api|files|favicon|site|apple|android|browserconfig|mstile|safari).*)",
   ],
 };
 
-export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
-  const pathParts = pathname.split('/');
-  const queryString = new URL(request.url).search;
-  if (pathParts.length > 1) {
-    const lang = pathParts[1];
-    if (SUPPORTED_LANGS.includes(lang as SupportedLang)) {
-      // Valid language provided
-      if (lang === 'en') {
-        const path = '/' + pathParts.slice(2).join('/');
-        return NextResponse.redirect(new URL(path, request.url) + queryString);
-      }
-    } else {
-      // Invalid language or language not provided
-      const path = '/' + DEFAULT_LANG + (pathname === '/' ? '' : pathname);
-      return NextResponse.rewrite(new URL(path, request.url) + queryString);
-    }
-  } else {
-    // Language not provided (root path)
-    const path = '/' + DEFAULT_LANG;
-    return NextResponse.rewrite(new URL(path, request.url) + queryString);
+alParser.languages(myLangs);
+export function middleware(req: NextRequest) {
+  const url = req.url;
+  const query = new URL(url).search;
+  const pathparts = splitPath(req.nextUrl.pathname);
+
+  // Add detected language to path if not explicitly provided
+  if (!isMyLang(pathparts[0])) {
+    // ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
+    const userLang = alParser.get(req.headers.get("Accept-Language"));
+    pathparts.splice(0, 0, userLang || LANG_DEFAULT);
   }
+
+  // Default path leads to portfolio, unless otherwise specified
+  if (pathparts[1] !== "portfolio" && pathparts[1] !== "blog") {
+    pathparts.splice(1, 0, "portfolio");
+  }
+
+  const pathname = "/" + pathparts.join("/");
+  const newUrl = new URL(pathname, req.url) + query;
+
+  // console.log(`[${new Date().toISOString()}] <middleware> ${req.nextUrl.pathname} -> ${pathname}`);
+
+  return NextResponse.rewrite(newUrl);
 }

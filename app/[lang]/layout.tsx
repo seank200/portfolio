@@ -1,65 +1,49 @@
-import '../globals.css';
-import '../fonts.css';
-import { Inter } from 'next/font/google';
-import { SUPPORTED_LANGS, SupportedLang } from '@/i18n';
-import { createIntlMetadata } from '@/i18n/metadata';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import "./fonts.css";
+import { LANG_DEFAULT, MyLang, createIntlMeta, myLangs } from "@lib/i18n";
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] });
+
+const meta = createIntlMeta(
+  {
+    title: {
+      template: "%s | Youngwoo Kim",
+      default: "Youngwoo Kim",
+    },
+  },
+  {
+    title: {
+      template: "%s | 김영우",
+      default: "김영우",
+    },
+  },
+);
+
+export async function generateStaticParams() {
+  return myLangs.map((lang) => ({ lang }));
+}
 
 export async function generateMetadata({
   params,
 }: {
-  params: { lang: SupportedLang };
-}) {
-  const metadata = createIntlMetadata(
-    { description: 'Full stack web developer project portfolio' },
-    { description: '풀스택 웹 개발자 프로젝트 포트폴리오' }
-  );
-
-  return metadata[params.lang];
+  params: { lang: MyLang };
+}): Promise<Metadata> {
+  const { lang = LANG_DEFAULT } = params;
+  return meta[lang];
 }
 
-export default function Layout({
+export default function RootLayout({
   children,
-  params,
 }: {
   children: React.ReactNode;
-  params: { lang: SupportedLang };
 }) {
-  if (!SUPPORTED_LANGS.includes(params.lang)) return <html></html>;
+  const ctpVariants = "ctp-macchiato ctp-latte ctp-frappe ctp-mocha";
   return (
-    <html lang={params.lang} className="scroll-smooth">
-      <head>
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="/favicon-32x32.png"
-        />
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="16x16"
-          href="/favicon-16x16.png"
-        />
-        <link rel="manifest" href="/site.webmanifest" />
-        <meta name="msapplication-TileColor" content="#2b5797" />
-        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#9665ec" />
-        <meta name="theme-color" content="#ffffff" />
-      </head>
-      <body
-        className={`m-0 w-full min-h-screen bg-background text-background-on font-sans ${inter.className}`}
-      >
-        <Nav lang={params.lang} />
+    <html lang="en">
+      <body className={`${inter.className} ${ctpVariants} bg-background`}>
         {children}
-        <Footer lang={params.lang} />
       </body>
     </html>
   );

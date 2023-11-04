@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root,
+  .theme-light:root {
+    --color-background: 244, 244, 246;
+  }
+
+  .theme-dark:root {
+    --color-background: 15, 23, 42;
+  }
+}
+
+@layer components {
+  body {
+    @apply w-full min-h-screen text-ctp-text;
+  }
+
+  .light-1 {
+    @apply ctp-latte;
+  }
+
+  .dark-1 {
+    @apply ctp-mocha;
+  }
+
+  .dark-2 {
+    @apply ctp-macchiato;
+  }
+
+  .dark-3 {
+    @apply ctp-frappe;
+  }
+}
