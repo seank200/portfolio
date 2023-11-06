@@ -44,7 +44,7 @@ export function createIntlMeta<M extends Metadata>(
 }
 
 export function translator(lang: MyLang) {
-  return (en: string, ko: string) => {
+  return <T extends ReactNode = string>(en: T, ko: T): T => {
     return lang === "ko" ? ko : en;
   };
 }
