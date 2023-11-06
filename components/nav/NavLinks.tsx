@@ -8,31 +8,31 @@ export default function NavLinks({ lang }: { lang: MyLang }) {
   const t = translator(lang);
   return (
     <nav className="grow">
-      <ul className="flex flex-col gap-6 text-xl md:text-lg leading-none">
-        <li>
+      <ul className="flex flex-col gap-6 text-xl md:text-lg font-medium leading-none">
+        <li className="hover:text-ctp-mauve">
           <MyLink href="/" lang={lang}>
             {t("Portfolio", "포트폴리오")}
           </MyLink>
         </li>
-        <li>
+        <li className="hover:text-ctp-mauve">
           <MyLink href="/" lang={lang}>
             {t("Resume", "이력서")}
           </MyLink>
         </li>
-        <li>
+        <li className="hover:text-ctp-mauve">
           <MyLink href="/" lang={lang}>
             {t("Blog", "블로그")}
           </MyLink>
         </li>
-        <li>
+        <li className="hover:text-ctp-mauve">
           <MyLink href="/" lang={lang}>
             {t("Contact", "연락하기")}
           </MyLink>
         </li>
       </ul>
       <hr className="my-8 border-[0.5px] border-ctp-surface2" />
-      <ul className="flex flex-col gap-4 text-lg md:text-base leading-none">
-        <li>
+      <ul className="flex flex-col gap-4 text-lg md:text-base font-medium leading-none">
+        <li className="hover:text-ctp-teal">
           <MyLink
             href="https://github.com/seanK200"
             className="flex items-center gap-3"
@@ -43,7 +43,7 @@ export default function NavLinks({ lang }: { lang: MyLang }) {
             </span>
           </MyLink>
         </li>
-        <li>
+        <li className="hover:text-ctp-teal">
           <MyLink
             href="https://linkedin.com/in/youngwoo-kim-sean"
             className="flex items-center gap-3"
@@ -54,7 +54,7 @@ export default function NavLinks({ lang }: { lang: MyLang }) {
             </span>
           </MyLink>
         </li>
-        <li>
+        <li className="hover:text-ctp-teal">
           <MyLink
             href="mailto:yw.sean.kim@gmail.com"
             className="flex items-center gap-3"

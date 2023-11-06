@@ -113,6 +113,12 @@ export default function Nav({ lang }: { lang: MyLang }) {
           </li>
         </ul>
       </div>
+      <div
+        className={`z-10 fixed top-0 right-0 bottom-0 ${
+          isOpen ? "bg-black/30" : "bg-none"
+        } ${isOpen ? "left-0" : "left-full"} transition-colors`}
+        onClick={() => setIsOpen(false)}
+      />
     </>
   );
 }
