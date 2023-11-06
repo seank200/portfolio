@@ -5,7 +5,7 @@
 @layer base {
   :root,
   .theme-light:root {
-    --color-background: 244, 244, 246;
+    --color-background: 239, 241, 245;
   }
 
   .theme-dark:root {
