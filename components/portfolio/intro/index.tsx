@@ -32,28 +32,29 @@ export default function IntroSection({ lang }: { lang: MyLang }) {
   );
   const bodyEng = (
     <>
-      <H3 className="text-ctp-teal">
-        I am a developer who finds great joy in challenging myself to solve
-        everyday problems through software development.
+      <H3 className="text-ctp-teal inline">
+        I am a developer who finds great joy{" "}
       </H3>
-      <P>
-        These challenges, including my experience as a CTO in a tech startup,
-        allowed me to obtain expertise and experience in full stack web
+      <P className="inline">
+        in challenging myself to solve everyday problems with my own software.
+        These challenges, including my role as a CTO in a tech startup, allowed
+        me to obtain expertise and real-world experience in full stack web
         development and deploying cloud computing infrastructures.
       </P>
-      <H3 className="text-ctp-blue">
+      <div className="my-8 block" />
+      <H3 className="text-ctp-blue inline">
         I thrive to become a better person every day,{" "}
       </H3>
-      <P>
+      <P className="inline">
         by continuing to learn new technology and proactively looking back at my
         work to find places of improvement in my work.
       </P>
-      <H3 className="text-ctp-mauve">I am a natural team player.</H3>
-      <P>
-        I am confident that I can fit into any team and start working in no
-        time. I have the communication and linguistic skills that comes from
-        various collaboration experiences with teammates from a wide range of
-        educational and cultural backgrounds.
+      <div className="my-8 block" />
+      <H3 className="text-ctp-mauve inline">I am a natural team player.</H3>
+      <P className="inline">
+        I have the communication skills that comes from various collaboration
+        experiences with teammates from a wide range of educational and cultural
+        backgrounds. I can fit into any team and get started in no time.
       </P>
     </>
   );
