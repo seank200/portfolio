@@ -18,7 +18,7 @@ const SCROLL_TOP_THRSH = 50;
 const SCROLL_BOT_THRSH = 300;
 
 export default function Nav({ lang }: { lang: MyLang }) {
-  const [scrollY, setScrollY] = useState<number>(0);
+  const [, setScrollY] = useState<number>(0);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -26,7 +26,7 @@ export default function Nav({ lang }: { lang: MyLang }) {
   const sidebarClass = isOpen
     ? "translate-x-0 opacity-100"
     : "translate-x-full opacity-0";
-  const bcClass = scrollY > SCROLL_TOP_THRSH ? "opacity-100" : "opacity-0";
+  // const bcClass = scrollY > SCROLL_TOP_THRSH ? "opacity-100" : "opacity-0";
 
   useEffect(() => {
     const handleScroll = throttle(() => {
@@ -96,13 +96,6 @@ export default function Nav({ lang }: { lang: MyLang }) {
             </li>
           </ul>
         </Container>
-        <div
-          className={`z-10 absolute top-full left-0 right-0 py-1 bg-background text-xs ${bcClass} transition-all`}
-        >
-          <Container>
-            {`Test  »  In  »  Another  »  Test  »  Breadcrumbs!`}
-          </Container>
-        </div>
       </div>
       <div
         className={`z-20 fixed top-0 bottom-0 right-0 ${sidebarClass} px-8 pt-6 pb-12 w-full md:w-72 flex flex-col gap-4 bg-ctp-crust transition-all duration-500 ease-in-out`}
