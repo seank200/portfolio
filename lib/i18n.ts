@@ -48,3 +48,21 @@ export function translator(lang: MyLang) {
     return lang === "ko" ? ko : en;
   };
 }
+
+const periodFormatOptions: Intl.DateTimeFormatOptions = {
+  year: "numeric",
+  month: "short",
+};
+const periodFormatter = {
+  ko: new Intl.DateTimeFormat("ko-KR", periodFormatOptions),
+  en: new Intl.DateTimeFormat("en-US", periodFormatOptions),
+};
+const periodCurrent = { ko: "현재", en: "Current" };
+const periodSep = { ko: "~", en: "-" };
+
+export function formatPeriod(lang: MyLang, start: Date, end?: Date) {
+  const formatter = periodFormatter[lang];
+  const fStart = formatter.format(start);
+  const fEnd = end ? formatter.format(end) : periodCurrent[lang];
+  return `${fStart} ${periodSep[lang]} ${fEnd}`;
+}

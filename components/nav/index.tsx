@@ -15,7 +15,7 @@ import throttle from "lodash/throttle";
 const SCROLL_DOWN_THRSH = 20;
 const SCROLL_UP_THRSH = 10;
 const SCROLL_TOP_THRSH = 50;
-const SCROLL_BOT_THRSH = 300;
+const SCROLL_BOT_THRSH = 200;
 
 export default function Nav({ lang }: { lang: MyLang }) {
   const [, setScrollY] = useState<number>(0);
@@ -98,7 +98,7 @@ export default function Nav({ lang }: { lang: MyLang }) {
         </Container>
       </div>
       <div
-        className={`z-20 fixed top-0 bottom-0 right-0 ${sidebarClass} px-8 pt-6 pb-12 w-full md:w-72 flex flex-col gap-4 bg-ctp-crust transition-all duration-500 ease-in-out`}
+        className={`z-20 fixed top-0 bottom-0 right-0 ${sidebarClass} px-10 md:px-8 pt-8 md:pt-6 pb-12 w-full md:w-72 flex flex-col gap-4 bg-ctp-crust transition-all duration-500 ease-in-out`}
       >
         <button className="text-lg self-end" onClick={() => setIsOpen(false)}>
           <FontAwesomeIcon icon={faXmark} className="text-lg h-em" />

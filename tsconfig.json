@@ -32,6 +32,9 @@
       "@hooks/*": [
         "./hooks/*"
       ],
+      "@images/*": [
+        "./public/images/*"
+      ],
       "@/*": [
         "./*"
       ]

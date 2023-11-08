@@ -4,7 +4,7 @@ Hi, I'm a full-stack web developer and neuroscience researcher based on Seoul ðŸ
 
 ## Intro
 
-## Project Portfolio
+## Projects
 
 ### Sigmate (CTO, 2022-2023)
 
@@ -16,11 +16,11 @@ A wiki platform for the NFT community.
 - RELIABLE - Cross checked by users and moderators
 - VALUATED - Integrated asset valuation with on&off-chain data
 
-### Funding
+#### Funding
 
 - Received financial support from ROK Ministry of SMEs and Startups, after extensive country-wide screening process.
 
-### My Role
+#### My Role
 
 - **(Development)** Implemented NodeJS + TypeScript REST API server, and modeled SQL, NoSQL DBs. (Features: custom wiki engine, user rewards system, blockchain data aggregation)
 - **(DevOps)** Deployed API server, DBs, and static file services on Amazon Web Services (AWS). Desgined for scalability and continuity with load balancing, multi A-Z deployments/backups, and log monitoring/alerts.
@@ -28,7 +28,7 @@ A wiki platform for the NFT community.
 - **(Teamwork)** Managed 6 developers directly as CTO, and implemented agile development workflow that was efficient enough to achieve bi-weekly feature releases and weekly bug fix updates throughout the entire service period, despite all dev team members being students who were handling extensive college coursework.
 - **(Communication)** Actively participated in service planning (PM) and design meetings to express ideas, and bridged communication gaps between the development team and the rest of the team, that consisted of 3 project managers and 1 designer.
 
-### Tech Stack
+#### Tech Stack
 
 - Development
   - TypeScript
@@ -47,39 +47,39 @@ A wiki platform for the NFT community.
   - Route 53, Certiciate Manager(SSL)
   - CloudWatch (Logs/Alerts)
 
-## Poolink (Lead developer, 2021-2022)
+### Poolink (Lead developer, 2021-2022)
 
 A web app for organizing and sharing links(bookmarks)
 
-### Feature Highlights
+#### Feature Highlights
 
 - **Organize** bookmarked links with categories and tags, to be easily searchable later.
 - **Share** a whole collection of links on brainstorming sessions, group projects, travel plans and more with a single sharable URL.
 - **Explore** link collections to discover new websites with content that you are interested in.
 
-### Funding
+#### Funding
 
 - Received financial support from ROK Ministry of SMEs and Startups, after extensive country-wide screening process.
 
-### My Role
+#### My Role
 
 - **Development** Developed web frontend using ReactJS. Implemented responsive web design with client-side rendering/routing, and API caching.
 - **Project Mgmt.** Maintained service for a year, with around 90 users actively using the platform. Pushed updates throughout service period based on feedback collected from general users, selected beta testers, and teammates.
 - **Teamwork** Managed work distribution of 3 other developers as lead developer, and established agile workflow SOPs including release timelines, PR/commits/code styling conventions and more. Established workflow was efficient enough for bi-weekly patches and monthly feature releases to continue throughout service lifetime, despite all developer teammates being students carrying out coursework in their majors.
 - **Communication** Actively contributed in service planning meetings with 2 project planners and 2 designers to share development team's opinions on feature release roadmaps, UX improvement, and more. Collaborated closely with 2 designers to plan and verify UI improvements.
 
-### Tech Stack
+#### Tech Stack
 
 - ReactJS
 - Vercel
 - Github Actions
 - Bash Scripting
 
-## YREMS (Developer, 2018-2019)
+### YREMS (Developer, 2018-2019)
 
 School event RSVP and attendance managment system
 
-### Feature Highlights
+#### Feature Highlights
 
 - Students
   - Sign up for events with live feedback on sign up status (first-come-first-serve for events with limits on number of participants)
@@ -89,11 +89,11 @@ School event RSVP and attendance managment system
   - Cutomizable attendance check policy to manage attendance on-site
   - Integration with school systems to transfer data in bulk to school's grading system
 
-### Results
+#### Results
 
 - Service was incorporated into official school systems after year of operation.
 
-### My Role
+#### My Role
 
 - **Development** Implemented frontend with HTML, CSS, and vanilla JS, server with PHP and MYSQL as the database.
 - **Project Mgmt.** Maintained service for 2 semesters (a year), with 300-350 student users and around 20 admin users. Provided regular updates based on feedback on fellow administrators and student users, consisting of people from diverse cultural and educational backgrounds.

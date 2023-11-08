@@ -1,3 +1,4 @@
+import Footer from "@components/Footer";
 import Nav from "@components/nav";
 import { MyLang } from "@lib/i18n";
 
@@ -12,6 +13,7 @@ export default function layout({
     <>
       <Nav lang={params.lang} />
       {children}
+      <Footer lang={params.lang} />
     </>
   );
 }

@@ -17,7 +17,7 @@ export default function HeroSection({ lang }: LangProps) {
   return (
     <section className="min-h-screen flex flex-col justify-center">
       <Container className="pt-8 flex flex-col md:flex-row justify-center md:justify-between items-center">
-        <div className="md:mr-12">
+        <div className="text-center md:text-left md:mr-12">
           <h1
             className={`inline-block pb-6 bg-gradient-to-r from-ctp-mauve to-ctp-blue bg-clip-text text-transparent text-center md:text-left ${h1FontSize} md:text-5xl lg:text-6xl font-semibold`}
           >

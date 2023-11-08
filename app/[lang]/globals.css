@@ -11,6 +11,22 @@
   .theme-dark:root {
     --color-background: 15, 23, 42;
   }
+
+  .theme-light .light-only {
+    opacity: 1;
+  }
+
+  .theme-dark .light-only {
+    display: 0;
+  }
+
+  .theme-light .dark-only {
+    opacity: 0;
+  }
+
+  .theme-dark .dark-only {
+    opacity: 1;
+  }
 }
 
 @layer components {
