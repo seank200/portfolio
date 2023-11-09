@@ -19,13 +19,11 @@ export default function SigmateFeatures({ lang }: { lang: MyLang }) {
   const t = translator(lang);
   const feat1 = t(
     <>
-      Everything about your NFT
-      <br />
+      Everything about your NFT <br className="" />
       <span className="text-ctp-blue font-semibold">at a glance</span>
     </>,
     <>
-      NFT에 특화된 위키 UI로
-      <br />
+      NFT에 특화된 위키 UI로 <br className="" />
       <span className="text-ctp-blue font-semibold">한 눈에 </span>
       들어오는 정보
     </>,
@@ -36,12 +34,11 @@ export default function SigmateFeatures({ lang }: { lang: MyLang }) {
       <span className="text-ctp-blue font-semibold">
         Off-chain data tracking{" "}
       </span>
-      from <br />
-      Twitter, Discord and more
+      from <br className="hidden lg:inline" /> Twitter, Discord and more
     </>,
     <>
       트위터, 디스코드, 미디엄 등에 산재된
-      <br />
+      <br className="hidden lg:inline" />{" "}
       <span className="text-ctp-blue font-semibold">
         오프체인 데이터 트래킹{" "}
       </span>
@@ -54,12 +51,11 @@ export default function SigmateFeatures({ lang }: { lang: MyLang }) {
       <span className="text-ctp-blue font-semibold">
         Information you can trust,{" "}
       </span>
-      <br />
-      cross-referenced and verified.
+      <br className="hidden lg:inline" /> cross-referenced and verified.
     </>,
     <>
       의견 공유와 교차 검증으로
-      <br />
+      <br className="hidden lg:inline" />{" "}
       <span className="text-ctp-blue font-semibold">신뢰성 향상</span>
     </>,
   );
@@ -67,29 +63,26 @@ export default function SigmateFeatures({ lang }: { lang: MyLang }) {
   const feat4 = t(
     <>
       Never miss another minting with
-      <br />
-      our centralized{" "}
+      <br className="hidden lg:inline" /> our centralized{" "}
       <span className="text-ctp-blue font-semibold">event feed</span>
     </>,
     <>
-      따로따로 찾아봐야 했던
-      <br />
       <span className="text-ctp-blue font-semibold">
         자산별 주요 이벤트 확인
       </span>
-      을 한 곳에서
+      을
+      <br className="hidden lg:inline" /> 캘린더에서 한번에
     </>,
   );
 
   const feat5 = t(
     <>
       <span className="text-ctp-blue font-semibold">Get rewarded</span> for your
-      <br />
-      contributions
+      <br className="hidden lg:inline" /> contributions
     </>,
     <>
       커뮤니티에 기여하고 보상받는
-      <br />
+      <br className="hidden lg:inline" />{" "}
       <span className="text-ctp-blue font-semibold">Write-to-Earn</span>
     </>,
   );
@@ -164,7 +157,7 @@ export default function SigmateFeatures({ lang }: { lang: MyLang }) {
   useEffect(() => {
     const isDark = document.documentElement.classList.contains("theme-dark");
     highlightColor.current = isDark
-      ? "rgba(255 255 255 / 0.1)"
+      ? "rgba(255 255 255 / 0.2)"
       : "rgba(255 255 255 / 1.0)";
   });
 
@@ -198,7 +191,7 @@ export default function SigmateFeatures({ lang }: { lang: MyLang }) {
                   },
                 }}
                 whileHover={highlight === idx ? "highlighted" : "hover"}
-                className="mb-6 last:mb-0 rounded-lg px-6 py-4 flex items-center text-xl leading-relaxed cursor-pointer"
+                className="shrink-0 mb-6 last:mb-0 rounded-lg px-6 py-4 flex items-center text-xl leading-relaxed cursor-pointer"
                 onClick={() => highlightFeature(idx)}
               >
                 <FeatureNumber num={idx + 1} />

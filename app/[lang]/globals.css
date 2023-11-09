@@ -6,6 +6,7 @@
   :root,
   .theme-light:root {
     --color-background: 239, 241, 245;
+    --color-poolink: 61, 128, 245;
   }
 
   .theme-dark:root {
@@ -48,5 +49,24 @@
 
   .dark-3 {
     @apply ctp-frappe;
+  }
+
+  .blinking-bulb {
+    animation-name: blinkyellow;
+    animation-play-state: running;
+    animation-timing-function: steps(2, jump-start);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 0.5s;
+  }
+
+  @keyframes blinkyellow {
+    from {
+      @apply bg-yellow-400;
+    }
+
+    to {
+      @apply bg-white;
+    }
   }
 }

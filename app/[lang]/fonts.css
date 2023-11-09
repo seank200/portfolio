@@ -7,6 +7,14 @@
 }
 
 @font-face {
+  /* https://www.dafont.com/seven-segment.font */
+  font-family: SevenSegment;
+  src:
+    local("Seven Segment"),
+    url("/fonts/Seven-Segment.ttf") format("truetype");
+}
+
+@font-face {
   font-family: Rota;
   font-weight: 100;
   font-style: normal;

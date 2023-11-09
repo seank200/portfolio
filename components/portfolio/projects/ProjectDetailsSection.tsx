@@ -44,7 +44,7 @@ export default function ProjectDetailsSection({
       level={3}
       heading={heading}
       id={id}
-      className="group/project relative flex flex-col items-start"
+      className="mb-16 group/project relative flex flex-col items-start"
       hideHeading
     >
       {images && <ProjectHeroGallery images={images} />}

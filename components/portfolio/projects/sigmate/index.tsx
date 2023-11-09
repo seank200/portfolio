@@ -42,8 +42,8 @@ export default function SigmateSection({ lang }: { lang: MyLang }) {
 
   const galleryItems: ProjectGalleryItem[] = [
     { src: sigmate001, alt: "home", caption: "" },
-    { src: sigmate003, alt: "landing page - calendar", caption: "" },
-    { src: sigmate002, alt: "landing page - forum", caption: "" },
+    { src: sigmate003, alt: "landing page - forum", caption: "" },
+    { src: sigmate002, alt: "landing page - calendar", caption: "" },
     { src: sigmate005, alt: "landing page - wiki", caption: "" },
     { src: sigmate006, alt: "signin page", caption: "" },
     { src: sigmate007, alt: "signup page", caption: "" },
@@ -84,7 +84,6 @@ export default function SigmateSection({ lang }: { lang: MyLang }) {
       <Section
         level={4}
         heading={t("Feature Highlights", "주요 기능")}
-        headingClassName="text-xl font-semibold"
         className="bg-gradient-to-b from-background to-ctp-lavender/5"
         id="sigmate-features"
         hideHeading

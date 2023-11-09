@@ -35,6 +35,9 @@
       "@images/*": [
         "./public/images/*"
       ],
+      "@assets/*": [
+        "./public/assets/*"
+      ],
       "@/*": [
         "./*"
       ]

@@ -18,14 +18,27 @@ export default function SigmateProjectSummary({ lang }: { lang: MyLang }) {
           icon={faDollar}
           className="mr-2 h-em text-ctp-yellow"
         />
-        Funded by{" "}
-        <MyLink
-          href="https://www.mss.go.kr/"
-          className="text-ctp-blue hover:underline"
-        >
-          Ministry of SMEs and Startups
-        </MyLink>
-        , S. Korea
+        {t(
+          <>
+            Funded by{" "}
+            <MyLink
+              href="https://www.mss.go.kr/"
+              className="text-ctp-blue hover:underline"
+            >
+              Ministry of SMEs and Startups
+            </MyLink>
+            , S. Korea
+          </>,
+          <>
+            <MyLink
+              href="https://www.mss.go.kr/"
+              className="text-ctp-blue hover:underline"
+            >
+              중소벤처기업부
+            </MyLink>{" "}
+            지원대상 선정 (2022 예비창업패키지)
+          </>,
+        )}
       </p>
     </>
   );

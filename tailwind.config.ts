@@ -17,6 +17,7 @@ const config: Config = {
       },
       colors: {
         background: "rgba(var(--color-background), <alpha-value>)",
+        poolink: "rgba(var(--color-poolink), <alpha-value>)",
       },
       fontFamily: {
         display: [
@@ -28,6 +29,10 @@ const config: Config = {
           "ui-sans-serif",
           "sans-serif",
         ],
+        "7seg": ["SevenSegment", "Courier New", "Courier", "monospace"],
+      },
+      fontSize: {
+        ch: "1ch",
       },
       scale: {
         101: "1.01",

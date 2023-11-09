@@ -1,4 +1,4 @@
-import { MyLang } from "@lib/i18n";
+import { MyLang, translator } from "@lib/i18n";
 import TSTypescript from "@components/portfolio/tech/TSTypescript";
 import TSNodejs from "@components/portfolio/tech/TSNodejs";
 import TSMysql from "@components/portfolio/tech/TSMysql";
@@ -12,6 +12,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import { faBook } from "@fortawesome/free-solid-svg-icons/faBook";
 
 export default function SigmateTechSummary({ lang }: { lang: MyLang }) {
+  const t = translator(lang);
   const techStack = [
     <TSTypescript key="TypeScript" />,
     <TSNodejs key="Nodejs" />,
@@ -39,7 +40,7 @@ export default function SigmateTechSummary({ lang }: { lang: MyLang }) {
               icon={faGithub}
               className="mr-2 h-em text-ctp-text"
             />
-            Project Repo..
+            {t("Project Repo..", "소스 코드")}
           </MyLink>
         </li>
         <li>
@@ -51,7 +52,7 @@ export default function SigmateTechSummary({ lang }: { lang: MyLang }) {
               icon={faBook}
               className="mr-2 h-em text-ctp-text"
             />
-            Service Docs..
+            {t("Service Docs..", "기술 백서")}
           </MyLink>
         </li>
       </ul>

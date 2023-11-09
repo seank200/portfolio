@@ -5,7 +5,7 @@ import { splitPath } from "@lib/path";
 
 export const config = {
   matcher: [
-    "/((?!_next|images|fonts|api|files|favicon|site|apple|android|browserconfig|mstile|safari).*)",
+    "/((?!_next|images|assets|fonts|api|files|favicon|site|apple|android|browserconfig|mstile|safari).*)",
   ],
 };
 

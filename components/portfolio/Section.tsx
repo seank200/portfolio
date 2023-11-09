@@ -12,7 +12,7 @@ export default function Section({
 }: {
   level: HeadingLevel;
   id: string;
-  heading: React.ReactNode;
+  heading?: React.ReactNode;
   headingClassName?: string;
   className?: string;
   hideHeading?: boolean;
@@ -20,14 +20,18 @@ export default function Section({
 }) {
   return (
     <section className={`w-full ${className || ""}`} id={id}>
-      <Container>
-        <Heading
-          level={level}
-          className={`${hideHeading ? "hidden" : ""} ${headingClassName || ""}`}
-        >
-          {heading}
-        </Heading>
-      </Container>
+      {heading && (
+        <Container>
+          <Heading
+            level={level}
+            className={`${hideHeading ? "hidden" : ""} ${
+              headingClassName || ""
+            }`}
+          >
+            {heading}
+          </Heading>
+        </Container>
+      )}
       {children}
     </section>
   );

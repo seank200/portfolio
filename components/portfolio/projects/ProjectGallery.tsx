@@ -58,9 +58,11 @@ export default function ProjectGallery({
                 {selected === idx && (
                   <button
                     onClick={() => setSelected(null)}
-                    className="mb-6 w-[1280px] text-right text-2xl text-white"
+                    className="mb-6 w-full text-right text-2xl text-white"
                   >
-                    <FontAwesomeIcon icon={faXmark} className="h-em" />
+                    <Container>
+                      <FontAwesomeIcon icon={faXmark} className="h-em" />
+                    </Container>
                   </button>
                 )}
                 <Image
@@ -68,7 +70,7 @@ export default function ProjectGallery({
                   alt={item.alt}
                   width={1280}
                   onClick={() => selected !== idx && setSelected(idx)}
-                  className={`max-w-full h-auto transition ${
+                  className={`w-auto max-w-full h-auto max-h-[720px] transition ${
                     selected !== idx ? "group-hover:shadow-lg" : ""
                   }`}
                   loading="lazy"

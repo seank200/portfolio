@@ -19,8 +19,14 @@ export default function SigmateArch({ lang }: { lang: MyLang }) {
   }, []);
 
   return (
-    <Container className="mt-6">
-      <div className="group relative block rounded p-6 bg-white dark:bg-white/90">
+    <Container className="mt-3">
+      <p>
+        {t(
+          "My role: I designed the following architecture myself for deploying Sigmate's backend server on Amazon Web Services (AWS). The architecture was designed to provide service continuity (no downtime) and securely protect sensitve resources from malicious actors.",
+          "Sigmate 백엔드 서버를 배포하기 위한 아키텍쳐를 아래와 같이 직접 설계하여 아마존웹서비스(AWS)에 배포하여 운용하였습니다. 아키텍쳐 설계는 서비스 계속성 (continuity) 보장, 트래픽 변화에 대한 자동 대응, 사용자 개인정보 보호를 위한 적절한 보안 조치를 취할 수 있도록 설계되었습니다.",
+        )}
+      </p>
+      <div className="mt-6 group relative block rounded p-6 bg-white dark:bg-white/90">
         {viewFull ? (
           <Image
             src={archFull}
