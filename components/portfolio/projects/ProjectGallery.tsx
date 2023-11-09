@@ -16,11 +16,17 @@ export type ProjectGalleryItem = {
 export default function ProjectGallery({
   lang,
   items,
+  small,
 }: {
   lang: MyLang;
   items: ProjectGalleryItem[];
+  small?: boolean;
 }) {
   const [selected, setSelected] = useState<number | null>(null);
+
+  const gridCols = small
+    ? "grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 "
+    : "grid-cols-1 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-4 ";
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -36,7 +42,7 @@ export default function ProjectGallery({
 
   return (
     <Container className="mt-6">
-      <ul className="relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6">
+      <ul className={`relative grid ${gridCols} gap-6`}>
         {items.map((item, idx) => {
           return (
             <li

@@ -5,6 +5,7 @@ import IntroSection from "@components/portfolio/intro";
 import ProjectSection from "@components/portfolio/projects";
 import PoolinkSection from "@components/portfolio/projects/poolink";
 import SigmateSection from "@components/portfolio/projects/sigmate";
+import YremsSection from "@components/portfolio/projects/yrems";
 import { MyLang } from "@lib/i18n";
 
 export default function page({ params }: { params: { lang: MyLang } }) {
@@ -16,6 +17,7 @@ export default function page({ params }: { params: { lang: MyLang } }) {
       <ProjectSection lang={lang}>
         <SigmateSection lang={lang} />
         <PoolinkSection lang={lang} />
+        <YremsSection lang={lang} />
       </ProjectSection>
       <ExperienceSection lang={lang} />
       <div className="h-screen" />
