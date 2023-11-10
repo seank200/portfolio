@@ -30,6 +30,10 @@ import YremsRole from "./YremsRole";
 import YremsProjectSummary from "./YremsProjectSummary";
 import YremsRoleSummary from "./YremsRoleSummary";
 import YremsTechSummary from "./YremsTechSummary";
+import ProjectSection from "../ProjectSection";
+import ProjectHero from "../ProjectHero";
+import ProjectSummarySection from "../ProjectSummarySection";
+import Heading from "@components/portfolio/Heading";
 
 const yremsPeriod = {
   start: new Date("2018-02-01"),
@@ -69,58 +73,43 @@ export default function YremsSection({ lang }: { lang: MyLang }) {
   ];
 
   return (
-    <ProjectDetailsSection
-      lang={lang}
-      heading="YREMS"
-      id="yrems"
-      period={yremsPeriod}
-      images={galleryItems.map((i) => i.src)}
-      logo={
-        <span className="text-7xl text-[#0A3879] dark:text-blue-100 font-bold">
-          YREMS
-        </span>
-      }
-      overviewLHeading={t("Project Overview", "프로젝트 개요")}
-      overviewL={<YremsProjectSummary lang={lang} />}
-      overviewCHeading={t("Role Overview", "담당 업무 요약")}
-      overviewC={<YremsRoleSummary lang={lang} />}
-      overviewRHeading={t("Tech", "기술 스택")}
-      overviewR={<YremsTechSummary lang={lang} />}
-    >
-      <Section
-        level={4}
+    <ProjectSection id="yrems" lang={lang}>
+      <ProjectHero
+        lang={lang}
         heading={
-          <>
-            <FontAwesomeIcon
-              icon={faStar}
-              className="mr-3 h-em text-ctp-yellow"
-            />
-            {t("My Role", "담당 업무 상세")}
-          </>
+          <span className="text-7xl text-[#0A3879] dark:text-blue-100 font-bold">
+            YREMS
+          </span>
         }
-        id="yrems-screenshots"
-        className="py-16"
-        headingClassName="text-xl font-semibold"
+        period={yremsPeriod}
+        images={galleryItems.map((i) => i.src)}
       >
+        <ProjectSummarySection>
+          <YremsProjectSummary lang={lang} />
+          <YremsRoleSummary lang={lang} />
+          <YremsTechSummary lang={lang} />
+        </ProjectSummarySection>
+      </ProjectHero>
+      <section id="yrems-role" className="container my-16">
+        <Heading level={4}>
+          <FontAwesomeIcon
+            icon={faStar}
+            className="mr-3 h-em text-ctp-yellow"
+          />
+          {t("My Role", "담당 업무 상세")}
+        </Heading>
         <YremsRole lang={lang} />
-      </Section>
-      <Section
-        level={4}
-        heading={
-          <>
-            <FontAwesomeIcon
-              icon={faImages}
-              className="mr-3 h-em text-ctp-flamingo"
-            />
-            {t("Screenshots", "스크린샷")}
-          </>
-        }
-        id="yrems-screenshots"
-        className="py-16"
-        headingClassName="text-xl font-semibold"
-      >
+      </section>
+      <section id="yrems-screenshot" className="container my-16">
+        <Heading level={4}>
+          <FontAwesomeIcon
+            icon={faImages}
+            className="mr-3 h-em text-ctp-flamingo"
+          />
+          {t("Screenshots", "스크린샷")}
+        </Heading>
         <ProjectGallery lang={lang} items={galleryItems} small />
-      </Section>
-    </ProjectDetailsSection>
+      </section>
+    </ProjectSection>
   );
 }

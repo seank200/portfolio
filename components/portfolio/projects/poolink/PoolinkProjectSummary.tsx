@@ -2,11 +2,16 @@ import MyLink from "@components/MyLink";
 import { faDollar } from "@fortawesome/free-solid-svg-icons/faDollar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MyLang, translator } from "@lib/i18n";
+import ProjectSummaryItem from "../ProjectSummaryItem";
 
 export default function PoolinkProjectSummary({ lang }: { lang: MyLang }) {
   const t = translator(lang);
   return (
-    <>
+    <ProjectSummaryItem
+      id="poolink-project-summary"
+      heading="overview"
+      lang={lang}
+    >
       <p>
         {t(
           "Poolink is a web platform for saving, sharing favorite links, and discovering new content on the web.",
@@ -40,6 +45,6 @@ export default function PoolinkProjectSummary({ lang }: { lang: MyLang }) {
           </>,
         )}
       </p>
-    </>
+    </ProjectSummaryItem>
   );
 }

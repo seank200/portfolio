@@ -3,7 +3,6 @@ import { MyLang, createIntlDict } from "@lib/i18n";
 import poolinkLogo from "@images/projects/poolink/LOGO_Poolink.png";
 import poolinkHeroImage from "@images/projects/poolink/overview/1-1.png";
 import poolinkHeroMobile from "@images/projects/poolink/overview/1-3.png";
-import Container from "@components/Container";
 import Heading from "@components/portfolio/Heading";
 
 const dict = createIntlDict(
@@ -31,7 +30,7 @@ const dict = createIntlDict(
   },
 );
 
-export default function PoolinkHero({ lang }: { lang: MyLang }) {
+export default function PoolinkOverview({ lang }: { lang: MyLang }) {
   const { H_HERO } = dict[lang];
 
   return (
@@ -41,7 +40,7 @@ export default function PoolinkHero({ lang }: { lang: MyLang }) {
         alt="Poolink"
         className="sm:hidden w-full"
       />
-      <Container className="py-8 relative">
+      <div className="pl-8 relative">
         <Image
           src={poolinkHeroImage}
           alt="Poolink"
@@ -59,7 +58,7 @@ export default function PoolinkHero({ lang }: { lang: MyLang }) {
           />
           🔗
         </Heading>
-      </Container>
+      </div>
     </>
   );
 }

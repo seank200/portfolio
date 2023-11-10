@@ -8,6 +8,7 @@ import TSPhp from "@components/portfolio/tech/TSPhp";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MyLang, translator } from "@lib/i18n";
+import ProjectSummaryItem from "../ProjectSummaryItem";
 
 export default function YremsTechSummary({ lang }: { lang: MyLang }) {
   const t = translator(lang);
@@ -21,7 +22,7 @@ export default function YremsTechSummary({ lang }: { lang: MyLang }) {
   ];
 
   return (
-    <>
+    <ProjectSummaryItem id="yrems-tech-summary" heading="tech" lang={lang}>
       <ul className="flex flex-wrap gap-4">
         {techStack.map((tech, i) => (
           <li key={i}>{tech}</li>
@@ -41,6 +42,6 @@ export default function YremsTechSummary({ lang }: { lang: MyLang }) {
           </MyLink>
         </li>
       </ul>
-    </>
+    </ProjectSummaryItem>
   );
 }

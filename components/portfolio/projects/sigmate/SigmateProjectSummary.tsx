@@ -2,11 +2,16 @@ import MyLink from "@components/MyLink";
 import { faDollar } from "@fortawesome/free-solid-svg-icons/faDollar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MyLang, translator } from "@lib/i18n";
+import ProjectSummaryItem from "../ProjectSummaryItem";
 
 export default function SigmateProjectSummary({ lang }: { lang: MyLang }) {
   const t = translator(lang);
   return (
-    <>
+    <ProjectSummaryItem
+      id="sigmate-project-summary"
+      heading="overview"
+      lang={lang}
+    >
       <p>
         {t(
           "Sigmate is a wiki and community platform that provides reliable information on Non-fungible Tokens(NFTs). With Sigmate, users can easily valuate NFT assets and confidently make investment decisions.",
@@ -40,6 +45,6 @@ export default function SigmateProjectSummary({ lang }: { lang: MyLang }) {
           </>,
         )}
       </p>
-    </>
+    </ProjectSummaryItem>
   );
 }

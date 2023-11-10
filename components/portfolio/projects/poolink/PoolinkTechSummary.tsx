@@ -8,6 +8,7 @@ import TSVercel from "@components/portfolio/tech/TSVercel";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MyLang, translator } from "@lib/i18n";
+import ProjectSummaryItem from "../ProjectSummaryItem";
 
 export default function PoolinkTechSummary({ lang }: { lang: MyLang }) {
   const t = translator(lang);
@@ -22,7 +23,7 @@ export default function PoolinkTechSummary({ lang }: { lang: MyLang }) {
   ];
 
   return (
-    <>
+    <ProjectSummaryItem id="poolink-tech-summary" heading="tech" lang={lang}>
       <ul className="flex flex-wrap gap-4">
         {techStack.map((tech, i) => (
           <li key={i}>{tech}</li>
@@ -42,6 +43,6 @@ export default function PoolinkTechSummary({ lang }: { lang: MyLang }) {
           </MyLink>
         </li>
       </ul>
-    </>
+    </ProjectSummaryItem>
   );
 }

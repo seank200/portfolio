@@ -10,6 +10,7 @@ import MyLink from "@components/MyLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
 import { faBook } from "@fortawesome/free-solid-svg-icons/faBook";
+import ProjectSummaryItem from "../ProjectSummaryItem";
 
 export default function SigmateTechSummary({ lang }: { lang: MyLang }) {
   const t = translator(lang);
@@ -24,7 +25,7 @@ export default function SigmateTechSummary({ lang }: { lang: MyLang }) {
   ];
 
   return (
-    <>
+    <ProjectSummaryItem id="sigmate-tech-summary" heading="role" lang={lang}>
       <ul className="flex flex-wrap gap-4">
         {techStack.map((tech, i) => (
           <li key={i}>{tech}</li>
@@ -56,6 +57,6 @@ export default function SigmateTechSummary({ lang }: { lang: MyLang }) {
           </MyLink>
         </li>
       </ul>
-    </>
+    </ProjectSummaryItem>
   );
 }

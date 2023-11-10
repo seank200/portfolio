@@ -226,8 +226,8 @@ export default function SigmateRole({ lang }: { lang: MyLang }) {
   };
 
   return (
-    <Container>
-      <ul className="mt-6 flex flex-col gap-4 leading-relaxed xl:text-lg">
+    <>
+      <ul className="flex flex-col gap-4 leading-relaxed xl:text-lg">
         <ListItem>
           {ROLE_1}
           {TAGS_1}
@@ -285,6 +285,6 @@ export default function SigmateRole({ lang }: { lang: MyLang }) {
           expanded ? "숨기기" : "더보기..",
         )}
       </button>
-    </Container>
+    </>
   );
 }

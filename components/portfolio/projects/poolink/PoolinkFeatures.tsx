@@ -1,23 +1,13 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import {
-  useRef,
-  type MouseEventHandler,
-  useState,
-  MutableRefObject,
-} from "react";
-import { MotionProps, motion } from "framer-motion";
-import Container from "@components/Container";
-import { MyLang, createIntlDict } from "@lib/i18n";
+import { motion } from "framer-motion";
+import { MyLang, createIntlDict, translator } from "@lib/i18n";
 import poolinkLogo from "@images/projects/poolink/LOGO_Poolink.png";
 import poolinkScreenShot1 from "@images/projects/poolink/overview/4.png";
 import poolinkScreenShot2 from "@images/projects/poolink/overview/5-3.png";
 import poolinkScreenShot3 from "@images/projects/poolink/overview/6.png";
 import Heading from "@components/portfolio/Heading";
-import Section from "@components/portfolio/Section";
-
-type FeatureName = "save" | "explore" | "share";
 
 const dict = createIntlDict(
   {
@@ -138,113 +128,37 @@ const dict = createIntlDict(
 );
 
 export default function PoolinkFeatures({ lang }: { lang: MyLang }) {
-  const {
-    FEAT_SAVE,
-    FEAT_EXPLORE,
-    FEAT_SHARE,
-    SAVE_H,
-    SAVE_DESC,
-    EXPLORE_H,
-    EXPLORE_DESC,
-    SHARE_H,
-    SHARE_DESC,
-  } = dict[lang];
+  const { SAVE_H, SAVE_DESC, EXPLORE_H, EXPLORE_DESC, SHARE_H, SHARE_DESC } =
+    dict[lang];
 
-  const [selected, setSelected] = useState<FeatureName>("save");
-
-  const scrollDiv1 = useRef<HTMLDivElement | null>(null);
-  const scrollDiv2 = useRef<HTMLDivElement | null>(null);
-  const scrollDiv3 = useRef<HTMLDivElement | null>(null);
-
-  const featureClickHandler: Record<
-    FeatureName,
-    MouseEventHandler<HTMLButtonElement>
-  > = {
-    save: () => {
-      // setHighlighted('save');
-      scrollDiv1.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    },
-    explore: () => {
-      // setHighlighted('explore');
-      scrollDiv2.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    },
-    share: () => {
-      // setHighlighted('share');
-      scrollDiv3.current?.scrollIntoView({
-        behavior: "smooth",
-        block: "center",
-      });
-    },
-  };
+  const t = translator(lang);
 
   return (
     <>
-      <Container>
-        <FeatureItem
-          heading={SAVE_H}
-          description={SAVE_DESC}
-          src={poolinkScreenShot1}
-          alt="Create board modal"
-          id="poolink-features-save"
-          elemRef={scrollDiv1}
-          onViewportEnter={() => setSelected("save")}
-        />
-        <FeatureItem
-          heading={EXPLORE_H}
-          description={EXPLORE_DESC}
-          src={poolinkScreenShot2}
-          alt="Explore board UI"
-          id="poolink-features-explore"
-          elemRef={scrollDiv2}
-          onViewportEnter={() => setSelected("explore")}
-        />
-        <FeatureItem
-          heading={SHARE_H}
-          description={SHARE_DESC}
-          src={poolinkScreenShot3}
-          alt="Share board modal"
-          id="poolink-features-share"
-          elemRef={scrollDiv3}
-          onViewportEnter={() => setSelected("share")}
-        />
-        <div className="sticky bottom-0 w-full py-5 flex justify-center items-center bg-background">
-          <p className="mr-6">
-            링크
-            <FeatureButton
-              onClick={featureClickHandler.save}
-              selected={selected === "save"}
-            >
-              {FEAT_SAVE}
-            </FeatureButton>
-            <FeatureButton
-              onClick={featureClickHandler.explore}
-              selected={selected === "explore"}
-            >
-              {FEAT_EXPLORE}
-            </FeatureButton>
-            <FeatureButton
-              onClick={featureClickHandler.share}
-              selected={selected === "share"}
-            >
-              {FEAT_SHARE}
-            </FeatureButton>
-            플랫폼,
-            <Image
-              src={poolinkLogo}
-              alt="Poolink"
-              height={14}
-              className="mx-2 relative bottom-[2px] inline-block w-auto"
-            />
-            <span>🔗</span>
-          </p>
-        </div>
-      </Container>
+      <Heading level={4} className="hidden">
+        {t("Feature Highlights", "주요 기능")}
+      </Heading>
+      <FeatureItem
+        heading={SAVE_H}
+        description={SAVE_DESC}
+        src={poolinkScreenShot1}
+        alt="Create board modal"
+        id="poolink-features-save"
+      />
+      <FeatureItem
+        heading={EXPLORE_H}
+        description={EXPLORE_DESC}
+        src={poolinkScreenShot2}
+        alt="Explore board UI"
+        id="poolink-features-explore"
+      />
+      <FeatureItem
+        heading={SHARE_H}
+        description={SHARE_DESC}
+        src={poolinkScreenShot3}
+        alt="Share board modal"
+        id="poolink-features-share"
+      />
     </>
   );
 }
@@ -252,95 +166,39 @@ export default function PoolinkFeatures({ lang }: { lang: MyLang }) {
 function FeatureItem({
   heading,
   description,
-  elemRef,
   src,
   alt,
   id,
-  onViewportEnter,
 }: {
   heading: React.ReactNode;
   description: React.ReactNode;
-  elemRef: MutableRefObject<HTMLDivElement | null>;
   src: StaticImageData;
   alt: string;
   id: string;
-  onViewportEnter: MotionProps["onViewportEnter"];
 }) {
   return (
-    <motion.div
-      ref={elemRef}
-      onViewportEnter={onViewportEnter}
-      viewport={{ once: false, amount: 1 }}
+    <motion.section
+      className="shrink-0 mb-48 relative w-full px-8 md:px-16 2xl:px-0 flex flex-col md:flex-row justify-center items-start md:items-center"
+      id={id}
     >
-      <FeatureDetail
-        heading={heading}
-        description={description}
-        imgSrc={src}
-        imgAlt={alt}
-        className="my-24 relative"
-        id={id}
-      />
-    </motion.div>
-  );
-}
-
-function FeatureButton({
-  children,
-  selected,
-  onClick,
-}: {
-  children?: React.ReactNode;
-  selected?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
-}) {
-  const fontStyle = selected ? "text-poolink font-bold" : "font-medium";
-  return (
-    <button
-      onClick={onClick}
-      className={`ml-1 mr-1 after:content-['·'] last-of-type:after:content-[''] after:inline-block after:pl-1 after:text-ctp-text ${fontStyle}`}
-    >
-      {children}
-    </button>
-  );
-}
-
-function FeatureDetail({
-  heading,
-  description,
-  id,
-  imgSrc,
-  imgAlt,
-  className,
-}: {
-  heading: React.ReactNode;
-  description: React.ReactNode;
-  id: string;
-  imgSrc: StaticImageData | string;
-  imgAlt: string;
-  className: string;
-}) {
-  return (
-    <>
-      <Section
-        className={`shrink-0 w-full px-8 md:px-16 2xl:px-0 py-12 flex flex-col md:flex-row justify-center items-start md:items-center ${
-          className || ""
-        }`}
-        id={id}
-        level={5}
+      <div className="md:mr-20 mb-8 md:mb-0">
+        <Heading
+          level={5}
+          className="mb-2 font-semibold text-3xl leading-normal"
+        >
+          {heading}
+        </Heading>
+        <p className="text-faded text-xl leading-relaxed">{description}</p>
+      </div>
+      <motion.div
+        initial={{ opacity: 0, translateX: "32px" }}
+        animate={{ transition: { bounce: 0 } }}
+        whileInView={{ opacity: 1, translateX: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        className="w-full md:w-auto"
       >
-        <div className="md:mr-12 mb-8 md:mb-0">
-          <Heading
-            level={5}
-            className="mb-2 font-semibold text-3xl leading-normal"
-          >
-            {heading}
-          </Heading>
-          <p className="text-faded text-xl leading-relaxed">{description}</p>
-        </div>
-        <div className="w-full md:w-auto">
-          <Image src={imgSrc} alt={imgAlt} className="w-full max-w-lg" />
-        </div>
-      </Section>
-    </>
+        <Image src={src} alt={alt} className="w-full max-w-[480px]" />
+      </motion.div>
+    </motion.section>
   );
 }

@@ -4,8 +4,6 @@ import ThemedImage from "@components/ThemedImage";
 import { MyLang, translator } from "@lib/i18n";
 import sigmateLight from "@images/logo/Sigmate_light.png";
 import sigmateDark from "@images/logo/Sigmate_dark.png";
-import ProjectDetailsSection from "../ProjectDetailsSection";
-import Section from "@components/portfolio/Section";
 import SigmateFeatures from "./SigmateFeatures";
 import SigmateRole from "./SigmateRole";
 import SigmateProjectSummary from "./SigmateProjectSummary";
@@ -31,6 +29,10 @@ import { faServer } from "@fortawesome/free-solid-svg-icons/faServer";
 import SigmateArch from "./SigmateArch";
 import ProjectGallery, { ProjectGalleryItem } from "../ProjectGallery";
 import { faImages } from "@fortawesome/free-regular-svg-icons/faImages";
+import ProjectSection from "../ProjectSection";
+import ProjectHero from "../ProjectHero";
+import ProjectSummarySection from "../ProjectSummarySection";
+import Heading from "@components/portfolio/Heading";
 
 export const sigmatePeriod = {
   start: new Date("2022-03"),
@@ -59,91 +61,60 @@ export default function SigmateSection({ lang }: { lang: MyLang }) {
   ];
 
   return (
-    <ProjectDetailsSection
-      lang={lang}
-      heading="Sigmate"
-      id="sigmate"
-      images={galleryItems.map((i) => i.src)}
-      period={sigmatePeriod}
-      logo={
-        <ThemedImage
-          src={sigmateLight}
-          darkSrc={sigmateDark}
-          height={72}
-          alt="Sigmate"
-          imageClassName="w-auto h-16 md:h-auto"
-        />
-      }
-      overviewLHeading={t("Project Overview", "프로젝트 개요")}
-      overviewL={<SigmateProjectSummary lang={lang} />}
-      overviewCHeading={t("Role Overview", "담당 업무 요약")}
-      overviewC={<SigmateRoleSummary lang={lang} />}
-      overviewRHeading={t("Tech", "기술 스택")}
-      overviewR={<SigmateTechSummary lang={lang} />}
-    >
-      <Section
-        level={4}
-        heading={t("Feature Highlights", "주요 기능")}
-        className="bg-gradient-to-b from-background to-ctp-lavender/5"
+    <ProjectSection id="sigmate" lang={lang}>
+      <ProjectHero
+        lang={lang}
+        heading={
+          <ThemedImage
+            src={sigmateLight}
+            darkSrc={sigmateDark}
+            alt="Sigmate"
+            height={72}
+            imageClassName="w-auto h-16 md:h-auto"
+          />
+        }
+        period={sigmatePeriod}
+        images={galleryItems.map((i) => i.src)}
+      >
+        <ProjectSummarySection>
+          <SigmateProjectSummary lang={lang} />
+          <SigmateRoleSummary lang={lang} />
+          <SigmateTechSummary lang={lang} />
+        </ProjectSummarySection>
+      </ProjectHero>
+      <section
         id="sigmate-features"
-        hideHeading
+        className="my-16 w-full bg-gradient-to-b from-background to-ctp-lavender/5"
       >
         <SigmateFeatures lang={lang} />
-      </Section>
-
-      <Section
-        level={4}
-        heading={
-          <>
-            <FontAwesomeIcon
-              icon={faStar}
-              className="mr-3 h-em text-ctp-yellow"
-            />
-            {t("My Role", "담당 업무 상세")}
-          </>
-        }
-        id="sigmate-role"
-        headingClassName="text-xl font-semibold"
-        className="py-16"
-      >
+      </section>
+      <section id="sigmate-role" className="container my-16">
+        <Heading level={4}>
+          <FontAwesomeIcon
+            icon={faStar}
+            className="mr-3 h-em text-ctp-yellow"
+          />
+          {t("My Role", "담당 업무 상세")}
+        </Heading>
         <SigmateRole lang={lang} />
-      </Section>
-
-      <Section
-        level={4}
-        heading={
-          <>
-            <FontAwesomeIcon
-              icon={faServer}
-              className="mr-3 h-em text-ctp-sky"
-            />
-            {t("Backend Architecture", "백엔드 서버 아키텍쳐")}
-          </>
-        }
-        headingClassName="text-xl font-semibold"
-        id="sigmate-architecture"
-        className="py-16"
-      >
+      </section>
+      <section id="sigmate-architecture" className="container my-16">
+        <Heading level={4}>
+          <FontAwesomeIcon icon={faServer} className="mr-3 h-em text-ctp-sky" />
+          {t("Backend Architecture", "백엔드 서버 아키텍쳐")}
+        </Heading>
         <SigmateArch lang={lang} />
-      </Section>
-
-      <Section
-        level={4}
-        heading={
-          <>
-            <FontAwesomeIcon
-              icon={faImages}
-              className="mr-3 h-em text-ctp-flamingo"
-            />
-            {t("Screenshots", "스크린샷")}
-          </>
-        }
-        headingClassName="text-xl font-semibold"
-        id="sigmate-architecture"
-        className="py-16"
-      >
+      </section>
+      <section id="sigmate-screenshots" className="container my-16">
+        <Heading level={4}>
+          <FontAwesomeIcon
+            icon={faImages}
+            className="mr-3 h-em text-ctp-flamingo"
+          />
+          {t("Screenshots", "스크린샷")}
+        </Heading>
         <ProjectGallery lang={lang} items={galleryItems} />
-      </Section>
-    </ProjectDetailsSection>
+      </section>
+    </ProjectSection>
   );
 }

@@ -1,6 +1,5 @@
 import { MyLang, createIntlDict } from "@lib/i18n";
 import RoleTag from "../RoleTag";
-import Container from "@components/Container";
 import ListItem from "@components/ListItem";
 
 const dict = createIntlDict(
@@ -71,7 +70,7 @@ export default function YremsRole({ lang }: { lang: MyLang }) {
   const { ROLE_1, TAGS_1, ROLE_4, ROLE_6 } = dict[lang];
 
   return (
-    <Container>
+    <>
       <ul className="mt-6 flex flex-col gap-4 leading-relaxed xl:text-lg">
         <ListItem>
           {ROLE_1}
@@ -80,6 +79,6 @@ export default function YremsRole({ lang }: { lang: MyLang }) {
         <ListItem>{ROLE_4}</ListItem>
         <ListItem>{ROLE_6}</ListItem>
       </ul>
-    </Container>
+    </>
   );
 }

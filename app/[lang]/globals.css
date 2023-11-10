@@ -31,8 +31,25 @@
 }
 
 @layer components {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mb-4;
+  }
+
+  h4 {
+    @apply text-xl font-bold;
+  }
+
   body {
     @apply w-full min-h-screen text-ctp-text;
+  }
+
+  .container {
+    @apply mx-auto w-full max-w-7xl px-8 md:px-12 2xl:px-0;
   }
 
   .light-1 {

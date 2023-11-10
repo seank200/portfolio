@@ -86,8 +86,10 @@ export default function PoolinkPainpoint({ lang }: { lang: MyLang }) {
   const { H_PROBLEM, PROBLEM, PAINPOINT_1, PAINPOINT_2, PAINPOINT_3, CFA } =
     dict[lang];
   return (
-    <Container>
-      <H4 className="mb-2 text-center">{H_PROBLEM}</H4>
+    <>
+      <Heading level={4} className="mb-2 text-2xl text-center">
+        {H_PROBLEM}
+      </Heading>
       <p className="mb-12 text-xl text-faded-var text-center leading-relaxed">
         {PROBLEM}
       </p>
@@ -133,27 +135,8 @@ export default function PoolinkPainpoint({ lang }: { lang: MyLang }) {
           className="block w-full max-w-lg mt-36 mx-auto"
         />
       </div>
-      <H4 className="text-center">{CFA}</H4>
-    </Container>
-  );
-}
-
-function H4({
-  className,
-  children,
-}: {
-  className?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <Heading
-      level={4}
-      className={`mt-12 text-3xl text-background-on font-bold leading-normal ${
-        className || ""
-      }`}
-    >
-      {children}
-    </Heading>
+      <p className="mt-20 text-2xl leading-relaxed text-center">{CFA}</p>
+    </>
   );
 }
 

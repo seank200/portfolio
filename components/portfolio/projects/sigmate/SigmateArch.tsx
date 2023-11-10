@@ -4,7 +4,6 @@ import { MyLang, translator } from "@lib/i18n";
 import Image from "next/image";
 import archFull from "@images/projects/sigmate/arch_full.png";
 import archConcise from "@images/projects/sigmate/arch_concise.png";
-import Container from "@components/Container";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload } from "@fortawesome/free-solid-svg-icons/faDownload";
@@ -19,7 +18,7 @@ export default function SigmateArch({ lang }: { lang: MyLang }) {
   }, []);
 
   return (
-    <Container className="mt-3">
+    <>
       <p>
         {t(
           "My role: I designed the following architecture myself for deploying Sigmate's backend server on Amazon Web Services (AWS). The architecture was designed to provide service continuity (no downtime) and securely protect sensitve resources from malicious actors.",
@@ -63,6 +62,6 @@ export default function SigmateArch({ lang }: { lang: MyLang }) {
           `아키텍쳐 ${viewFull ? "요약" : "상세"} 보기`,
         )}
       </button>
-    </Container>
+    </>
   );
 }
