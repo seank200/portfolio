@@ -1,26 +1,65 @@
-'use client';
+import { MyLang, translator } from "@lib/i18n";
+import Container from "./Container";
+import MyLink from "./MyLink";
 
-import { SupportedLang } from '@/i18n';
-import Container from './Container';
-import ThemeSelect from './ThemeSelect';
-
-export default function Footer({ lang }: { lang: SupportedLang }) {
-  const handleLogoClick = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-  };
+export default function Footer({ lang }: { lang: MyLang }) {
+  const t = translator(lang);
   return (
-    <footer className="mt-16 py-8 bg-background-variant">
-      <Container className="flex flex-row justify-between items-center">
-        <h2
-          onClick={handleLogoClick}
-          title="Return to top"
-          className="relative top-0.5 font-display font-bold text-lg text-background-on/60 hover:text-background-on cursor-pointer"
-        >
+    <footer className="py-16 w-full bg-ctp-mantle">
+      <Container className="flex flex-col md:flex-row md:justify-between md:items-center">
+        <MyLink href="/" lang={lang} className="text-lg font-medium">
           Youngwoo Kim
-        </h2>
-        <div className="flex items-center gap-2">
-          <ThemeSelect lang={lang} />
-        </div>
+        </MyLink>
+        <nav>
+          <ul className="mt-8 md:mt-0 flex flex-row flex-wrap gap-6">
+            <li>
+              <MyLink className="hover:underline" href="#introduction">
+                {t("Introduction", "소개")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink className="hover:underline" href="#projects">
+                {t("Projects", "프로젝트 경험")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink className="hover:underline" href="#experiences">
+                {t("Work Experience", "업무 경험")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink className="hover:underline" href="#education">
+                {t("Education", "교육")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink className="hover:underline" href="#awards">
+                {t("Awards&Scholarships", "수상/장학")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink className="hover:underline" href="#contacts">
+                {t("Contact", "연락하기")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink
+                href="https://github.com/seanK200"
+                className="hover:underline"
+              >
+                Github
+              </MyLink>
+            </li>
+            <li>
+              <MyLink
+                href="https://linkedin.com/in/youngwoo-kim-sean/"
+                className="hover:underline"
+              >
+                LinkedIn
+              </MyLink>
+            </li>
+          </ul>
+        </nav>
       </Container>
     </footer>
   );

@@ -9,7 +9,6 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -24,20 +23,23 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ],
       "@components/*": [
         "./components/*"
       ],
-      "@contents/*": [
-        "./components/contents/*"
+      "@lib/*": [
+        "./lib/*"
       ],
-      "@i18n/*": [
-        "./i18n/*"
+      "@hooks/*": [
+        "./hooks/*"
       ],
       "@images/*": [
         "./public/images/*"
+      ],
+      "@assets/*": [
+        "./public/assets/*"
+      ],
+      "@/*": [
+        "./*"
       ]
     }
   },

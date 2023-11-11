@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from 'next/image';
+import Image, { StaticImageData } from "next/image";
 
 type ImageSrc = StaticImageData | string;
 
@@ -9,6 +9,8 @@ export default function ThemedImage({
   width,
   height,
   className,
+  imageClassName,
+  reverse,
 }: {
   src: ImageSrc;
   darkSrc: ImageSrc;
@@ -16,22 +18,26 @@ export default function ThemedImage({
   width?: number;
   height?: number;
   className?: string;
+  imageClassName?: string;
+  reverse?: boolean;
 }) {
   return (
-    <div className={`relative block ${className || ''}`}>
+    <div className={`relative block ${className || ""}`}>
       <Image
-        src={src}
+        src={reverse ? darkSrc : src}
         alt={alt}
         width={width}
         height={height}
-        className="dark__invisible max-w-full"
+        className={`light-only max-w-full ${imageClassName || ""}`}
       />
       <Image
-        src={darkSrc}
+        src={reverse ? src : darkSrc}
         alt={alt}
         width={width}
         height={height}
-        className="light__invisible absolute top-0 left-0 max-w-full"
+        className={`dark-only absolute top-0 left-0 max-w-full ${
+          imageClassName || ""
+        }`}
       />
     </div>
   );

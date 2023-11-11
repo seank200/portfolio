@@ -1,0 +1,177 @@
+@font-face {
+  font-family: NanumSquareNeo;
+  src:
+    local("NanumSquareNeo-Variable"),
+    url("/fonts/NanumSquareNeo-Variable.ttf") format("truetype");
+  font-style: normal;
+}
+
+@font-face {
+  /* https://www.dafont.com/seven-segment.font */
+  font-family: SevenSegment;
+  src:
+    local("Seven Segment"),
+    url("/fonts/Seven-Segment.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 100;
+  font-style: normal;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-Thin.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 100;
+  font-style: italic;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-ThinItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 200;
+  font-style: normal;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-ExtraLight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 200;
+  font-style: italic;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-ExtraLightItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 300;
+  font-style: normal;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 300;
+  font-style: italic;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-LightItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 400;
+  font-style: normal;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 400;
+  font-style: italic;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-Italic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 500;
+  font-style: normal;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 500;
+  font-style: italic;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-MediumItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 600;
+  font-style: normal;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 600;
+  font-style: italic;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-SemiBoldItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 700;
+  font-style: normal;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 700;
+  font-style: italic;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-BoldItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 800;
+  font-style: normal;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-ExtraBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 800;
+  font-style: italic;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-ExtraBoldItalic.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 900;
+  font-style: normal;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-Black.otf") format("opentype");
+}
+
+@font-face {
+  font-family: Rota;
+  font-weight: 900;
+  font-style: italic;
+  src:
+    local("Rota"),
+    url("/fonts/Rota-BlackItalic.otf") format("opentype");
+}
