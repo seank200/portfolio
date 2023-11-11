@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import throttle from "lodash/throttle";
@@ -36,20 +36,14 @@ export default function ExperienceSection({ lang }: { lang: MyLang }) {
     target: expUList,
     offset: ["start center", "end end"],
   });
-  const scrollYSpring = useSpring(scrollYProgress, { bounce: 0 });
-  const dLeftSpring = useTransform(scrollYSpring, [0, 1], ["0%", "100%"]);
-  const dTxSpring = useTransform(scrollYSpring, [0, 1], [0, -44]);
-  const tTxSpring = useTransform(scrollYSpring, [0, 1], ["0%", "-100%"]);
+  const dLeftSpring = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const dTxSpring = useTransform(scrollYProgress, [0, 1], [0, -44]);
+  const tTxSpring = useTransform(scrollYProgress, [0, 1], ["0%", "-100%"]);
 
   const t = translator(lang);
   const now = new Date();
   const expList = experiences[lang];
   const lastStartDate = expList.at(-1)?.period.start || now;
-  const fLastStartDate = `${lastStartDate.getFullYear()}-${(
-    lastStartDate.getMonth() + 1
-  )
-    .toString()
-    .padStart(2, "0")}`;
 
   // Update time circuit readouts
   const handleCurrentItem = (name: ExpName) => {
@@ -166,14 +160,18 @@ export default function ExperienceSection({ lang }: { lang: MyLang }) {
                   key={expAttribs.name}
                   className="absolute transition text-sm"
                 >
-                  {`${date.getFullYear()}-${(date.getMonth() + 1)
-                    .toString()
-                    .padStart(2, "0")}`}
+                  {formatDate(date, "year")}
+                  <span className="hidden md:inline">
+                    -{formatDate(date, "month")}
+                  </span>
                 </li>
               );
             })}
             <li className="absolute right-0 transition text-sm">
-              {fLastStartDate}
+              {formatDate(lastStartDate, "year")}
+              <span className="hidden md:inline">
+                -{formatDate(lastStartDate, "month")}
+              </span>
             </li>
           </ol>
           <motion.div
@@ -226,6 +224,14 @@ export default function ExperienceSection({ lang }: { lang: MyLang }) {
       </div>
     </motion.section>
   );
+}
+
+function formatDate(date: Date, precision: "year" | "month") {
+  if (precision === "year") {
+    return date.getFullYear().toString();
+  } else {
+    return (date.getMonth() + 1).toString().padStart(2, "0");
+  }
 }
 
 function TimeCircuitDisplay({

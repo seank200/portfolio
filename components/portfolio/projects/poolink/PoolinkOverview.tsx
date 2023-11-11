@@ -40,7 +40,7 @@ export default function PoolinkOverview({ lang }: { lang: MyLang }) {
         alt="Poolink"
         className="sm:hidden w-full"
       />
-      <div className="pl-8 relative">
+      <div className="pl-8 relative container">
         <Image
           src={poolinkHeroImage}
           alt="Poolink"
@@ -48,7 +48,7 @@ export default function PoolinkOverview({ lang }: { lang: MyLang }) {
         />
         <Heading
           level={4}
-          className="absolute bottom-8 block text-4xl md:text-5xl font-bold leading-snug md:leading-snug"
+          className="sm:absolute left-24 bottom-8 block text-4xl md:text-5xl font-bold leading-snug md:leading-snug"
         >
           {H_HERO}
           <Image

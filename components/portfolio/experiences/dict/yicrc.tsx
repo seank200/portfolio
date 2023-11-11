@@ -12,7 +12,7 @@ export const yicrcDict = createIntlDict(
     details: [
       <>
         Developed and implemented a web app,{" "}
-        <Link href="/project/yrems" className="text-secondary hover:underline">
+        <Link href="#yrems" className="text-secondary hover:underline">
           YREMS
         </Link>
         , that allowed over 340 students to sign up for house activities and
@@ -45,7 +45,7 @@ export const yicrcDict = createIntlDict(
       <>
         신입생 약 340명의 비교과프로그램 참가 신청, 취소, 출결 현황을 관리할 수
         있는 시스템(
-        <Link href="/project/yrems" className="text-secondary hover:underline">
+        <Link href="#yrems" className="text-secondary hover:underline">
           YREMS
         </Link>
         )을 개발하여 1년간 운용하였음. HTML, CSS, Vanilla JS, jQuery를 사용하여

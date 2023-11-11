@@ -101,14 +101,14 @@ export default function PoolinkSection({ lang }: { lang: MyLang }) {
   ];
 
   return (
-    <ProjectDetailsSection id="sigmate">
+    <ProjectDetailsSection id="poolink">
       <ProjectHero
         lang={lang}
         heading={
           <Image
             src={poolinkLogo}
             alt="Poolink"
-            height={64}
+            height={60}
             className="w-auto h-16 md:h-auto"
           />
         }
@@ -121,7 +121,7 @@ export default function PoolinkSection({ lang }: { lang: MyLang }) {
           <PoolinkTechSummary lang={lang} />
         </ProjectSummarySection>
       </ProjectHero>
-      <section id="poolink-overview" className="my-24 container">
+      <section id="poolink-overview" className="my-24">
         <PoolinkOverview lang={lang} />
       </section>
       <section id="poolink-painpoint" className="my-24 container">

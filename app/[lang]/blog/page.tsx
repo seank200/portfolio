@@ -3,13 +3,13 @@ import { type Metadata } from "next";
 
 const meta = createIntlMeta(
   {
-    role: {
+    title: {
       template: "%s | Blog",
       default: "Blog",
     },
   },
   {
-    role: {
+    title: {
       template: "%s | 블로그",
       default: "블로그",
     },
