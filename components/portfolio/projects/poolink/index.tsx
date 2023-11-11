@@ -9,38 +9,41 @@ import PoolinkFeatures from "./PoolinkFeatures";
 import PoolinkProjectSummary from "./PoolinkProjectSummary";
 
 import poolinkLogo from "@images/projects/poolink/LOGO_Poolink.png";
-import poolinkSS002 from "@images/projects/poolink/screenshots/내 보드 _ 보드 상세.png";
-import poolinkSS003 from "@images/projects/poolink/screenshots/내 보드 _ 검색 결과.png";
-import poolinkSS004 from "@images/projects/poolink/screenshots/내 보드 _ 스크랩 보드 상세 _ 스크랩 취소 눌렀을 때.png";
-import poolinkSS005 from "@images/projects/poolink/screenshots/내 보드 _ 스크랩 보드 상세.png";
-import poolinkSS007 from "@images/projects/poolink/screenshots/내 보드 홈-3.png";
-import poolinkSS008 from "@images/projects/poolink/screenshots/내 보드 홈.png";
-import poolinkSS009 from "@images/projects/poolink/screenshots/탐색 _ 검색 결과.png";
-import poolinkSS010 from "@images/projects/poolink/screenshots/탐색 _ 상위보드.png";
-import poolinkSS011 from "@images/projects/poolink/screenshots/탐색 홈.png";
-import poolinkSS012 from "@images/projects/poolink/screenshots/환경설정 홈.png";
-import poolinkSS013 from "@images/projects/poolink/screenshots/modals/로그인 _ 회원가입 _ 튜토리얼 _ 카데고리 설정.png";
-import poolinkSS014 from "@images/projects/poolink/screenshots/modals/로그인 _ 회뭔가입-1.png";
-import poolinkSS015 from "@images/projects/poolink/screenshots/modals/로그인-1.png";
-import poolinkSS016 from "@images/projects/poolink/screenshots/modals/내 보드 _ 보드 상세 _ 스노우맨 팝업 _ 링크 수정하기 ( 보드 변경 시 ).png";
-import poolinkSS017 from "@images/projects/poolink/screenshots/modals/내 보드 _ 보드 상세 _ 스노우맨 팝업 _ 링크 수정하기 ( 제목 수정하려고 전부 지웠을 시 ).png";
-import poolinkSS018 from "@images/projects/poolink/screenshots/modals/내 보드 _ 보드 상세 _ 스노우맨 팝업 _ 링크 수정하기 ( 새로운 보드 생성 시 ) _ 카테고리.png";
-import poolinkSS019 from "@images/projects/poolink/screenshots/modals/내 보드 _ 보드 상세 _ 선택하기 _ 링크 삭제 확인 팝업.png";
-import poolinkSS020 from "@images/projects/poolink/screenshots/modals/내 보드 _ 스노우맨 - 수정 _ 보드 수정하기 팝업-1.png";
-import poolinkSS021 from "@images/projects/poolink/screenshots/modals/내 보드 _ 스노우맨 - 수정 _ 보드 수정하기 팝업.png";
-import poolinkSS022 from "@images/projects/poolink/screenshots/modals/내 보드 _ 선택하기 _ 보드 삭제 확인 팝업.png";
-import poolinkSS023 from "@images/projects/poolink/screenshots/modals/링크 추가하기 팝업 ( 새 보드 만들었을 시 ) _ 카테고리.png";
-import poolinkSS024 from "@images/projects/poolink/screenshots/modals/링크 추가하기 팝업.png";
-import poolinkSS025 from "@images/projects/poolink/screenshots/modals/탐색 _ 링크 저장하기 - 새로운 보드 _ 카테고리 팝업 (검색결과, 상위보드 동일 적용).png";
-import poolinkSS026 from "@images/projects/poolink/screenshots/modals/탐색 _ 링크 저장하기 팝업 (검색결과, 상위보드 동일 적용).png";
-import poolinkSS027 from "@images/projects/poolink/screenshots/modals/로그인 _ 비밀번호 찾기.png";
-import poolinkSS028 from "@images/projects/poolink/screenshots/modals/환경설정 - 탈퇴.png";
+
+import poolinkSS002 from "@images/projects/poolink/screenshots/MyBoards_Boarddetail.png";
+import poolinkSS003 from "@images/projects/poolink/screenshots/MyBoards_SearchResults.png";
+import poolinkSS004 from "@images/projects/poolink/screenshots/MyBoards_Cancelling_follow.png";
+import poolinkSS005 from "@images/projects/poolink/screenshots/MyBoards_Followed_Board_Details.png";
+import poolinkSS007 from "@images/projects/poolink/screenshots/MyBoards_Home3.png";
+import poolinkSS008 from "@images/projects/poolink/screenshots/MyBoards_Home.png";
+import poolinkSS009 from "@images/projects/poolink/screenshots/Explore_SearchResults.png";
+import poolinkSS010 from "@images/projects/poolink/screenshots/Explore_ParentBoard.png";
+import poolinkSS011 from "@images/projects/poolink/screenshots/Explore_Home.png";
+import poolinkSS012 from "@images/projects/poolink/screenshots/Settings.png";
+import poolinkSS015 from "@images/projects/poolink/screenshots/Login_Home.png";
+import poolinkSS013 from "@images/projects/poolink/screenshots/modals/Login_SignUp_Onboarding_Choose_Category.png";
+import poolinkSS014 from "@images/projects/poolink/screenshots/modals/Login_SignUp_Create_Account.png";
+import poolinkSS016 from "@images/projects/poolink/screenshots/modals/Board_MyBoardDetails_Modal_EditLink_BoardSelect.png";
+import poolinkSS017 from "@images/projects/poolink/screenshots/modals/Board_MyBoardDetails_Modal_EditLink_LinkLabelEdit.png";
+import poolinkSS018 from "@images/projects/poolink/screenshots/modals/Board_MyBoardDetails_Modal_EditLink_CreateNewBoard.png";
+import poolinkSS019 from "@images/projects/poolink/screenshots/modals/Board_MyBoardDetails_LinkSelect_LinkDeleteConfirmModal.png";
+import poolinkSS020 from "@images/projects/poolink/screenshots/modals/MyBoard_Modal_EditBoard.png";
+import poolinkSS021 from "@images/projects/poolink/screenshots/modals/MyBoard_Modal_BoardDeleteConfirmPop-up.png";
+import poolinkSS022 from "@images/projects/poolink/screenshots/modals/AddLinkModal_CreateNewBoard_Category.png";
+import poolinkSS023 from "@images/projects/poolink/screenshots/modals/AddLinkModal.png";
+import poolinkSS024 from "@images/projects/poolink/screenshots/modals/Explore_SaveLinkModal_CreateNewBoard_SelectCategory_SearchResult.png";
+import poolinkSS025 from "@images/projects/poolink/screenshots/modals/Explore_SaveLinkModal_SearchResults.png";
+import poolinkSS026 from "@images/projects/poolink/screenshots/modals/Login_FindPassword.png";
+import poolinkSS027 from "@images/projects/poolink/screenshots/modals/Settings_DeleteAccount.png";
+
 import PoolinkRoleSummary from "./PoolinkRoleSummary";
 import PoolinkTechSummary from "./PoolinkTechSummary";
 import ProjectDetailsSection from "../ProjectDetailsSection";
 import ProjectHero from "../ProjectHero";
 import ProjectSummarySection from "../ProjectSummarySection";
 import Heading from "@components/portfolio/Heading";
+import PoolinkRole from "./PoolinkRole";
+import { faStar } from "@fortawesome/free-regular-svg-icons/faStar";
 
 const poolinkPeriod = {
   start: new Date("2021-05"),
@@ -84,20 +87,19 @@ export default function PoolinkSection({ lang }: { lang: MyLang }) {
       alt: "Board - My Board Details - Link Select - Link Delete Confirm Modal",
     },
     { src: poolinkSS020, alt: "My Board - Modal - Edit Board" },
-    { src: poolinkSS021, alt: "My Board - Modal - Edit board" },
     {
-      src: poolinkSS022,
+      src: poolinkSS021,
       alt: "My Board - Modal - Board Delete Confirm Pop-up",
     },
-    { src: poolinkSS023, alt: "Add Link Modal - Create New Board - Category" },
-    { src: poolinkSS024, alt: "Add Link Modal" },
+    { src: poolinkSS022, alt: "Add Link Modal - Create New Board - Category" },
+    { src: poolinkSS023, alt: "Add Link Modal" },
     {
-      src: poolinkSS025,
+      src: poolinkSS024,
       alt: "Explore - Save Link Modal - Create New Board - Select Category - Search Results",
     },
-    { src: poolinkSS026, alt: "Explore - Save Link Modal - Search Results" },
-    { src: poolinkSS027, alt: "Login - Find Password" },
-    { src: poolinkSS028, alt: "Settings - Delete Account" },
+    { src: poolinkSS025, alt: "Explore - Save Link Modal - Search Results" },
+    { src: poolinkSS026, alt: "Login - Find Password" },
+    { src: poolinkSS027, alt: "Settings - Delete Account" },
   ];
 
   return (
@@ -121,6 +123,16 @@ export default function PoolinkSection({ lang }: { lang: MyLang }) {
           <PoolinkTechSummary lang={lang} />
         </ProjectSummarySection>
       </ProjectHero>
+      <section id="poolink-role" className="my-24 container">
+        <Heading level={4}>
+          <FontAwesomeIcon
+            icon={faStar}
+            className="mr-3 h-em text-ctp-yellow"
+          />
+          {t("My Role", "담당 업무 상세")}
+        </Heading>
+        <PoolinkRole lang={lang} />
+      </section>
       <section id="poolink-overview" className="my-24">
         <PoolinkOverview lang={lang} />
       </section>
