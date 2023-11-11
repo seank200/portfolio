@@ -13,10 +13,7 @@ export const facadeDict = createIntlDict(
     details: [
       <>
         CTO and lead backend developer in developing a web platform,
-        <Link
-          href="/project/sigmate"
-          className="mx-1 text-secondary hover:underline"
-        >
+        <Link href="#sigmate" className="mx-1 text-secondary hover:underline">
           Sigmate,
         </Link>
         that provided investment information on NFTs and blockchains. Funded by
@@ -52,7 +49,7 @@ export const facadeDict = createIntlDict(
         active users and average 5.2K API calls per day. Detected and mitigated
         average 1.2K malicious requests per day (SSH access, SQL injection and
         XSR attempts).{" "}
-        <Link href="/project/sigmate" className="hover:underline">
+        <Link href="#sigmate" className="hover:underline">
           (Click here to view system architecture diagram){" "}
         </Link>
         <ExpTag>#aws</ExpTag>
@@ -122,10 +119,7 @@ export const facadeDict = createIntlDict(
     details: [
       <>
         NFT 투자 정보 제공 플랫폼{" "}
-        <Link
-          href="/project/sigmate"
-          className="text-secondary hover:underline"
-        >
+        <Link href="#sigmate" className="text-secondary hover:underline">
           Sigmate
         </Link>
         를 개발한 스타트업 &quot;파사드&quot;에서 CTO로 활동함(
@@ -158,10 +152,7 @@ export const facadeDict = createIntlDict(
         <span className="font-bold">[시스템 설계] </span>웹 백엔드 아키텍쳐를
         설계하고 이를 아미존웹서비스(AWS)에 배포하였음. 서비스 연속성을
         보장하고, 보안을 유지하며 업데이트 배포가 용이하도록{" "}
-        <Link
-          href="/project/sigmate"
-          className="text-secondary hover:underline"
-        >
+        <Link href="#sigmate" className="text-secondary hover:underline">
           백엔드 아키텍쳐
         </Link>{" "}
         를 설계함. 서비스 다운타임은 정식 런치 후 1년간 5% 미만으로 유지하였고,
