@@ -13,12 +13,35 @@ export default function Footer({ lang }: { lang: MyLang }) {
         <nav>
           <ul className="mt-8 md:mt-0 flex flex-row flex-wrap gap-6">
             <li>
-              <MyLink href="/" lang={lang} className="hover:underline">
-                {t("Home", "포트폴리오")}
+              <MyLink className="hover:underline" href="#introduction">
+                {t("Introduction", "소개")}
               </MyLink>
             </li>
-            <li>{t("Blog", "블로그")}</li>
-            <li>{t("Resume", "이력서")}</li>
+            <li>
+              <MyLink className="hover:underline" href="#projects">
+                {t("Projects", "프로젝트 경험")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink className="hover:underline" href="#experiences">
+                {t("Work Experience", "업무 경험")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink className="hover:underline" href="#education">
+                {t("Education", "교육")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink className="hover:underline" href="#awards">
+                {t("Awards&Scholarships", "수상/장학")}
+              </MyLink>
+            </li>
+            <li>
+              <MyLink className="hover:underline" href="#contacts">
+                {t("Contact", "연락하기")}
+              </MyLink>
+            </li>
             <li>
               <MyLink
                 href="https://github.com/seanK200"

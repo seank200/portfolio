@@ -3,7 +3,6 @@ import poolinkPainPoint1 from "@images/projects/poolink/overview/2-1.png";
 import poolinkPainPoint2 from "@images/projects/poolink/overview/2-2.png";
 import poolinkPainPoint3 from "@images/projects/poolink/overview/2-3.png";
 import poolinkSolution from "@images/projects/poolink/overview/3.png";
-import Container from "@components/Container";
 import Heading from "@components/portfolio/Heading";
 import { MyLang, createIntlDict } from "@lib/i18n";
 

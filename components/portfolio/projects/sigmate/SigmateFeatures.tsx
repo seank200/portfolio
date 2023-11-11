@@ -26,7 +26,7 @@ const dict = createIntlDict(
   {
     feat1: (
       <>
-        Everything about your NFT <br className="" />
+        Everything about your NFT <br />
         <span className="text-ctp-blue font-semibold">at a glance</span>
       </>
     ),
@@ -35,7 +35,7 @@ const dict = createIntlDict(
         <span className="text-ctp-blue font-semibold">
           Off-chain data tracking{" "}
         </span>
-        from <br className="hidden lg:inline" /> Twitter, Discord and more
+        from <br /> Twitter, Discord and more
       </>
     ),
     feat3: (
@@ -43,13 +43,13 @@ const dict = createIntlDict(
         <span className="text-ctp-blue font-semibold">
           Information you can trust,{" "}
         </span>
-        <br className="hidden lg:inline" /> cross-referenced and verified.
+        <br /> cross-referenced and verified.
       </>
     ),
     feat4: (
       <>
         Never miss another minting with
-        <br className="hidden lg:inline" /> our centralized{" "}
+        <br /> our centralized{" "}
         <span className="text-ctp-blue font-semibold">event feed</span>
       </>
     ),
@@ -57,7 +57,7 @@ const dict = createIntlDict(
       <>
         <span className="text-ctp-blue font-semibold">Get rewarded</span> for
         your
-        <br className="hidden lg:inline" /> contributions
+        <br /> contributions
       </>
     ),
     caption501: (
@@ -72,7 +72,7 @@ const dict = createIntlDict(
         Participate in{" "}
         <span className="font-semibold text-ctp-blue">raffles</span>
         {", "}
-        <br className="md:hidden" />
+        <br />
         and enjoy benefits from{" "}
         <span className="font-semibold text-ctp-blue">membership NFTs</span>
       </p>
@@ -81,26 +81,24 @@ const dict = createIntlDict(
   {
     feat1: (
       <>
-        NFT에 특화된 위키 UI로 <br className="" />
+        NFT에 특화된 위키 UI로 <br />
         <span className="text-ctp-blue font-semibold">한 눈에 </span>
         들어오는 정보
       </>
     ),
     feat2: (
       <>
-        트위터, 디스코드, 미디엄 등에 산재된
-        <br className="hidden lg:inline" />{" "}
+        트위터, 디스코드 등에 산재된
+        <br />{" "}
         <span className="text-ctp-blue font-semibold">
           오프체인 데이터 트래킹{" "}
         </span>
-        가능
       </>
     ),
     feat3: (
       <>
         의견 공유와 교차 검증으로
-        <br className="hidden lg:inline" />{" "}
-        <span className="text-ctp-blue font-semibold">신뢰성 향상</span>
+        <br /> <span className="text-ctp-blue font-semibold">신뢰성 향상</span>
       </>
     ),
     feat4: (
@@ -109,13 +107,13 @@ const dict = createIntlDict(
           자산별 주요 이벤트 확인
         </span>
         을
-        <br className="hidden lg:inline" /> 캘린더에서 한번에
+        <br /> 캘린더에서 한번에
       </>
     ),
     feat5: (
       <>
         커뮤니티에 기여하고 보상받는
-        <br className="hidden lg:inline" />{" "}
+        <br />{" "}
         <span className="text-ctp-blue font-semibold">Write-to-Earn</span>
       </>
     ),
@@ -131,7 +129,7 @@ const dict = createIntlDict(
         보상받은 토큰을 사용한{" "}
         <span className="font-semibold text-ctp-blue">레플 참여</span>
         {", "}
-        <br className="md:hidden" />
+        <br />
         <span className="font-semibold text-ctp-blue">멤버쉽 NFT</span>로 누리는
         다양한 혜택
       </p>
@@ -181,7 +179,7 @@ export default function SigmateFeatures({ lang }: { lang: MyLang }) {
 
   return (
     <div className="container flex gap-12">
-      <div className="relative hidden md:block">
+      <div className="shrink-0 relative hidden md:block">
         <FeatureLabels
           lang={lang}
           highlight={highlight}
@@ -253,7 +251,7 @@ function FeatureLabels({
               },
             }}
             whileHover={highlight === idx ? "highlighted" : "hover"}
-            className="shrink-0 mb-6 last:mb-0 rounded-lg px-6 py-4 flex items-center text-xl leading-relaxed cursor-pointer"
+            className="shrink-0 mb-4 last:mb-0 rounded-lg px-6 py-3 flex items-center text-xl leading-relaxed cursor-pointer"
             onClick={() => highlightFeature(idx)}
           >
             <FeatureNumber num={idx + 1} />

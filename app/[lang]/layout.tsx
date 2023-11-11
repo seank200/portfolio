@@ -8,13 +8,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 const meta = createIntlMeta(
   {
-    title: {
+    role: {
       template: "%s | Youngwoo Kim",
       default: "Youngwoo Kim",
     },
   },
   {
-    title: {
+    role: {
       template: "%s | 김영우",
       default: "김영우",
     },

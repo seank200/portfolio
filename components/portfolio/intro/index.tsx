@@ -5,7 +5,10 @@ export default function IntroSection({ lang }: { lang: MyLang }) {
   const t = translator(lang);
   const bodyKor = (
     <>
-      <Heading level={3} className="mt-4 font-bold text-ctp-teal">
+      <Heading
+        level={3}
+        className="mt-4 mb-2 text-lg xl:text-xl font-bold text-ctp-teal"
+      >
         #도전
       </Heading>
       <p className="leading-relaxed">
@@ -15,7 +18,10 @@ export default function IntroSection({ lang }: { lang: MyLang }) {
         아키텍쳐 구축 및 배포를 포함한 전문 지식과 다양한 실무 경험을
         쌓았습니다.
       </p>
-      <Heading level={3} className="mt-4 font-bold text-ctp-blue">
+      <Heading
+        level={3}
+        className="mt-4 mb-2 text-lg xl:text-xl font-bold text-ctp-blue"
+      >
         #성장
       </Heading>
       <p className="leading-relaxed">
@@ -25,7 +31,10 @@ export default function IntroSection({ lang }: { lang: MyLang }) {
         개선점을 고민하는 습관을 통해, 다양한 프로젝트를 성공적으로
         이끌었습니다.
       </p>
-      <Heading level={3} className="mt-4 font-bold text-ctp-mauve">
+      <Heading
+        level={3}
+        className="mt-4 mb-2 text-lg xl:text-xl font-bold text-ctp-mauve"
+      >
         #팀워크
       </Heading>
       <p className="leading-relaxed">
@@ -38,7 +47,10 @@ export default function IntroSection({ lang }: { lang: MyLang }) {
   );
   const bodyEng = (
     <>
-      <Heading level={3} className="mt-4 font-bold text-ctp-teal inline">
+      <Heading
+        level={3}
+        className="mt-4 mb-2 text-lg xl:text-xl font-bold text-ctp-teal inline"
+      >
         I am a developer{" "}
       </Heading>
       <p className="inline leading-relaxed">
@@ -46,7 +58,10 @@ export default function IntroSection({ lang }: { lang: MyLang }) {
         with my own software.
       </p>
       <div className="my-8 block" />
-      <Heading level={3} className="mt-4 font-bold text-ctp-blue inline">
+      <Heading
+        level={3}
+        className="mt-4 mb-2 text-lg xl:text-xl font-bold text-ctp-blue inline"
+      >
         I have expertise{" "}
       </Heading>
       <p className="inline leading-relaxed">
@@ -54,7 +69,10 @@ export default function IntroSection({ lang }: { lang: MyLang }) {
         computing infrastructures.
       </p>
       <div className="my-8 block" />
-      <Heading level={3} className="mt-4 tfont-bold ext-ctp-mauve inline">
+      <Heading
+        level={3}
+        className="mt-4 mb-2 text-lg xl:text-xl font-bold text-ctp-mauve inline"
+      >
         I am a natural team player,{" "}
       </Heading>
       <p className="inline leading-relaxed">
@@ -67,12 +85,12 @@ export default function IntroSection({ lang }: { lang: MyLang }) {
   return (
     <section
       id="introduction"
-      className="mx-auto max-w-2xl min-h-screen px-12 flex flex-col justify-center items-start text-lg md:text-xl text-left"
+      className="mx-auto max-w-xl xl:max-w-2xl min-h-screen px-12 flex flex-col justify-center items-center text-lg xl:text-xl text-left"
     >
       <Heading level={2} className="hidden">
         {t("Introduction", "소개")}
       </Heading>
-      {t(bodyEng, bodyKor)}
+      <div>{t(bodyEng, bodyKor)}</div>
     </section>
   );
 }

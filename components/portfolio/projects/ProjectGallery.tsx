@@ -2,7 +2,6 @@
 
 import { faXmark } from "@fortawesome/free-solid-svg-icons/faXmark";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { MyLang } from "@lib/i18n";
 import Image, { StaticImageData } from "next/image";
 import { useEffect, useState } from "react";
 
@@ -13,11 +12,9 @@ export type ProjectGalleryItem = {
 };
 
 export default function ProjectGallery({
-  lang,
   items,
   small,
 }: {
-  lang: MyLang;
   items: ProjectGalleryItem[];
   small?: boolean;
 }) {
@@ -72,7 +69,7 @@ export default function ProjectGallery({
                 alt={item.alt}
                 width={1280}
                 onClick={() => selected !== idx && setSelected(idx)}
-                className={`w-auto max-w-full h-auto max-h-[720px] transition ${
+                className={`grow w-auto h-auto max-h-[720px] transition ${
                   selected !== idx ? "group-hover:shadow-lg" : ""
                 }`}
                 loading="lazy"

@@ -8,7 +8,7 @@ export default function HeroSection({ lang }: LangProps) {
   const h1FontSize = t("text-4xl", "text-5xl");
   const buttons = (
     <>
-      <HeroButton primary href="#experiences">
+      <HeroButton primary href="#introduction">
         {t("View portfolio", "포트폴리오 보기")}
       </HeroButton>
       <HeroButton href="#contacts">{t("Contact me", "연락하기")}</HeroButton>

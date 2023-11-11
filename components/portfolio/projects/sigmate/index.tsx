@@ -29,7 +29,7 @@ import { faServer } from "@fortawesome/free-solid-svg-icons/faServer";
 import SigmateArch from "./SigmateArch";
 import ProjectGallery, { ProjectGalleryItem } from "../ProjectGallery";
 import { faImages } from "@fortawesome/free-regular-svg-icons/faImages";
-import ProjectSection from "../ProjectSection";
+import ProjectDetailsSection from "../ProjectDetailsSection";
 import ProjectHero from "../ProjectHero";
 import ProjectSummarySection from "../ProjectSummarySection";
 import Heading from "@components/portfolio/Heading";
@@ -55,13 +55,13 @@ export default function SigmateSection({ lang }: { lang: MyLang }) {
     { src: sigmate012, alt: "account", caption: "" },
     { src: sigmate013, alt: "referrals", caption: "" },
     { src: sigmate014, alt: "user rewards system", caption: "" },
-    { src: sigmate015, alt: "verify modal - options", caption: "" },
-    { src: sigmate016, alt: "verify modal - community verdict", caption: "" },
-    { src: sigmate017, alt: "verify modal - after submit", caption: "" },
+    // { src: sigmate015, alt: "verify modal - options", caption: "" },
+    // { src: sigmate016, alt: "verify modal - community verdict", caption: "" },
+    // { src: sigmate017, alt: "verify modal - after submit", caption: "" },
   ];
 
   return (
-    <ProjectSection id="sigmate" lang={lang}>
+    <ProjectDetailsSection id="sigmate">
       <ProjectHero
         lang={lang}
         heading={
@@ -113,8 +113,8 @@ export default function SigmateSection({ lang }: { lang: MyLang }) {
           />
           {t("Screenshots", "스크린샷")}
         </Heading>
-        <ProjectGallery lang={lang} items={galleryItems} />
+        <ProjectGallery items={galleryItems} />
       </section>
-    </ProjectSection>
+    </ProjectDetailsSection>
   );
 }

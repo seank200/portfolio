@@ -1,6 +1,4 @@
 import { MyLang, translator } from "@lib/i18n";
-import ProjectDetailsSection from "../ProjectDetailsSection";
-import Section from "@components/portfolio/Section";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages } from "@fortawesome/free-regular-svg-icons/faImages";
 import ProjectGallery, { ProjectGalleryItem } from "../ProjectGallery";
@@ -30,7 +28,7 @@ import YremsRole from "./YremsRole";
 import YremsProjectSummary from "./YremsProjectSummary";
 import YremsRoleSummary from "./YremsRoleSummary";
 import YremsTechSummary from "./YremsTechSummary";
-import ProjectSection from "../ProjectSection";
+import ProjectDetailsSection from "../ProjectDetailsSection";
 import ProjectHero from "../ProjectHero";
 import ProjectSummarySection from "../ProjectSummarySection";
 import Heading from "@components/portfolio/Heading";
@@ -73,7 +71,7 @@ export default function YremsSection({ lang }: { lang: MyLang }) {
   ];
 
   return (
-    <ProjectSection id="yrems" lang={lang}>
+    <ProjectDetailsSection id="yrems">
       <ProjectHero
         lang={lang}
         heading={
@@ -108,8 +106,8 @@ export default function YremsSection({ lang }: { lang: MyLang }) {
           />
           {t("Screenshots", "스크린샷")}
         </Heading>
-        <ProjectGallery lang={lang} items={galleryItems} small />
+        <ProjectGallery items={galleryItems} small />
       </section>
-    </ProjectSection>
+    </ProjectDetailsSection>
   );
 }

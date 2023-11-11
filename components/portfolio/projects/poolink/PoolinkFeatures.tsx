@@ -3,7 +3,6 @@
 import Image, { StaticImageData } from "next/image";
 import { motion } from "framer-motion";
 import { MyLang, createIntlDict, translator } from "@lib/i18n";
-import poolinkLogo from "@images/projects/poolink/LOGO_Poolink.png";
 import poolinkScreenShot1 from "@images/projects/poolink/overview/4.png";
 import poolinkScreenShot2 from "@images/projects/poolink/overview/5-3.png";
 import poolinkScreenShot3 from "@images/projects/poolink/overview/6.png";

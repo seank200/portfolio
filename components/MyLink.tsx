@@ -17,6 +17,12 @@ export default function MyLink<T extends string>({
         {children}
       </Link>
     );
+  } else if (href.charAt(0) === "#") {
+    return (
+      <Link href={href} className={className}>
+        {children}
+      </Link>
+    );
   } else {
     return (
       <a

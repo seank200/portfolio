@@ -1,9 +1,7 @@
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faImages } from "@fortawesome/free-regular-svg-icons/faImages";
-import Section from "@components/portfolio/Section";
 import { MyLang, translator } from "@lib/i18n";
-import ProjectDetailsSection from "../ProjectDetailsSection";
 import ProjectGallery, { ProjectGalleryItem } from "../ProjectGallery";
 import PoolinkOverview from "./PoolinkOverview";
 import PoolinkPainpoint from "./PoolinkPainpoint";
@@ -39,11 +37,10 @@ import poolinkSS027 from "@images/projects/poolink/screenshots/modals/로ᄀ�
 import poolinkSS028 from "@images/projects/poolink/screenshots/modals/환경설정 - 탈퇴.png";
 import PoolinkRoleSummary from "./PoolinkRoleSummary";
 import PoolinkTechSummary from "./PoolinkTechSummary";
-import ProjectSection from "../ProjectSection";
+import ProjectDetailsSection from "../ProjectDetailsSection";
 import ProjectHero from "../ProjectHero";
 import ProjectSummarySection from "../ProjectSummarySection";
 import Heading from "@components/portfolio/Heading";
-import { faLightbulb } from "@fortawesome/free-regular-svg-icons/faLightbulb";
 
 const poolinkPeriod = {
   start: new Date("2021-05"),
@@ -104,7 +101,7 @@ export default function PoolinkSection({ lang }: { lang: MyLang }) {
   ];
 
   return (
-    <ProjectSection id="sigmate" lang={lang}>
+    <ProjectDetailsSection id="sigmate">
       <ProjectHero
         lang={lang}
         heading={
@@ -141,78 +138,8 @@ export default function PoolinkSection({ lang }: { lang: MyLang }) {
           />
           {t("Screenshots", "스크린샷")}
         </Heading>
-        <ProjectGallery lang={lang} items={galleryItems} />
+        <ProjectGallery items={galleryItems} />
       </section>
-    </ProjectSection>
+    </ProjectDetailsSection>
   );
-
-  // return (
-  //   <ProjectDetailsSection
-  //     lang={lang}
-  //     heading="Poolink"
-  //     id="poolink"
-  //     images={galleryItems.slice(0, 11).map((i) => i.src)}
-  //     period={poolinkPeriod}
-  //     logo={
-  //       <Image
-  //         src={poolinkLogo}
-  //         alt="Poolink"
-  //         height={64}
-  //         className="w-auto h-16 md:h-auto"
-  //       />
-  //     }
-  //     overviewLHeading={t("Project Overview", "프로젝트 개요")}
-  //     overviewL={<PoolinkProjectSummary lang={lang} />}
-  //     overviewCHeading={t("Role Overview", "담당 업무 요약")}
-  //     overviewC={<PoolinkRoleSummary lang={lang} />}
-  //     overviewRHeading={t("Tech", "기술 스택")}
-  //     overviewR={<PoolinkTechSummary lang={lang} />}
-  //   >
-  //     <Section
-  //       level={4}
-  //       heading={t("Poolink Introduction", "풀링 소개")}
-  //       hideHeading
-  //       id="poolink-intro"
-  //       className="py-16"
-  //     >
-  //       <PoolinkHero lang={lang} />
-  //     </Section>
-  //     <Section
-  //       level={4}
-  //       heading={t("Pain Point", "문제점")}
-  //       hideHeading
-  //       id="poolink-pain-point"
-  //       className="py-16"
-  //     >
-  //       <PoolinkPainpoint lang={lang} />
-  //     </Section>
-  //     <Section
-  //       level={4}
-  //       heading={t("Features", "주요 기능")}
-  //       headingClassName="text-xl font-semibold"
-  //       hideHeading
-  //       id="poolink-features"
-  //       className="py-16"
-  //     >
-  //       <PoolinkFeatures lang={lang} />
-  //     </Section>
-  //     <Section
-  //       level={4}
-  //       heading={
-  //         <>
-  //           <FontAwesomeIcon
-  //             icon={faImages}
-  //             className="mr-3 h-em text-ctp-flamingo"
-  //           />
-  //           {t("Screenshots", "스크린샷")}
-  //         </>
-  //       }
-  //       headingClassName="text-xl font-semibold"
-  //       id="poolink-screenshots"
-  //       className="py-16"
-  //     >
-  //       <ProjectGallery lang={lang} items={galleryItems} />
-  //     </Section>
-  //   </ProjectDetailsSection>
-  // );
 }

@@ -8,12 +8,15 @@ export default function SigmateRoleSummary({ lang }: { lang: MyLang }) {
     <ProjectSummaryItem id="sigmate-role-summary" heading="role" lang={lang}>
       <ul>
         <ListItem>
-          {t("Chief Technology Officer (CTO)", "CTO (최고 기술 책임자)")}
+          {t(
+            "Title: Chief Technology Officer (CTO)",
+            "직책: CTO (최고 기술 책임자)",
+          )}
         </ListItem>
         <ListItem>
           {t(
             "Developed of web API server with custom wiki engine, and deployed it on Amazon Web Services (AWS)",
-            "커스텀 위키 엔진이 포함된 백엔드 API 서버를 구현을 주도하고, 이를 AWS에 배포하였음",
+            "커스텀 위키 엔진이 포함된 백엔드 API 서버 구현을 주도하고, 이를 AWS에 배포하였음",
           )}
         </ListItem>
         <ListItem>

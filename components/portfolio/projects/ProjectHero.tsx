@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 import ProjectHeroGallery from "./ProjectHeroGallery";
-import { ProjectPeriod } from "./ProjectSection";
+import { ProjectPeriod } from "./ProjectDetailsSection";
 import { MyLang, formatPeriod } from "@lib/i18n";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons/faCalendar";
@@ -27,7 +27,10 @@ export default function ProjectHero({
           <FontAwesomeIcon icon={faCalendar} className="h-em mr-3" />
           {formatPeriod(lang, period.start, period.end)}
         </p>
-        <Heading level={3} className="grow flex justify-center items-center">
+        <Heading
+          level={3}
+          className="grow pt-56 pb-80 flex justify-center items-center"
+        >
           {heading}
         </Heading>
         {children}

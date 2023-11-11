@@ -1,5 +1,5 @@
-import Section from "@components/portfolio/Section";
 import { MyLang, translator } from "@lib/i18n";
+import Heading from "../Heading";
 
 export default function ProjectSection({
   children,
@@ -10,13 +10,15 @@ export default function ProjectSection({
 }) {
   const t = translator(lang);
   return (
-    <Section
-      level={2}
-      heading={t("Projects", "프로젝트")}
-      id="projects"
-      hideHeading
-    >
+    <section id="projects" className="scroll-my-16">
+      <Heading level={2} className="container">
+        {t("Projects", "주요 프로젝트 경험")}
+      </Heading>
+      <section
+        id="project-overview"
+        className="container grid grid-cols-1 md:grid-cols-3"
+      ></section>
       {children}
-    </Section>
+    </section>
   );
 }

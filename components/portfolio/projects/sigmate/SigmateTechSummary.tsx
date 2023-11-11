@@ -25,7 +25,7 @@ export default function SigmateTechSummary({ lang }: { lang: MyLang }) {
   ];
 
   return (
-    <ProjectSummaryItem id="sigmate-tech-summary" heading="role" lang={lang}>
+    <ProjectSummaryItem id="sigmate-tech-summary" heading="tech" lang={lang}>
       <ul className="flex flex-wrap gap-4">
         {techStack.map((tech, i) => (
           <li key={i}>{tech}</li>

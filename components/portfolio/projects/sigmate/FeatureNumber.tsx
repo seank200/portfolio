@@ -9,7 +9,7 @@ export default function FeatureNumber({
     <span
       className={`text-ctp-blue text-3xl leading-none font-extrabold ${
         bg
-          ? "mr-8 w-12 h-12 rounded-lg shadow bg-white dark:bg-black flex justify-center items-center"
+          ? "mr-8 w-12 h-12 rounded-lg shadow bg-white dark:bg-white/0 border-2 dark:border-ctp-blue flex justify-center items-center"
           : "mr-10"
       }`}
     >

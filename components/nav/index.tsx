@@ -1,6 +1,6 @@
 "use client";
 
-import { MyLang } from "@lib/i18n";
+import { MyLang, translator } from "@lib/i18n";
 import Container from "../Container";
 import MyLink from "../MyLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,6 +21,8 @@ export default function Nav({ lang }: { lang: MyLang }) {
   const [, setScrollY] = useState<number>(0);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const t = translator(lang);
 
   const topbarClass = isHidden ? "-translate-y-full" : "translate-y-0";
   const sidebarClass = isOpen
@@ -78,8 +80,22 @@ export default function Nav({ lang }: { lang: MyLang }) {
           >
             Youngwoo
           </MyLink>
-          <ul className="flex items-center gap-4 text-lg md:text-base leading-none">
-            <li>
+          <ul className="flex items-center gap-6 text-lg md:text-base leading-none">
+            <li className="hidden md:block hover:text-ctp-mauve text-sm">
+              <MyLink href="#introduction">{t("Introduction", "소개")}</MyLink>
+            </li>
+            <li className="hidden md:block hover:text-ctp-mauve text-sm">
+              <MyLink href="#projects">{t("Projects", "프로젝트 경험")}</MyLink>
+            </li>
+            <li className="hidden md:block hover:text-ctp-mauve text-sm">
+              <MyLink href="#experiences">
+                {t("Work Experience", "업무 경험")}
+              </MyLink>
+            </li>
+            <li className="hidden md:block hover:text-ctp-mauve text-sm">
+              <MyLink href="#contacts">{t("Contact", "연락하기")}</MyLink>
+            </li>
+            <li className="hover:text-ctp-mauve">
               <MyLink
                 href="https://github.com/seanK200"
                 className="flex items-center gap-2"
@@ -88,7 +104,7 @@ export default function Nav({ lang }: { lang: MyLang }) {
               </MyLink>
             </li>
             <li
-              className="cursor-pointer"
+              className="cursor-pointer hover:text-ctp-mauve"
               role="button"
               onClick={() => setIsOpen(true)}
             >
@@ -98,7 +114,7 @@ export default function Nav({ lang }: { lang: MyLang }) {
         </Container>
       </div>
       <div
-        className={`z-20 fixed top-0 bottom-0 right-0 ${sidebarClass} px-10 md:px-8 pt-8 md:pt-6 pb-12 w-full md:w-72 flex flex-col gap-4 bg-ctp-crust transition-all duration-500 ease-in-out`}
+        className={`z-30 fixed top-0 bottom-0 right-0 ${sidebarClass} px-10 md:px-8 pt-8 md:pt-6 pb-12 w-full md:w-72 flex flex-col gap-4 bg-ctp-crust transition-all duration-500 ease-in-out`}
       >
         <button className="text-lg self-end" onClick={() => setIsOpen(false)}>
           <FontAwesomeIcon icon={faXmark} className="text-lg h-em" />
@@ -114,7 +130,7 @@ export default function Nav({ lang }: { lang: MyLang }) {
         </ul>
       </div>
       <div
-        className={`z-10 fixed top-0 right-0 bottom-0 ${
+        className={`z-20 fixed top-0 right-0 bottom-0 ${
           isOpen ? "bg-black/30" : "bg-none"
         } ${isOpen ? "left-0" : "left-full"} transition-colors`}
         onClick={() => setIsOpen(false)}

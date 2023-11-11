@@ -40,6 +40,14 @@
     @apply mb-4;
   }
 
+  h2 {
+    @apply text-3xl font-semibold;
+  }
+
+  h3 {
+    @apply text-2xl font-bold;
+  }
+
   h4 {
     @apply text-xl font-bold;
   }
@@ -49,7 +57,7 @@
   }
 
   .container {
-    @apply mx-auto w-full max-w-7xl px-8 md:px-12 2xl:px-0;
+    @apply mx-auto w-full max-w-7xl px-8 md:px-14 2xl:px-0;
   }
 
   .light-1 {
