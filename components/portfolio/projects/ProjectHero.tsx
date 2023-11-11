@@ -29,7 +29,7 @@ export default function ProjectHero({
         </p>
         <Heading
           level={3}
-          className="grow pt-56 pb-80 flex justify-center items-center"
+          className="grow py-24 sm:pt-56 sm:pb-80 flex justify-center items-center"
         >
           {heading}
         </Heading>

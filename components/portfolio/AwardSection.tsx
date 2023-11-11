@@ -86,12 +86,12 @@ export default function AwardSection({ lang }: { lang: MyLang }) {
     },
     {
       time: "2018",
-      name: t("Award of Academic Achievement", "학업우수상"),
+      name: t("Award of Academic Achievement (2018)", "학업우수상 (2018)"),
       details: [t("Issued by: Yonsei University", "발행기관: 연세대학교")],
     },
     {
       time: "2017",
-      name: t("Award of Academic Achievement", "학업우수상"),
+      name: t("Award of Academic Achievement (2017)", "학업우수상 (2017)"),
       details: [t("Issued by: Yonsei University", "발행기관: 연세대학교")],
     },
   ];

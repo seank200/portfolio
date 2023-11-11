@@ -19,10 +19,10 @@ export default function ExpList({
     setIsOpen((p) => !p);
   };
   const t = translator(lang);
-  const CLOSED_COUNT = 3;
+  const CLOSED_COUNT = 2;
   return (
     <>
-      <ul className="mt-4 flex flex-col gap-3 leading-relaxed">
+      <ul className="mt-4 flex flex-col gap-3 md:leading-relaxed">
         {items.slice(0, CLOSED_COUNT).map((item, idx) => {
           return <ListItem key={idx}>{item}</ListItem>;
         })}

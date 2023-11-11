@@ -44,7 +44,11 @@ const dict = createIntlDict(
     ),
   },
   {
-    H_PROBLEM: "어제 저장한 그 링크, 지금 어디있나요?",
+    H_PROBLEM: (
+      <>
+        어제 저장한 그 링크, <br className="sm:hidden" /> 지금 어디있나요?
+      </>
+    ),
     PROBLEM: (
       <>
         분명히 어딘가 붙여넣기 해두었는데,
