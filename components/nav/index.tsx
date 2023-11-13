@@ -77,26 +77,26 @@ export default function Nav({ lang }: { lang: MyLang }) {
           <MyLink
             href="/"
             lang={lang}
-            className={`relative top-px bg-gradient-to-r from-ctp-mauve to-ctp-blue bg-clip-text hover:text-transparent text-xl md:text-lg font-extrabold font-display leading-none uppercase transition`}
+            className={`relative top-px bg-gradient-to-r from-ctp-mauve to-ctp-blue bg-clip-text hover:text-transparent text-xl font-extrabold font-display leading-none uppercase transition`}
           >
             Youngwoo
           </MyLink>
-          <ul className="flex items-center gap-6 text-lg md:text-base leading-none">
-            <li className="hidden md:block hover:text-ctp-mauve text-sm">
+          <ul className="flex items-center gap-6 text-lg md:text-base">
+            <li className="hidden md:block hover:text-ctp-mauve relative top-px">
               <MyLink href="#introduction">{t("Introduction", "소개")}</MyLink>
             </li>
-            <li className="hidden md:block hover:text-ctp-mauve text-sm">
+            <li className="hidden md:block hover:text-ctp-mauve relative top-px">
               <MyLink href="#projects">{t("Projects", "프로젝트 경험")}</MyLink>
             </li>
-            <li className="hidden md:block hover:text-ctp-mauve text-sm">
+            <li className="hidden md:block hover:text-ctp-mauve relative top-px">
               <MyLink href="#experiences">
                 {t("Work Experience", "업무 경험")}
               </MyLink>
             </li>
-            <li className="hidden md:block hover:text-ctp-mauve text-sm">
+            <li className="hidden md:block hover:text-ctp-mauve relative top-px">
               <MyLink href="#contacts">{t("Contact", "연락하기")}</MyLink>
             </li>
-            <li className="hover:text-ctp-mauve">
+            <li className="hover:text-ctp-mauve text-lg">
               <MyLink
                 href="https://github.com/seanK200"
                 className="flex items-center gap-2"
@@ -105,7 +105,7 @@ export default function Nav({ lang }: { lang: MyLang }) {
               </MyLink>
             </li>
             <li
-              className="cursor-pointer hover:text-ctp-mauve"
+              className="cursor-pointer hover:text-ctp-mauve text-lg"
               role="button"
               onClick={() => setIsOpen(true)}
             >
