@@ -4,6 +4,8 @@ import poolinkLogo from "@images/projects/poolink/LOGO_Poolink.png";
 import poolinkHeroImage from "@images/projects/poolink/overview/1-1.png";
 import poolinkHeroMobile from "@images/projects/poolink/overview/1-3.png";
 import Heading from "@components/portfolio/Heading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons/faLink";
 
 const dict = createIntlDict(
   {
@@ -56,7 +58,7 @@ export default function PoolinkOverview({ lang }: { lang: MyLang }) {
             alt="Poolink Logo"
             className="ml-0.5 mr-4 inline-block w-[6ch]"
           />
-          🔗
+          <FontAwesomeIcon icon={faLink} className="h-em" />
         </Heading>
       </div>
     </>

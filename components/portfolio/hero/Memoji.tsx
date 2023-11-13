@@ -4,6 +4,9 @@ import { MyLang, createIntlDict } from "@lib/i18n";
 import { faArrowRotateRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import MemojiImage from "@images/Memoji.png";
+import UAParser from "ua-parser-js";
 
 const dict = createIntlDict(
   {
@@ -24,10 +27,23 @@ export default function Memoji({
   const { PLAY_AGAIN } = dict[lang];
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isEnded, setIsEnded] = useState<boolean>(false);
+  const [showFallback, setShowFallback] = useState<boolean>(false);
   const handleVideoClick: MouseEventHandler<HTMLDivElement> = () => {
     if (!videoRef.current) return;
     videoRef.current.play();
   };
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent;
+    if (!userAgent) {
+      setShowFallback(true);
+    }
+    const uaParser = new UAParser(window.navigator.userAgent);
+    const os = uaParser.getOS();
+    if (os.name !== "Mac OS") {
+      setShowFallback(true);
+    }
+  }, []);
 
   useEffect(() => {
     const videoElem = videoRef.current;
@@ -38,6 +54,7 @@ export default function Memoji({
     videoElem.addEventListener("play", handleStart);
     videoElem.addEventListener("playing", handleStart);
     videoElem.addEventListener("ended", handleEnd);
+
     return () => {
       if (!videoElem) return;
       videoElem.removeEventListener("play", handleStart);
@@ -57,13 +74,23 @@ export default function Memoji({
         autoPlay
         playsInline
         muted
+        disablePictureInPicture
+        disableRemotePlayback
         id="home__memoji_video"
         className="relative top-[17%] left-1 md:left-2"
         ref={videoRef}
       >
         <source src="images/Memoji.mov" type="video/mp4" />
-        <source src="images/Memoji.webm" type="video/webm" />
       </video>
+      {showFallback && (
+        <Image
+          src={MemojiImage}
+          alt="Memoji"
+          width={640}
+          height={480}
+          className="absolute top-[17%] left-1 md:left-2"
+        />
+      )}
       <button
         className={`absolute top-full left-1/2 -translate-x-1/2 opacity-0 ${buttonOpacity} hidden md:flex items-center pt-4 text-ctp-mauve text-lg font-medium transition-all`}
       >

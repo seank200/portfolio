@@ -94,6 +94,7 @@ export const expAttribs: Record<
     },
     link: "https://yicrc.yonsei.ac.kr/main/default.asp?mid=m00",
     logoSrc: YonseiRCLogoLight,
+    logoHeight: 28,
   },
 };
 
