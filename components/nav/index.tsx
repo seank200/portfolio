@@ -12,13 +12,28 @@ import { useEffect, useState } from "react";
 import throttle from "lodash/throttle";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
 import { faEnvelope } from "@fortawesome/free-regular-svg-icons/faEnvelope";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const SCROLL_DOWN_THRSH = 20;
 const SCROLL_UP_THRSH = 10;
 const SCROLL_TOP_THRSH = 50;
 const SCROLL_BOT_THRSH = 200;
 
-export default function Nav({ lang }: { lang: MyLang }) {
+export type NavLink = {
+  label: string;
+  href: string;
+  topbar?: boolean;
+};
+
+export default function Nav({
+  lang,
+  home = "/",
+  navLinks,
+}: {
+  lang: MyLang;
+  home?: string;
+  navLinks: NavLink[];
+}) {
   const [, setScrollY] = useState<number>(0);
   const [isHidden, setIsHidden] = useState<boolean>(false);
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -75,27 +90,25 @@ export default function Nav({ lang }: { lang: MyLang }) {
       >
         <Container className="flex justify-between items-center">
           <MyLink
-            href="/"
+            href={home}
             lang={lang}
             className={`relative top-px bg-gradient-to-r from-ctp-mauve to-ctp-blue bg-clip-text hover:text-transparent text-xl font-extrabold font-display leading-none uppercase transition`}
           >
             Youngwoo
           </MyLink>
           <ul className="flex items-center gap-6 text-lg md:text-base">
-            <li className="hidden md:block hover:text-ctp-mauve relative top-px">
-              <MyLink href="#introduction">{t("Introduction", "소개")}</MyLink>
-            </li>
-            <li className="hidden md:block hover:text-ctp-mauve relative top-px">
-              <MyLink href="#projects">{t("Projects", "프로젝트 경험")}</MyLink>
-            </li>
-            <li className="hidden md:block hover:text-ctp-mauve relative top-px">
-              <MyLink href="#experiences">
-                {t("Work Experience", "업무 경험")}
-              </MyLink>
-            </li>
-            <li className="hidden md:block hover:text-ctp-mauve relative top-px">
-              <MyLink href="#contacts">{t("Contact", "연락하기")}</MyLink>
-            </li>
+            {navLinks
+              .filter((l) => l.topbar)
+              .map((nl) => (
+                <li
+                  key={nl.href}
+                  className="hidden md:block hover:text-ctp-mauve relative top-px"
+                >
+                  <MyLink href={nl.href} lang={lang}>
+                    {nl.label}
+                  </MyLink>
+                </li>
+              ))}
             <li className="hover:text-ctp-mauve text-lg">
               <MyLink
                 href="https://github.com/seanK200"
@@ -123,79 +136,39 @@ export default function Nav({ lang }: { lang: MyLang }) {
         </button>
         <nav className="grow">
           <ul className="flex flex-col gap-6 text-xl md:text-lg font-medium leading-none">
-            <li>
-              <MyLink className="hover:underline" href="#introduction">
-                {t("Introduction", "소개")}
-              </MyLink>
-            </li>
-            <li>
-              <MyLink className="hover:underline" href="#projects">
-                {t("Projects", "프로젝트 경험")}
-              </MyLink>
-            </li>
-            <li>
-              <MyLink className="hover:underline" href="#experiences">
-                {t("Work Experience", "업무 경험")}
-              </MyLink>
-            </li>
-            <li>
-              <MyLink className="hover:underline" href="#education">
-                {t("Education", "교육")}
-              </MyLink>
-            </li>
-            <li>
-              <MyLink className="hover:underline" href="#awards">
-                {t("Awards&Scholarships", "수상/장학")}
-              </MyLink>
-            </li>
-            <li>
-              <MyLink className="hover:underline" href="#contacts">
-                {t("Contact", "연락하기")}
-              </MyLink>
-            </li>
+            {navLinks.map((nl) => (
+              <li key={nl.href}>
+                <MyLink className="hover:underline" href={nl.href}>
+                  {nl.label}
+                </MyLink>
+              </li>
+            ))}
           </ul>
           <hr className="my-8 border-[0.5px] border-ctp-surface2" />
           <ul className="flex flex-col gap-4 text-lg md:text-base font-medium leading-none">
-            <li className="hover:text-ctp-teal">
-              <MyLink
+            <li className="hover:text-ctp-mauve">
+              <ExternalNavLink
+                lang={lang}
                 href="https://github.com/seanK200"
-                className="flex items-center gap-3"
-              >
-                <FontAwesomeIcon icon={faGithub} className="h-em" fixedWidth />
-                <span className="text-base md:text-sm">
-                  {t("Github", "깃허브")}
-                </span>
-              </MyLink>
+                icon={faGithub}
+                label={t("Github", "깃허브")}
+              />
             </li>
-            <li className="hover:text-ctp-teal">
-              <MyLink
+            <li className="hover:text-ctp-mauve">
+              <ExternalNavLink
+                lang={lang}
                 href="https://linkedin.com/in/youngwoo-kim-sean"
-                className="flex items-center gap-3"
-              >
-                <FontAwesomeIcon
-                  icon={faLinkedin}
-                  className="h-em"
-                  fixedWidth
-                />
-                <span className="text-base md:text-sm">
-                  {t("LinkedIn", "링크드인")}
-                </span>
-              </MyLink>
+                icon={faLinkedin}
+                label={t("LinkedIn", "링크드인")}
+              />
             </li>
-            <li className="hover:text-ctp-teal">
-              <MyLink
+            <li className="hover:text-ctp-mauve">
+              <ExternalNavLink
+                lang={lang}
                 href="mailto:yw.sean.kim@gmail.com"
-                className="flex items-center gap-3"
-              >
-                <FontAwesomeIcon
-                  icon={faEnvelope}
-                  className="h-em"
-                  fixedWidth
-                />
-                <span className="text-base md:text-sm">
-                  {t("Email", "이메일")}
-                </span>
-              </MyLink>
+                icon={faEnvelope}
+                label={t("Email", "이메일")}
+              />
             </li>
           </ul>
         </nav>
@@ -215,5 +188,24 @@ export default function Nav({ lang }: { lang: MyLang }) {
         onClick={() => setIsOpen(false)}
       />
     </>
+  );
+}
+
+function ExternalNavLink({
+  lang,
+  href,
+  icon,
+  label,
+}: {
+  lang: MyLang;
+  href: string;
+  icon: IconProp;
+  label: string;
+}) {
+  return (
+    <MyLink href={href} lang={lang} className="flex items-center gap-3">
+      <FontAwesomeIcon icon={icon} className="h-em" fixedWidth />
+      <span className="text-base md:text-sm">{label}</span>
+    </MyLink>
   );
 }

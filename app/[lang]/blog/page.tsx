@@ -27,5 +27,5 @@ export async function generateMetadata({
 
 export default function page({ params }: { params: { lang: string } }) {
   const { lang } = params;
-  return <main>Blog: {lang}</main>;
+  return <main className="min-h-screen">Blog: {lang}</main>;
 }
