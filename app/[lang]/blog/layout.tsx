@@ -1,6 +1,7 @@
 import Footer from "@components/Footer";
 import Nav, { NavLink } from "@components/nav";
 import { MyLang, translator } from "@lib/i18n";
+import { redirect } from "next/navigation";
 
 export default function BlogLayout({
   params,
@@ -32,6 +33,9 @@ export default function BlogLayout({
       topbar: true,
     },
   ];
+
+  // Not finished. Should not be loaded in production
+  redirect("/");
 
   return (
     <>

@@ -15,6 +15,12 @@ export function middleware(req: NextRequest) {
   const query = new URL(url).search;
   const pathparts = splitPath(req.nextUrl.pathname);
 
+  if (pathparts.at(0) === "linkedin" || pathparts.at(0) === "in") {
+    return NextResponse.redirect("https://linkedin.com/in/youngwoo-kim-sean/");
+  } else if (pathparts.at(0) === "github" || pathparts.at(0) === "git") {
+    return NextResponse.redirect("https://github.com/seanK200");
+  }
+
   // Add detected language to path if not explicitly provided
   if (!isMyLang(pathparts[0])) {
     // ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7
