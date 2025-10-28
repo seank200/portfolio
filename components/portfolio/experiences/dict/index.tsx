@@ -6,7 +6,9 @@ import { cfcDict } from "./cfc";
 import { facadeDict } from "./facade";
 import { ucnDict } from "./ucn";
 import { yicrcDict } from "./yicrc";
+import { ktDict } from "./kt";
 
+import KTLogo from "@images/logo/KT.png";
 import HCSSLogo from "@images/logo/HCSS.png";
 import ANLLogo from "@images/logo/ANL.jpg";
 import FacadeLogo from "@images/logo/Facade.png";
@@ -15,6 +17,7 @@ import CFCLogo from "@images/logo/CFC.png";
 import YonseiRCLogoLight from "@images/logo/YonseiRC_light.png";
 
 export const expDict = {
+  kt: ktDict,
   ucn: ucnDict,
   anl: anlDict,
   facade: facadeDict,
@@ -46,6 +49,14 @@ export const expAttribs: Record<
   ExpName,
   Pick<ExpAttribs, "period" | "link" | "logoSrc" | "logoDarkSrc" | "logoHeight">
 > = {
+  kt: {
+    period: {
+      start: new Date("2024-01"),
+      end: undefined,
+    },
+    link: "https://corp.kt.com/eng/html/intro/main.html",
+    logoSrc: KTLogo,
+  },
   ucn: {
     period: {
       start: new Date("2021-09"),
@@ -98,7 +109,15 @@ export const expAttribs: Record<
   },
 };
 
-const expOrder: ExpName[] = ["ucn", "anl", "facade", "ceos", "cfc", "yicrc"];
+const expOrder: ExpName[] = [
+  "kt",
+  "ucn",
+  "anl",
+  "facade",
+  "ceos",
+  "cfc",
+  "yicrc",
+];
 
 const buildExperiences = (lang: MyLang) =>
   expOrder.map((expName): ExpAttribs => {

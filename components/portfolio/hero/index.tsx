@@ -27,13 +27,15 @@ export default function HeroSection({ lang }: LangProps) {
           <p
             className={`text-xl md:text-2xl text-center md:text-left leading-relaxed md:leading-normal lg:leading-relaxed`}
           >
-            <span className="hidden lg:inline">{t("", "안녕하세요, ")}</span>
-            {t("Hi, I am a full-stack web developer. ", "풀스택 웹 개발자 ")}
-            <span className="hidden lg:inline">{t("", "김영우입니다. ")}</span>
+            {t(
+              "Hi, I develop web servers for controlling and monitoring AI-driven robots at mass scale,",
+              "안녕하세요, 백엔드 웹 개발자 김영우입니다.",
+            )}
             <br className={t("hidden lg:inline", "inline")} />
-            <span className="hidden lg:inline">{t("", "제 ")}</span>
-            {t("Welcome to my portfolio.", "프로젝트 포트폴리오")}
-            <span className="hidden lg:inline">{t("", "를 소개합니다.")}</span>
+            {t(
+              "deployed on the edge and the cloud.",
+              "AI 로봇 제어 및 관제를 위한 클라우드/엣지 서버 개발자로 현재 재직 중입니다.",
+            )}
           </p>
           <div className="md:mt-16 lg:mt-24 hidden md:flex flex-row gap-4">
             {buttons}
